@@ -1,0 +1,4 @@
+click >=7
+ocrd
+pyyaml
+requests
