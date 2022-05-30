@@ -18,4 +18,6 @@ jobs:
       - run:
           command: |
             . venv/bin/activate
+            # at this point the pipeline fails because the repos are not cloned to the file system.
+            # TODO: check if there is a way to get the information needed without cloning.
             make repos.json
