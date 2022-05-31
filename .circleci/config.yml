@@ -19,7 +19,7 @@ jobs:
           command: |
             . venv/bin/activate
             # update submodules
-            git submodule update --remote
+            git submodule update --init --recursive
             # at this point the pipeline fails because the repos are not cloned to the file system.
             # TODO: check if there is a way to get the information needed without cloning.
-            make repos.json
+            #make repos.json
