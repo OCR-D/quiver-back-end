@@ -32,3 +32,14 @@ jobs:
             # at this point the pipeline fails because the repos are not cloned to the file system.
             # TODO: check if there is a way to get the information needed without cloning.
             make repos.json
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "repos.json" }}
+          paths:
+            - "repos.json"
+      - add_ssh_keys:
+          fingerprints:
+            - "6c:f6:28:23:29:53:7c:22:a1:c0:cf:6b:ae:a9:cf:50"
+      - run:
+          name: Push repos.json back to repository
+          command: |
+              git status
