@@ -16,10 +16,19 @@ jobs:
           paths:
             - "venv"
       - run:
+          name: Update submodules
           command: |
             . venv/bin/activate
-            # update submodules
             git submodule update --init
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+            - "submodules"
+      - run:
+          name: Update repos.json
+          command: |
+            . venv/bin/activate
             # at this point the pipeline fails because the repos are not cloned to the file system.
             # TODO: check if there is a way to get the information needed without cloning.
-            #make repos.json
+            make repos.json
