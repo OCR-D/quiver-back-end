@@ -16,9 +16,6 @@
 [submodule "submodules/ocrd_kraken"]
 	path = submodules/ocrd_kraken
 	url = https://github.com/OCR-D/ocrd_kraken
-[submodule "submodules/ocrd_ocropy"]
-	path = submodules/ocrd_ocropy
-	url = https://github.com/OCR-D/ocrd_ocropy
 [submodule "submodules/ocrd_olena"]
 	path = submodules/ocrd_olena
 	url = https://github.com/OCR-D/ocrd_olena
