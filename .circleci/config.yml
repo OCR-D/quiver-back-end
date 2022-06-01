@@ -36,7 +36,7 @@ jobs:
             - "repos.json"
       - add_ssh_keys:
           fingerprints:
-            - "6c:f6:28:23:29:53:7c:22:a1:c0:cf:6b:ae:a9:cf:50"
+            - "so:me:fin:ge:rp:ri:nt"
       - run:
           name: Push repos.json back to repository
           command: |
