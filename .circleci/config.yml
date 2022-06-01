@@ -40,4 +40,4 @@ jobs:
       - run:
           name: Push repos.json back to repository
           command: |
-              git status
+              git status --porcelain | grep -q 'repos.json' && git add repos.json && git commit -m "update repos.json [skip ci]"
