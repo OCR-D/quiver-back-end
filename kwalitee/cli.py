@@ -1,6 +1,5 @@
 import re
 import click
-import requests
 from pathlib import Path
 from ocrd.decorators import ocrd_loglevel
 from ocrd_utils import getLogger
