@@ -3,8 +3,8 @@ from ocrd_utils import getLogger
 
 class Release():
 
-    def __init__(self):
-        pass
+    def __init__(self, json_data):
+        self.tag = json_data['tag_name']
 
     def __str__(self):
         pass
