@@ -30,10 +30,6 @@ jobs:
           command: |
             . venv/bin/activate
             make repos.json
-      - save_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "repos.json" }}
-          paths:
-            - "repos.json"
       - add_ssh_keys:
           fingerprints:
             - "so:me:fin:ge:rp:ri:nt"
