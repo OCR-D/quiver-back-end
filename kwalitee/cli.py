@@ -1,4 +1,6 @@
+import re
 import click
+import requests
 from pathlib import Path
 from ocrd.decorators import ocrd_loglevel
 from ocrd_utils import getLogger
@@ -7,6 +9,7 @@ import json
 from pkg_resources import resource_filename
 
 from .repo import Repo
+from .release import Release, get_releases
 
 def _check_cloned(ctx):
     uncloned = []
@@ -81,6 +84,25 @@ def generate_json(ctx, output=None):
         Path(output).write_text(json_str)
     else:
         print(json_str)
+
+
+@cli.command('releases', help='''
+
+    Generate JSON for ocrd_all releases
+
+''')
+@click.option('-o', '--output', help="Output file. Omit to print to STDOUT")
+def generate_ocrd_all_releases(output=None):
+    releases = get_releases()
+    ret = []
+    for release in releases:
+        ret.append(release.to_json())
+    json_str = json.dumps(ret, indent=4, sort_keys=True)
+    if output:
+        Path(output).write_text(json_str)
+    else:
+        print(json_str)    
+
 
 @cli.command('ocrd-tool')
 @click.option('-o', '--output', help="Output file. Omit to print to STDOUT")
