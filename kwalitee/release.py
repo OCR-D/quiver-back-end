@@ -1,4 +1,5 @@
 import json, re
+import requests
 from ocrd_utils import getLogger
 
 class Release():
@@ -20,3 +21,14 @@ class Release():
         desc['tag'] = self.tag
         desc['projects'] = self.projects
         return desc
+
+def get_releases():
+    api_url = "https://api.github.com/repos/OCR-D/ocrd_all/releases"
+    header = {"Accept": "application/vnd.github.v3+json"}
+    response = requests.get(api_url, headers=header)
+    response_json = json.loads(response.text)
+    
+    releases = []
+    for entry in response_json:
+        releases.append(Release(entry))
+    return releases
