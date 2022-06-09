@@ -1,0 +1,331 @@
+[
+    {
+        "projects": [
+            "core",
+            "ocrd_detectron2",
+            "ocrd_keraslm",
+            "ocrd_olena",
+            "ocrd_segment",
+            "opencv-python",
+            "workflow-configuration"
+        ],
+        "tag": "v2022-06-03"
+    },
+    {
+        "projects": [
+            "core",
+            "eynollah",
+            "ocrd_cis",
+            "ocrd_detectron2",
+            "ocrd_doxa",
+            "ocrd_fileformat",
+            "ocrd_keraslm",
+            "ocrd_segment",
+            "opencv-python",
+            "sbb_binarization",
+            "workflow-configuration"
+        ],
+        "tag": "v2022-05-04"
+    },
+    {
+        "projects": [
+            "core",
+            "dinglehopper",
+            "ocrd_anybaseocr",
+            "ocrd_detectron2",
+            "ocrd_fileformat",
+            "ocrd_pagetopdf",
+            "ocrd_segment",
+            "opencv-python"
+        ],
+        "tag": "v2022-03-30"
+    },
+    {
+        "projects": [
+            "cor-asv-ann",
+            "ocrd_anybaseocr",
+            "ocrd_cis",
+            "ocrd_olahd_client",
+            "opencv-python",
+            "sbb_textline_detector",
+            "ocrd_tesserocr"
+        ],
+        "tag": "v2022-03-25"
+    },
+    {
+        "projects": [
+            "cor-asv-ann",
+            "core",
+            "dinglehopper",
+            "eynollah",
+            "ocrd_anybaseocr",
+            "tesseract",
+            "ocrd_calamari",
+            "ocrd_cis",
+            "ocrd_segment",
+            "ocrd_tesserocr",
+            "opencv-python",
+            "workflow-configuration"
+        ],
+        "tag": "v2022-03-20"
+    },
+    {
+        "projects": [
+            "core",
+            "tesseract",
+            "ocrd_cis",
+            "cor-asv-ann",
+            "dinglehopper",
+            "eynollah",
+            "ocrd_fileformat",
+            "ocrd_segment",
+            "opencv-python",
+            "workflow-configuration"
+        ],
+        "tag": "v2022-02-03"
+    },
+    {
+        "projects": [
+            "core",
+            "ocrd_olena",
+            "ocrd_segment"
+        ],
+        "tag": "v2021-12-13"
+    },
+    {
+        "projects": [
+            "core",
+            "ocrd_segment",
+            "tesseract",
+            "workflow-configuration"
+        ],
+        "tag": "v2021-11-30"
+    },
+    {
+        "projects": [
+            "cor-asv-ann",
+            "core",
+            "eynollah",
+            "ocrd_fileformat",
+            "ocrd_olena",
+            "ocrd_tesserocr",
+            "opencv-python",
+            "workflow-configuration"
+        ],
+        "tag": "v2021-10-12"
+    },
+    {
+        "projects": [
+            "tesseract"
+        ],
+        "tag": "v2021-07-22"
+    },
+    {
+        "projects": [
+            "cor-asv-ann",
+            "core",
+            "dinglehopper",
+            "eynollah",
+            "ocrd_calamari",
+            "ocrd_cis",
+            "ocrd_pc_segmentation",
+            "ocrd_segment",
+            "ocrd_tesserocr",
+            "opencv-python",
+            "sbb_textline_detector",
+            "workflow-configuration"
+        ],
+        "tag": "v2021-07-21"
+    },
+    {
+        "projects": [],
+        "tag": "v2021-05-21"
+    },
+    {
+        "projects": [
+            "ocrd_anybaseocr",
+            "dinglehopper",
+            "eynollah",
+            "cor-asv-ann",
+            "sbb_binarization"
+        ],
+        "tag": "v2021-05-20"
+    },
+    {
+        "projects": [
+            "eynollah",
+            "sbb_textline_detector"
+        ],
+        "tag": "v2021-05-04"
+    },
+    {
+        "projects": [],
+        "tag": "v2021-04-25"
+    },
+    {
+        "projects": [
+            "core",
+            "tesseract"
+        ],
+        "tag": "v2021-03-15"
+    },
+    {
+        "projects": [
+            "core",
+            "ocrd_tesserocr",
+            "ocrd_pc_segmentation",
+            "ocrd_wrap",
+            "tesseract"
+        ],
+        "tag": "v2020-03-08"
+    },
+    {
+        "projects": [
+            "core",
+            "dinglehopper",
+            "ocrd_calamari",
+            "ocrd_cis",
+            "ocrd_fileformat",
+            "ocrd_pagetopdf",
+            "ocrd_segment",
+            "opencv-python",
+            "tesseract"
+        ],
+        "tag": "v2020-02-27"
+    },
+    {
+        "projects": [
+            "ocrd_fileformat",
+            "sbb_binarization",
+            "sbb_textline_detector"
+        ],
+        "tag": "v2021-02-03"
+    },
+    {
+        "projects": [
+            "core",
+            "ocrd_anybaseocr",
+            "ocrd_calamari",
+            "ocrd_cis",
+            "ocrd_im6convert",
+            "ocrd_tesserocr",
+            "ocrd_typegroups_classifier"
+        ],
+        "tag": "v2021-01-30"
+    },
+    {
+        "projects": [
+            "ocrd_cis",
+            "ocrd_fileformat",
+            "ocrd_tesserocr",
+            "ocrd_typegroups_classifier",
+            "opencv-python",
+            "sbb_textline_detector",
+            "tesseract"
+        ],
+        "tag": "v2020-12-28"
+    },
+    {
+        "projects": [
+            "core",
+            "ocrd_cis",
+            "ocrd_segment",
+            "ocrd_tesserocr",
+            "ocrd_typegroups_classifier",
+            "opencv-python",
+            "tesseract",
+            "workflow-configuration"
+        ],
+        "tag": "v2020-12-10"
+    },
+    {
+        "projects": [
+            "core",
+            "dinglehopper",
+            "ocrd_calamari",
+            "ocrd_cis",
+            "ocrd_segment",
+            "sbb_binarization",
+            "sbb_textline_detector",
+            "tesseract",
+            "workflow-configuration"
+        ],
+        "tag": "v2020-11-27"
+    },
+    {
+        "projects": [
+            "cor-asv-ann",
+            "core",
+            "dinglehopper",
+            "ocrd_cis",
+            "ocrd_fileformat",
+            "ocrd_segment",
+            "ocrd_wrap",
+            "opencv-python",
+            "sbb_binarization",
+            "sbb_textline_detector",
+            "tesseract",
+            "workflow-configuration"
+        ],
+        "tag": "v2020-11-18"
+    },
+    {
+        "projects": [],
+        "tag": "v2018-11-18"
+    },
+    {
+        "projects": [
+            "cor-asv-ann",
+            "dinglehopper",
+            "ocrd_fileformat",
+            "tesseract",
+            "workflow-configuration"
+        ],
+        "tag": "v2020-10-29"
+    },
+    {
+        "projects": [],
+        "tag": "v2020-10-22.1"
+    },
+    {
+        "projects": [
+            "core",
+            "dinglehopper",
+            "ocrd_anybaseocr",
+            "ocrd_calamari",
+            "ocrd_cis",
+            "ocrd_olena",
+            "ocrd_pc_segmentation",
+            "ocrd_typegroups_classifier",
+            "ocrd_wrap",
+            "opencv-python",
+            "sbb_textline_detector",
+            "tesseract"
+        ],
+        "tag": "v2020-10-22"
+    },
+    {
+        "projects": [
+            "core",
+            "ocrd_pc_segmentation",
+            "opencv-python",
+            "tesseract"
+        ],
+        "tag": "v2020-10-13"
+    },
+    {
+        "projects": [
+            "dinglehopper",
+            "ocrd_calamari",
+            "ocrd_cis",
+            "ocrd_fileformat",
+            "ocrd_ocropy",
+            "ocrd_olena",
+            "ocrd_pagetopdf",
+            "ocrd_pc_segmentation",
+            "ocrd_repair_inconsistencies",
+            "ocrd_tesserocr"
+        ],
+        "tag": "v2020-10-02"
+    }
+]
