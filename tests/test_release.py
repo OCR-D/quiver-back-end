@@ -26,3 +26,8 @@ def test_json_output():
     test_representation['projects'] = ['core', 'ocrd_detectron2', 'ocrd_keraslm', 'ocrd_olena', 'ocrd_segment', 'opencv-python', 'workflow-configuration']
     json_representation = release.to_json()
     assert json_representation == test_representation
+
+def test_string_representation():
+    first_release = get_json_data(0)
+    release = Release(first_release)
+    assert str(release) == '<Release v2022-06-03>'

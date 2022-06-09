@@ -7,8 +7,8 @@ class Release():
         self.tag = json_data['tag_name']
         self.projects = self.get_projects(json_data)
 
-    def __str__(self) -> str:
-        pass
+    def __str__(self):
+        return f'<Release {self.tag}>'
 
     def get_projects(self, json_data):
         markdown_desc = json_data['body']
