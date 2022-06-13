@@ -1,5 +1,5 @@
 # Base dir to clone repos to
-repodir: submodules
+repodir: submodules/ocrd_all/
 # repos to clone and process
 repolist:
   - url: https://github.com/ASVLeipzig/cor-asv-ann
