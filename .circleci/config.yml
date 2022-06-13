@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Push repos.json back to repository
           command: |
-              git config user.email "weidling@sub.uni-goettingen.de"
-              git config user.name "Michelle Weidling"
+              git config user.email "info@ocr-d.de"
+              git config user.name "OCR-D bot"
               git status --porcelain | grep -q 'repos.json' && git add repos.json && git commit -m "update repos.json [skip ci]"
               git push --set-upstream origin main
