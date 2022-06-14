@@ -31,3 +31,12 @@ def test_string_representation():
     first_release = get_json_data(0)
     release = Release(first_release)
     assert str(release) == '<Release v2022-06-03>'
+
+def test_filter_projects():
+    first_release = get_json_data(0)
+    current_release_entry = Release(first_release)
+    second_release = get_json_data(1)
+    older_release_entry = Release(second_release)
+
+    older_release_entry.filter_projects()
+    assert older_release_entry.projects == ['eynollah', 'ocrd_cis', 'ocrd_doxa', 'ocrd_fileformat', 'sbb_binarization']
