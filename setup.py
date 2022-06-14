@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
-from ocrd_utils import VERSION
 
 install_requires = open('requirements.txt').read().split('\n')
-install_requires.append('ocrd_utils == %s' % VERSION)
 
 setup(
     name='ocrd_kwalitee_dashboard_back_end',
-    version=VERSION,
+    version='0.1.0',
     description='Back end for the OCR-D kwalitee dashboard webapp',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
