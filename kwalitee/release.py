@@ -18,18 +18,23 @@ class Release():
         return desc
 
 
-def get_releases():
-    api_url = "https://api.github.com/repos/OCR-D/ocrd_all/releases"
-    header = {"Accept": "application/vnd.github.v3+json"}
-    response = requests.get(api_url, headers=header)
-    response_json = json.loads(response.text)
+def get_releases(test_mode=False):
+    if test_mode:
+        f = open('tests/assets/ocrd_all_releases.json')
+        response_json = json.load(f)
+    else:
+        api_url = "https://api.github.com/repos/OCR-D/ocrd_all/releases"
+        header = {"Accept": "application/vnd.github.v3+json"}
+        response = requests.get(api_url, headers=header)
+        response_json = json.loads(response.text)
     
     releases = []
     projects = []
     for entry in response_json:
         tag = entry['tag_name']
         filtered_projects = get_filtered_projects(entry, projects)
-        releases.append(Release(tag, filtered_projects))
+        if filtered_projects:
+            releases.append(Release(tag, filtered_projects))
     return releases
 
 
