@@ -1,5 +1,7 @@
 # kwalitee-dashboard-back-end
 
+[![CircleCI](https://circleci.com/gh/mweidling/kwalitee-dashboard-back-end/tree/main.svg?style=shield)](https://circleci.com/gh/mweidling/kwalitee-dashboard-back-end/tree/main)
+
 The back end of the OCR-D quality dashboard webapp.
 
 The webapp is available over at the [OCR-D website](https://ocr-d.de/kwalitee/).
@@ -16,7 +18,7 @@ The webapp is available over at the [OCR-D website](https://ocr-d.de/kwalitee/).
 
 ## Usage
 
-The scheduled pipeline of this repo (TODO) periodically updates the `repos.json` file which serves as data for the webapp.
+The scheduled pipeline of this repo updates the `repos.json` file every night which serves as data for the webapp.
 
 ## Contributing
 

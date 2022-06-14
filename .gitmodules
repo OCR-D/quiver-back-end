@@ -1,0 +1,3 @@
+[submodule "submodules/ocrd_all"]
+	path = submodules/ocrd_all
+	url = https://github.com/OCR-D/ocrd_all
