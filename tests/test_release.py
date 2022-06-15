@@ -1,6 +1,7 @@
-from kwalitee.release import get_filtered_projects, get_releases
+from kwalitee.release import get_releases
 from kwalitee import Release
 import json
+
 
 def get_json_data(array_pos):
     f = open('tests/assets/ocrd_all_releases.json')
@@ -8,30 +9,24 @@ def get_json_data(array_pos):
     return data[array_pos]
 
 
-def get_release_info(json):
-    tag = json['tag_name']
-    projects = get_filtered_projects(json, [])
-    return(tag, projects)
-
-
 def test_tag():
-    info = get_release_info(get_json_data(0))
     json = get_json_data(0)
-    release = Release(json, info[1])
+    released_projects = []
+    release = Release(json, released_projects)
     assert release.tag == 'v2022-06-03'
 
 
 def test_released_projects():
-    info = get_release_info(get_json_data(0))
     json = get_json_data(0)
-    release = Release(json, info[1])
+    released_projects = []
+    release = Release(json, released_projects)
     assert release.projects == ['core', 'ocrd_detectron2', 'ocrd_keraslm', 'ocrd_olena', 'ocrd_segment', 'opencv-python', 'workflow-configuration']
 
 
 def test_json_output():
-    info = get_release_info(get_json_data(0))
     json = get_json_data(0)
-    release = Release(json, info[1])
+    released_projects = []
+    release = Release(json, released_projects)
     test_representation = {}
     test_representation['tag'] = 'v2022-06-03'
     test_representation['projects'] = ['core', 'ocrd_detectron2', 'ocrd_keraslm', 'ocrd_olena', 'ocrd_segment', 'opencv-python', 'workflow-configuration']
@@ -40,18 +35,16 @@ def test_json_output():
 
 
 def test_string_representation():
-    info = get_release_info(get_json_data(0))
     json = get_json_data(0)
-    release = Release(json, info[1])
+    released_projects = []
+    release = Release(json, released_projects)
     assert str(release) == '<Release v2022-06-03>'
 
 
 def test_filter_projects():
-    entry = get_json_data(0)
-    projects = ['core', 'ocrd_detectron2', 'ocrd_keraslm', 'eynollah', 'ocrd_cis', 'ocrd_doxa']
-    filtered_projects = get_filtered_projects(entry, projects)
     json = get_json_data(0)
-    release = Release(json,filtered_projects)
+    released_projects = ['core', 'ocrd_detectron2', 'ocrd_keraslm', 'eynollah', 'ocrd_cis', 'ocrd_doxa']
+    release = Release(json, released_projects)
     assert release.projects == ['ocrd_olena', 'ocrd_segment', 'opencv-python', 'workflow-configuration']
 
 
