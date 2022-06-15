@@ -1,5 +1,4 @@
 from kwalitee.release import get_filtered_projects, get_releases
-import pytest
 from kwalitee import Release
 import json
 

@@ -1,6 +1,5 @@
 import json, re
 import requests
-from ocrd_utils import getLogger
 
 class Release():
 

@@ -8,7 +8,7 @@ import json
 from pkg_resources import resource_filename
 
 from .repo import Repo
-from .release import Release, get_releases
+from .release import get_releases
 
 def _check_cloned(ctx):
     uncloned = []
