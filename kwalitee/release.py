@@ -28,28 +28,28 @@ def get_releases(test_mode=False):
         response_json = json.loads(response.text)
     
     releases = []
-    projects = []
+    released_projects = []
     for entry in response_json:
         tag = entry['tag_name']
-        filtered_projects = get_filtered_projects(entry, projects)
+        filtered_projects = get_filtered_projects(entry, released_projects)
         if filtered_projects:
             releases.append(Release(tag, filtered_projects))
     return releases
+
+
+def get_filtered_projects(entry, released_projects_list):
+    projects_per_entry = get_projects(entry)
+    filtered_projects = []
+    for project in projects_per_entry:
+        if (project in released_projects_list):
+            pass
+        else:
+            filtered_projects.append(project)
+            released_projects_list.append(project)
+    return filtered_projects
 
 
 def get_projects(json_data):
     markdown_desc = json_data['body']
     pattern = r'### \[(.*?)\]'
     return re.findall(pattern, markdown_desc)
-
-
-def get_filtered_projects(entry, projects):
-    entry_projects = get_projects(entry)
-    filtered_projects = []
-    for project in entry_projects:
-        if (project in projects):
-            pass
-        else:
-            filtered_projects.append(project)
-            projects.append(project)
-    return filtered_projects
