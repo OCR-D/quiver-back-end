@@ -1,6 +1,6 @@
 # kwalitee-dashboard-back-end
 
-[![CircleCI](https://circleci.com/gh/mweidling/kwalitee-dashboard-back-end/tree/main.svg?style=shield)](https://circleci.com/gh/mweidling/kwalitee-dashboard-back-end/tree/main)
+[![CircleCI](https://circleci.com/gh/OCR-D/kwalitee-dashboard-back-end/tree/main.svg?style=svg)](https://circleci.com/gh/OCR-D/kwalitee-dashboard-back-end/tree/main)
 
 The back end of the OCR-D quality dashboard webapp.
 
