@@ -16,19 +16,22 @@ def get_release_info(json):
 
 def test_tag():
     info = get_release_info(get_json_data(0))
-    release = Release(info[0], info[1])
+    json = get_json_data(0)
+    release = Release(json, info[1])
     assert release.tag == 'v2022-06-03'
 
 
 def test_released_projects():
     info = get_release_info(get_json_data(0))
-    release = Release(info[0], info[1])
+    json = get_json_data(0)
+    release = Release(json, info[1])
     assert release.projects == ['core', 'ocrd_detectron2', 'ocrd_keraslm', 'ocrd_olena', 'ocrd_segment', 'opencv-python', 'workflow-configuration']
 
 
 def test_json_output():
     info = get_release_info(get_json_data(0))
-    release = Release(info[0], info[1])
+    json = get_json_data(0)
+    release = Release(json, info[1])
     test_representation = {}
     test_representation['tag'] = 'v2022-06-03'
     test_representation['projects'] = ['core', 'ocrd_detectron2', 'ocrd_keraslm', 'ocrd_olena', 'ocrd_segment', 'opencv-python', 'workflow-configuration']
@@ -38,16 +41,17 @@ def test_json_output():
 
 def test_string_representation():
     info = get_release_info(get_json_data(0))
-    release = Release(info[0], info[1])
+    json = get_json_data(0)
+    release = Release(json, info[1])
     assert str(release) == '<Release v2022-06-03>'
 
 
 def test_filter_projects():
     entry = get_json_data(0)
-    tag = entry['tag_name']
     projects = ['core', 'ocrd_detectron2', 'ocrd_keraslm', 'eynollah', 'ocrd_cis', 'ocrd_doxa']
     filtered_projects = get_filtered_projects(entry, projects)
-    release = Release(tag, filtered_projects)
+    json = get_json_data(0)
+    release = Release(json,filtered_projects)
     assert release.projects == ['ocrd_olena', 'ocrd_segment', 'opencv-python', 'workflow-configuration']
 
 

@@ -3,8 +3,8 @@ import requests
 
 class Release():
 
-    def __init__(self, tag, projects):
-        self.tag = tag
+    def __init__(self, json, projects):
+        self.tag = json['tag_name']
         self.projects = projects
 
     def __str__(self):
@@ -30,10 +30,9 @@ def get_releases(test_mode=False):
     releases = []
     released_projects = []
     for entry in response_json:
-        tag = entry['tag_name']
         filtered_projects = get_filtered_projects(entry, released_projects)
         if filtered_projects:
-            releases.append(Release(tag, filtered_projects))
+            releases.append(Release(entry, filtered_projects))
     return releases
 
 
