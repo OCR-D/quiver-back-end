@@ -1,4 +1,3 @@
-import re
 import click
 from pathlib import Path
 from ocrd.decorators import ocrd_loglevel
