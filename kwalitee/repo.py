@@ -15,6 +15,7 @@ class Repo():
         self.official = official
         self.compliant_cli = compliant_cli
         self.path = Path(self.config['repodir'], self.name)
+        self.file_urls = self.get_file_urls()
 
     def __str__(self):
         return '<Repo %s @ %s>' % (self.url, self.path)
@@ -58,6 +59,17 @@ class Repo():
                     ret[path.name] = None
         return ret
 
+    def get_file_urls(self):
+        ret = {}
+        self.log.info("%s  Getting file URLs" % self.url)
+        with pushd_popd(self.path):
+            for path in [Path(x) for x in ['ocrd-tool.json', 'Dockerfile', 'README.md', 'setup.py']]:
+                if path.is_file():
+                    ret[path.name] = self.url + '/blob/master/' + str(path)
+                else:
+                    ret[path.name] = None
+        return ret
+
     def get_python_info(self):
         ret = {}
         with pushd_popd(self.path):
@@ -81,6 +93,7 @@ class Repo():
         desc['compliant_cli'] = self.compliant_cli
         desc['org_plus_name'] = '/'.join(self.url.split('/')[-2:])
         desc['name'] = self.name
+        desc['file_urls'] = self.file_urls
         desc['files'] = self.get_file_contents()
         if desc['files']['ocrd-tool.json']:
             desc['ocrd_tool'] = json.loads(desc['files']['ocrd-tool.json'])
