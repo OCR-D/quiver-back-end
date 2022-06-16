@@ -7,6 +7,7 @@ from yaml import safe_load
 import json
 from pkg_resources import resource_filename
 
+from .filter import filter_release_projects
 from .repo import Repo
 from .release import get_releases
 
@@ -94,8 +95,9 @@ def generate_ocrd_all_releases(output=None):
     releases = get_releases()
     ret = []
     for release in releases:
-        ret.append(release.to_json())
-    json_str = json.dumps(ret, indent=4, sort_keys=True)
+        ret.append(release)
+    filtered = filter_release_projects(ret)
+    json_str = json.dumps(filtered, indent=4, sort_keys=True)
     if output:
         Path(output).write_text(json_str)
     else:

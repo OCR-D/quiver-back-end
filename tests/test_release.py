@@ -35,23 +35,3 @@ def test_string_representation():
     json = get_json_data(0)
     release = Release(json)
     assert str(release) == '<Release v2022-06-03>'
-
-
-#def test_filter_projects():
-#    json = get_json_data(0)
-#    released_projects = ['core', 'ocrd_detectron2', 'ocrd_keraslm', 'eynollah', 'ocrd_cis', 'ocrd_doxa']
-#    release = Release(json)
-#    assert release.projects == ['ocrd_olena', 'ocrd_segment', 'opencv-python', 'workflow-configuration']
-#
-#
-#def test_ignore_releases_without_project_after_filtering():
-#    releases = get_releases(test_mode=True)
-#    ret = []
-#    for release in releases:
-#        ret.append(release.to_json())
-#    is_tag_in_list = False
-#    for entry in ret:
-#        # an example of an empty release (i.e. one without projects) after filtering is v2022-02-03
-#        if entry['tag'] == 'v2022-02-03':
-#            is_tag_in_list = True
-#    assert not is_tag_in_list
