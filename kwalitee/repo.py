@@ -74,11 +74,13 @@ class Repo():
         return ret
 
     def validate_ocrd_tool_json(self):
+        valid = False
         with pushd_popd(self.path):
             if Path('ocrd-tool.json').is_file():
-                    return self._run('ocrd ocrd-tool ocrd-tool.json validate').stdout
-            else:
-                return 'None'
+                result = self._run('ocrd ocrd-tool ocrd-tool.json validate').stdout
+                if 'valid="true"' in result:
+                    valid = True
+        return valid
 
     def get_project_type(self):
         type = 'bashlib'

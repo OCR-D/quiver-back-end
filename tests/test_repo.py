@@ -47,9 +47,9 @@ def test_ocrd_tool_validation():
     repo_2 = get_repo(repos, 'ocrd_keraslm') # valid ocrd-tool.json
 
     errors = []
-    if repo_1.ocrd_tool_json_valid == "<report valid=\"true\">\n</report>":
+    if not repo_1.ocrd_tool_json_valid == False:
         errors.append('repo_1\'s ocrd-tool.json must be invalid.')
-    if not repo_2.ocrd_tool_json_valid == "<report valid=\"true\">\n</report>":
+    if not repo_2.ocrd_tool_json_valid == True:
         errors.append('repo_2\'s ocrd-tool.json must be valid.')
 
     assert not errors, "errors occured:\n{}".format("\n".join(errors))
