@@ -40,3 +40,16 @@ def test_file_urls():
         errors.append('repo_2\'s Dockerfile URL is not empty.')
 
     assert not errors, "errors occured:\n{}".format("\n".join(errors))
+
+def test_ocrd_tool_validation():
+    repos = get_repos_list()
+    repo_1 = get_repo(repos, 'ocrd_kraken') # invalid ocrd-tool.json
+    repo_2 = get_repo(repos, 'ocrd_keraslm') # valid ocrd-tool.json
+
+    errors = []
+    if repo_1.ocrd_tool_json_valid == "<report valid=\"true\">\n</report>":
+        errors.append('repos_1\'s ocrd-tool.json must be invalid.')
+    if not repo_2.ocrd_tool_json_valid == "<report valid=\"true\">\n</report>":
+        errors.append('repos_2\'s ocrd-tool.json must be valid.')
+
+    assert not errors, "errors occured:\n{}".format("\n".join(errors))
