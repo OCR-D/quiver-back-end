@@ -1,9 +1,8 @@
-from pathlib import Path
 import json
+from pathlib import Path
 from subprocess import run, PIPE
 from shlex import split as X
 from ocrd_utils import pushd_popd, getLogger
-import requests as R
 
 class Repo():
 
@@ -11,14 +10,15 @@ class Repo():
         self.log = getLogger('kwalitee.repo')
         self.url = url
         self.config = config
-        self.name = Path(url).name
+        self.name = str(Path(url).name)
         self.official = official
         self.compliant_cli = compliant_cli
-        self.path = Path(self.config['repodir'], self.name)
+        self.path = Path(self.config['repodir'], Path(url).name)
         self.file_urls = self.get_file_urls()
         self.ocrd_tool_json_valid = self.validate_ocrd_tool_json()
         self.project_type = self.get_project_type()
-        self.workflow_steps = ["TODO"]
+        self.git = self.get_git_stats()
+        self.org_plus_name = '/'.join(self.url.split('/')[-2:])
 
     def __str__(self):
         return '<Repo %s @ %s>' % (self.url, self.path)
@@ -50,18 +50,6 @@ class Repo():
             ret['latest_tag'] = self._run('git describe --abbrev=0 --tags').stdout
         return ret
 
-#    def get_file_contents(self):
-#        ret = {}
-#        self.log.info("%s  Getting file contents" % self.url)
-#        with pushd_popd(self.path):
-#            for path in [Path(x) for x in ['ocrd-tool.json', 'Dockerfile', 'README.md', 'setup.py']]:
-#                if path.is_file():
-#                    with path.open() as f:
-#                        ret[path.name] = f.read()
-#                else:
-#                    ret[path.name] = None
-#        return ret
-
     def get_file_urls(self):
         ret = {}
         self.log.info("%s  Getting file URLs" % self.url)
@@ -90,33 +78,12 @@ class Repo():
                     type = 'python'
         return type
 
- #   def get_python_info(self):
- #       ret = {}
- #       with pushd_popd(self.path):
- #           ret['url'] = self._run('python3 setup.py --url').stdout
- #           ret['name'] = self._run('python3 setup.py --name').stdout
- #           ret['author'] = self._run('python3 setup.py --author').stdout
- #           ret['author-email'] = self._run('python3 setup.py --author-email').stdout
- #       self.log.info("  Fetching pypi info")
- #       response = R.get('https://pypi.python.org/pypi/%s/json' % ret['name'])
- #       ret['pypi'] = json.loads(response.text) if response.status_code == 200 else None
- #       return ret
-
- #   def get_ocrd_tools(self):
- #       ot = json.loads(self.get_file_contents()['ocrd-tool.json'])
- #       return ot['tools']
-
     def to_json(self):
         desc = {}
-        desc['url'] = self.url
-        desc['official'] = self.official
-        desc['compliant_cli'] = self.compliant_cli
-        desc['org_plus_name'] = '/'.join(self.url.split('/')[-2:])
-        desc['name'] = self.name
-        desc['file_urls'] = self.file_urls
-        desc['ocrd_tool_json_valid'] = self.ocrd_tool_json_valid
-        desc['project_type'] = self.project_type
-        desc['git'] = self.get_git_stats()
+        unwanted_attrs = ['log', 'path', 'config']
+        for attr in vars(self):
+            if attr not in unwanted_attrs:
+                desc[attr] = getattr(self, attr)
         return desc
 
     def _run(self, cmd, **kwargs):
