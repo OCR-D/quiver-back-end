@@ -48,8 +48,24 @@ def test_ocrd_tool_validation():
 
     errors = []
     if repo_1.ocrd_tool_json_valid == "<report valid=\"true\">\n</report>":
-        errors.append('repos_1\'s ocrd-tool.json must be invalid.')
+        errors.append('repo_1\'s ocrd-tool.json must be invalid.')
     if not repo_2.ocrd_tool_json_valid == "<report valid=\"true\">\n</report>":
-        errors.append('repos_2\'s ocrd-tool.json must be valid.')
+        errors.append('repo_2\'s ocrd-tool.json must be valid.')
 
     assert not errors, "errors occured:\n{}".format("\n".join(errors))
+
+def test_python_or_bashlib():
+    repos = get_repos_list()
+    repo_1 = get_repo(repos, 'ocrd_kraken') # python
+    repo_2 = get_repo(repos, 'ocrd_im6convert') # bashlib
+    repo_3 = get_repo(repos, 'core') # python, but no setup.py
+
+    errors = []
+    if not repo_1.project_type == "python":
+        errors.append(f'repo_1 is a python based project. current project type: {repo_1.project_type}.')
+    if not repo_2.project_type == "bashlib":
+        errors.append(f'repo_2 is a bashlib based project. current project type: {repo_2.project_type}.')
+    if not repo_3.project_type == "python":
+        errors.append(f'repo_3 is a python based project. current project type: {repo_3.project_type}.')
+
+    assert not errors, "errors occured:\n{}".format("\n".join(errors))    

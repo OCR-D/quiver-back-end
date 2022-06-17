@@ -17,7 +17,7 @@ class Repo():
         self.path = Path(self.config['repodir'], self.name)
         self.file_urls = self.get_file_urls()
         self.ocrd_tool_json_valid = self.validate_ocrd_tool_json()
-        self.project_type = "TODO" #bashlib or python?
+        self.project_type = self.get_project_type()
         self.workflow_steps = ["TODO"]
 
     def __str__(self):
@@ -75,7 +75,18 @@ class Repo():
 
     def validate_ocrd_tool_json(self):
         with pushd_popd(self.path):
-            return self._run('ocrd ocrd-tool ocrd-tool.json validate').stdout
+            if Path('ocrd-tool.json').is_file():
+                    return self._run('ocrd ocrd-tool ocrd-tool.json validate').stdout
+            else:
+                return 'None'
+
+    def get_project_type(self):
+        type = 'bashlib'
+        with pushd_popd(self.path):
+            for path in [Path(x) for x in ['setup.py', 'requirements.txt', 'requirements_test.txt']]:
+                if path.is_file():
+                    type = 'python'
+        return type
 
  #   def get_python_info(self):
  #       ret = {}
@@ -101,6 +112,8 @@ class Repo():
         desc['org_plus_name'] = '/'.join(self.url.split('/')[-2:])
         desc['name'] = self.name
         desc['file_urls'] = self.file_urls
+        desc['ocrd_tool_json_valid'] = self.ocrd_tool_json_valid
+        desc['project_type'] = self.project_type
         desc['git'] = self.get_git_stats()
         return desc
 
