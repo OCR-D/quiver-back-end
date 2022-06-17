@@ -8,6 +8,7 @@ repolist:
   - url: https://github.com/ASVLeipzig/cor-asv-fst
     official: true
     compliant_cli: true
+    enabled_by_default: false
   - url: https://github.com/OCR-D/ocrd_calamari
     compliant_cli: true
   - url: https://github.com/OCR-D/ocrd_im6convert
@@ -16,6 +17,7 @@ repolist:
     compliant_cli: true
   - url: https://github.com/OCR-D/ocrd_kraken
     compliant_cli: false
+    enabled_by_default: false
   - url: https://github.com/OCR-D/ocrd_olena
     compliant_cli: true
   - url: https://github.com/OCR-D/ocrd_segment
@@ -32,3 +34,17 @@ repolist:
   - url: https://github.com/OCR-D/ocrd_typegroups_classifier
     official: true
     compliant_cli: true
+  - url: https://github.com/OCR-D/core
+    official: true
+    compliant_cli: true
+  - url: https://github.com/OCR-D/ocrd_fileformat
+  - url: https://github.com/UB-Mannheim/ocrd_pagetopdf
+  - url: https://github.com/qurator-spk/ocrd_repair_inconsistencies
+  - url: https://github.com/bertsky/ocrd_wrap
+  - url: https://github.com/bertsky/workflow-configuration
+  - url: https://github.com/OCR-D/format-converters
+  - url: https://github.com/OCR-D/ocrd_olahd_client
+  - url: https://github.com/OCR-D/ocrd_ocropy
+    enabled_by_default: false
+  - url: https://github.com/OCR-D/ocrd_pc_segmentation
+  - url: https://github.com/qurator-spk/sbb_binarization
