@@ -92,10 +92,7 @@ def generate_json(ctx, output=None):
 ''')
 @click.option('-o', '--output', help="Output file. '-' to print to STDOUT", type=click.File('w', encoding='utf-8'))
 def generate_ocrd_all_releases(output=None):
-    releases = get_releases()
-    ret = []
-    for release in releases:
-        ret.append(release)
+    ret = get_releases()
     filtered = filter_release_projects(ret)
     json_str = json.dumps(filtered, indent=4, sort_keys=True)
 output.write(json_str)
