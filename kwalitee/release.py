@@ -34,7 +34,5 @@ def get_releases(test_mode=False):
     
     releases = []
     for entry in response_json:
-        release = Release(entry)
-        if release.projects:
-            releases.append(release)
+        releases.append(Release(entry))
     return releases
