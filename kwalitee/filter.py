@@ -8,9 +8,7 @@ def filter_release_projects(releases):
         filtered_projects = []
 
         for project in release.projects:
-            if (project in released_projects):
-                pass
-            else:
+            if project not in released_projects:
                 filtered_projects.append(project)
                 released_projects.append(project)
 
