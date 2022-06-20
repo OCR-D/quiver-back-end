@@ -90,7 +90,7 @@ def generate_json(ctx, output=None):
     Generate JSON for ocrd_all releases
 
 ''')
-@click.option('-o', '--output', help="Output file. Omit to print to STDOUT")
+@click.option('-o', '--output', help="Output file. '-' to print to STDOUT", type=click.File('w', encoding='utf-8'))
 def generate_ocrd_all_releases(output=None):
     releases = get_releases()
     ret = []
