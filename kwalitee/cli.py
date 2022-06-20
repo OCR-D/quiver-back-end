@@ -98,10 +98,7 @@ def generate_ocrd_all_releases(output=None):
         ret.append(release)
     filtered = filter_release_projects(ret)
     json_str = json.dumps(filtered, indent=4, sort_keys=True)
-    if output:
-        Path(output).write_text(json_str)
-    else:
-        print(json_str)    
+output.write(json_str)
 
 
 @cli.command('ocrd-tool')
