@@ -9,12 +9,13 @@ class Repo():
 
     def __init__(self, config, url, official=False, compliant_cli=False):
         self.log = getLogger('kwalitee.repo')
-        self.url = url
         self.config = config
+        self.path = Path(self.config['repodir'], Path(url).name)
+        
+        self.url = url
         self.id = str(Path(url).name)
         self.official = official
         self.compliant_cli = compliant_cli
-        self.path = Path(self.config['repodir'], Path(url).name)
         self.additional_info = self.make_additional_info()
         self.ocrd_tool_json_valid = self.validate_ocrd_tool_json()
         self.project_type = self.get_project_type()
