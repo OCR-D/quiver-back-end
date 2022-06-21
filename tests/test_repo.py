@@ -13,14 +13,16 @@ def get_repos_list():
             repos.append(Repo(config, url, official, compliant_cli))
     return repos
 
+
 def get_repo(repos_list, repo_name):
     result = None
     for repo in repos_list:
-        if repo.name == repo_name:
+        if repo.id == repo_name:
             result = repo
     return result
 
-def test_file_urls():
+
+def test_additional_info_links():
     repos = get_repos_list()
     repo_1 = get_repo(repos, 'ocrd_kraken')
     repo_2 = get_repo(repos, 'ocrd_keraslm')
@@ -28,18 +30,26 @@ def test_file_urls():
     # assertions as conditions
     # see https://stackoverflow.com/questions/39896716/can-i-perform-multiple-assertions-in-pytest
     errors = []
-    if not repo_1.file_urls['Dockerfile'] == 'https://github.com/OCR-D/ocrd_kraken/blob/master/Dockerfile':
+    if not repo_1.additional_info['links']['Dockerfile'] == 'https://github.com/OCR-D/ocrd_kraken/blob/master/Dockerfile':
         errors.append('repo_1\'s Dockerfile URL is wrong.')
-    if not repo_1.file_urls['ocrd-tool.json'] == 'https://github.com/OCR-D/ocrd_kraken/blob/master/ocrd-tool.json':
+    if not repo_1.additional_info['links']['ocrd-tool.json'] == 'https://github.com/OCR-D/ocrd_kraken/blob/master/ocrd-tool.json':
         errors.append('repo_1\'s ocrd-tool.json URL is wrong.')
-    if not repo_1.file_urls['README.md'] == 'https://github.com/OCR-D/ocrd_kraken/blob/master/README.md':
+    if not repo_1.additional_info['links']['README.md'] == 'https://github.com/OCR-D/ocrd_kraken/blob/master/README.md':
         errors.append('repo_1\'s README URL is wrong.')
-    if not repo_1.file_urls['setup.py'] == 'https://github.com/OCR-D/ocrd_kraken/blob/master/setup.py':
+    if not repo_1.additional_info['links']['setup.py'] == 'https://github.com/OCR-D/ocrd_kraken/blob/master/setup.py':
         errors.append('repo_1\'s setup.py URL is wrong.')
-    if not repo_2.file_urls['Dockerfile'] == None:
+    if not repo_2.additional_info['links']['Dockerfile'] == None:
         errors.append('repo_2\'s Dockerfile URL is not empty.')
 
     assert not errors, "errors occured:\n{}".format("\n".join(errors))
+
+
+#def test_additional_info_desc():
+#    repos = get_repos_list()
+#    repo_1 = get_repo(repos, 'ocrd_kraken')
+#
+#    assert repo_1.additional_info['description'] == 'Wrapper for the kraken OCR engine'
+
 
 def test_ocrd_tool_validation():
     repos = get_repos_list()
@@ -53,6 +63,7 @@ def test_ocrd_tool_validation():
         errors.append('repo_2\'s ocrd-tool.json must be valid.')
 
     assert not errors, "errors occured:\n{}".format("\n".join(errors))
+
 
 def test_python_or_bashlib():
     repos = get_repos_list()
@@ -69,3 +80,8 @@ def test_python_or_bashlib():
         errors.append(f'repo_3 is a python based project. current project type: {repo_3.project_type}.')
 
     assert not errors, "errors occured:\n{}".format("\n".join(errors))    
+
+def test_id():
+    repos = get_repos_list()
+    repo_1 = get_repo(repos, 'ocrd_kraken')
+    assert repo_1.id == 'ocrd_kraken'

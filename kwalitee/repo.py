@@ -3,6 +3,7 @@ from pathlib import Path
 from subprocess import run, PIPE
 from shlex import split as X
 from ocrd_utils import pushd_popd, getLogger
+import requests
 
 class Repo():
 
@@ -10,15 +11,16 @@ class Repo():
         self.log = getLogger('kwalitee.repo')
         self.url = url
         self.config = config
-        self.name = str(Path(url).name)
+        self.id = str(Path(url).name)
         self.official = official
         self.compliant_cli = compliant_cli
         self.path = Path(self.config['repodir'], Path(url).name)
+        self.org_plus_name = '/'.join(self.url.split('/')[-2:])
+        self.additional_info = self.make_additional_info()
         self.file_urls = self.get_file_urls()
         self.ocrd_tool_json_valid = self.validate_ocrd_tool_json()
         self.project_type = self.get_project_type()
         self.git = self.get_git_stats()
-        self.org_plus_name = '/'.join(self.url.split('/')[-2:])
 
     def __str__(self):
         return '<Repo %s @ %s>' % (self.url, self.path)
@@ -50,6 +52,14 @@ class Repo():
             ret['latest_tag'] = self._run('git describe --abbrev=0 --tags').stdout
         return ret
 
+    def make_additional_info(self):
+        result = {}
+        result['links'] = self.get_file_urls()
+        #result['description'] = self.get_description()
+
+        return result
+
+
     def get_file_urls(self):
         ret = {}
         self.log.info("%s  Getting file URLs" % self.url)
@@ -60,6 +70,14 @@ class Repo():
                 else:
                     ret[path.name] = None
         return ret
+
+    def get_description(self):
+        api_url = "https://api.github.com/repos/" + self.org_plus_name
+        header = {"Accept": "application/vnd.github.v3+json"}
+        response = requests.get(api_url, headers=header)
+        response_json = json.loads(response.text)
+
+        return response_json['description']
 
     def validate_ocrd_tool_json(self):
         valid = False
