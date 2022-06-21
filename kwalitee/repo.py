@@ -15,12 +15,11 @@ class Repo():
         self.official = official
         self.compliant_cli = compliant_cli
         self.path = Path(self.config['repodir'], Path(url).name)
-        self.org_plus_name = '/'.join(self.url.split('/')[-2:])
         self.additional_info = self.make_additional_info()
         self.file_urls = self.get_file_urls()
         self.ocrd_tool_json_valid = self.validate_ocrd_tool_json()
         self.project_type = self.get_project_type()
-        self.git = self.get_git_stats()
+        self.latest_version = self.get_latest_version()
 
     def __str__(self):
         return '<Repo %s @ %s>' % (self.url, self.path)
@@ -41,16 +40,9 @@ class Repo():
             result = self._run('git clone --depth 1 "%s"' % self.url)
             self.log.debug("Result: %s" % result)
 
-
-    def get_git_stats(self):
-        ret = {}
-        self.log.info("  Fetching git info")
+    def get_latest_version(self):
         with pushd_popd(self.path):
-            ret['number_of_commits'] = self._run('git rev-list HEAD --count').stdout
-            ret['last_commit'] = self._run(r'git log -1 --format=%cd ').stdout
-            ret['url'] = self._run('git config --get remote.origin.url').stdout
-            ret['latest_tag'] = self._run('git describe --abbrev=0 --tags').stdout
-        return ret
+            return self._run('git describe --abbrev=0 --tags').stdout
 
     def make_additional_info(self):
         result = {}

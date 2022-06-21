@@ -85,3 +85,8 @@ def test_id():
     repos = get_repos_list()
     repo_1 = get_repo(repos, 'ocrd_kraken')
     assert repo_1.id == 'ocrd_kraken'
+
+def test_latest_version():
+    repos = get_repos_list()
+    repo_1 = get_repo(repos, 'ocrd_kraken')
+    assert repo_1.latest_version == 'v0.1.2'
