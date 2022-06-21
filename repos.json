@@ -1,505 +1,409 @@
 [
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/ASVLeipzig/cor-asv-ann/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/ASVLeipzig/cor-asv-ann/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/ASVLeipzig/cor-asv-ann/blob/master/setup.py"
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/ASVLeipzig/cor-asv-ann/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/ASVLeipzig/cor-asv-ann/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/ASVLeipzig/cor-asv-ann/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Thu Mar 24 23:13:53 2022 +0100",
-            "latest_tag": "v0.1.12",
-            "number_of_commits": "144",
-            "url": "https://github.com/ASVLeipzig/cor-asv-ann.git"
-        },
-        "name": "cor-asv-ann",
+        "id": "cor-asv-ann",
+        "latest_version": "v0.1.12",
         "ocrd_tool_json_valid": false,
         "official": true,
-        "org_plus_name": "ASVLeipzig/cor-asv-ann",
         "project_type": "python",
         "url": "https://github.com/ASVLeipzig/cor-asv-ann"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/ASVLeipzig/cor-asv-fst/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/ASVLeipzig/cor-asv-fst/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/ASVLeipzig/cor-asv-fst/blob/master/setup.py"
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/ASVLeipzig/cor-asv-fst/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/ASVLeipzig/cor-asv-fst/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/ASVLeipzig/cor-asv-fst/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Thu Sep 24 22:50:05 2020 +0200",
-            "latest_tag": "",
-            "number_of_commits": "188",
-            "url": "https://github.com/ASVLeipzig/cor-asv-fst.git"
-        },
-        "name": "cor-asv-fst",
+        "id": "cor-asv-fst",
+        "latest_version": "",
         "ocrd_tool_json_valid": true,
         "official": true,
-        "org_plus_name": "ASVLeipzig/cor-asv-fst",
         "project_type": "python",
         "url": "https://github.com/ASVLeipzig/cor-asv-fst"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/ocrd_calamari/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/ocrd_calamari/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_calamari/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_calamari/blob/master/setup.py"
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/ocrd_calamari/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/ocrd_calamari/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_calamari/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_calamari/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Thu Feb 24 18:41:21 2022 +0100",
-            "latest_tag": "v1.0.3",
-            "number_of_commits": "215",
-            "url": "https://github.com/OCR-D/ocrd_calamari.git"
-        },
-        "name": "ocrd_calamari",
+        "id": "ocrd_calamari",
+        "latest_version": "v1.0.3",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_calamari",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_calamari"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/ocrd_im6convert/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/ocrd_im6convert/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_im6convert/blob/master/ocrd-tool.json",
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/ocrd_im6convert/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/ocrd_im6convert/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_im6convert/blob/master/ocrd-tool.json",
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Fri Jan 29 17:52:15 2021 +0100",
-            "latest_tag": "v0.0.5",
-            "number_of_commits": "38",
-            "url": "https://github.com/OCR-D/ocrd_im6convert.git"
-        },
-        "name": "ocrd_im6convert",
+        "id": "ocrd_im6convert",
+        "latest_version": "v0.0.5",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_im6convert",
         "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_im6convert"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/OCR-D/ocrd_keraslm/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_keraslm/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_keraslm/blob/master/setup.py"
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/OCR-D/ocrd_keraslm/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_keraslm/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_keraslm/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Sun May 1 01:30:31 2022 +0200",
-            "latest_tag": "v0.4.1",
-            "number_of_commits": "111",
-            "url": "https://github.com/OCR-D/ocrd_keraslm.git"
-        },
-        "name": "ocrd_keraslm",
+        "id": "ocrd_keraslm",
+        "latest_version": "v0.4.1",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_keraslm",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_keraslm"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/ocrd_kraken/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/ocrd_kraken/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_kraken/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_kraken/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/ocrd_kraken/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/ocrd_kraken/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_kraken/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_kraken/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Mon Mar 7 09:43:27 2022 +0100",
-            "latest_tag": "v0.1.2",
-            "number_of_commits": "108",
-            "url": "https://github.com/OCR-D/ocrd_kraken.git"
-        },
-        "name": "ocrd_kraken",
+        "id": "ocrd_kraken",
+        "latest_version": "v0.1.2",
         "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_kraken",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_kraken"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/ocrd_olena/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/ocrd_olena/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_olena/blob/master/ocrd-tool.json",
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/ocrd_olena/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/ocrd_olena/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_olena/blob/master/ocrd-tool.json",
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Wed Dec 8 13:13:12 2021 +0100",
-            "latest_tag": "v1.2.6",
-            "number_of_commits": "226",
-            "url": "https://github.com/OCR-D/ocrd_olena.git"
-        },
-        "name": "ocrd_olena",
+        "id": "ocrd_olena",
+        "latest_version": "v1.2.6",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_olena",
         "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_olena"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/OCR-D/ocrd_segment/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_segment/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_segment/blob/master/setup.py"
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/OCR-D/ocrd_segment/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_segment/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_segment/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Wed Apr 27 12:13:01 2022 +0200",
-            "latest_tag": "v0.1.20",
-            "number_of_commits": "222",
-            "url": "https://github.com/OCR-D/ocrd_segment.git"
-        },
-        "name": "ocrd_segment",
+        "id": "ocrd_segment",
+        "latest_version": "v0.1.20",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_segment",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_segment"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/ocrd_tesserocr/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/ocrd_tesserocr/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_tesserocr/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_tesserocr/blob/master/setup.py"
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/ocrd_tesserocr/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/ocrd_tesserocr/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_tesserocr/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_tesserocr/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Wed Mar 23 09:28:32 2022 +0100",
-            "latest_tag": "v0.13.6",
-            "number_of_commits": "518",
-            "url": "https://github.com/OCR-D/ocrd_tesserocr.git"
-        },
-        "name": "ocrd_tesserocr",
+        "id": "ocrd_tesserocr",
+        "latest_version": "v0.13.6",
         "ocrd_tool_json_valid": true,
         "official": true,
-        "org_plus_name": "OCR-D/ocrd_tesserocr",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_tesserocr"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/cisocrgroup/ocrd_cis/blob/master/Dockerfile",
+                "README.md": "https://github.com/cisocrgroup/ocrd_cis/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/cisocrgroup/ocrd_cis/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/cisocrgroup/ocrd_cis/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": "https://github.com/cisocrgroup/ocrd_cis/blob/master/Dockerfile",
-            "README.md": "https://github.com/cisocrgroup/ocrd_cis/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/cisocrgroup/ocrd_cis/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/cisocrgroup/ocrd_cis/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Thu Apr 28 22:29:27 2022 +0200",
-            "latest_tag": "v0.1.5",
-            "number_of_commits": "648",
-            "url": "https://github.com/cisocrgroup/ocrd_cis.git"
-        },
-        "name": "ocrd_cis",
+        "id": "ocrd_cis",
+        "latest_version": "v0.1.5",
         "ocrd_tool_json_valid": true,
         "official": true,
-        "org_plus_name": "cisocrgroup/ocrd_cis",
         "project_type": "python",
         "url": "https://github.com/cisocrgroup/ocrd_cis"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/ocrd_anybaseocr/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/ocrd_anybaseocr/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_anybaseocr/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_anybaseocr/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/ocrd_anybaseocr/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/ocrd_anybaseocr/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_anybaseocr/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_anybaseocr/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Wed Mar 30 17:16:10 2022 +0200",
-            "latest_tag": "v1.8.2",
-            "number_of_commits": "394",
-            "url": "https://github.com/OCR-D/ocrd_anybaseocr.git"
-        },
-        "name": "ocrd_anybaseocr",
+        "id": "ocrd_anybaseocr",
+        "latest_version": "v1.8.2",
         "ocrd_tool_json_valid": false,
         "official": true,
-        "org_plus_name": "OCR-D/ocrd_anybaseocr",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_anybaseocr"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/qurator-spk/dinglehopper/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/qurator-spk/dinglehopper/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/qurator-spk/dinglehopper/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/qurator-spk/dinglehopper/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/qurator-spk/dinglehopper/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/qurator-spk/dinglehopper/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Wed Mar 30 13:40:36 2022 +0200",
-            "latest_tag": "",
-            "number_of_commits": "269",
-            "url": "https://github.com/qurator-spk/dinglehopper.git"
-        },
-        "name": "dinglehopper",
+        "id": "dinglehopper",
+        "latest_version": "",
         "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "qurator-spk/dinglehopper",
         "project_type": "python",
         "url": "https://github.com/qurator-spk/dinglehopper"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/OCR-D/ocrd_typegroups_classifier/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_typegroups_classifier/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_typegroups_classifier/blob/master/setup.py"
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/OCR-D/ocrd_typegroups_classifier/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_typegroups_classifier/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_typegroups_classifier/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Thu Jan 28 14:45:51 2021 +0100",
-            "latest_tag": "v0.3.0",
-            "number_of_commits": "112",
-            "url": "https://github.com/OCR-D/ocrd_typegroups_classifier.git"
-        },
-        "name": "ocrd_typegroups_classifier",
+        "id": "ocrd_typegroups_classifier",
+        "latest_version": "v0.3.0",
         "ocrd_tool_json_valid": true,
         "official": true,
-        "org_plus_name": "OCR-D/ocrd_typegroups_classifier",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_typegroups_classifier"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/core/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/core/blob/master/README.md",
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/core/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/core/blob/master/README.md",
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Tue May 3 15:04:57 2022 +0200",
-            "latest_tag": "v2.33.0",
-            "number_of_commits": "2415",
-            "url": "https://github.com/OCR-D/core.git"
-        },
-        "name": "core",
+        "id": "core",
+        "latest_version": "v2.33.0",
         "ocrd_tool_json_valid": false,
         "official": true,
-        "org_plus_name": "OCR-D/core",
         "project_type": "python",
         "url": "https://github.com/OCR-D/core"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/ocrd_fileformat/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/ocrd_fileformat/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_fileformat/blob/master/ocrd-tool.json",
+                "setup.py": null
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/ocrd_fileformat/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/ocrd_fileformat/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_fileformat/blob/master/ocrd-tool.json",
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Wed Apr 6 17:33:38 2022 +0200",
-            "latest_tag": "v0.5.0",
-            "number_of_commits": "80",
-            "url": "https://github.com/OCR-D/ocrd_fileformat.git"
-        },
-        "name": "ocrd_fileformat",
+        "id": "ocrd_fileformat",
+        "latest_version": "v0.5.0",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_fileformat",
         "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_fileformat"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/UB-Mannheim/ocrd_pagetopdf/blob/master/Dockerfile",
+                "README.md": "https://github.com/UB-Mannheim/ocrd_pagetopdf/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/UB-Mannheim/ocrd_pagetopdf/blob/master/ocrd-tool.json",
+                "setup.py": null
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": "https://github.com/UB-Mannheim/ocrd_pagetopdf/blob/master/Dockerfile",
-            "README.md": "https://github.com/UB-Mannheim/ocrd_pagetopdf/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/UB-Mannheim/ocrd_pagetopdf/blob/master/ocrd-tool.json",
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Tue Mar 29 10:31:29 2022 +0200",
-            "latest_tag": "v1.0.0",
-            "number_of_commits": "60",
-            "url": "https://github.com/UB-Mannheim/ocrd_pagetopdf.git"
-        },
-        "name": "ocrd_pagetopdf",
+        "id": "ocrd_pagetopdf",
+        "latest_version": "v1.0.0",
         "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "UB-Mannheim/ocrd_pagetopdf",
         "project_type": "bashlib",
         "url": "https://github.com/UB-Mannheim/ocrd_pagetopdf"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/qurator-spk/ocrd_repair_inconsistencies/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/qurator-spk/ocrd_repair_inconsistencies/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/qurator-spk/ocrd_repair_inconsistencies/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/qurator-spk/ocrd_repair_inconsistencies/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/qurator-spk/ocrd_repair_inconsistencies/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/qurator-spk/ocrd_repair_inconsistencies/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Thu Oct 1 12:58:17 2020 +0200",
-            "latest_tag": "",
-            "number_of_commits": "42",
-            "url": "https://github.com/qurator-spk/ocrd_repair_inconsistencies.git"
-        },
-        "name": "ocrd_repair_inconsistencies",
+        "id": "ocrd_repair_inconsistencies",
+        "latest_version": "",
         "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "qurator-spk/ocrd_repair_inconsistencies",
         "project_type": "python",
         "url": "https://github.com/qurator-spk/ocrd_repair_inconsistencies"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/bertsky/ocrd_wrap/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/bertsky/ocrd_wrap/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/bertsky/ocrd_wrap/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/bertsky/ocrd_wrap/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/bertsky/ocrd_wrap/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/bertsky/ocrd_wrap/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Sun Mar 7 18:30:42 2021 +0100",
-            "latest_tag": "v0.1.7",
-            "number_of_commits": "41",
-            "url": "https://github.com/bertsky/ocrd_wrap.git"
-        },
-        "name": "ocrd_wrap",
+        "id": "ocrd_wrap",
+        "latest_version": "v0.1.7",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "bertsky/ocrd_wrap",
         "project_type": "python",
         "url": "https://github.com/bertsky/ocrd_wrap"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/bertsky/workflow-configuration/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/bertsky/workflow-configuration/blob/master/ocrd-tool.json",
+                "setup.py": null
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/bertsky/workflow-configuration/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/bertsky/workflow-configuration/blob/master/ocrd-tool.json",
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Sat Apr 30 23:53:49 2022 +0200",
-            "latest_tag": "",
-            "number_of_commits": "145",
-            "url": "https://github.com/bertsky/workflow-configuration.git"
-        },
-        "name": "workflow-configuration",
+        "id": "workflow-configuration",
+        "latest_version": "",
         "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "bertsky/workflow-configuration",
         "project_type": "bashlib",
         "url": "https://github.com/bertsky/workflow-configuration"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/OCR-D/format-converters/blob/master/README.md",
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/OCR-D/format-converters/blob/master/README.md",
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Tue Feb 18 16:06:25 2020 +0100",
-            "latest_tag": "",
-            "number_of_commits": "42",
-            "url": "https://github.com/OCR-D/format-converters.git"
-        },
-        "name": "format-converters",
+        "id": "format-converters",
+        "latest_version": "",
         "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "OCR-D/format-converters",
         "project_type": "bashlib",
         "url": "https://github.com/OCR-D/format-converters"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/OCR-D/ocrd_olahd_client/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_olahd_client/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_olahd_client/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/OCR-D/ocrd_olahd_client/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_olahd_client/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_olahd_client/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Fri Mar 25 16:33:47 2022 +0100",
-            "latest_tag": "",
-            "number_of_commits": "11",
-            "url": "https://github.com/OCR-D/ocrd_olahd_client.git"
-        },
-        "name": "ocrd_olahd_client",
+        "id": "ocrd_olahd_client",
+        "latest_version": "",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_olahd_client",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_olahd_client"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/ocrd_ocropy/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/ocrd_ocropy/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_ocropy/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_ocropy/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/ocrd_ocropy/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/ocrd_ocropy/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_ocropy/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_ocropy/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Mon Sep 28 09:41:48 2020 +0200",
-            "latest_tag": "v0.0.3",
-            "number_of_commits": "67",
-            "url": "https://github.com/OCR-D/ocrd_ocropy.git"
-        },
-        "name": "ocrd_ocropy",
+        "id": "ocrd_ocropy",
+        "latest_version": "v0.0.3",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_ocropy",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_ocropy"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": "https://github.com/OCR-D/ocrd_pc_segmentation/blob/master/Dockerfile",
+                "README.md": "https://github.com/OCR-D/ocrd_pc_segmentation/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/OCR-D/ocrd_pc_segmentation/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/OCR-D/ocrd_pc_segmentation/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": "https://github.com/OCR-D/ocrd_pc_segmentation/blob/master/Dockerfile",
-            "README.md": "https://github.com/OCR-D/ocrd_pc_segmentation/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/OCR-D/ocrd_pc_segmentation/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/OCR-D/ocrd_pc_segmentation/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Mon Jul 19 14:27:43 2021 +0200",
-            "latest_tag": "v0.1.3",
-            "number_of_commits": "62",
-            "url": "https://github.com/ocr-d-modul-2-segmentierung/ocrd-pixelclassifier-segmentation.git"
-        },
-        "name": "ocrd_pc_segmentation",
+        "id": "ocrd_pc_segmentation",
+        "latest_version": "v0.1.3",
         "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_pc_segmentation",
         "project_type": "python",
         "url": "https://github.com/OCR-D/ocrd_pc_segmentation"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": "https://github.com/qurator-spk/sbb_binarization/blob/master/README.md",
+                "ocrd-tool.json": "https://github.com/qurator-spk/sbb_binarization/blob/master/ocrd-tool.json",
+                "setup.py": "https://github.com/qurator-spk/sbb_binarization/blob/master/setup.py"
+            }
+        },
         "compliant_cli": false,
-        "file_urls": {
-            "Dockerfile": null,
-            "README.md": "https://github.com/qurator-spk/sbb_binarization/blob/master/README.md",
-            "ocrd-tool.json": "https://github.com/qurator-spk/sbb_binarization/blob/master/ocrd-tool.json",
-            "setup.py": "https://github.com/qurator-spk/sbb_binarization/blob/master/setup.py"
-        },
-        "git": {
-            "last_commit": "Tue May 3 22:49:41 2022 +0200",
-            "latest_tag": "v0.0.9",
-            "number_of_commits": "124",
-            "url": "https://github.com/qurator-spk/sbb_binarization.git"
-        },
-        "name": "sbb_binarization",
+        "id": "sbb_binarization",
+        "latest_version": "v0.0.9",
         "ocrd_tool_json_valid": true,
         "official": false,
-        "org_plus_name": "qurator-spk/sbb_binarization",
         "project_type": "python",
         "url": "https://github.com/qurator-spk/sbb_binarization"
     }
