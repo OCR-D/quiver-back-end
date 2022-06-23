@@ -69,3 +69,19 @@ def test_python_or_bashlib():
         errors.append(f'repo_3 is a python based project. current project type: {repo_3.project_type}.')
 
     assert not errors, "errors occured:\n{}".format("\n".join(errors))    
+
+def test_unreleased_changes():
+    repos = get_repos_list()
+    repo_1 = get_repo(repos, 'ocrd_olahd_client') # this repo has no releases and 11 commits on master
+    repo_2 = get_repo(repos, 'ocrd_typegroups_classifier') # this repo is up to date
+    repo_3 = get_repo(repos, 'ocrd_ocropy') # this repo has 3 unreleased changes. it is archived, therefore save to test with.
+
+    errors = []
+    if not repo_1.unreleased_changes == 11:
+        errors.append(f'repo_1 has 11 unreleased changes. current number: {repo_1.unreleased_changes}')
+    if not repo_2.unreleased_changes == 0:
+        errors.append(f'repo_2 has 0 unreleased changes. current number: {repo_2.unreleased_changes}')
+    if not repo_3.unreleased_changes == 3:
+        errors.append(f'repo_3 has 3 unreleased changes. current number: {repo_3.unreleased_changes}')
+
+    assert not errors, "errors occured:\n{}".format("\n".join(errors)) 
