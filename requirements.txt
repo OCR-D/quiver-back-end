@@ -1,4 +1,4 @@
 click >=7
-ocrd
+ocrd >= 2.33.0
 pyyaml
 requests

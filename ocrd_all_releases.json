@@ -1,0 +1,74 @@
+[
+    {
+        "projects": [
+            "core",
+            "ocrd_detectron2",
+            "ocrd_keraslm",
+            "ocrd_olena",
+            "ocrd_segment",
+            "opencv-python",
+            "workflow-configuration"
+        ],
+        "tag": "v2022-06-03"
+    },
+    {
+        "projects": [
+            "eynollah",
+            "ocrd_cis",
+            "ocrd_doxa",
+            "ocrd_fileformat",
+            "sbb_binarization"
+        ],
+        "tag": "v2022-05-04"
+    },
+    {
+        "projects": [
+            "dinglehopper",
+            "ocrd_anybaseocr",
+            "ocrd_pagetopdf"
+        ],
+        "tag": "v2022-03-30"
+    },
+    {
+        "projects": [
+            "cor-asv-ann",
+            "ocrd_olahd_client",
+            "sbb_textline_detector",
+            "ocrd_tesserocr"
+        ],
+        "tag": "v2022-03-25"
+    },
+    {
+        "projects": [
+            "tesseract",
+            "ocrd_calamari"
+        ],
+        "tag": "v2022-03-20"
+    },
+    {
+        "projects": [
+            "ocrd_pc_segmentation"
+        ],
+        "tag": "v2021-07-21"
+    },
+    {
+        "projects": [
+            "ocrd_wrap"
+        ],
+        "tag": "v2020-03-08"
+    },
+    {
+        "projects": [
+            "ocrd_im6convert",
+            "ocrd_typegroups_classifier"
+        ],
+        "tag": "v2021-01-30"
+    },
+    {
+        "projects": [
+            "ocrd_ocropy",
+            "ocrd_repair_inconsistencies"
+        ],
+        "tag": "v2020-10-02"
+    }
+]
