@@ -1,4 +1,4 @@
-import re
+import json
 
 def test_core_deps():
     with open('core_deps.txt', 'r') as file:
@@ -12,7 +12,7 @@ def test_core_deps():
                     'Deprecated==1.2.0',
                     'Flask==2.1.2',
                     'idna==3.3',
-                    'importlib-metadata==4.11.4',
+                    'importlib-metadata==4.12.0',
                     'importlib-resources==5.8.0',
                     'itsdangerous==2.1.2',
                     'Jinja2==3.1.2',
@@ -38,3 +38,21 @@ def test_core_deps():
                     'zipp==3.8.0']
         result = file.read().splitlines()
         assert result == expected
+
+def test_filtering():
+    #ocrd_olahd_client has only very few deps apart from ocrd
+    expected = [{'importlib-metadata': '4.11.4'}, {'ocrd-olahd-client': '0.0.1'}, {'requests-toolbelt': '0.9.1'}]
+    f = open('deps.json')
+    json_file = json.load(f)
+    olahd_client = json_file[25]['ocrd_olahd_client']
+
+    assert olahd_client == expected
+
+def test_filtering_empty_result():
+    # core will naturally be empty because we filter against it
+    expected = []
+    f = open('deps.json')
+    json_file = json.load(f)
+    olahd_client = json_file[1]['core']
+
+    assert olahd_client == expected
