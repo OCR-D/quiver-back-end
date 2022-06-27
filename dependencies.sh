@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# get submodules
 SM_CONFIG=$(cat submodules/ocrd_all/.gitmodules)
 
 SUBMODULE_NAMES=$(
@@ -49,7 +50,7 @@ do
     RESULT=$($VENV $CMD_FREZE)
     for RES in $RESULT
     do
-        # check if this also occurs in core_deps.txt
+        # check if dependency also occurs in core_deps.txt
         IS_CORE_DEP="false"
         for LINE in $(cat $CURRENT_DIR/core_deps.txt)
         do
@@ -69,7 +70,7 @@ done
 
 echo ']' >> $CURRENT_DIR'/deps.json'
 
-cd $CURRENT_DIR
+cd $CURRENT_DIR || exit
 
 # make JSON valid
 sed -i 's/},]/}]/g' deps.json
