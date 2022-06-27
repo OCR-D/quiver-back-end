@@ -17,7 +17,6 @@ lxml==4.9.0
 MarkupSafe==2.1.1
 numpy==1.21.6
 ocrd==2.35.0
-ocrd-kwalitee-dashboard-back-end==0.1.0
 ocrd-modelfactory==2.35.0
 ocrd-models==2.35.0
 ocrd-utils==2.35.0
