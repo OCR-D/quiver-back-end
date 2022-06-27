@@ -49,9 +49,9 @@ do
     RESULT=$($VENV $CMD_FREZE)
     for RES in $RESULT
     do
-         check if this also occurs in core_deps.txt
+        # check if this also occurs in core_deps.txt
         IS_CORE_DEP="false"
-        for LINE in $(cat core_deps.txt)
+        for LINE in $(cat $CURRENT_DIR/core_deps.txt)
         do
             if [ $RES == $LINE ]; then
                 IS_CORE_DEP="true"
