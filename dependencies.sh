@@ -1,4 +1,6 @@
 #!/bin/bash
+# $1 should be 'update' or not set. Use 'update' in case all submodules should be updated.
+
 
 # get submodules
 SM_CONFIG=$(cat submodules/ocrd_all/.gitmodules)
@@ -10,8 +12,19 @@ SUBMODULE_NAMES=$(
     done
 )
 
-# get the main OCR-D dependencies which stem from core and that most processors have in common
 CURRENT_DIR=$PWD
+
+if [ $1 == "update" ]; then
+    echo "Update ocrd_all."
+    cd submodules/ocrd_all || exit
+    git fetch
+    git pull origin master
+    git submodule update --remote
+    cd $CURRENT_DIR || exit
+fi
+
+
+# get the main OCR-D dependencies which stem from core and that most processors have in common
 cd 'submodules/ocrd_all/core' || exit
 python -m venv venv
 VENV=$PWD'/venv/bin/python'
@@ -26,13 +39,12 @@ echo '[' >> $CURRENT_DIR'/deps.json'
 for NAME in $SUBMODULE_NAMES
 do
     DIR='/submodules/ocrd_all/'$NAME
-    echo $CURRENT_DIR $DIR
+    echo "Currently processing " $NAME " ..."
     cd $CURRENT_DIR$DIR || exit
     python -m venv venv
     VENV=$PWD'/venv/bin/python'
 
     # install pkgs
-    echo $PWD
     if [ -f 'requirements.txt' ]; then
         CMD_INSTALL=$(echo '-m pip install -r requirements.txt .')
         $VENV $CMD_INSTALL
