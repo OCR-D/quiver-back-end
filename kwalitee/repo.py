@@ -3,6 +3,7 @@ from pathlib import Path
 from subprocess import run, PIPE
 from shlex import split as X
 from ocrd_utils import pushd_popd, getLogger
+from ocrd_validators import OcrdToolValidator
 import requests
 
 class Repo():
@@ -77,8 +78,11 @@ class Repo():
         valid = False
         with pushd_popd(self.path):
             if Path('ocrd-tool.json').is_file():
-                result = self._run('ocrd ocrd-tool ocrd-tool.json validate').stdout
-                if 'valid="true"' in result:
+                f = open('ocrd-tool.json', 'r')
+                tool = json.load(f)
+                result = OcrdToolValidator.validate(tool)
+                
+                if 'OK' in str(result):
                     valid = True
         return valid
 
