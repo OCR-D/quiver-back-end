@@ -85,9 +85,7 @@ class Repo():
     def get_project_type(self):
         type = 'bashlib'
         with pushd_popd(self.path):
-            for path in [Path(x) for x in ['setup.py', 'requirements.txt', 'requirements_test.txt']]:
-                if path.is_file():
-                    type = 'python'
+            type = 'python' if any(Path(x).is_file() for x in ['setup.py', 'requirements.txt', 'requirements_test.txt']) else 'bashlib'
         return type
 
     def to_json(self):
