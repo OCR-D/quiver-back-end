@@ -16,13 +16,12 @@ CURRENT_DIR=$PWD
 
 if [ $1 == "update" ]; then
     echo "Update ocrd_all and submodules."
-    cd submodules/ocrd_all || exit
-    git fetch
-    git pull origin master
+    #cd submodules/ocrd_all || exit
+    git submodule update submodules/ocrd_all
 
     # we save the output of the submodule update and then check, if something in the requirements/
     # dependencies has changed. we need this information to update our deps.json later.
-    git submodule foreach --quiet 'bash ../../../submodule_update.sh $name $CURRENT_DIR'
+    #git submodule foreach --quiet 'bash ../../../submodule_update.sh $name $CURRENT_DIR'
     cd $CURRENT_DIR || exit
 fi
 
