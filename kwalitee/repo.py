@@ -20,8 +20,8 @@ class Repo():
         self.ocrd_tool_json_valid = self.validate_ocrd_tool_json()
         self.project_type = self.get_project_type()
         self.latest_version = self.get_latest_version()
-        self.dependency_conflicts = ""
-        self.unreleased_changes = ""
+        #self.dependency_conflicts = ""
+        #self.unreleased_changes = ""
 
     def __str__(self):
         return '<Repo %s @ %s>' % (self.url, self.path)
