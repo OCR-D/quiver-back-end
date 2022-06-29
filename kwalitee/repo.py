@@ -83,7 +83,6 @@ class Repo():
         return valid
 
     def get_project_type(self):
-        type = 'bashlib'
         with pushd_popd(self.path):
             type = 'python' if any(Path(x).is_file() for x in ['setup.py', 'requirements.txt', 'requirements_test.txt']) else 'bashlib'
         return type
