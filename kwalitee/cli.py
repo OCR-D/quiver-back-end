@@ -1,4 +1,3 @@
-import re
 import click
 from pathlib import Path
 from ocrd.decorators import ocrd_loglevel
@@ -75,7 +74,7 @@ def generate_json(ctx, output=None):
     ret = []
     _check_cloned(ctx)
     for repo in ctx.repos:
-        ctx.log.info("# Assessing %s" % repo.name)
+        ctx.log.info("# Assessing %s" % repo.id)
         repo.clone()
         ret.append(repo.to_json())
     json_str = json.dumps(ret, indent=4, sort_keys=True)
