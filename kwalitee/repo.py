@@ -21,6 +21,7 @@ class Repo():
         self.ocrd_tool_json_valid = self.validate_ocrd_tool_json()
         self.project_type = self.get_project_type()
         self.latest_version = self.get_latest_version()
+        self.dependencies = self.get_dependencies()
         #self.dependency_conflicts = ""
         #self.unreleased_changes = ""
 
@@ -90,6 +91,13 @@ class Repo():
         with pushd_popd(self.path):
             type = 'python' if any(Path(x).is_file() for x in ['setup.py', 'requirements.txt', 'requirements_test.txt']) else 'bashlib'
         return type
+
+    def get_dependencies(self):
+        f = open('deps.json')
+        deps_file = json.load(f)
+
+        return deps_file[self.id]
+
 
     def to_json(self):
         desc = {}
