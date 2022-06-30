@@ -1,4 +1,6 @@
 click >=7
-ocrd >= 2.33.0
+ocrd_validators >=2.33.0
+ocrd_utils >=2.33.0
 pyyaml
 requests
+pipgrip
