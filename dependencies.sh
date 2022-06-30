@@ -74,7 +74,13 @@ do
             if [ $IS_CORE_DEP == "false" ]; then
                 PKG=$(echo $RES | cut -d'=' -f1)
                 VER=$(echo $RES | cut -d'=' -f3)
-                echo -n '"'$PKG'": "'$VER'",' >> $CURRENT_DIR'/deps.json'
+
+                # in each venv the project itself is also installed.
+                # since it's not a dependency, we omit it.
+                PKG_NORMALIZED=$(echo "$PKG" | sed -e 's/-/_/g')
+                if [ $PKG_NORMALIZED != $NAME ]; then
+                    echo -n '"'$PKG'": "'$VER'",' >> $CURRENT_DIR'/deps.json'
+                fi
             fi
         done
         echo -n '},' >> $CURRENT_DIR'/deps.json'
