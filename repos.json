@@ -1,275 +1,410 @@
 [
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "cor-asv-ann",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "cor-asv-ann",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": true,
-        "org_plus_name": "ASVLeipzig/cor-asv-ann",
+        "project_type": "bashlib",
         "url": "https://github.com/ASVLeipzig/cor-asv-ann"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "cor-asv-fst",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "cor-asv-fst",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": true,
-        "org_plus_name": "ASVLeipzig/cor-asv-fst",
+        "project_type": "bashlib",
         "url": "https://github.com/ASVLeipzig/cor-asv-fst"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_calamari",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_calamari",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_calamari",
+        "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_calamari"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_im6convert",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_im6convert",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_im6convert",
+        "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_im6convert"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_keraslm",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_keraslm",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_keraslm",
+        "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_keraslm"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": false,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_kraken",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_kraken",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_kraken",
+        "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_kraken"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_olena",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_olena",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_olena",
+        "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_olena"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_segment",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_segment",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "OCR-D/ocrd_segment",
+        "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_segment"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_tesserocr",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_tesserocr",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": true,
-        "org_plus_name": "OCR-D/ocrd_tesserocr",
+        "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_tesserocr"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": false,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_cis",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_cis",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": true,
-        "org_plus_name": "cisocrgroup/ocrd_cis",
+        "project_type": "bashlib",
         "url": "https://github.com/cisocrgroup/ocrd_cis"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": false,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_anybaseocr",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_anybaseocr",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": true,
-        "org_plus_name": "OCR-D/ocrd_anybaseocr",
+        "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_anybaseocr"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": false,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "dinglehopper",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "dinglehopper",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": false,
-        "org_plus_name": "qurator-spk/dinglehopper",
+        "project_type": "bashlib",
         "url": "https://github.com/qurator-spk/dinglehopper"
     },
     {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
         "compliant_cli": true,
-        "files": {
-            "Dockerfile": null,
-            "README.md": null,
-            "ocrd-tool.json": null,
-            "setup.py": null
-        },
-        "git": {
-            "last_commit": "Mon May 30 13:15:47 2022 +0200",
-            "latest_tag": "v2022-05-04",
-            "number_of_commits": "784",
-            "url": "https://github.com/OCR-D/ocrd_all"
-        },
-        "name": "ocrd_typegroups_classifier",
-        "ocrd_tool": "",
-        "ocrd_tool_validate": "NO ocrd-tool.json",
+        "id": "ocrd_typegroups_classifier",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
         "official": true,
-        "org_plus_name": "OCR-D/ocrd_typegroups_classifier",
+        "project_type": "bashlib",
         "url": "https://github.com/OCR-D/ocrd_typegroups_classifier"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": true,
+        "id": "core",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": true,
+        "project_type": "bashlib",
+        "url": "https://github.com/OCR-D/core"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "ocrd_fileformat",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/OCR-D/ocrd_fileformat"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "ocrd_pagetopdf",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/UB-Mannheim/ocrd_pagetopdf"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "ocrd_repair_inconsistencies",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/qurator-spk/ocrd_repair_inconsistencies"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "ocrd_wrap",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/bertsky/ocrd_wrap"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "workflow-configuration",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/bertsky/workflow-configuration"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "format-converters",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/OCR-D/format-converters"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "ocrd_olahd_client",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/OCR-D/ocrd_olahd_client"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "ocrd_ocropy",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/OCR-D/ocrd_ocropy"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "ocrd_pc_segmentation",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/OCR-D/ocrd_pc_segmentation"
+    },
+    {
+        "additional_info": {
+            "links": {
+                "Dockerfile": null,
+                "README.md": null,
+                "ocrd-tool.json": null,
+                "setup.py": null
+            }
+        },
+        "compliant_cli": false,
+        "id": "sbb_binarization",
+        "latest_version": "v2022-05-04",
+        "ocrd_tool_json_valid": false,
+        "official": false,
+        "project_type": "bashlib",
+        "url": "https://github.com/qurator-spk/sbb_binarization"
     }
 ]
