@@ -36,7 +36,7 @@ CMD='-m pip freeze -l'
 $VENV $CMD > $CURRENT_DIR'/core_deps.txt'
 cd $CURRENT_DIR || exit
 
-echo '[' >> $CURRENT_DIR'/deps.json'
+echo '{' >> $CURRENT_DIR'/deps.json'
 
 for NAME in $SUBMODULE_NAMES
 do
@@ -58,7 +58,7 @@ do
 
         # get deps and save them to JSON
         CMD_FREZE=$(echo '-m pip freeze -l')
-        echo '{"'$NAME'": [' >> $CURRENT_DIR'/deps.json'
+        echo '"'$NAME'": {' >> $CURRENT_DIR'/deps.json'
         RESULT=$($VENV $CMD_FREZE)
         for RES in $RESULT
         do
@@ -74,16 +74,17 @@ do
             if [ $IS_CORE_DEP == "false" ]; then
                 PKG=$(echo $RES | cut -d'=' -f1)
                 VER=$(echo $RES | cut -d'=' -f3)
-                echo -n '{"'$PKG'": "'$VER'"},' >> $CURRENT_DIR'/deps.json'
+                echo -n '"'$PKG'": "'$VER'",' >> $CURRENT_DIR'/deps.json'
             fi
         done
-        echo -n ']},' >> $CURRENT_DIR'/deps.json'
+        echo -n '},' >> $CURRENT_DIR'/deps.json'
     fi
 done
 
-echo ']' >> $CURRENT_DIR'/deps.json'
+echo '}' >> $CURRENT_DIR'/deps.json'
 
 cd $CURRENT_DIR || exit
 
 # make JSON valid
-sed -i 's/},]/}]/g' deps.json
+sed -i 's/},}/}}/g' deps.json
+sed -i 's/,}/}/g' deps.json
