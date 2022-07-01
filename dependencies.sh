@@ -87,6 +87,8 @@ if [ $1 == 'init' ]; then
     sed -i 's/,}/}/g' deps.json
 fi
 
+
+# TODO
 if [ $1 == "update" ]; then
     echo "Update ocrd_all and submodules."
     #cd submodules/ocrd_all || exit
