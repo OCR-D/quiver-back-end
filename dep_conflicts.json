@@ -1,0 +1,61 @@
+{
+    "absl-py": {
+        "0.15.0": "ocrd_pc_segmentation",
+        "1.1.0": "eynollah"
+    },
+    "gast": {
+        "0.2.2": "cor-asv-ann",
+        "0.4.0": "eynollah"
+    },
+    "grpcio": {
+        "1.34.1": "ocrd_pc_segmentation",
+        "1.47.0": "eynollah"
+    },
+    "h5py": {
+        "2.10.0": "cor-asv-ann",
+        "3.1.0": "ocrd_pc_segmentation",
+        "3.7.0": "eynollah"
+    },
+    "imageio": {
+        "2.19.3": "ocrd_wrap",
+        "2.4.1": "ocrd_pc_segmentation"
+    },
+    "numpy": {
+        "1.18.5": "cor-asv-ann",
+        "1.19.5": "ocrd_pc_segmentation"
+    },
+    "protobuf": {
+        "3.19.4": "eynollah",
+        "4.21.2": "cor-asv-ann"
+    },
+    "scikit-image": {
+        "0.17.2": "ocrd_pc_segmentation",
+        "0.19.2": "ocrd_kraken",
+        "0.19.3": "ocrd_wrap"
+    },
+    "six": {
+        "1.15.0": "ocrd_pc_segmentation",
+        "1.16.0": "eynollah"
+    },
+    "tensorboard": {
+        "1.15.0": "cor-asv-ann",
+        "2.9.1": "eynollah"
+    },
+    "tensorflow": {
+        "2.5.0": "ocrd_pc_segmentation",
+        "2.9.1": "eynollah"
+    },
+    "tensorflow-estimator": {
+        "1.15.1": "cor-asv-ann",
+        "2.5.0": "ocrd_pc_segmentation",
+        "2.9.0": "eynollah"
+    },
+    "torch": {
+        "1.11.0": "ocrd_kraken",
+        "1.12.0": "ocrd_typegroups_classifier"
+    },
+    "torchvision": {
+        "0.12.0": "ocrd_kraken",
+        "0.13.0": "ocrd_typegroups_classifier"
+    }
+}
