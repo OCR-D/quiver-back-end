@@ -20,6 +20,8 @@ The webapp is available over at the [OCR-D website](https://ocr-d.de/kwalitee/).
 
 The scheduled pipeline of this repo updates the `repos.json` file every night which serves as data for the webapp.
 
+For local usage, execute `make repos.json`.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

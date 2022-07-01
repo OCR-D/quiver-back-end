@@ -1,6 +1,9 @@
-.PHONY: repos.json
-repos.json:
-	ocrd-kwalitee json > "$@"
+dependencies:
+	if [ -f 'deps.json' ]; then\
+		$(MAKE) update-deps;\
+	else\
+		$(MAKE) init-deps;\
+	fi
 
 init-deps:
 	bash dependencies.sh init
@@ -8,3 +11,7 @@ init-deps:
 
 update-deps:
 	bash dependencies.sh update
+
+.PHONY: repos.json
+repos.json: dependencies
+	ocrd-kwalitee json > "$@"
