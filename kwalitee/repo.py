@@ -5,6 +5,7 @@ from shlex import split as X
 from ocrd_utils import pushd_popd, getLogger
 from ocrd_validators import OcrdToolValidator
 import requests
+import re
 
 class Repo():
 
@@ -22,7 +23,7 @@ class Repo():
         self.project_type = self.get_project_type()
         self.latest_version = self.get_latest_version()
         self.dependencies = self.get_dependencies()
-        #self.dependency_conflicts = ""
+        self.dependency_conflicts = self.get_dependency_conflicts()
         #self.unreleased_changes = ""
 
     def __str__(self):
@@ -97,6 +98,26 @@ class Repo():
         deps_file = json.load(f)
 
         return deps_file[self.id]
+
+
+    def get_dependency_conflicts(self):
+        f = open('dep_conflicts.json')
+        json_file = json.load(f)
+
+        result = {}
+        for pkg in json_file:
+            if self.id in json_file[pkg].values():
+                versions = json_file[pkg].keys()
+                major_version_numbers = []
+                for v in versions:
+                    major_version = re.findall(r'^(\d+)\.', v)[0]
+                    major_version_numbers.append(int(major_version))
+                # eliminate duplicates
+                filtered = list(set(major_version_numbers))
+                if len(filtered) > 1:
+                    result[pkg] = json_file[pkg]
+        if result:
+            return result
 
 
     def to_json(self):
