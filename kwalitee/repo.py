@@ -107,12 +107,11 @@ class Repo():
     def _get_latest_tag(self):
         complete_refs = self._run('git show-ref --tag')
         formatted = complete_refs.stdout.strip()
-        item_list = list(formatted.split('\n'))
-        latest_release = item_list[-1]
-        pattern = 'v?[0-9]+\.[0-9]+.*?$'
-        match = re.findall(pattern, latest_release)
-
-        if match:
+        item_list = formatted.splitlines()
+        if item_list:
+            latest_release = item_list[-1]
+            pattern = 'v?[0-9]+\.[0-9]+.*?$'
+            match = re.findall(pattern, latest_release)
             return match[0]
         else:
             return None
