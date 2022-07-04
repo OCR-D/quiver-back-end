@@ -4,22 +4,25 @@ from subprocess import run, PIPE
 from shlex import split as X
 from ocrd_utils import pushd_popd, getLogger
 import re
+from ocrd_validators import OcrdToolValidator
+import requests
 
 class Repo():
 
     def __init__(self, config, url, official=False, compliant_cli=False):
         self.log = getLogger('kwalitee.repo')
-        self.url = url
         self.config = config
-        self.name = str(Path(url).name)
+        self.path = Path(self.config['repodir'], Path(url).name)
+        
+        self.url = url
+        self.id = str(Path(url).name)
         self.official = official
         self.compliant_cli = compliant_cli
-        self.path = Path(self.config['repodir'], Path(url).name)
-        self.file_urls = self.get_file_urls()
+        self.additional_info = self.make_additional_info()
         self.ocrd_tool_json_valid = self.validate_ocrd_tool_json()
         self.project_type = self.get_project_type()
-        self.git = self.get_git_stats()
-        self.org_plus_name = '/'.join(self.url.split('/')[-2:])
+        self.latest_version = self.get_latest_version()
+        #self.dependency_conflicts = ""
         self.unreleased_changes = self.get_unreleased_changes()
 
     def __str__(self):
@@ -41,16 +44,17 @@ class Repo():
             result = self._run('git clone --depth 1 "%s"' % self.url)
             self.log.debug("Result: %s" % result)
 
-
-    def get_git_stats(self):
-        ret = {}
-        self.log.info("  Fetching git info")
+    def get_latest_version(self):
         with pushd_popd(self.path):
-            ret['number_of_commits'] = self._run('git rev-list HEAD --count').stdout
-            ret['last_commit'] = self._run(r'git log -1 --format=%cd ').stdout
-            ret['url'] = self._run('git config --get remote.origin.url').stdout
-            ret['latest_tag'] = self._run('git describe --abbrev=0 --tags').stdout
-        return ret
+            return self._run('git describe --abbrev=0 --tags').stdout
+
+    def make_additional_info(self):
+        result = {}
+        result['links'] = self.get_file_urls()
+        #result['description'] = self.get_description()
+
+        return result
+
 
     def get_file_urls(self):
         ret = {}
@@ -63,21 +67,29 @@ class Repo():
                     ret[path.name] = None
         return ret
 
+    def get_description(self):
+        api_url = "https://api.github.com/repos/" + self.org_plus_name
+        header = {"Accept": "application/vnd.github.v3+json"}
+        response = requests.get(api_url, headers=header)
+        response_json = json.loads(response.text)
+
+        return response_json['description']
+
     def validate_ocrd_tool_json(self):
         valid = False
         with pushd_popd(self.path):
             if Path('ocrd-tool.json').is_file():
-                result = self._run('ocrd ocrd-tool ocrd-tool.json validate').stdout
-                if 'valid="true"' in result:
+                f = open('ocrd-tool.json', 'r')
+                tool = json.load(f)
+                result = OcrdToolValidator.validate(tool)
+                
+                if 'OK' in str(result):
                     valid = True
         return valid
 
     def get_project_type(self):
-        type = 'bashlib'
         with pushd_popd(self.path):
-            for path in [Path(x) for x in ['setup.py', 'requirements.txt', 'requirements_test.txt']]:
-                if path.is_file():
-                    type = 'python'
+            type = 'python' if any(Path(x).is_file() for x in ['setup.py', 'requirements.txt', 'requirements_test.txt']) else 'bashlib'
         return type
 
     def get_unreleased_changes(self):
