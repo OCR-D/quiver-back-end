@@ -65,6 +65,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 0,
         "url": "https://github.com/OCR-D/ocrd_im6convert"
     },
     {
@@ -116,6 +117,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 0,
         "url": "https://github.com/OCR-D/ocrd_olena"
     },
     {
@@ -252,6 +254,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 0,
         "url": "https://github.com/OCR-D/ocrd_fileformat"
     },
     {
@@ -269,6 +272,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 8,
         "url": "https://github.com/UB-Mannheim/ocrd_pagetopdf"
     },
     {
@@ -320,6 +324,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 145,
         "url": "https://github.com/bertsky/workflow-configuration"
     },
     {
@@ -337,6 +342,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 42,
         "url": "https://github.com/OCR-D/format-converters"
     },
     {
