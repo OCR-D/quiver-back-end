@@ -20,6 +20,16 @@ The webapp is available over at the [OCR-D website](https://ocr-d.de/kwalitee/).
 
 The scheduled pipeline of this repo updates the `repos.json` file every night which serves as data for the webapp.
 
+## JSON Validation
+
+In order to validate the resulting JSON files, use
+
+```bash
+python3 schema/validation.py {FILENAME}
+```
+
+with `{FILENAME}` being either `repos.json` or `ocrd_all_releases.json`, depending on which one you'd like to validate.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
