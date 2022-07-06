@@ -5,6 +5,7 @@ from ocrd_utils import getLogger
 from yaml import safe_load
 import json
 from pkg_resources import resource_filename
+from os import remove
 
 from .filter import filter_release_projects
 from .repo import Repo
@@ -109,6 +110,7 @@ def generate_dependency_conflicts():
     '''
     Generate JSON for possibly conflicting depencies
     '''
+    
     # revert dependencies
     f = open('deps.json')
     deps_json = json.load(f)
@@ -119,17 +121,21 @@ def generate_dependency_conflicts():
         for pkg, version in deps.items():
             if not pkg in result:
                 result[pkg] = {}
-                result[pkg][version] = dependency
+                result[pkg][dependency] = version
             else:
-                result[pkg][version] = dependency
+                result[pkg][dependency] = version
 
     # toss every dependency that only has one version.
     # it'll never have any conflicts because a) only one project uses it or b) several projects use the same version.
     filtered = {}
     for pkg in result:
-        if not len(result[pkg]) == 1:
+        versions = result[pkg].values()
+        versions_wo_duplicates = list(set(versions))
+        if not len(result[pkg]) == 1 and not len(versions_wo_duplicates) == 1:
             filtered[pkg] = result[pkg]
     json_str = json.dumps(filtered, indent=4, sort_keys=True)
+    # remove old version of dep_conflicts.json
+    remove('dep_conflicts.json')
     Path('dep_conflicts.json').write_text(json_str, encoding='utf-8')
 
 

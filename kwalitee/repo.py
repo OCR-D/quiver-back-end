@@ -106,8 +106,8 @@ class Repo():
 
         result = {}
         for pkg in json_file:
-            if self.id in json_file[pkg].values():
-                versions = json_file[pkg].keys()
+            if self.id in json_file[pkg].keys():
+                versions = json_file[pkg].values()
                 major_version_numbers = []
                 for v in versions:
                     major_version = re.findall(r'^(\d+)\.', v)[0]

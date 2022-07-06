@@ -99,7 +99,7 @@ def test_dependencies():
 def test_dependency_conflict_true():
     repos = get_repos_list()
     repo = get_repo(repos, 'cor-asv-ann')
-    assert repo.dependency_conflicts == {"h5py": { "2.10.0": "cor-asv-ann", "3.1.0": "ocrd_pc_segmentation", "3.7.0": "eynollah"}, "protobuf": {"3.19.4": "eynollah","4.21.2": "cor-asv-ann"}, "tensorboard": {"1.15.0": "cor-asv-ann","2.9.1": "eynollah"}, "tensorflow-estimator": {"1.15.1": "cor-asv-ann","2.5.0": "ocrd_pc_segmentation","2.9.0": "eynollah"}}
+    assert repo.dependency_conflicts == {"absl-py": {"cor-asv-ann": "1.1.0", "eynollah": "1.1.0", "ocrd_anybaseocr": "1.1.0", "ocrd_calamari": "1.1.0", "ocrd_keraslm": "1.1.0", "ocrd_kraken": "1.1.0", "ocrd_pc_segmentation": "0.15.0", "sbb_binarization": "1.1.0"}, "h5py": {"cor-asv-ann": "2.10.0", "eynollah": "3.7.0", "ocrd_anybaseocr": "3.7.0", "ocrd_calamari": "3.7.0", "ocrd_keraslm": "2.10.0", "ocrd_pc_segmentation": "3.1.0", "sbb_binarization": "3.7.0"}, "protobuf": {"cor-asv-ann": "4.21.2", "eynollah": "3.19.4", "ocrd_anybaseocr": "3.19.4", "ocrd_calamari": "3.19.4", "ocrd_keraslm": "4.21.2", "ocrd_kraken": "3.19.4", "ocrd_pc_segmentation": "3.19.4", "sbb_binarization": "3.19.4"}, "tensorboard": {"cor-asv-ann": "1.15.0", "eynollah": "2.9.1", "ocrd_anybaseocr": "2.9.1", "ocrd_calamari": "2.9.1", "ocrd_keraslm": "1.15.0", "ocrd_kraken": "2.9.1", "ocrd_pc_segmentation": "2.9.1", "sbb_binarization": "2.9.1"}, "tensorflow-estimator": {"cor-asv-ann": "1.15.1", "eynollah": "2.9.0", "ocrd_anybaseocr": "2.9.0", "ocrd_calamari": "2.9.0", "ocrd_keraslm": "1.15.1", "ocrd_pc_segmentation": "2.5.0", "sbb_binarization": "2.9.0"}}
 
 
 def test_dependency_conflict_false():
