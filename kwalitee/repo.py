@@ -3,6 +3,7 @@ from pathlib import Path
 from subprocess import run, PIPE
 from shlex import split as X
 from ocrd_utils import pushd_popd, getLogger
+import re
 from ocrd_validators import OcrdToolValidator
 import requests
 import re
@@ -24,7 +25,7 @@ class Repo():
         self.latest_version = self.get_latest_version()
         self.dependencies = self.get_dependencies()
         self.dependency_conflicts = self.get_dependency_conflicts()
-        #self.unreleased_changes = ""
+        self.unreleased_changes = self.get_unreleased_changes()
 
     def __str__(self):
         return '<Repo %s @ %s>' % (self.url, self.path)
@@ -119,6 +120,34 @@ class Repo():
         if result:
             return result
 
+    def get_unreleased_changes(self):
+        with pushd_popd(self.path):
+            latest_tag = self._get_latest_tag()
+            if latest_tag:
+                latest_commit = self._get_latest_commit()
+                cmd = 'git rev-list ' + latest_tag + '..' + latest_commit + ' --count'
+                dist = self._run(cmd).stdout.strip()
+                return int(dist)
+            else:
+                total_no_of_commits = self._run('git rev-list --count HEAD').stdout.strip()
+                return int(total_no_of_commits)
+
+    def _get_latest_tag(self):
+        complete_refs = self._run('git show-ref --tag')
+        formatted = complete_refs.stdout.strip()
+        item_list = formatted.splitlines()
+        if item_list:
+            latest_release = item_list[-1]
+            pattern = 'v?[0-9]+\.[0-9]+.*?$'
+            match = re.findall(pattern, latest_release)
+            return match[0]
+        else:
+            return None
+
+    def _get_latest_commit(self):
+        hash = self._run('git log -n 1 --pretty=format:"%H" HEAD')
+        formatted = hash.stdout.strip()
+        return formatted
 
     def to_json(self):
         desc = {}

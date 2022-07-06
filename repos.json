@@ -94,6 +94,7 @@
         "ocrd_tool_json_valid": false,
         "official": true,
         "project_type": "python",
+        "unreleased_changes": 30,
         "url": "https://github.com/ASVLeipzig/cor-asv-ann"
     },
     {
@@ -113,6 +114,7 @@
         "ocrd_tool_json_valid": true,
         "official": true,
         "project_type": "python",
+        "unreleased_changes": 188,
         "url": "https://github.com/ASVLeipzig/cor-asv-fst"
     },
     {
@@ -226,6 +228,7 @@
         "ocrd_tool_json_valid": true,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 17,
         "url": "https://github.com/OCR-D/ocrd_calamari"
     },
     {
@@ -245,6 +248,7 @@
         "ocrd_tool_json_valid": true,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 0,
         "url": "https://github.com/OCR-D/ocrd_im6convert"
     },
     {
@@ -334,6 +338,7 @@
         "ocrd_tool_json_valid": true,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 9,
         "url": "https://github.com/OCR-D/ocrd_keraslm"
     },
     {
@@ -433,6 +438,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 19,
         "url": "https://github.com/OCR-D/ocrd_kraken"
     },
     {
@@ -452,6 +458,7 @@
         "ocrd_tool_json_valid": true,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 0,
         "url": "https://github.com/OCR-D/ocrd_olena"
     },
     {
@@ -490,6 +497,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 89,
         "url": "https://github.com/OCR-D/ocrd_segment"
     },
     {
@@ -509,6 +517,7 @@
         "ocrd_tool_json_valid": true,
         "official": true,
         "project_type": "python",
+        "unreleased_changes": 109,
         "url": "https://github.com/OCR-D/ocrd_tesserocr"
     },
     {
@@ -530,6 +539,7 @@
         "ocrd_tool_json_valid": true,
         "official": true,
         "project_type": "python",
+        "unreleased_changes": 87,
         "url": "https://github.com/cisocrgroup/ocrd_cis"
     },
     {
@@ -652,6 +662,7 @@
         "ocrd_tool_json_valid": false,
         "official": true,
         "project_type": "python",
+        "unreleased_changes": 0,
         "url": "https://github.com/OCR-D/ocrd_anybaseocr"
     },
     {
@@ -679,6 +690,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 269,
         "url": "https://github.com/qurator-spk/dinglehopper"
     },
     {
@@ -713,6 +725,7 @@
         "ocrd_tool_json_valid": true,
         "official": true,
         "project_type": "python",
+        "unreleased_changes": 0,
         "url": "https://github.com/OCR-D/ocrd_typegroups_classifier"
     },
     {
@@ -732,6 +745,7 @@
         "ocrd_tool_json_valid": false,
         "official": true,
         "project_type": "python",
+        "unreleased_changes": 2447,
         "url": "https://github.com/OCR-D/core"
     },
     {
@@ -751,6 +765,7 @@
         "ocrd_tool_json_valid": true,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 0,
         "url": "https://github.com/OCR-D/ocrd_fileformat"
     },
     {
@@ -770,6 +785,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 8,
         "url": "https://github.com/UB-Mannheim/ocrd_pagetopdf"
     },
     {
@@ -789,6 +805,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 42,
         "url": "https://github.com/qurator-spk/ocrd_repair_inconsistencies"
     },
     {
@@ -817,6 +834,7 @@
         "ocrd_tool_json_valid": true,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 0,
         "url": "https://github.com/bertsky/ocrd_wrap"
     },
     {
@@ -836,6 +854,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 149,
         "url": "https://github.com/bertsky/workflow-configuration"
     },
     {
@@ -855,6 +874,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "bashlib",
+        "unreleased_changes": 42,
         "url": "https://github.com/OCR-D/format-converters"
     },
     {
@@ -876,6 +896,7 @@
         "ocrd_tool_json_valid": true,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 11,
         "url": "https://github.com/OCR-D/ocrd_olahd_client"
     },
     {
@@ -907,6 +928,7 @@
         "ocrd_tool_json_valid": true,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 3,
         "url": "https://github.com/OCR-D/ocrd_ocropy"
     },
     {
@@ -1026,6 +1048,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 39,
         "url": "https://github.com/OCR-D/ocrd_pc_segmentation"
     },
     {
@@ -1126,6 +1149,7 @@
         "ocrd_tool_json_valid": true,
         "official": false,
         "project_type": "python",
+        "unreleased_changes": 8,
         "url": "https://github.com/qurator-spk/sbb_binarization"
     }
 ]
