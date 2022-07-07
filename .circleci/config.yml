@@ -20,7 +20,7 @@ jobs:
           command: |
             . venv/bin/activate
             git submodule update --init
-            git submodule foreach --recursive git fetch
+#            git submodule foreach --recursive git fetch
             git submodule foreach --recursive 'git pull origin $(git symbolic-ref --short refs/remotes/origin/HEAD | cut -d'/' -f2)'
       - save_cache:
           key: deps1-{{ .Branch }}-submodules
