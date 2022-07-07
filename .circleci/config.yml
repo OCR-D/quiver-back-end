@@ -20,8 +20,12 @@ jobs:
           command: |
             . venv/bin/activate
             git submodule update --init
+<<<<<<< Updated upstream
 #            git submodule foreach --recursive git fetch
             git submodule foreach --recursive 'git pull origin $(git symbolic-ref --short refs/remotes/origin/HEAD | cut -d'/' -f2)'
+=======
+            git submodule foreach --recursive 'git update --init --remote' || exit 0
+>>>>>>> Stashed changes
       - save_cache:
           key: deps1-{{ .Branch }}-submodules
           paths:
