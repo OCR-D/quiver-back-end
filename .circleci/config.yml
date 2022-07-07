@@ -20,6 +20,7 @@ jobs:
           command: |
             . venv/bin/activate
             git submodule update --init
+            git submodule foreach --recursive 'git update --init --remote' ||
       - save_cache:
           key: deps1-{{ .Branch }}-submodules
           paths:
