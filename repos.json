@@ -104,7 +104,7 @@
         "ocrd_tool_json_valid": false,
         "official": false,
         "project_type": "python",
-        "unreleased_changes": 19,
+        "unreleased_changes": 0,
         "url": "https://github.com/OCR-D/ocrd_kraken"
     },
     {
@@ -176,7 +176,7 @@
         "ocrd_tool_json_valid": true,
         "official": true,
         "project_type": "python",
-        "unreleased_changes": 87,
+        "unreleased_changes": 72,
         "url": "https://github.com/cisocrgroup/ocrd_cis"
     },
     {
@@ -248,7 +248,7 @@
         "ocrd_tool_json_valid": false,
         "official": true,
         "project_type": "python",
-        "unreleased_changes": 2447,
+        "unreleased_changes": 2453,
         "url": "https://github.com/OCR-D/core"
     },
     {
