@@ -19,7 +19,7 @@ jobs:
           name: Update submodules
           command: |
             . venv/bin/activate
-            git submodule update --init --recurse
+            git submodule update --init --recursive
       - save_cache:
           key: deps1-{{ .Branch }}-submodules
           paths:
