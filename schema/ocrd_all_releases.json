@@ -1,0 +1,18 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://ocr-d.de/ocrd_all_releases.schema.json",
+    "title": "Release Information",
+    "description": "Information needed on releases for the OCR-D Kwalitee Dashboard",
+    "type": "object",
+    "properties": {
+        "tag": {
+            "type": "string",
+            "pattern": "^v[0-9]{4}(-[0-9]{2}){2}$"
+        },
+        "projects": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1
+        }
+    }
+}
