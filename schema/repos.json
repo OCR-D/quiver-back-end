@@ -6,26 +6,29 @@
     "type": "object",
     "properties":{
         "additional_info": {
+            "type": "object",
             "description": "A section for more information about the project.",
-            "links": {
-                "description": "Links to important files on GitHub (if available).",
-                "type": "object",
-                "properties": {
-                    "Dockerfile": {
-                        "type": "string",
-                        "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/Dockerfile$|)"
-                    },
-                    "README.md": {
-                        "type": "string",
-                        "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/README.md$|)"
-                    },
-                    "ocrd-tool.json": {
-                        "type": "string",
-                        "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/ocrd-tool.json$|)"
-                    },
-                    "setup.py": {
-                        "type": "string",
-                        "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/setup.py$|)"
+            "properties": {
+                "links": {
+                    "description": "Links to important files on GitHub (if available).",
+                    "type": "object",
+                    "properties": {
+                        "Dockerfile": {
+                            "type": "string",
+                            "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/Dockerfile$|)"
+                        },
+                        "README.md": {
+                            "type": "string",
+                            "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/README.md$|)"
+                        },
+                        "ocrd-tool.json": {
+                            "type": "string",
+                            "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/ocrd-tool.json$|)"
+                        },
+                        "setup.py": {
+                            "type": "string",
+                            "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/setup.py$|)"
+                        }
                     }
                 }
             }
