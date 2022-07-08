@@ -1,4 +1,4 @@
-dependencies:
+dependencies: init
 	rm deps.json
 	rm dep_conflicts.json
 	bash dependencies.sh init
@@ -10,4 +10,4 @@ repos.json: dependencies
 
 init:
 	git submodule update --init
-	git submodule foreach --recursive 'git submodule update --init'
+	git submodule foreach --recursive 'git submodule update --init' || echo 0
