@@ -24,8 +24,8 @@ class Release():
 
 def get_releases(test_mode=False):
     if test_mode:
-        f = open('tests/assets/ocrd_all_releases.json')
-        response_json = json.load(f)
+        with open('tests/assets/ocrd_all_releases.json', 'r', encoding='utf-8') as f:
+            response_json = json.load(f)
     else:
         api_url = "https://api.github.com/repos/OCR-D/ocrd_all/releases"
         header = {"Accept": "application/vnd.github.v3+json"}
