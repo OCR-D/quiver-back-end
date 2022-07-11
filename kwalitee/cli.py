@@ -10,6 +10,9 @@ from .filter import filter_release_projects
 from .repo import Repo
 from .release import get_releases
 
+from jsonschema import validate
+import json
+
 def _check_cloned(ctx):
     uncloned = []
     for repo in ctx.repos:
@@ -31,14 +34,29 @@ class CliCtx():
                 self.repos.append(Repo(self.config, url, official, compliant_cli))
 pass_ctx = click.make_pass_decorator(CliCtx)
 
+
 @click.group()
 @click.option('-c', '--config-file', help="", default=resource_filename(__name__, 'config.yml'))
 @ocrd_loglevel
 @click.pass_context
-def cli(ctx, config_file, **kwargs): # pylint: disable=unused-argument
+def cli1(ctx, config_file, **kwargs): # pylint: disable=unused-argument
+    """
+    This group creates a list of all Repo instances.
+    """
     ctx.obj = CliCtx(config_file)
 
-@cli.command('clone', help='''
+
+@click.group()
+def cli2():
+    """
+    This group is necessary for all cases where we don't need the list of Repo instances created
+    by the CliCtx class.
+    See https://click.palletsprojects.com/en/8.1.x/commands/#merging-multi-commands
+    """
+    pass
+
+
+@cli1.command('clone', help='''
 
         Clone all repos
 ''')
@@ -51,7 +69,7 @@ def clone_all(ctx):
             ctx.log.info("Cloning %s" % repo)
             repo.clone()
 
-@cli.command('pull', help='''
+@cli1.command('pull', help='''
 
         Pull all repos
 ''')
@@ -63,7 +81,7 @@ def pull_all(ctx):
         repo.pull()
 
 
-@cli.command('json', help='''
+@cli1.command('json', help='''
 
     Generate JSON
 
@@ -84,7 +102,7 @@ def generate_json(ctx, output=None):
         print(json_str)
 
 
-@cli.command('releases', help='''
+@cli2.command('releases', help='''
 
     Generate JSON for ocrd_all releases
 
@@ -100,7 +118,7 @@ def generate_ocrd_all_releases(output=None):
         print(json_str)
 
 
-@cli.command('ocrd-tool')
+@cli1.command('ocrd-tool')
 @click.option('-o', '--output', help="Output file. Omit to print to STDOUT")
 @pass_ctx
 def generate_tool_json(ctx, output=None):
@@ -116,3 +134,38 @@ def generate_tool_json(ctx, output=None):
         Path(output).write_text(json_str)
     else:
         print(json_str)
+
+
+@cli2.command('validate', help='''
+
+    Validate created JSON files.
+
+''')
+@click.option('-f', '--file',
+    type=click.Choice(['repos,json', 'ocrd_all_releases.json'], case_sensitive=True),
+    help="The file to be validated. Defaults to repos.json if not given.")
+def json_validate(file=None):
+    if not file:
+        file_to_validate = 'repos.json'
+    else:
+        file_to_validate = file
+
+    schema = load_schema(file_to_validate)
+    instance = load_json(file_to_validate)
+
+    for object in instance:
+        validate(instance=object, schema=schema)
+
+
+def load_json(filename):
+    with open(filename) as jsonfile:
+        data = json.load(jsonfile)
+        return data
+
+
+def load_schema(filename):
+    with open('schema/' + filename) as jsonfile:
+        data = json.load(jsonfile)
+        return data
+
+cli = click.CommandCollection(sources=[cli1, cli2])
