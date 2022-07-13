@@ -38,16 +38,13 @@ do
         VENV=$PWD'/venv/bin/python'
 
         # install pkgs
-        if [ -f 'requirements.txt' ]; then
-            CMD_INSTALL=$(echo '-m pip install -r requirements.txt .')
-            $VENV $CMD_INSTALL
-        elif [ -f 'setup.py' ]; then
-            CMD_INSTALL=$(echo '-m pip install .')
+        if [ -f 'setup.py' ]; then
+            CMD_INSTALL='-m pip install .'
             $VENV $CMD_INSTALL
         fi
 
         # get deps and save them to JSON
-        CMD_FREZE=$(echo '-m pip freeze -l')
+        CMD_FREZE='-m pip freeze -l'
         echo '"'$NAME'": {' >> $CURRENT_DIR'/deps.json'
         RESULT=$($VENV $CMD_FREZE)
         for RES in $RESULT
