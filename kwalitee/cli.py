@@ -2,16 +2,16 @@ import click
 from pathlib import Path
 from ocrd.decorators import ocrd_loglevel
 from ocrd_utils import getLogger
+from ocrd_validators.json_validator import JsonValidator
+
 from yaml import safe_load
 import json
 from pkg_resources import resource_filename
+from sys import exit
 
 from .filter import filter_release_projects
 from .repo import Repo
 from .release import get_releases
-
-from jsonschema import validate
-import json
 
 def _check_cloned(ctx):
     uncloned = []
@@ -150,22 +150,18 @@ def json_validate(file=None):
     else:
         file_to_validate = file
 
-    schema = load_schema(file_to_validate)
-    instance = load_json(file_to_validate)
+    with open(file_to_validate) as f:
+        instance = json.load(f)
 
-    for object in instance:
-        validate(instance=object, schema=schema)
+    with open('schema/' + file_to_validate) as s:
+        schema = json.load(s)
 
+    _inform_of_result(JsonValidator(schema).validate(instance, schema))
+    
 
-def load_json(filename):
-    with open(filename) as jsonfile:
-        data = json.load(jsonfile)
-        return data
-
-
-def load_schema(filename):
-    with open('schema/' + filename) as jsonfile:
-        data = json.load(jsonfile)
-        return data
+def _inform_of_result(report):
+    if not report.is_valid:
+        print(report.to_xml())
+        exit(1)
 
 cli = click.CommandCollection(sources=[cli1, cli2])
