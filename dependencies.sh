@@ -28,7 +28,9 @@ echo '{' >> $CURRENT_DIR'/deps.json'
 
 for NAME in $SUBMODULE_NAMES
 do
-    if [ $NAME != 'tesseract' ] && [ $NAME != 'opencv-python' ]; then
+    case $NAME in
+    tesseract|opencv-python) echo "skip $NAME";;
+    *)
         DIR='/submodules/ocrd_all/'$NAME
         echo "Currently processing " $NAME " ..."
         cd $CURRENT_DIR$DIR || exit
@@ -74,7 +76,7 @@ do
             fi
         done
         echo -n '},' >> $CURRENT_DIR'/deps.json'
-    fi
+    esac
 done
 
 echo '}' >> $CURRENT_DIR'/deps.json'
