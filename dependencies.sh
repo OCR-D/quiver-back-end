@@ -32,7 +32,7 @@ do
         DIR='/submodules/ocrd_all/'$NAME
         echo "Currently processing " $NAME " ..."
         cd $CURRENT_DIR$DIR || exit
-        python -m venv venv
+        python3 -m venv venv
         VENV=$PWD'/venv/bin/python'
 
         # install pkgs
