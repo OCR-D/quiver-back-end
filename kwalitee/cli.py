@@ -151,7 +151,8 @@ def json_validate(file):
     with open(file, 'r', encoding='utf-8') as f:
         instance = json.load(f)
 
-    with open('schema/' + file, 'r', encoding='utf-8') as s:
+    schema_path = resource_filename(__name__, 'schemas/' + file)
+    with open(schema_path, 'r', encoding='utf-8') as s:
         schema = json.load(s)
 
     _inform_of_result(JsonValidator.validate(instance, schema))
