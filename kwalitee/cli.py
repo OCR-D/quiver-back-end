@@ -142,7 +142,7 @@ def generate_tool_json(ctx, output=None):
 
 ''')
 @click.option('-f', '--file',
-    type=click.Choice(['repos,json', 'ocrd_all_releases.json'], case_sensitive=True),
+    type=click.Choice(['repos.json', 'ocrd_all_releases.json']),
     help="The file to be validated.",
     default="repos.json",
     show_default=True)
