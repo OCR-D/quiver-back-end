@@ -143,7 +143,9 @@ def generate_tool_json(ctx, output=None):
 ''')
 @click.option('-f', '--file',
     type=click.Choice(['repos,json', 'ocrd_all_releases.json'], case_sensitive=True),
-    help="The file to be validated. Defaults to repos.json if not given.")
+    help="The file to be validated.",
+    default="repos.json",
+    show_default=True)
 def json_validate(file=None):
     if not file:
         file_to_validate = 'repos.json'
