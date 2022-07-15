@@ -146,11 +146,7 @@ def generate_tool_json(ctx, output=None):
     help="The file to be validated.",
     default="repos.json",
     show_default=True)
-def json_validate(file=None):
-    if not file:
-        file_to_validate = 'repos.json'
-    else:
-        file_to_validate = file
+def json_validate(file):
 
     with open(file_to_validate) as f:
         instance = json.load(f)
