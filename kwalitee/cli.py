@@ -154,7 +154,7 @@ def json_validate(file):
     with open('schema/' + file, 'r', encoding='utf-8') as s:
         schema = json.load(s)
 
-    _inform_of_result(JsonValidator(schema).validate(instance, schema))
+    _inform_of_result(JsonValidator.validate(instance, schema))
     
 
 def _inform_of_result(report):
