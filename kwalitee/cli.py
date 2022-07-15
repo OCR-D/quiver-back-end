@@ -148,7 +148,7 @@ def generate_tool_json(ctx, output=None):
     show_default=True)
 def json_validate(file):
 
-    with open(file_to_validate) as f:
+    with open(file, 'r', encoding='utf-8') as f:
         instance = json.load(f)
 
     with open('schema/' + file_to_validate) as s:
