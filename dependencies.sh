@@ -28,24 +28,23 @@ echo '{' >> $CURRENT_DIR'/deps.json'
 
 for NAME in $SUBMODULE_NAMES
 do
-    if [ $NAME != 'tesseract' ] && [ $NAME != 'opencv-python' ]; then
+    case $NAME in
+    tesseract|opencv-python) echo "skip $NAME";;
+    *)
         DIR='/submodules/ocrd_all/'$NAME
         echo "Currently processing " $NAME " ..."
         cd $CURRENT_DIR$DIR || exit
-        python -m venv venv
+        python3 -m venv venv
         VENV=$PWD'/venv/bin/python'
 
         # install pkgs
-        if [ -f 'requirements.txt' ]; then
-            CMD_INSTALL=$(echo '-m pip install -r requirements.txt .')
-            $VENV $CMD_INSTALL
-        elif [ -f 'setup.py' ]; then
-            CMD_INSTALL=$(echo '-m pip install .')
+        if [ -f 'setup.py' ]; then
+            CMD_INSTALL='-m pip install .'
             $VENV $CMD_INSTALL
         fi
 
         # get deps and save them to JSON
-        CMD_FREZE=$(echo '-m pip freeze -l')
+        CMD_FREZE='-m pip freeze -l'
         echo '"'$NAME'": {' >> $CURRENT_DIR'/deps.json'
         RESULT=$($VENV $CMD_FREZE)
         for RES in $RESULT
@@ -66,15 +65,13 @@ do
                 # in each venv the project itself is also installed.
                 # since it's not a dependency, we omit it.
                 PKG_NORMALIZED=$(echo "$PKG" | sed -e 's/-/_/g')
-                STARTS_WITH_FILE=$(echo "$PKG" | grep -E '^file')
-                IS_AT=$(echo "$PKG" | grep -E '@')
-                if [ $PKG_NORMALIZED != $NAME ] && [ ! $IS_AT ] && [ ! $STARTS_WITH_FILE ]; then
+                if [ $PKG_NORMALIZED != $NAME ]; then
                     echo -n '"'$PKG'": "'$VER'",' >> $CURRENT_DIR'/deps.json'
                 fi
             fi
         done
         echo -n '},' >> $CURRENT_DIR'/deps.json'
-    fi
+    esac
 done
 
 echo '}' >> $CURRENT_DIR'/deps.json'
