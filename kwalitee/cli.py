@@ -5,6 +5,7 @@ from ocrd_utils import getLogger
 from yaml import safe_load
 import json
 from pkg_resources import resource_filename
+from os import remove
 
 from .filter import filter_release_projects
 from .repo import Repo
@@ -98,7 +99,6 @@ def generate_ocrd_all_releases(output=None):
         Path(output).write_text(json_str, encoding='utf-8')
     else:
         print(json_str)
-
 
 @cli.command('ocrd-tool')
 @click.option('-o', '--output', help="Output file. Omit to print to STDOUT")
