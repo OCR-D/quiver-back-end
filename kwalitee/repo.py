@@ -81,12 +81,12 @@ class Repo():
         valid = False
         with pushd_popd(self.path):
             if Path('ocrd-tool.json').is_file():
-                f = open('ocrd-tool.json', 'r')
-                tool = json.load(f)
-                result = OcrdToolValidator.validate(tool)
-                
-                if 'OK' in str(result):
-                    valid = True
+                with open('ocrd-tool.json', 'r') as f:
+                    tool = json.load(f)
+                    result = OcrdToolValidator.validate(tool)
+                    
+                    if 'OK' in str(result):
+                        valid = True
         return valid
 
     def get_project_type(self):
@@ -95,30 +95,30 @@ class Repo():
         return type
 
     def get_dependencies(self):
-        f = open('deps.json')
-        deps_file = json.load(f)
+        with open('deps.json', 'r', encoding='utf-8') as f:
+            deps_file = json.load(f)
 
-        return deps_file[self.id]
+            return deps_file[self.id]
 
 
     def get_dependency_conflicts(self):
-        f = open('dep_conflicts.json')
-        json_file = json.load(f)
+        with open('dep_conflicts.json', 'r', encoding='utf-8') as f:
+            json_file = json.load(f)
 
-        result = {}
-        for pkg in json_file:
-            if self.id in json_file[pkg].keys():
-                versions = json_file[pkg].values()
-                major_version_numbers = []
-                for v in versions:
-                    major_version = re.findall(r'^(\d+)\.', v)[0]
-                    major_version_numbers.append(int(major_version))
-                # eliminate duplicates
-                filtered = list(set(major_version_numbers))
-                if len(filtered) > 1:
-                    result[pkg] = json_file[pkg]
-        if result:
-            return result
+            result = {}
+            for pkg in json_file:
+                if self.id in json_file[pkg]:
+                    versions = json_file[pkg].values()
+                    major_version_numbers = []
+                    for v in versions:
+                        major_version = re.findall(r'^(\d+)\.', v)[0]
+                        major_version_numbers.append(int(major_version))
+                    # eliminate duplicates
+                    filtered = list(set(major_version_numbers))
+                    if len(filtered) > 1:
+                        result[pkg] = json_file[pkg]
+            if result:
+                return result
 
     def get_unreleased_changes(self):
         with pushd_popd(self.path):
