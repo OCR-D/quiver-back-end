@@ -13,6 +13,10 @@ from .filter import filter_release_projects
 from .repo import Repo
 from .release import get_releases
 
+@click.group()
+def cli():
+    pass
+
 def _check_cloned(ctx):
     uncloned = []
     for repo in ctx.repos:
@@ -20,6 +24,7 @@ def _check_cloned(ctx):
             uncloned.append(repo)
     if uncloned:
         raise Exception("Some repos not yet cloned: %s" % [str(r) for r in uncloned])
+
 
 class CliCtx():
     def __init__(self, config_file):
@@ -35,28 +40,15 @@ class CliCtx():
 pass_ctx = click.make_pass_decorator(CliCtx)
 
 
-@click.group()
+@click.group(help="Managing repos and related info")
 @click.option('-c', '--config-file', help="", default=resource_filename(__name__, 'config.yml'))
 @ocrd_loglevel
 @click.pass_context
-def cli1(ctx, config_file, **kwargs): # pylint: disable=unused-argument
-    """
-    This group creates a list of all Repo instances.
-    """
+def repo(ctx, config_file, **kwargs): # pylint: disable=unused-argument
     ctx.obj = CliCtx(config_file)
 
 
-@click.group()
-def cli2():
-    """
-    This group is necessary for all cases where we don't need the list of Repo instances created
-    by the CliCtx class.
-    See https://click.palletsprojects.com/en/8.1.x/commands/#merging-multi-commands
-    """
-    pass
-
-
-@cli1.command('clone', help='''
+@repo.command('clone', help='''
 
         Clone all repos
 ''')
@@ -69,7 +61,8 @@ def clone_all(ctx):
             ctx.log.info("Cloning %s" % repo)
             repo.clone()
 
-@cli1.command('pull', help='''
+
+@repo.command('pull', help='''
 
         Pull all repos
 ''')
@@ -81,9 +74,9 @@ def pull_all(ctx):
         repo.pull()
 
 
-@cli1.command('json', help='''
+@repo.command('json', help='''
 
-    Generate JSON
+    Generate repos.json
 
 ''')
 @click.option('-o', '--output', help="Output file. Omit to print to STDOUT")
@@ -102,23 +95,7 @@ def generate_json(ctx, output=None):
         print(json_str)
 
 
-@cli2.command('releases', help='''
-
-    Generate JSON for ocrd_all releases
-
-''')
-@click.option('-o', '--output', help="Output file. '-' to print to STDOUT")
-def generate_ocrd_all_releases(output=None):
-    ret = get_releases()
-    filtered = filter_release_projects(ret)
-    json_str = json.dumps(filtered, indent=4, sort_keys=True)
-    if output:
-        Path(output).write_text(json_str, encoding='utf-8')
-    else:
-        print(json_str)
-
-
-@cli1.command('ocrd-tool')
+@repo.command('ocrd-tool')
 @click.option('-o', '--output', help="Output file. Omit to print to STDOUT")
 @pass_ctx
 def generate_tool_json(ctx, output=None):
@@ -136,11 +113,7 @@ def generate_tool_json(ctx, output=None):
         print(json_str)
 
 
-@cli2.command('validate', help='''
-
-    Validate created JSON files.
-
-''')
+@cli.command("validate", help="Validate created JSON files")
 @click.option('-f', '--file',
     type=click.Choice(['repos.json', 'ocrd_all_releases.json']),
     help="The file to be validated.",
@@ -163,4 +136,17 @@ def _inform_of_result(report):
         print(report.to_xml())
         exit(1)
 
-cli = click.CommandCollection(sources=[cli1, cli2])
+
+@cli.command("releases", help="Generate JSON for ocrd_all releases")
+@click.option('-o', '--output', help="Output file. '-' to print to STDOUT")
+def generate_ocrd_all_releases(output=None):
+    ret = get_releases()
+    filtered = filter_release_projects(ret)
+    json_str = json.dumps(filtered, indent=4, sort_keys=True)
+    if output:
+        Path(output).write_text(json_str, encoding='utf-8')
+    else:
+        print(json_str)
+
+
+cli.add_command(repo)
