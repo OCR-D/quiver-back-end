@@ -1,0 +1,71 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://ocr-d.de/repos.schema.json",
+    "title": "Repository Information",
+    "description": "Information needed on projects for the OCR-D Kwalitee Dashboard",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties":{
+            "additional_info": {
+                "type": "object",
+                "description": "A section for more information about the project.",
+                "properties": {
+                    "links": {
+                        "description": "Links to important files on GitHub (if available).",
+                        "type": "object",
+                        "properties": {
+                            "Dockerfile": {
+                                "type": ["string", "null"],
+                                "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/Dockerfile$|)"
+                            },
+                            "README.md": {
+                                "type": "string",
+                                "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/README.md$|)"
+                            },
+                            "ocrd-tool.json": {
+                                "type": ["string", "null"],
+                                "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/ocrd-tool.json$|)"
+                            },
+                            "setup.py": {
+                                "type": ["string", "null"],
+                                "pattern": "(^https:\/\/github.com(\/[a-zA-Z0-9_-]+)+\/blob\/master\/setup.py$|)"
+                            }
+                        }
+                    }
+                }
+            },
+            "compliant_cli": {
+                "description": "Whether the CLI of the project complies to the OCR-D CLI specification.",
+                "type": "boolean"
+            },
+            "id": {
+                "description": "A unique identifier of the project. Equals the project name.",
+                "type": "string"
+            },
+            "latest_version": {
+                "description": "The latest tag of the project known to GitHub.",
+                "type": "string",
+                "pattern": "(^v?[0-9]+.[0-9]+.*?$)|"
+            },
+            "ocrd_tool_json_valid": {
+                "description": "Whether the ocrd-tool.json is valid according to the OCR-D specification.",
+                "type": "boolean"
+            },
+            "official": {
+                "description": "Whether the project is officially maintained by the OCR-D coordination project.",
+                "type": "boolean"
+            },
+            "project_type": {
+                "description": "Denotes the language in which the project has been implemented. Equals 'bashlib' or 'python'.",
+                "type": "string",
+                "pattern": "(bashlib|python)"
+            },
+            "url": {
+                "description": "The GitHub URL of the project.",
+                "type": "string",
+                "pattern": "^https://github.com(/[a-zA-Z0-9-_]+)+$"
+            }
+        }
+    }
+}
