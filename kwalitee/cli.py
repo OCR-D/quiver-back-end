@@ -1,17 +1,18 @@
-import click
+import json
 from pathlib import Path
+from sys import exit
+
+import click
 from ocrd.decorators import ocrd_loglevel
 from ocrd_utils import getLogger
 from ocrd_validators.json_validator import JsonValidator
-
-from yaml import safe_load
-import json
 from pkg_resources import resource_filename
-from sys import exit
+from yaml import safe_load
 
 from .filter import filter_release_projects
-from .repo import Repo
 from .release import get_releases
+from .repo import Repo
+
 
 @click.group()
 def cli():

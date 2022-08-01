@@ -34,9 +34,9 @@ jobs:
           fingerprints:
             - "9e:f1:ce:5b:e2:34:a9:67:e0:e6:e2:34:37:7f:55:22"
       - run:
-          name: Push repos.json back to repository
+          name: Push repos.json as well as dependency information back to repository
           command: |
               git config user.email "project.ocrd@gmail.com"
               git config user.name "OCR-D-automation-bot"
-              git status --porcelain | grep -q 'repos.json' && git add repos.json && git commit -m "update repos.json [skip ci]"
+              git status --porcelain | grep -q 'repos.json' && git add repos.json && git add deps.json && git add dep_conflicts.json && git add core_deps.txt && git commit -m "update files [skip ci]"
               git push --set-upstream origin main
