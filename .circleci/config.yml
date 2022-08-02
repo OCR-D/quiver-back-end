@@ -8,11 +8,15 @@ jobs:
       - run:
           name: Update repos.json
           command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install -e .
             make repos.json
       - save_cache:
           key: deps1-{{ .Branch }}
           paths:
             - "submodules"
+            - "venv"
       - add_ssh_keys:
           fingerprints:
             - "9e:f1:ce:5b:e2:34:a9:67:e0:e6:e2:34:37:7f:55:22"
