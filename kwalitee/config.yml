@@ -44,7 +44,5 @@ repolist:
   - url: https://github.com/bertsky/workflow-configuration
   - url: https://github.com/OCR-D/format-converters
   - url: https://github.com/OCR-D/ocrd_olahd_client
-  - url: https://github.com/OCR-D/ocrd_ocropy
-    enabled_by_default: false
   - url: https://github.com/OCR-D/ocrd_pc_segmentation
   - url: https://github.com/qurator-spk/sbb_binarization
