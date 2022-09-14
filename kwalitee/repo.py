@@ -26,6 +26,7 @@ class Repo():
         self.dependencies = self.get_dependencies()
         self.dependency_conflicts = self.get_dependency_conflicts()
         self.unreleased_changes = self.get_unreleased_changes()
+        self.org_plus_name = '/'.join(self.url.split('/')[-2:])
 
     def __str__(self):
         return '<Repo %s @ %s>' % (self.url, self.path)
