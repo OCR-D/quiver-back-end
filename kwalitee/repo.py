@@ -1,12 +1,13 @@
 import json
+import re
 from pathlib import Path
-from subprocess import run, PIPE
 from shlex import split as X
-from ocrd_utils import pushd_popd, getLogger
-import re
-from ocrd_validators import OcrdToolValidator
+from subprocess import PIPE, run
+
 import requests
-import re
+from ocrd_utils import getLogger, pushd_popd
+from ocrd_validators import OcrdToolValidator
+
 
 class Repo():
 
