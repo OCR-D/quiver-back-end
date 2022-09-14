@@ -1,0 +1,75 @@
+[
+    {
+      "workflow_id": "wf1-data345-eval1",
+      "label": "Workflow 1 on Data 345",
+      "metadata": {
+        "workflow": "https://example.org/workflow/1",
+        "workflow_steps": {
+          "0": "Processor A",
+          "1": "Processor B"
+        },
+        "workflow_model": "Fraktur_GT4HistOCR",
+        "eval_workflow": "https://example.org/workflow/eval1",
+        "eval_data": "https://example.org/workspace/345",
+        "eval_tool": "dinglehopper",
+        "gt_data": "https://gt.ocr-d.de/workspace/789",
+        "document": {
+          "fonts": ["antiqua", "fraktur"],
+          "publication_year": "19. century",
+          "number_of_pages": "100",
+          "layout": "simple"
+        }
+      },
+      "evaluations": {
+        "document_wide": {
+          "wall_time": 1234,
+          "cer": 0.57,
+          "cer_min_max": [0.2, 0.57]
+        },
+        "by_page": [
+          {
+            "page_id": "PHYS_0001",
+            "cer": 0.8,
+            "processing_time": 2.1
+          }
+        ]
+      }
+    },
+    {
+      "workflow_id": "wf2-data345-eval1",
+      "label": "Workflow 2 on Data 345",
+      "metadata": {
+        "workflow": "https://example.org/workflow/2",
+        "workflow_steps": {
+          "0": "Processor A",
+          "1": "Processor B"
+        },
+        "workflow_model": "Fraktur_GT4HistOCR",
+        "eval_workflow": "https://example.org/workflow/eval1",
+        "eval_data": "https://example.org/workspace/345",
+        "eval_tool": "dinglehopper",
+        "gt_data": "https://gt.ocr-d.de/workspace/789",
+        "document": {
+          "fonts": ["antiqua", "fraktur"],
+          "publication_year": "19. century",
+          "number_of_pages": "100",
+          "layout": "simple"
+        }
+      },
+      "evaluations": {
+        "document_wide": {
+          "wall_time": 1234,
+          "cer": 0.88,
+          "cer_min_max": [0.2, 0.57]
+        },
+        "by_page": [
+          {
+            "page_id": "PHYS_0001",
+            "cer": 0.9,
+            "processing_time": 2.0
+          }
+        ]
+      }
+    }
+  ]
+  
