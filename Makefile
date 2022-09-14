@@ -6,7 +6,7 @@ dependencies: init
 
 .PHONY: repos.json
 repos.json: dependencies
-	ocrd-kwalitee json > "$@"
+	ocrd-kwalitee repo json > "$@"
 
 init:
 	git submodule update --init

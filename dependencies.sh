@@ -65,7 +65,9 @@ do
                 # in each venv the project itself is also installed.
                 # since it's not a dependency, we omit it.
                 PKG_NORMALIZED=$(echo "$PKG" | sed -e 's/-/_/g')
-                if [ $PKG_NORMALIZED != $NAME ]; then
+                STARTS_WITH_FILE=$(echo "$PKG" | grep -E '^file')
+                IS_AT=$(echo "$PKG" | grep -E '@')
+                if [ $PKG_NORMALIZED != $NAME ] && [ ! $IS_AT ] && [ ! $STARTS_WITH_FILE ]; then
                     echo -n '"'$PKG'": "'$VER'",' >> $CURRENT_DIR'/deps.json'
                 fi
             fi
