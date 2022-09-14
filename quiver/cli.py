@@ -29,7 +29,7 @@ def _check_cloned(ctx):
 
 class CliCtx():
     def __init__(self, config_file):
-        self.log = getLogger('ocrd.kwalitee')
+        self.log = getLogger('ocrd.quiver')
         with open(config_file, 'r') as f_config_file:
             self.config = safe_load(f_config_file.read())
             self.repos = []

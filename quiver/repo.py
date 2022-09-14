@@ -12,7 +12,7 @@ from ocrd_validators import OcrdToolValidator
 class Repo():
 
     def __init__(self, config, url, official=False, compliant_cli=False):
-        self.log = getLogger('kwalitee.repo')
+        self.log = getLogger('quiver.repo')
         self.config = config
         self.path = Path(self.config['repodir'], Path(url).name)
         

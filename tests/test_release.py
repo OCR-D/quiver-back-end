@@ -1,5 +1,5 @@
-from kwalitee.release import get_releases
-from kwalitee import Release
+from quiver.release import get_releases
+from quiver import Release
 import json
 
 

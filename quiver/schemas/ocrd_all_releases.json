@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://ocr-d.de/ocrd_all_releases.schema.json",
     "title": "Release Information",
-    "description": "Information needed on releases for the OCR-D Kwalitee Dashboard",
+    "description": "Information needed on releases for the OCR-D Quiver Dashboard",
     "type": "array",
     "items": {
         "type": "object",
