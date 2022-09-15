@@ -29,7 +29,7 @@ echo '{' >> $CURRENT_DIR'/deps.json'
 for NAME in $SUBMODULE_NAMES
 do
     case $NAME in
-    tesseract|opencv-python) echo "skip $NAME";;
+    tesseract|opencv-python|ocrd_ocropy) echo "skip $NAME";;
     *)
         DIR='/submodules/ocrd_all/'$NAME
         echo "Currently processing " $NAME " ..."

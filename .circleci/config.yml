@@ -5,12 +5,27 @@ jobs:
       - image: cimg/python:3.10.1
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - deps1-{{ checksum "python_deps_checksum" }}
+            - deps1-{{ checksum "submodules_deps_checksum" }}
       - run:
           name: Update repos.json
           command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install -e .
+            ls -laR venv > python_deps_checksum
             make repos.json
+            ls -laR submodules > submodules_deps_checksum
       - save_cache:
-          key: deps1-{{ .Branch }}
+          name: Store Python dependencies
+          key: deps1-{{ checksum "python_deps_checksum" }}
+          paths:
+            - "venv"
+      - save_cache:
+          name: Store OCR-D all submodules
+          key: deps1-{{ checksum "submodules_deps_checksum" }}
           paths:
             - "submodules"
       - add_ssh_keys:
