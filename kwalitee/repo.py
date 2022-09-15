@@ -1,12 +1,13 @@
 import json
+import re
 from pathlib import Path
-from subprocess import run, PIPE
 from shlex import split as X
-from ocrd_utils import pushd_popd, getLogger
-import re
-from ocrd_validators import OcrdToolValidator
+from subprocess import PIPE, run
+
 import requests
-import re
+from ocrd_utils import getLogger, pushd_popd
+from ocrd_validators import OcrdToolValidator
+
 
 class Repo():
 
@@ -26,6 +27,7 @@ class Repo():
         self.dependencies = self.get_dependencies()
         self.dependency_conflicts = self.get_dependency_conflicts()
         self.unreleased_changes = self.get_unreleased_changes()
+        self.org_plus_name = '/'.join(self.url.split('/')[-2:])
 
     def __str__(self):
         return '<Repo %s @ %s>' % (self.url, self.path)
