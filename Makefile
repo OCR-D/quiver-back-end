@@ -3,9 +3,9 @@ dependencies: init
 	bash dependencies.sh
 	python3 quiver/dependencies.py
 
-.PHONY: repos.json
+.PHONY: data/repos.json
 repos.json: dependencies
-	quiver-ocrd repo json > "$@"
+	quiver-ocrd repo json -o data/repos.json
 
 init:
 	git submodule update --init

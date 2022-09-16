@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- All information that is required for the ocrd_all projects (i.e. the GitHub repositories of the ocrd_all submodules). Provided in repos.json. This encompasses:
+- All information that is required for the ocrd_all projects (i.e. the GitHub repositories of the ocrd_all submodules). Provided in data/repos.json. This encompasses:
   - links to noteworthy files like the Dockerfile
   - unreleased changes
   - the latest tag
