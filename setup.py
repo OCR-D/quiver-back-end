@@ -21,7 +21,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'ocrd-quiver=quiver.cli:cli',
+            'quiver=quiver.cli:cli',
         ]
     },
 )
