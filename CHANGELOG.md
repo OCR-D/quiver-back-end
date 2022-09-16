@@ -19,5 +19,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - if the projects orcd-tool.json complies to the specs, and
   - if the CLI complies to the specs
   - information about dependency conflicts between (transitive) deps
-- Information regarding within which ocrd_all release a project has been released recently. Provided in ocrd_all_releases.json.
+- Information regarding within which ocrd_all release a project has been released recently. Provided in data/ocrd_all_releases.json.
 - This CHANGELOG.

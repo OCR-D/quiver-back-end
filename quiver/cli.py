@@ -116,7 +116,7 @@ def generate_tool_json(ctx, output=None):
 
 @cli.command("validate", help="Validate created JSON files")
 @click.option('-f', '--file',
-    type=click.Choice(['data/repos.json', 'ocrd_all_releases.json']),
+    type=click.Choice(['data/repos.json', 'data/ocrd_all_releases.json']),
     help="The file to be validated.",
     default="data/repos.json",
     show_default=True)
