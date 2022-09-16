@@ -1,5 +1,5 @@
-from kwalitee.release import get_releases
-from kwalitee.filter import filter_release_projects
+from quiver.release import get_releases
+from quiver.filter import filter_release_projects
 
 def test_filter():
     releases = get_releases(test_mode=True)

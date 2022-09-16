@@ -2,11 +2,11 @@ dependencies: init
 	rm deps.json
 	rm dep_conflicts.json
 	bash dependencies.sh init
-	python3 kwalitee/dependencies.py
+	python3 quiver/dependencies.py
 
 .PHONY: repos.json
 repos.json: dependencies
-	ocrd-kwalitee repo json > "$@"
+	ocrd-quiver repo json > "$@"
 
 init:
 	git submodule update --init

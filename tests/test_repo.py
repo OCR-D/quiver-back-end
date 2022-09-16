@@ -1,8 +1,8 @@
-from kwalitee.repo import Repo
+from quiver.repo import Repo
 from yaml import safe_load
 
 def get_repos_list():
-    config_file = 'kwalitee/config.yml'
+    config_file = 'quiver/config.yml'
     with open(config_file, 'r') as f_config_file:
         config = safe_load(f_config_file.read())
         repos = []
