@@ -21,7 +21,7 @@ VENV=$PWD'/venv/bin/python'
 CMD='-m pip install ocrd'
 $VENV $CMD
 CMD='-m pip freeze -l'
-$VENV $CMD > $CURRENT_DIR'/core_deps.txt'
+$VENV $CMD > $CURRENT_DIR'/data/core_deps.txt'
 cd $CURRENT_DIR || exit
 
 echo '{' >> $CURRENT_DIR'/data/deps.json'
@@ -49,9 +49,9 @@ do
         RESULT=$($VENV $CMD_FREZE)
         for RES in $RESULT
         do
-            # check if dependency also occurs in core_deps.txt
+            # check if dependency also occurs in data/core_deps.txt
             IS_CORE_DEP="false"
-            for LINE in $(cat $CURRENT_DIR/core_deps.txt)
+            for LINE in $(cat $CURRENT_DIR/data/core_deps.txt)
             do
                 if [ $RES == $LINE ]; then
                     IS_CORE_DEP="true"

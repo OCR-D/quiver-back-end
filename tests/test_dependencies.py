@@ -1,7 +1,7 @@
 import json
 
 def test_core_deps():
-    with open('core_deps.txt', 'r') as file:
+    with open('data/core_deps.txt', 'r') as file:
         expected = ['atomicwrites==1.4.1',
                     'attrs==22.1.0',
                     'bagit==1.8.1',

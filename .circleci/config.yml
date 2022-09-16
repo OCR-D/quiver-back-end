@@ -21,5 +21,5 @@ jobs:
           command: |
               git config user.email "project.ocrd@gmail.com"
               git config user.name "OCR-D-automation-bot"
-              git status --porcelain | grep -q 'data/repos.json' && git add data/repos.json && git add data/deps.json && git add data/dep_conflicts.json && git add core_deps.txt && git commit -m "update files [skip ci]"
+              git status --porcelain | grep -q 'data/repos.json' && git add data/repos.json && git add data/deps.json && git add data/dep_conflicts.json && git add data/core_deps.txt && git commit -m "update files [skip ci]"
               git push --set-upstream origin main
