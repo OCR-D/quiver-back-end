@@ -1,5 +1,5 @@
 dependencies: init
-	rm deps.json
+	rm data/deps.json
 	rm dep_conflicts.json
 	bash dependencies.sh init
 	python3 quiver/dependencies.py

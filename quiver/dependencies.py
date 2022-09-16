@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 
 # revert dependencies
-with open('deps.json', 'r', encoding='utf-8') as f:
+with open('data/deps.json', 'r', encoding='utf-8') as f:
     deps_json = json.load(f)
 
     result = {}

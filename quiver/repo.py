@@ -95,7 +95,7 @@ class Repo():
         return type
 
     def get_dependencies(self):
-        with open('deps.json', 'r', encoding='utf-8') as f:
+        with open('data/deps.json', 'r', encoding='utf-8') as f:
             deps_file = json.load(f)
 
             return deps_file[self.id]
