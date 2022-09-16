@@ -96,6 +96,24 @@ def generate_json(ctx, output=None):
         print(json_str)
 
 
+@repo.command('ocrd-tool')
+@click.option('-o', '--output', help="Output file. Omit to print to STDOUT")
+@pass_ctx
+def generate_tool_json(ctx, output=None):
+    '''
+    Return one big list of ocrd tools
+    '''
+    ret = {}
+    _check_cloned(ctx)
+    for repo in ctx.repos:
+        ret = {**ret, **repo.get_ocrd_tools()}
+    json_str = json.dumps(ret, indent=4, sort_keys=True)
+    if output:
+        Path(output).write_text(json_str)
+    else:
+        print(json_str)
+
+
 @cli.command("validate", help="Validate created JSON files")
 @click.option('-f', '--file',
     type=click.Choice(['repos.json', 'ocrd_all_releases.json']),
@@ -112,6 +130,7 @@ def json_validate(file):
         schema = json.load(s)
 
     _inform_of_result(JsonValidator.validate(instance, schema))
+    
 
 def _inform_of_result(report):
     if not report.is_valid:
