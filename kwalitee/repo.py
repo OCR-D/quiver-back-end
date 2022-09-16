@@ -28,6 +28,7 @@ class Repo():
         self.dependency_conflicts = self.get_dependency_conflicts()
         self.unreleased_changes = self.get_unreleased_changes()
         self.org_plus_name = '/'.join(self.url.split('/')[-2:])
+        self.ocrd_tool = self.get_ocrd_tool()
 
     def __str__(self):
         return '<Repo %s @ %s>' % (self.url, self.path)
@@ -81,14 +82,11 @@ class Repo():
 
     def validate_ocrd_tool_json(self):
         valid = False
-        with pushd_popd(self.path):
-            if Path('ocrd-tool.json').is_file():
-                with open('ocrd-tool.json', 'r') as f:
-                    tool = json.load(f)
-                    result = OcrdToolValidator.validate(tool)
-                    
-                    if 'OK' in str(result):
-                        valid = True
+        tool = self.get_ocrd_tool()
+        if tool:
+            result = OcrdToolValidator.validate(tool)
+            if 'OK' in str(result):
+                valid = True
         return valid
 
     def get_project_type(self):
@@ -133,6 +131,14 @@ class Repo():
             else:
                 total_no_of_commits = self._run('git rev-list --count HEAD').stdout.strip()
                 return int(total_no_of_commits)
+
+    def get_ocrd_tool(self):
+        result = None
+        with pushd_popd(self.path):
+            if Path('ocrd-tool.json').is_file():
+                with open('ocrd-tool.json', 'r', encoding='utf-8') as f:
+                    result = json.load(f)
+        return result
 
     def _get_latest_tag(self):
         complete_refs = self._run('git show-ref --tag')
