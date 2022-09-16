@@ -6,7 +6,7 @@ dependencies: init
 
 .PHONY: repos.json
 repos.json: dependencies
-	ocrd-quiver repo json > "$@"
+	quiver-ocrd repo json > "$@"
 
 init:
 	git submodule update --init
