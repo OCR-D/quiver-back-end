@@ -122,3 +122,9 @@ def test_dependency_conflict_false():
     repos = get_repos_list()
     repo = get_repo(repos, 'ocrd_typegroups_classifier')
     repo.dependency_conflicts = None
+
+def test_ocrd_tool():
+    repos = get_repos_list()
+    repo = get_repo(repos, 'ocrd_olahd_client')
+    assert repo.ocrd_tool['git_url'] == 'https://github.com/OCR-D/ocrd_olahd_client'
+    
