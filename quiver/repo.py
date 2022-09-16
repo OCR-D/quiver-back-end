@@ -102,7 +102,7 @@ class Repo():
 
 
     def get_dependency_conflicts(self):
-        with open('dep_conflicts.json', 'r', encoding='utf-8') as f:
+        with open('data/dep_conflicts.json', 'r', encoding='utf-8') as f:
             json_file = json.load(f)
 
             result = {}

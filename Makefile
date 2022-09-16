@@ -1,7 +1,6 @@
 dependencies: init
-	rm data/deps.json
-	rm dep_conflicts.json
-	bash dependencies.sh init
+	rm data/deps.json data/dep_conflicts.json || echo "No data to delete. Continue JSON creation."
+	bash dependencies.sh
 	python3 quiver/dependencies.py
 
 .PHONY: repos.json

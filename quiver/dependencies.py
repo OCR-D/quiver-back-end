@@ -24,4 +24,4 @@ with open('data/deps.json', 'r', encoding='utf-8') as f:
         if not len(result[pkg]) == 1 and not len(versions_wo_duplicates) == 1:
             filtered[pkg] = result[pkg]
     json_str = json.dumps(filtered, indent=4, sort_keys=True)
-    Path('dep_conflicts.json').write_text(json_str, encoding='utf-8')
+    Path('data/dep_conflicts.json').write_text(json_str, encoding='utf-8')
