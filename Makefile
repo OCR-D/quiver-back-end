@@ -10,3 +10,7 @@ repos.json: dependencies
 init:
 	git submodule update --init
 	git submodule foreach --recursive 'git submodule update --init' || echo 0
+
+.PHONY: data/ocrd_all_releases.json
+releases: init
+	quiver-ocrd releases -o data/ocrd_all_releases.json
