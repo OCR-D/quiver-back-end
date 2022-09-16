@@ -110,7 +110,7 @@ def test_latest_version():
 def test_dependencies():
     repos = get_repos_list()
     repo_1 = get_repo(repos, 'ocrd_typegroups_classifier')
-    assert repo_1.dependencies == {"imageio": "2.21.3", "networkx": "2.6.3", "packaging": "21.3", "pandas": "1.3.5", "pyparsing": "3.0.9", "python-dateutil": "2.8.2", "pytz": "2022.2.1", "PyWavelets": "1.3.0", "scikit-image": "0.19.3", "scipy": "1.7.3", "six": "1.16.0", "tifffile": "2021.11.2", "torch": "1.12.1", "torchvision": "0.13.1"}
+    assert repo_1.dependencies == {"imageio": "2.21.3", "networkx": "2.6.3", "packaging": "21.3", "pandas": "1.3.5", "pyparsing": "3.0.9", "python-dateutil": "2.8.2", "pytz": "2022.2.1", "PyWavelets": "1.4.0", "scikit-image": "0.19.3", "scipy": "1.7.3", "six": "1.16.0", "tifffile": "2021.11.2", "torch": "1.12.1", "torchvision": "0.13.1"}
 
 def test_dependency_conflict_true():
     repos = get_repos_list()
