@@ -77,7 +77,7 @@ def pull_all(ctx):
 
 @repo.command('json', help='''
 
-    Generate repos.json
+    Generate data/repos.json
 
 ''')
 @click.option('-o', '--output', help="Output file. Omit to print to STDOUT")
@@ -116,9 +116,9 @@ def generate_tool_json(ctx, output=None):
 
 @cli.command("validate", help="Validate created JSON files")
 @click.option('-f', '--file',
-    type=click.Choice(['repos.json', 'ocrd_all_releases.json']),
+    type=click.Choice(['data/repos.json', 'data/ocrd_all_releases.json']),
     help="The file to be validated.",
-    default="repos.json",
+    default="data/repos.json",
     show_default=True)
 def json_validate(file):
 

@@ -21,10 +21,10 @@ VENV=$PWD'/venv/bin/python'
 CMD='-m pip install ocrd'
 $VENV $CMD
 CMD='-m pip freeze -l'
-$VENV $CMD > $CURRENT_DIR'/core_deps.txt'
+$VENV $CMD > $CURRENT_DIR'/data/core_deps.txt'
 cd $CURRENT_DIR || exit
 
-echo '{' >> $CURRENT_DIR'/deps.json'
+echo '{' >> $CURRENT_DIR'/data/deps.json'
 
 for NAME in $SUBMODULE_NAMES
 do
@@ -45,13 +45,13 @@ do
 
         # get deps and save them to JSON
         CMD_FREZE='-m pip freeze -l'
-        echo '"'$NAME'": {' >> $CURRENT_DIR'/deps.json'
+        echo '"'$NAME'": {' >> $CURRENT_DIR'/data/deps.json'
         RESULT=$($VENV $CMD_FREZE)
         for RES in $RESULT
         do
-            # check if dependency also occurs in core_deps.txt
+            # check if dependency also occurs in data/core_deps.txt
             IS_CORE_DEP="false"
-            for LINE in $(cat $CURRENT_DIR/core_deps.txt)
+            for LINE in $(cat $CURRENT_DIR/data/core_deps.txt)
             do
                 if [ $RES == $LINE ]; then
                     IS_CORE_DEP="true"
@@ -68,18 +68,18 @@ do
                 STARTS_WITH_FILE=$(echo "$PKG" | grep -E '^file')
                 IS_AT=$(echo "$PKG" | grep -E '@')
                 if [ $PKG_NORMALIZED != $NAME ] && [ ! $IS_AT ] && [ ! $STARTS_WITH_FILE ]; then
-                    echo -n '"'$PKG'": "'$VER'",' >> $CURRENT_DIR'/deps.json'
+                    echo -n '"'$PKG'": "'$VER'",' >> $CURRENT_DIR'/data/deps.json'
                 fi
             fi
         done
-        echo -n '},' >> $CURRENT_DIR'/deps.json'
+        echo -n '},' >> $CURRENT_DIR'/data/deps.json'
     esac
 done
 
-echo '}' >> $CURRENT_DIR'/deps.json'
+echo '}' >> $CURRENT_DIR'/data/deps.json'
 
 cd $CURRENT_DIR || exit
 
 # make JSON valid
-sed -i 's/},}/}}/g' deps.json
-sed -i 's/,}/}/g' deps.json
+sed -i 's/},}/}}/g' data/deps.json
+sed -i 's/,}/}/g' data/deps.json

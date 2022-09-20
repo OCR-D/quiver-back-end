@@ -95,14 +95,14 @@ class Repo():
         return type
 
     def get_dependencies(self):
-        with open('deps.json', 'r', encoding='utf-8') as f:
+        with open('data/deps.json', 'r', encoding='utf-8') as f:
             deps_file = json.load(f)
 
             return deps_file[self.id]
 
 
     def get_dependency_conflicts(self):
-        with open('dep_conflicts.json', 'r', encoding='utf-8') as f:
+        with open('data/dep_conflicts.json', 'r', encoding='utf-8') as f:
             json_file = json.load(f)
 
             result = {}

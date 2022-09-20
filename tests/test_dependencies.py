@@ -1,7 +1,7 @@
 import json
 
 def test_core_deps():
-    with open('core_deps.txt', 'r') as file:
+    with open('data/core_deps.txt', 'r') as file:
         expected = ['atomicwrites==1.4.1',
                     'attrs==22.1.0',
                     'bagit==1.8.1',
@@ -43,7 +43,7 @@ def test_core_deps():
 def test_filtering():
     #ocrd_olahd_client has only very few deps apart from ocrd
     expected = [{'importlib-metadata': '4.11.4'}, {'ocrd-olahd-client': '0.0.1'}, {'requests-toolbelt': '0.9.1'}]
-    f = open('deps.json')
+    f = open('data/deps.json')
     json_file = json.load(f)
     olahd_client = json_file[25]['ocrd_olahd_client']
 
@@ -52,7 +52,7 @@ def test_filtering():
 def test_filtering_empty_result():
     # core will naturally be empty because we filter against it
     expected = []
-    f = open('deps.json')
+    f = open('data/deps.json')
     json_file = json.load(f)
     olahd_client = json_file[1]['core']
 

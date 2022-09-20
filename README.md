@@ -18,7 +18,7 @@ The webapp is available over at the [OCR-D website](https://ocr-d.de/quiver/).
 
 ## Usage
 
-The scheduled pipeline of this repo updates the `repos.json` file every night which serves as data for the webapp.
+The scheduled pipeline of this repo updates the `data/repos.json` file every night which serves as data for the webapp.
 
 For local usage, execute `make repos.json`.
 
