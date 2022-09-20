@@ -1,6 +1,6 @@
 # quiver-dashboard-back-end
 
-[![CircleCI](https://circleci.com/gh/OCR-D/quiver-dashboard-back-end/tree/main.svg?style=svg)](https://circleci.com/gh/OCR-D/quiver-dashboard-back-end/tree/main)
+[![CircleCI](https://circleci.com/gh/OCR-D/quiver-back-end/tree/main.svg?style=svg)](https://circleci.com/gh/OCR-D/quiver-back-end/tree/main)
 
 The back end of the OCR-D quality dashboard webapp.
 
