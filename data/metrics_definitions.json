@@ -2,6 +2,7 @@
     {
         "cer":
         {
+            "label": "CER",
             "short_descr": "CER calculated over the text of a whole page (in by_page) or combined text of all pages (in document_wide)",
             "url": "https://kba.github.io/en/spec/ocrd_eval#character-error-rate-cer"
         }
@@ -9,6 +10,7 @@
     {
         "cer_range":
         {
+            "label": "CER (Range)",
             "short_descr": "Minimum and maximum of CER calculated over the text of a whole page (in by_page) or combined text of all pages (in document_wide)",
             "url": ""
         }
@@ -16,6 +18,7 @@
     {
         "wer":
         {
+            "label": "WER",
             "short_descr": "CER calculated over the text of a whole page (in by_page) or combined text of all pages (in document_wide)",
             "url": "https://kba.github.io/en/spec/ocrd_eval#wer-granularity"
         }
@@ -23,6 +26,7 @@
     {
         "wall_time":
         {
+            "label": "Wall Time",
             "short_descr": "Actual time needed for processing workflow",
             "url": "https://kba.github.io/en/spec/ocrd_eval#wall-time"
         }
@@ -30,6 +34,7 @@
     {
         "cpu_time":
         {
+            "label": "CPU Time",
             "short_descr": "Cumulative CPU time used for processing workflow",
             "url": "https://kba.github.io/en/spec/ocrd_eval#cpu-time"
         }
