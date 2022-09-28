@@ -4,7 +4,7 @@
 
 The back end of the OCR-D quality dashboard webapp.
 
-The webapp is available over at the [OCR-D website](https://ocr-d.de/quiver/).
+The webapp is available over at the [OCR-D website](https://ocr-d.de/quiver-frontend/).
 
 ## Dependencies
 
