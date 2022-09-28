@@ -2934,7 +2934,7 @@
                     ],
                     "parameters": {
                         "model": {
-                            "description": "load model or crate new one (e.g. fraktur.pyrnn)",
+                            "description": "load model or create new one (e.g. fraktur.pyrnn)",
                             "type": "string"
                         },
                         "ntrain": {
@@ -4696,7 +4696,7 @@
                             "type": "string"
                         },
                         "password": {
-                            "description": "Pasword",
+                            "description": "Password",
                             "required": true,
                             "type": "string"
                         },

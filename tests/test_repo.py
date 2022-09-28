@@ -41,7 +41,7 @@ def test_additional_info_links():
     if not repo_2.additional_info['links']['Dockerfile'] == None:
         errors.append('repo_2\'s Dockerfile URL is not empty.')
 
-    assert not errors, "errors occured:\n{}".format("\n".join(errors))
+    assert not errors, "errors occurred:\n{}".format("\n".join(errors))
 
 
 #def test_additional_info_desc():
@@ -62,7 +62,7 @@ def test_ocrd_tool_validation():
     if not repo_2.ocrd_tool_json_valid == True:
         errors.append('repo_2\'s ocrd-tool.json must be valid.')
 
-    assert not errors, "errors occured:\n{}".format("\n".join(errors))
+    assert not errors, "errors occurred:\n{}".format("\n".join(errors))
 
 
 def test_python_or_bashlib():
@@ -79,7 +79,7 @@ def test_python_or_bashlib():
     if not repo_3.project_type == "python":
         errors.append(f'repo_3 is a python based project. current project type: {repo_3.project_type}.')
 
-    assert not errors, "errors occured:\n{}".format("\n".join(errors))    
+    assert not errors, "errors occurred:\n{}".format("\n".join(errors))
 
 def test_unreleased_changes():
     repos = get_repos_list()
@@ -95,7 +95,7 @@ def test_unreleased_changes():
     if not repo_3.unreleased_changes == 3:
         errors.append(f'repo_3 has 3 unreleased changes. current number: {repo_3.unreleased_changes}')
 
-    assert not errors, "errors occured:\n{}".format("\n".join(errors))
+    assert not errors, "errors occurred:\n{}".format("\n".join(errors))
     
 def test_id():
     repos = get_repos_list()
@@ -127,4 +127,3 @@ def test_ocrd_tool():
     repos = get_repos_list()
     repo = get_repo(repos, 'ocrd_olahd_client')
     assert repo.ocrd_tool['git_url'] == 'https://github.com/OCR-D/ocrd_olahd_client'
-    
