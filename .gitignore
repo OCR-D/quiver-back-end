@@ -3,3 +3,5 @@
 *pycache*
 venv/
 build/
+models/
+workflows/workspaces

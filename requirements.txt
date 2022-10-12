@@ -3,3 +3,5 @@ ocrd >= 2.35.0
 pyyaml
 requests
 pipgrip
+nextflow
+tomli
