@@ -1,2 +1,5 @@
 ocrd process \
-    "tesserocr-recognize -I OCR-D-IMG -O OCR-D-OCR -P segmentation_level region -P textequiv_level word -P find_tables true -P model Fraktur_GT4HistOCR"
+    "tesserocr-recognize -I OCR-D-IMG -O OCR-D-OCR -P segmentation_level region -P textequiv_level word -P find_tables true -P model Fraktur_GT4HistOCR" \
+    "dinglehopper -I OCR-D-GT-SEG-BLOCK,OCR-D-OCR -O OCR-D-EVAL-SEG-BLOCK" \
+    "dinglehopper -I OCR-D-GT-SEG-LINE,OCR-D-OCR -O OCR-D-EVAL-SEG-LINE" \
+    "dinglehopper -I OCR-D-GT-SEG-PAGE,OCR-D-OCR -O OCR-D-EVAL-SEG-PAGE"
