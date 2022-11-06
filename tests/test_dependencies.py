@@ -6,7 +6,7 @@ def test_core_deps():
                     'attrs==22.1.0',
                     'bagit==1.8.1',
                     'bagit-profile==1.3.1',
-                    'certifi==2022.6.15.2',
+                    'certifi==2022.9.14',
                     'charset-normalizer==2.1.1',
                     'click==8.1.3',
                     'Deprecated==1.2.0',
