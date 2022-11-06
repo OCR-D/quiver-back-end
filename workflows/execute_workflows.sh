@@ -94,7 +94,7 @@ do
         sed -i "s OUTPUT_DIR result g" "$WORKFLOW"
         DIR_NAME=$(echo $WS_DIR | rev | cut -d'/' -f 2 | rev)
         sed -i "s CURRENT $DIR_NAME g" "$WORKFLOW"
-        nextflow run "$WORKFLOW" -with-weblog https://127.0.0.1:8000
+        nextflow run "$WORKFLOW" -with-weblog http://127.0.0.1:8000/nextflow/
     done   
     # create a result JSON according to the specs
     touch "$WORKFLOW"_benchmarks.json
