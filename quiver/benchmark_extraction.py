@@ -7,6 +7,7 @@ from os import scandir
 from re import search
 import xml.etree.ElementTree as ET
 
+
 #{
  #   "eval_workflow_id": "wf2-data345-eval1",
  #   "label": "Workflow 2 on Data 345",
@@ -44,16 +45,38 @@ import xml.etree.ElementTree as ET
  #   }
  # }
 
-def get_eval_dirs(root_dir):
-    list_subfolders_with_paths = [f.path for f in scandir(root_dir) if f.is_dir()]
+def extract_benchmarks(workspace_path, mets_path):
+    json_dirs = get_eval_jsons(workspace_path)
+
+    result = {"evaluation_results":
+    [
+        {"by_page": make_eval_results_by_page(json_dirs, mets_path)}
+    ]}
+
+    return result
+
+def make_eval_results_by_page(json_dirs, mets_path):
+    result = []
+    for d in json_dirs:
+        for file_path in json_dirs[d]:
+            result.append(get_metrics_for_page(file_path, mets_path))
+
+    return result
+
+def get_eval_dirs(workspace_dir):
+    list_subfolders_with_paths = [f.path for f in scandir(workspace_dir) if f.is_dir()]
     eval_dirs = [name for name in list_subfolders_with_paths if search('EVAL', name)]
     return eval_dirs
 
 
-def get_eval_jsons(eval_dir):
-    files_in_dir = [f.path for f in scandir(eval_dir) if f.is_file()]
-    jsons = [name for name in files_in_dir if search('json', name)]
-    return jsons
+def get_eval_jsons(workspace_dir):
+    eval_dirs = get_eval_dirs(workspace_dir)
+    result = {}
+    for eval_dir in eval_dirs:
+        files_in_dir = [f.path for f in scandir(eval_dir) if f.is_file()]
+        json_files = [name for name in files_in_dir if search('json', name)]
+        result[eval_dir] = sorted(json_files)
+    return result
 
 
 def get_page_id(json_file_path, mets_path):
@@ -86,8 +109,15 @@ def get_metrics_for_page(json_file_path, mets_path):
 
     return metrics
 
-
 if __name__ == '__main__':
     workspace_path = sys.argv[1]
     mets_path = workspace_path + 'mets.xml'
-    print(mets_path)
+
+    dictionary = extract_benchmarks(workspace_path, mets_path)
+
+    
+    json_object = json.dumps(dictionary, indent=4)
+    
+    # Writing to sample.json
+    with open(workspace_path + '/eval_result.json', 'w', encoding='utf-8') as outfile:
+        outfile.write(json_object)

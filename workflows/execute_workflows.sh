@@ -38,7 +38,7 @@ git merge origin/master
 
 echo "Adjust OtoN settings …"
 sed -i "s \$projectDir/ocrd-workspace/ $WORKSPACE_DIR/CURRENT/ g" oton/config.toml
-sed -i 's/extract_ocrd_commands(ocrd_lines)/extract_ocrd_commands(self, ocrd_lines)/g' oton/ocrd_validator.py
+sed -i "s venv37-ocrd/bin/activate git/ocrd_all/venv/bin/activate g" oton/config.toml
 echo "Done."
 
 echo "Installing OtoN …"
@@ -59,7 +59,7 @@ do
 done
 
 
-cd "$ROOT" || exit
+#cd "$ROOT" || exit
 
 # download the necessary models if not available
 
@@ -73,6 +73,9 @@ fi
 # execute this workflow on the existing data (incl. evaluation)
 
 cd "$WORKSPACE_DIR" || exit
+
+# start webserver for evaluation
+uvicorn api:app --app-dir "$ROOT"/quiver &
 
 # for all data sets…
 for WS_DIR in "$WORKSPACE_DIR"/*/
@@ -91,12 +94,23 @@ do
         sed -i "s OUTPUT_DIR result g" "$WORKFLOW"
         DIR_NAME=$(echo $WS_DIR | rev | cut -d'/' -f 2 | rev)
         sed -i "s CURRENT $DIR_NAME g" "$WORKFLOW"
-
-        nextflow run "$WORKFLOW"
+        nextflow run "$WORKFLOW" -with-weblog https://127.0.0.1:8000
     done   
+    # create a result JSON according to the specs
+    touch "$WORKFLOW"_benchmarks.json
+        
+    echo "Get Benchmark JSON …"
+    VENV=$ROOT'/venv/bin/python'
+    CMD="$ROOT/quiver/benchmark_extraction.py $WS_DIR"
+    $VENV $CMD
+    echo "Done."
 done
 
 cd "$ROOT" || exit
+
+# shut down server
+JOB_NO=$(jobs -l | grep -E -o "[0-9]{4,}")
+kill $JOB_NO
 
 # create a result JSON according to the specs
 # push this JSON to the quiver-back-end repo

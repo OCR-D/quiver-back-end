@@ -5,3 +5,5 @@ requests
 pipgrip
 nextflow
 tomli
+fastapi
+uvicorn[standard]
