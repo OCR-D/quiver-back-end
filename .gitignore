@@ -5,3 +5,6 @@ venv/
 build/
 models/
 workflows/workspaces
+.nextflow*
+work/
+workflows/results/*
