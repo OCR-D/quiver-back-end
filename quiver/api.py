@@ -3,18 +3,15 @@ import json
 from typing import Union
 from typing import Dict
 from pathlib import Path
+from os import getcwd
 
 app = FastAPI()
 
 
 @app.post("/nextflow/")
 def save_workflow(item: Dict[str, Union[str, float,Dict]]):
-    filtered = filter_result(item)
-    json_str = json.dumps(filtered, indent=4, sort_keys=True)
-    event = filtered['event']
-    output_name = filtered['runName'] + filtered['runId']
-    output = 'workflows/results/' + output_name + '_' + event + '.json'
+    event = item['event']
+    output_name = item['runName'] + '_' + item['runId']
+    output = getcwd() + '/../results/' + output_name + '_' + event + '.json'
+    json_str = json.dumps(item, indent=4, sort_keys=True)
     Path(output).write_text(json_str, encoding='utf-8')
-
-def filter_result(item: Dict[str, Union[str, float,Dict]]):
-    return item
