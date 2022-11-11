@@ -95,15 +95,18 @@ do
         DIR_NAME=$(echo $WS_DIR | rev | cut -d'/' -f 2 | rev)
         sed -i "s CURRENT $DIR_NAME g" "$WORKFLOW"
         nextflow run "$WORKFLOW" -with-weblog http://127.0.0.1:8000/nextflow/
+
+        # create a result JSON according to the specs          
+        echo "Get Benchmark JSON …"
+        VENV=$ROOT'/venv/bin/python'
+        CMD="$ROOT/quiver/benchmark_extraction.py $WS_DIR $WORKFLOW"
+        $VENV $CMD
+        echo "Done."
+        for DATA in "$ROOT"/workflows/results/*
+        do
+            rm -rf "$DATA"
+        done
     done   
-    # create a result JSON according to the specs
-    touch "$WORKFLOW"_benchmarks.json
-        
-    echo "Get Benchmark JSON …"
-    VENV=$ROOT'/venv/bin/python'
-    CMD="$ROOT/quiver/benchmark_extraction.py $WS_DIR"
-    $VENV $CMD
-    echo "Done."
 done
 
 cd "$ROOT" || exit

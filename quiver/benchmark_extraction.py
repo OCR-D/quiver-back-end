@@ -3,7 +3,7 @@ benchmarking. It extracts the relevant information from the NextFlow processes. 
 
 import json
 import sys
-from os import scandir
+from os import scandir, listdir
 from re import search
 import xml.etree.ElementTree as ET
 
@@ -50,10 +50,54 @@ def extract_benchmarks(workspace_path, mets_path):
 
     result = {"evaluation_results":
     [
+        make_document_wide_eval_results(json_dirs, workspace_path),
         {"by_page": make_eval_results_by_page(json_dirs, mets_path)}
     ]}
 
     return result
+
+def make_document_wide_eval_results(json_dirs, workspace_path):
+    return {'document_wide':
+        {
+            'wall_time': get_nf_completed_stats(workspace_path),
+            'cer': get_mean_cer(workspace_path, 'SEG-LINE'),
+            'cer_min_max': get_cer_min_max(workspace_path, 'SEG-LINE')
+        }
+    }
+
+def get_nf_completed_stats(workspace_path):
+    result_path = workspace_path + '/../../results/'
+
+    for f in listdir(workspace_path + '/../../results'):
+        if "process" not in f and "completed" in f:
+            completed_file = f
+
+    with open(result_path + completed_file, 'r', encoding='utf-8') as f:
+        file = json.load(f)
+        duration = file['metadata']['workflow']['duration']
+    return duration
+
+
+def get_mean_cer(workspace_path, gt_type):
+    cers = get_cers_for_gt_type(workspace_path, gt_type)
+    return sum(cers) / len(cers)
+
+def get_cers_for_gt_type(workspace_path, gt_type):
+    eval_jsons = []
+    eval_dir_path = workspace_path + '/OCR-D-EVAL-' + gt_type + '/'
+    for f in listdir(eval_dir_path):
+        if "json" in f:
+            eval_jsons.append(f)
+    cers = []
+    for eval_json in eval_jsons:
+        with open(eval_dir_path + eval_json, 'r', encoding='utf-8') as f:
+            json_file = json.load(f)
+            cers.append(json_file['cer'])
+    return cers
+
+def get_cer_min_max(workspace_path, gt_type):
+    cers = get_cers_for_gt_type(workspace_path, gt_type)
+    return [min(cers), max(cers)]
 
 def make_eval_results_by_page(json_dirs, mets_path):
     result = []
@@ -111,6 +155,7 @@ def get_metrics_for_page(json_file_path, mets_path):
 
 if __name__ == '__main__':
     workspace_path = sys.argv[1]
+    workflow = sys.argv[2].split('/')[-1].split('.')[0]
     mets_path = workspace_path + 'mets.xml'
 
     dictionary = extract_benchmarks(workspace_path, mets_path)
@@ -119,5 +164,5 @@ if __name__ == '__main__':
     json_object = json.dumps(dictionary, indent=4)
     
     # Writing to sample.json
-    with open(workspace_path + '/eval_result.json', 'w', encoding='utf-8') as outfile:
+    with open(workspace_path + '/eval_result_' + workflow + '.json', 'w', encoding='utf-8') as outfile:
         outfile.write(json_object)

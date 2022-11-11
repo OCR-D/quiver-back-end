@@ -3,6 +3,8 @@ from quiver.benchmark_extraction import get_page_id
 from quiver.benchmark_extraction import get_eval_dirs
 from quiver.benchmark_extraction import get_eval_jsons
 from quiver.benchmark_extraction import get_metrics_for_page
+from quiver.benchmark_extraction import get_mean_cer
+from quiver.benchmark_extraction import get_cer_min_max
 
 def test_get_eval_dirs():
     workspace_dir = 'tests/assets/benchmarking/16_ant_complex'
@@ -53,3 +55,15 @@ def test_get_metrics_for_page():
     result = get_metrics_for_page(json_file, mets_path)
 
     assert result == expected
+
+def test_get_mean_cer():
+    workspace_path = 'tests/assets/benchmarking/16_ant_complex'
+    result = get_mean_cer(workspace_path, 'SEG-LINE')
+
+    assert result == 0.10240852523716282
+
+def test_cer_get_min_max():
+    workspace_path = 'tests/assets/benchmarking/16_ant_complex'
+    result = get_cer_min_max(workspace_path, 'SEG-LINE')
+
+    assert result == [0.07124352331606218, 0.1306122448979592]
