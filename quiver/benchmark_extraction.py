@@ -13,10 +13,6 @@ import xml.etree.ElementTree as ET
  #   "label": "Workflow 2 on Data 345",
  #   "metadata": {
  #     "data_creation_workflow": "https://example.org/workflow/2",
- #     "workflow_steps": {
- #       "0": "Processor A",
- #       "1": "Processor B"
- #     },
  #     "eval_workflow_url": "https://example.org/workflow/eval1",
  #     "eval_data": "https://example.org/workspace/345",
  #     "gt_data": "https://gt.ocr-d.de/workspace/789",
@@ -30,27 +26,31 @@ import xml.etree.ElementTree as ET
  # }
 
 def make_result_json(workspace_path, mets_path):
-    metadata = ""
+    metadata = make_metadata(workspace_path, mets_path)
     benchmarks = extract_benchmarks(workspace_path, mets_path)
     return [metadata, benchmarks]
 
 def make_metadata(workspace_path, mets_path):
     data_creation_workflow = ""
-    workflow_steps = ""
+    workflow_steps = get_workflow_steps(mets_path)
     workflow_model = get_workflow_model(mets_path)
     eval_workflow_url = ""
     eval_data = ""
     eval_tool = get_eval_tool(mets_path)
-    gt_data = ""
+    gt_data = get_gt_data_url(workspace_path)
     data_properties = ""
-    return (data_creation_workflow,
-        workflow_steps,
-        workflow_model,
-        eval_workflow_url,
-        eval_data,
-        eval_tool,
-        gt_data,
-        data_properties)
+    return {
+        "metadata": {
+            "data_creation_workflow": data_creation_workflow,
+            "workflow_steps": workflow_steps,
+            "workflow_model": workflow_model,
+            "eval_workflow_url": eval_workflow_url,
+            "eval_data": eval_data,
+            "eval_tool": eval_tool,
+            "gt_data": gt_data,
+            "data_properties": data_properties
+            }
+        }
 
 def get_workflow_steps(mets_path):
     with open(mets_path, 'r', encoding='utf-8') as f:
@@ -80,6 +80,11 @@ def get_eval_tool(mets_path):
         e = tree.findall('.//{0}agent[@OTHERROLE="recognition/text-recognition"]/{0}name'.format(namespace))[0].text
 
     return e
+
+def get_gt_data_url(workspace_path):
+    current_workspace = workspace_path.split('/')[-2]
+    url = 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
+    return url
 
 def extract_benchmarks(workspace_path, mets_path):
     json_dirs = get_eval_jsons(workspace_path)

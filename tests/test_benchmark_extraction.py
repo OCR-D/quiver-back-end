@@ -86,3 +86,8 @@ def test_get_workflow_steps():
         'ocrd-dinglehopper',
         'ocrd-dinglehopper',
         'ocrd-dinglehopper']
+
+def test_get_gt_data_url():
+    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
+    result = quiver.benchmark_extraction.get_gt_data_url(workspace_path)    
+    assert result == "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip"
