@@ -19,7 +19,7 @@
     "evaluation_results": [
         {
             "document_wide": {
-                "wall_time": 17163,
+                "wall_time": 15542,
                 "cer": 0.08427970798416445,
                 "cer_min_max": [
                     0.05025996533795494,
