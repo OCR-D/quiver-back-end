@@ -1,0 +1,107 @@
+{
+    "eval_workflow_id": "wf-data16_frak_simple-eval",
+    "label": "Workflow on data 16_frak_simple",
+    "metadata": {
+        "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+        "workflow_steps": [
+            "ocrd-tesserocr-recognize",
+            "ocrd-dinglehopper",
+            "ocrd-dinglehopper",
+            "ocrd-dinglehopper"
+        ],
+        "workflow_model": "Fraktur_GT4HistOCR",
+        "eval_workflow_url": "",
+        "eval_data": "",
+        "eval_tool": "ocrd-dinglehopper vNone",
+        "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple.ocrd.zip",
+        "data_properties": ""
+    },
+    "evaluation_results": [
+        {
+            "document_wide": {
+                "wall_time": 34171,
+                "cer": 0.13618698942582164,
+                "cer_min_max": [
+                    0.014285714285714285,
+                    0.41906474820143885
+                ]
+            }
+        },
+        {
+            "by_page": [
+                {
+                    "page_id": "phys_0001",
+                    "cer": 0.0748502994011976
+                },
+                {
+                    "page_id": "phys_0002",
+                    "cer": 0.014285714285714285
+                },
+                {
+                    "page_id": "phys_0003",
+                    "cer": 0.41906474820143885
+                },
+                {
+                    "page_id": "phys_0007",
+                    "cer": 0.09547325102880659
+                },
+                {
+                    "page_id": "phys_0021",
+                    "cer": 0.13479623824451412
+                },
+                {
+                    "page_id": "phys_0029",
+                    "cer": 0.07865168539325842
+                },
+                {
+                    "page_id": "phys_0001",
+                    "cer": 0.0748502994011976
+                },
+                {
+                    "page_id": "phys_0002",
+                    "cer": 0.014285714285714285
+                },
+                {
+                    "page_id": "phys_0003",
+                    "cer": 0.41906474820143885
+                },
+                {
+                    "page_id": "phys_0007",
+                    "cer": 0.09547325102880659
+                },
+                {
+                    "page_id": "phys_0021",
+                    "cer": 0.13479623824451412
+                },
+                {
+                    "page_id": "phys_0029",
+                    "cer": 0.07865168539325842
+                },
+                {
+                    "page_id": "phys_0001",
+                    "cer": 0.0748502994011976
+                },
+                {
+                    "page_id": "phys_0002",
+                    "cer": 0.014285714285714285
+                },
+                {
+                    "page_id": "phys_0003",
+                    "cer": 0.41906474820143885
+                },
+                {
+                    "page_id": "phys_0007",
+                    "cer": 0.09547325102880659
+                },
+                {
+                    "page_id": "phys_0021",
+                    "cer": 0.13479623824451412
+                },
+                {
+                    "page_id": "phys_0029",
+                    "cer": 0.07865168539325842
+                }
+            ]
+        }
+    ]
+}
