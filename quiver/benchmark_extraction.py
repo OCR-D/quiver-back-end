@@ -17,7 +17,6 @@ import xml.etree.ElementTree as ET
  #       "0": "Processor A",
  #       "1": "Processor B"
  #     },
- #     "workflow_model": "Fraktur_GT4HistOCR",
  #     "eval_workflow_url": "https://example.org/workflow/eval1",
  #     "eval_data": "https://example.org/workspace/345",
  #     "gt_data": "https://gt.ocr-d.de/workspace/789",
@@ -52,6 +51,17 @@ def make_metadata(workspace_path, mets_path):
         eval_tool,
         gt_data,
         data_properties)
+
+def get_workflow_steps(mets_path):
+    with open(mets_path, 'r', encoding='utf-8') as f:
+        tree = ET.parse(f)
+        namespace = "{http://www.loc.gov/METS/}"
+        name_elements = tree.findall('.//{0}agent[@ROLE="OTHER"]/{0}name'.format(namespace))
+        formatted_names = []
+        for e in name_elements:
+            formatted_names.append(e.text.split(" ")[0])
+
+    return formatted_names
 
 def get_workflow_model(mets_path):
     with open(mets_path, 'r', encoding='utf-8') as f:

@@ -78,3 +78,11 @@ def test_get_workflow_model():
     mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
     result = quiver.benchmark_extraction.get_workflow_model(mets_path)
     assert result == "Fraktur_GT4HistOCR"
+
+def test_get_workflow_steps():
+    mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
+    result = quiver.benchmark_extraction.get_workflow_steps(mets_path)    
+    assert result == ['ocrd-tesserocr-recognize',
+        'ocrd-dinglehopper',
+        'ocrd-dinglehopper',
+        'ocrd-dinglehopper']
