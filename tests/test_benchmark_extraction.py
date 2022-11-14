@@ -1,4 +1,3 @@
-import json
 from quiver.benchmark_extraction import get_page_id
 from quiver.benchmark_extraction import get_eval_dirs
 from quiver.benchmark_extraction import get_eval_jsons
