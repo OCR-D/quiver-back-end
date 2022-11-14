@@ -10,8 +10,6 @@ import xml.etree.ElementTree as ET
 METS = '{http://www.loc.gov/METS/}'
 
 #{
- #   "eval_workflow_id": "wf2-data345-eval1",
- #   "label": "Workflow 2 on Data 345",
  #   "metadata": {
  #     "data_creation_workflow": "https://example.org/workflow/2",
  #     "eval_workflow_url": "https://example.org/workflow/eval1",
@@ -39,7 +37,7 @@ def make_result_json(workspace_path, mets_path):
     }
 
 def make_metadata(workspace_path, mets_path):
-    data_creation_workflow = ''
+    data_creation_workflow = get_data_creation_workflow(workspace_path)
     workflow_steps = get_workflow_steps(mets_path)
     workflow_model = get_workflow_model(mets_path)
     eval_workflow_url = ''
@@ -57,6 +55,12 @@ def make_metadata(workspace_path, mets_path):
             'gt_data': gt_data,
             'data_properties': data_properties
         }
+
+def get_data_creation_workflow(workspace_path):
+    for file_name in listdir(workspace_path):
+        if '.txt.nf' in file_name:
+            workflow = file_name.split('.')[0]
+    return 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/' + workflow + '.txt'
 
 def get_element_from_mets(mets_path, xpath):
     with open(mets_path, 'r', encoding='utf-8') as f:
@@ -85,8 +89,7 @@ def get_eval_tool(mets_path):
 
 def get_gt_data_url(workspace_path):
     current_workspace = workspace_path.split('/')[-2]
-    url = 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
-    return url
+    return 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
 
 def extract_benchmarks(workspace_path, mets_path):
     json_dirs = get_eval_jsons(workspace_path)

@@ -9,6 +9,7 @@ from quiver.benchmark_extraction import get_eval_tool
 from quiver.benchmark_extraction import get_workflow_model
 from quiver.benchmark_extraction import get_workflow_steps
 from quiver.benchmark_extraction import get_gt_data_url
+from quiver.benchmark_extraction import get_data_creation_workflow
 
 def test_get_eval_dirs():
     workspace_dir = 'tests/assets/benchmarking/16_ant_complex'
@@ -96,3 +97,8 @@ def test_get_gt_data_url():
     workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
     result = get_gt_data_url(workspace_path)    
     assert result == "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip"
+
+def test_get_data_creation_workflow():
+    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
+    result = get_data_creation_workflow(workspace_path)    
+    assert result == "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt"
