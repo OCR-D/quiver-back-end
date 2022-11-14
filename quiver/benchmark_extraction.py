@@ -165,7 +165,7 @@ def get_page_id(json_file_path, mets_path):
     with open(mets_path, 'r', encoding='utf-8') as f:
         tree = ET.parse(f)
         namespace = "{http://www.loc.gov/METS/}"
-        e = tree.findall('//{0}fptr[@FILEID="{1}"]/..'.format(namespace, gt_file_name))
+        e = tree.findall('.//{0}fptr[@FILEID="{1}"]/..'.format(namespace, gt_file_name))
 
     return e[0].attrib['ID']
 
