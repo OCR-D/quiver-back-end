@@ -98,9 +98,9 @@ def make_document_wide_eval_results(workspace_path):
     }
 
 def get_nf_completed_stats(workspace_path):
-    result_path = workspace_path + '/../../results/'
+    result_path = workspace_path + '/../../nf-results/'
 
-    for file_name in listdir(workspace_path + '/../../results'):
+    for file_name in listdir(workspace_path + '/../../nf-results'):
         if 'process' not in file_name and 'completed' in file_name:
             completed_file = file_name
 
@@ -180,11 +180,12 @@ def get_metrics_for_page(json_file_path, mets_path):
 if __name__ == '__main__':
     WORKSPACE_PATH = sys.argv[1]
     workflow_name = sys.argv[2].rsplit('/', maxsplit=1)[-1].split('.')[0]
+    workspace_name = WORKSPACE_PATH.split('/')[-2]
     METS_PATH = WORKSPACE_PATH + 'mets.xml'
 
     dictionary = make_result_json(WORKSPACE_PATH, METS_PATH)
 
     json_object = json.dumps(dictionary, indent=4)
-    output = WORKSPACE_PATH + '/eval_result_' + workflow_name + '.json'
+    output = WORKSPACE_PATH + '/' + workspace_name + '_eval_result_' + workflow_name + '.json'
     with open(output, 'w', encoding='utf-8') as outfile:
         outfile.write(json_object)

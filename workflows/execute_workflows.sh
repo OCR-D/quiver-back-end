@@ -12,6 +12,8 @@ do
     rm -rf "$DATA"
 done
 
+mkdir "$WORKSPACE_DIR/../nf-results"
+
 
 # update the data from quiver-data repository if necessary
 echo "Update quiver-data if necessary …"
@@ -58,9 +60,6 @@ do
     oton convert -I $FILE -O $FILE.nf --dockerized
 done
 
-
-#cd "$ROOT" || exit
-
 # download the necessary models if not available
 
 echo "Download the necessary models if not available"
@@ -87,14 +86,19 @@ do
         cp "$WORKFLOW" "$WS_DIR"
     done
 
+    DIR_NAME=$(echo $WS_DIR | rev | cut -d'/' -f 2 | rev)
+
     # … adjust workflow files to corpus and run workflows.
     for WORKFLOW in "$WS_DIR"/*.nf
     do
         sed -i "s INPUT_DIR . g" "$WORKFLOW"
         sed -i "s OUTPUT_DIR result g" "$WORKFLOW"
-        DIR_NAME=$(echo $WS_DIR | rev | cut -d'/' -f 2 | rev)
         sed -i "s CURRENT $DIR_NAME g" "$WORKFLOW"
         nextflow run "$WORKFLOW" -with-weblog http://127.0.0.1:8000/nextflow/
+
+        # package workspace
+        echo "Zipping workspace $WS_DIR"
+        ocrd zip bag -d $WS_DIR -i $WS_DIR $WS_DIR
 
         # create a result JSON according to the specs          
         echo "Get Benchmark JSON …"
@@ -102,11 +106,15 @@ do
         CMD="$ROOT/quiver/benchmark_extraction.py $WS_DIR $WORKFLOW"
         $VENV $CMD
         echo "Done."
-        for DATA in "$ROOT"/workflows/results/*
+        for DATA in "$ROOT"/workflows/nf-results/*
         do
             rm -rf "$DATA"
         done
-    done   
+    done
+
+    # move data to results dir
+    mv $WS_DIR/*.json "$WORKSPACE_DIR"/../results
+    mv "$WORKSPACE_DIR"/*.zip "$WORKSPACE_DIR"/../results
 done
 
 cd "$ROOT" || exit
@@ -115,5 +123,4 @@ cd "$ROOT" || exit
 JOB_NO=$(jobs -l | grep -E -o "[0-9]{4,}")
 kill $JOB_NO
 
-# create a result JSON according to the specs
-# push this JSON to the quiver-back-end repo
+# push results to the quiver-back-end repo
