@@ -7,4 +7,4 @@ models/
 workflows/workspaces
 .nextflow*
 work/
-workflows/results/*
+workflows/nf-results/*
