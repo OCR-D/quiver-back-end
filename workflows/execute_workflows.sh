@@ -1,18 +1,12 @@
 #!/bin/bash
 
 ROOT=$PWD
-WORKFLOW_DIR="$ROOT"/workflows/ocrd_workflows
-WORKSPACE_DIR="$ROOT"/workflows/workspaces
+WORKFLOW_DIR="$ROOT"/workflows
+OCRD_WORKFLOW_DIR="$WORKFLOW_DIR"/ocrd_workflows
+WORKSPACE_DIR="$WORKFLOW_DIR"/workspaces
 
-
-# the following code block is for local development only.
-
-for DATA in "$WORKSPACE_DIR"/*
-do
-    rm -rf "$DATA"
-done
-
-mkdir "$WORKSPACE_DIR/../nf-results"
+mkdir $WORKSPACE_DIR
+mkdir -p "$WORKFLOW_DIR/nf-results"
 
 
 # update the data from quiver-data repository if necessary
@@ -49,7 +43,7 @@ CMD="-m pip install $ROOT/submodules/oton"
 $VENV $CMD
 echo "OtoN installation done."
 
-cd "$WORKFLOW_DIR" || exit
+cd "$OCRD_WORKFLOW_DIR" || exit
 
 echo "Convert OCR-D workflows to NextFlow …"
 
@@ -81,7 +75,7 @@ for WS_DIR in "$WORKSPACE_DIR"/*/
 do
     echo "Switching to $WS_DIR."
     # … copy all workflows in the right place …
-    for WORKFLOW in "$WORKFLOW_DIR"/*.nf
+    for WORKFLOW in "$OCRD_WORKFLOW_DIR"/*.nf
     do
         cp "$WORKFLOW" "$WS_DIR"
     done
@@ -123,4 +117,16 @@ cd "$ROOT" || exit
 JOB_NO=$(jobs -l | grep -E -o "[0-9]{4,}")
 kill $JOB_NO
 
+# clean up
+for DATA in "$WORKSPACE_DIR"/*
+do
+    rm -rf "$DATA"
+done
+
+rm -rf "$WORKSPACE_DIR"
+rm -rf "$ROOT"/work
+rm -rf "$WORKFLOW_DIR"/nf-results
+
 # push results to the quiver-back-end repo
+git add workflows/results/*
+git commit -m "update evaluation results"
