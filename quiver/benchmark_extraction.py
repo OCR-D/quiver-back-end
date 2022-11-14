@@ -28,22 +28,39 @@ import xml.etree.ElementTree as ET
  #       "number_of_pages": "100",
  #       "layout": "simple"
  #     }
- #   },
- #   "evaluation_results": {
- #     "document_wide": {
- #       "wall_time": 1234,
- #       "cer": 0.88,
- #       "cer_min_max": [0.2, 0.57]
- #     },
- #     "by_page": [
- #       {
- #         "page_id": "PHYS_0001",
- #         "cer": 0.9,
- #         "processing_time": 2.0
- #       }
- #     ]
  #   }
  # }
+
+def make_result_json(workspace_path, mets_path):
+    metadata = ""
+    benchmarks = extract_benchmarks(workspace_path, mets_path)
+    return [metadata, benchmarks]
+
+def make_metadata(workspace_path, mets_path):
+    data_creation_workflow = ""
+    workflow_steps = ""
+    workflow_model = ""
+    eval_workflow_url = ""
+    eval_data = ""
+    eval_tool = get_eval_tool(mets_path)
+    gt_data = ""
+    data_properties = ""
+    return (data_creation_workflow,
+        workflow_steps,
+        workflow_model,
+        eval_workflow_url,
+        eval_data,
+        eval_tool,
+        gt_data,
+        data_properties)
+
+def get_eval_tool(mets_path):
+    with open(mets_path, 'r', encoding='utf-8') as f:
+        tree = ET.parse(f)
+        namespace = "{http://www.loc.gov/METS/}"
+        e = tree.findall('.//{0}agent[@OTHERROLE="recognition/text-recognition"]/{0}name'.format(namespace))[0].text
+
+    return e
 
 def extract_benchmarks(workspace_path, mets_path):
     json_dirs = get_eval_jsons(workspace_path)
@@ -158,7 +175,7 @@ if __name__ == '__main__':
     workflow_name = sys.argv[2].rsplit('/', maxsplit=1)[-1].split('.')[0]
     METS_PATH = WORKSPACE_PATH + 'mets.xml'
 
-    dictionary = extract_benchmarks(WORKSPACE_PATH, METS_PATH)
+    dictionary = make_result_json(WORKSPACE_PATH, METS_PATH)
 
     json_object = json.dumps(dictionary, indent=4)
     output = WORKSPACE_PATH + '/eval_result_' + workflow_name + '.json'

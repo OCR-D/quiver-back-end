@@ -5,6 +5,7 @@ from quiver.benchmark_extraction import get_eval_jsons
 from quiver.benchmark_extraction import get_metrics_for_page
 from quiver.benchmark_extraction import get_mean_cer
 from quiver.benchmark_extraction import get_cer_min_max
+import quiver.benchmark_extraction
 
 def test_get_eval_dirs():
     workspace_dir = 'tests/assets/benchmarking/16_ant_complex'
@@ -67,3 +68,9 @@ def test_cer_get_min_max():
     result = get_cer_min_max(workspace_path, 'SEG-LINE')
 
     assert result == [0.07124352331606218, 0.1306122448979592]
+
+def test_get_eval_tool():
+    mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
+    result = quiver.benchmark_extraction.get_eval_tool(mets_path)
+    assert result == "ocrd-dinglehopper vNone"
+
