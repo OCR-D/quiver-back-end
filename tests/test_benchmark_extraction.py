@@ -5,7 +5,10 @@ from quiver.benchmark_extraction import get_eval_jsons
 from quiver.benchmark_extraction import get_metrics_for_page
 from quiver.benchmark_extraction import get_mean_cer
 from quiver.benchmark_extraction import get_cer_min_max
-import quiver.benchmark_extraction
+from quiver.benchmark_extraction import get_eval_tool
+from quiver.benchmark_extraction import get_workflow_model
+from quiver.benchmark_extraction import get_workflow_steps
+from quiver.benchmark_extraction import get_gt_data_url
 
 def test_get_eval_dirs():
     workspace_dir = 'tests/assets/benchmarking/16_ant_complex'
@@ -37,8 +40,9 @@ def test_get_eval_jsons():
     assert result ==expected
 
 def test_get_page_id():
-    json_file_path = 'tests/assets/benchmarking/16_ant_complex/OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
-    mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
+    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
+    json_file_path = workspace_path + 'OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
+    mets_path = workspace_path + 'mets.xml'
     result = get_page_id(json_file_path, mets_path)
     expected = 'phys_0007'
 
@@ -51,8 +55,9 @@ def test_get_metrics_for_page():
             "processing_time": 2.0
         }
 
-    json_file = "tests/assets/benchmarking/16_ant_complex/OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json"
-    mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
+    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
+    json_file = workspace_path + 'OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
+    mets_path = workspace_path + 'mets.xml'
     result = get_metrics_for_page(json_file, mets_path)
 
     assert result == expected
@@ -71,17 +76,17 @@ def test_cer_get_min_max():
 
 def test_get_eval_tool():
     mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
-    result = quiver.benchmark_extraction.get_eval_tool(mets_path)
+    result = get_eval_tool(mets_path)
     assert result == "ocrd-dinglehopper vNone"
 
 def test_get_workflow_model():
     mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
-    result = quiver.benchmark_extraction.get_workflow_model(mets_path)
+    result = get_workflow_model(mets_path)
     assert result == "Fraktur_GT4HistOCR"
 
 def test_get_workflow_steps():
     mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
-    result = quiver.benchmark_extraction.get_workflow_steps(mets_path)    
+    result = get_workflow_steps(mets_path)    
     assert result == ['ocrd-tesserocr-recognize',
         'ocrd-dinglehopper',
         'ocrd-dinglehopper',
@@ -89,5 +94,5 @@ def test_get_workflow_steps():
 
 def test_get_gt_data_url():
     workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    result = quiver.benchmark_extraction.get_gt_data_url(workspace_path)    
+    result = get_gt_data_url(workspace_path)    
     assert result == "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip"
