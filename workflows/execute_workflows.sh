@@ -8,6 +8,8 @@ WORKSPACE_DIR="$WORKFLOW_DIR"/workspaces
 mkdir $WORKSPACE_DIR
 mkdir -p "$WORKFLOW_DIR/nf-results"
 
+echo "Initialize submodules …"
+git submodule update --init --recursive
 
 # update the data from quiver-data repository if necessary
 echo "Update quiver-data if necessary …"
