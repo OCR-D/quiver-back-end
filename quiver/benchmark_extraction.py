@@ -154,15 +154,15 @@ def get_metrics_for_page(json_file_path, mets_path):
     return metrics
 
 if __name__ == '__main__':
-    workspace_path = sys.argv[1]
-    workflow = sys.argv[2].split('/')[-1].split('.')[0]
-    mets_path = workspace_path + 'mets.xml'
+    WORKSPACE_PATH = sys.argv[1]
+    workflow = sys.argv[2].rsplit('/', maxsplit=1)[-1].split('.')[0]
+    METS_PATH = WORKSPACE_PATH + 'mets.xml'
 
-    dictionary = extract_benchmarks(workspace_path, mets_path)
+    dictionary = extract_benchmarks(WORKSPACE_PATH, METS_PATH)
 
-    
+
     json_object = json.dumps(dictionary, indent=4)
-    
+    output = WORKSPACE_PATH + '/eval_result_' + workflow + '.json'
     # Writing to sample.json
-    with open(workspace_path + '/eval_result_' + workflow + '.json', 'w', encoding='utf-8') as outfile:
+    with open(output, 'w', encoding='utf-8') as outfile:
         outfile.write(json_object)
