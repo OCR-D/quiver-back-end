@@ -50,13 +50,13 @@ def extract_benchmarks(workspace_path, mets_path):
 
     result = {"evaluation_results":
     [
-        make_document_wide_eval_results(json_dirs, workspace_path),
+        make_document_wide_eval_results(workspace_path),
         {"by_page": make_eval_results_by_page(json_dirs, mets_path)}
     ]}
 
     return result
 
-def make_document_wide_eval_results(json_dirs, workspace_path):
+def make_document_wide_eval_results(workspace_path):
     return {'document_wide':
         {
             'wall_time': get_nf_completed_stats(workspace_path),
@@ -68,9 +68,9 @@ def make_document_wide_eval_results(json_dirs, workspace_path):
 def get_nf_completed_stats(workspace_path):
     result_path = workspace_path + '/../../results/'
 
-    for f in listdir(workspace_path + '/../../results'):
-        if "process" not in f and "completed" in f:
-            completed_file = f
+    for file_name in listdir(workspace_path + '/../../results'):
+        if "process" not in file_name and "completed" in file_name:
+            completed_file = file_name
 
     with open(result_path + completed_file, 'r', encoding='utf-8') as f:
         file = json.load(f)
@@ -85,9 +85,9 @@ def get_mean_cer(workspace_path, gt_type):
 def get_cers_for_gt_type(workspace_path, gt_type):
     eval_jsons = []
     eval_dir_path = workspace_path + '/OCR-D-EVAL-' + gt_type + '/'
-    for f in listdir(eval_dir_path):
-        if "json" in f:
-            eval_jsons.append(f)
+    for file_name in listdir(eval_dir_path):
+        if "json" in file_name:
+            eval_jsons.append(file_name)
     cers = []
     for eval_json in eval_jsons:
         with open(eval_dir_path + eval_json, 'r', encoding='utf-8') as f:
@@ -155,14 +155,13 @@ def get_metrics_for_page(json_file_path, mets_path):
 
 if __name__ == '__main__':
     WORKSPACE_PATH = sys.argv[1]
-    workflow = sys.argv[2].rsplit('/', maxsplit=1)[-1].split('.')[0]
+    workflow_name = sys.argv[2].rsplit('/', maxsplit=1)[-1].split('.')[0]
     METS_PATH = WORKSPACE_PATH + 'mets.xml'
 
     dictionary = extract_benchmarks(WORKSPACE_PATH, METS_PATH)
 
-
     json_object = json.dumps(dictionary, indent=4)
-    output = WORKSPACE_PATH + '/eval_result_' + workflow + '.json'
+    output = WORKSPACE_PATH + '/eval_result_' + workflow_name + '.json'
     # Writing to sample.json
     with open(output, 'w', encoding='utf-8') as outfile:
         outfile.write(json_object)
