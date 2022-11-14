@@ -11,7 +11,6 @@ METS = '{http://www.loc.gov/METS/}'
 
 #{
  #   "metadata": {
- #     "data_creation_workflow": "https://example.org/workflow/2",
  #     "eval_workflow_url": "https://example.org/workflow/eval1",
  #     "eval_data": "https://example.org/workspace/345",
  #     "data_properties": {
@@ -25,35 +24,23 @@ METS = '{http://www.loc.gov/METS/}'
 
 def make_result_json(workspace_path, mets_path):
     data_name = workspace_path.split('/')[-2]
-    eval_workflow_id = 'wf-data'+ data_name + '-eval'
-    label = 'Workflow on data ' + data_name
-    metadata = make_metadata(workspace_path, mets_path)
-    benchmarks = extract_benchmarks(workspace_path, mets_path)
     return {
-        'eval_workflow_id': eval_workflow_id,
-        'label': label,
-        'metadata': metadata,
-        'evaluation_results': benchmarks
+        'eval_workflow_id': 'wf-data'+ data_name + '-eval',
+        'label': 'Workflow on data ' + data_name,
+        'metadata': make_metadata(workspace_path, mets_path),
+        'evaluation_results': extract_benchmarks(workspace_path, mets_path)
     }
 
 def make_metadata(workspace_path, mets_path):
-    data_creation_workflow = get_data_creation_workflow(workspace_path)
-    workflow_steps = get_workflow_steps(mets_path)
-    workflow_model = get_workflow_model(mets_path)
-    eval_workflow_url = ''
-    eval_data = ''
-    eval_tool = get_eval_tool(mets_path)
-    gt_data = get_gt_data_url(workspace_path)
-    data_properties = ''
     return {
-            'data_creation_workflow': data_creation_workflow,
-            'workflow_steps': workflow_steps,
-            'workflow_model': workflow_model,
-            'eval_workflow_url': eval_workflow_url,
-            'eval_data': eval_data,
-            'eval_tool': eval_tool,
-            'gt_data': gt_data,
-            'data_properties': data_properties
+            'data_creation_workflow': get_data_creation_workflow(workspace_path),
+            'workflow_steps': get_workflow_steps(mets_path),
+            'workflow_model': get_workflow_model(mets_path),
+            'eval_workflow_url': '',
+            'eval_data': '',
+            'eval_tool': get_eval_tool(mets_path),
+            'gt_data': get_gt_data_url(workspace_path),
+            'data_properties': ''
         }
 
 def get_data_creation_workflow(workspace_path):
@@ -182,17 +169,13 @@ def get_file_name_from_path(json_file_path):
 
 
 def get_metrics_for_page(json_file_path, mets_path):
-    page_id = get_page_id(json_file_path, mets_path)
     with open(json_file_path, 'r', encoding='utf-8') as file:
         eval_file = json.load(file)
 
-        cer = eval_file['cer']
-    metrics = {
-        'page_id': page_id,
-        'cer': cer
+    return {
+        'page_id': get_page_id(json_file_path, mets_path),
+        'cer': eval_file['cer']
     }
-
-    return metrics
 
 if __name__ == '__main__':
     WORKSPACE_PATH = sys.argv[1]
@@ -203,6 +186,5 @@ if __name__ == '__main__':
 
     json_object = json.dumps(dictionary, indent=4)
     output = WORKSPACE_PATH + '/eval_result_' + workflow_name + '.json'
-    # Writing to sample.json
     with open(output, 'w', encoding='utf-8') as outfile:
         outfile.write(json_object)
