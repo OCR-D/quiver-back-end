@@ -20,7 +20,6 @@ import xml.etree.ElementTree as ET
  #     "workflow_model": "Fraktur_GT4HistOCR",
  #     "eval_workflow_url": "https://example.org/workflow/eval1",
  #     "eval_data": "https://example.org/workspace/345",
- #     "eval_tool": "dinglehopper",
  #     "gt_data": "https://gt.ocr-d.de/workspace/789",
  #     "data_properties": {
  #       "fonts": ["antiqua", "fraktur"],
@@ -39,7 +38,7 @@ def make_result_json(workspace_path, mets_path):
 def make_metadata(workspace_path, mets_path):
     data_creation_workflow = ""
     workflow_steps = ""
-    workflow_model = ""
+    workflow_model = get_workflow_model(mets_path)
     eval_workflow_url = ""
     eval_data = ""
     eval_tool = get_eval_tool(mets_path)
@@ -53,6 +52,16 @@ def make_metadata(workspace_path, mets_path):
         eval_tool,
         gt_data,
         data_properties)
+
+def get_workflow_model(mets_path):
+    with open(mets_path, 'r', encoding='utf-8') as f:
+        tree = ET.parse(f)
+        mets_namespace = "{http://www.loc.gov/METS/}"
+        ocrd_namespace = "{https://ocr-d.de}"
+        xpath = './/{0}agent[@OTHERROLE="layout/segmentation/region"]/{0}note[@{1}option="parameter"]'.format(mets_namespace, ocrd_namespace)
+        parameters = tree.findall(xpath)[0].text
+        params_json = json.loads(parameters)
+    return params_json['model']
 
 def get_eval_tool(mets_path):
     with open(mets_path, 'r', encoding='utf-8') as f:
