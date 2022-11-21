@@ -1,297 +1,570 @@
 [
-  {
-    "@id": "https://github.com/OCR-D/quiver/tree/data/evaluations/wf1-data345-eval1.json",
-    "label": "OCR workflow 1 on workspace 345",
-    "metadata": {
-      "ocr_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/1.nf",
-        "label": "OCR Workflow 1"
-      },
-      "eval_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/eval1.nf",
-        "label": "Evaluation Workflow 1"
-      },
-      "gt_workspace": {
-        "@id": "https://gt.ocr-d.de/workspace/789",
-        "label": "GT workspace 789 (19th century fraktur)"
-      },
-      "ocr_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/3000.ocrd.zip",
-        "label": "OCR result workspace 3000"
-      },
-      "eval_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/345.ocrd.zip",
-        "label": "Evaluation Workspace 345"
-      },
-      "workflow_steps": {
-        "0": "Processor A",
-        "1": "Processor B"
-      },
-      "workflow_model": "Fraktur_GT4HistOCR",
-      "document_metadata": {
-        "fonts": [
-          "antiqua",
-          "fraktur"
-        ],
-        "publication_century": "1800-1900",
-        "publication_decade": "1850-1860",
-        "publication_year": 1855,
-        "number_of_pages": 100,
-        "layout": "simple"
-      }
-    },
-    "evaluation": {
-      "document_wide": {
-        "wall_time": 1234,
-        "cer": 0.57,
-        "cer_min_max": [
-          0.2,
-          0.57
+    {
+        "eval_workflow_id": "wf-data16_ant_simple-eval",
+        "label": "Workflow on data 16_ant_simple",
+        "metadata": {
+            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "workflow_steps": [
+                "ocrd-tesserocr-recognize",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper"
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_workflow_url": "",
+            "eval_data": "",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple.ocrd.zip",
+            "data_properties": ""
+        },
+        "evaluation_results": [
+            {
+                "document_wide": {
+                    "wall_time": 16749,
+                    "cer": 0.07452119312897007,
+                    "cer_min_max": [
+                        0.037037037037037035,
+                        0.12354651162790697
+                    ]
+                }
+            },
+            {
+                "by_page": [
+                    {
+                        "page_id": "phys_0007",
+                        "cer": 0.0629800307219662
+                    },
+                    {
+                        "page_id": "phys_0013",
+                        "cer": 0.12354651162790697
+                    },
+                    {
+                        "page_id": "phys_0014",
+                        "cer": 0.037037037037037035
+                    },
+                    {
+                        "page_id": "phys_0007",
+                        "cer": 0.0629800307219662
+                    },
+                    {
+                        "page_id": "phys_0013",
+                        "cer": 0.12354651162790697
+                    },
+                    {
+                        "page_id": "phys_0014",
+                        "cer": 0.037037037037037035
+                    },
+                    {
+                        "page_id": "phys_0007",
+                        "cer": 0.0629800307219662
+                    },
+                    {
+                        "page_id": "phys_0013",
+                        "cer": 0.12354651162790697
+                    },
+                    {
+                        "page_id": "phys_0014",
+                        "cer": 0.037037037037037035
+                    }
+                ]
+            }
         ]
-      },
-      "by_page": [
-        {
-          "page_id": "PHYS_0001",
-          "cer": 0.8,
-          "processing_time": 2.1
-        }
-      ]
-    }
-  },
-  {
-    "@id": "https://github.com/OCR-D/quiver/tree/data/evaluations/wf2-data345-eval1.json",
-    "label": "OCR Workflow 2 on Data 345",
-    "metadata": {
-      "ocr_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/2.nf",
-        "label": "OCR Workflow 2"
-      },
-      "eval_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/eval1.nf",
-        "label": "Evaluation Workflow 1"
-      },
-      "gt_workspace": {
-        "@id": "https://gt.ocr-d.de/workspace/789",
-        "label": "GT workspace 789 (19th century fraktur)"
-      },
-      "ocr_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/3000.ocrd.zip",
-        "label": "OCR result workspace 3000"
-      },
-      "eval_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/345.ocrd.zip",
-        "label": "Evaluation Workspace 345"
-      },
-      "workflow_steps": {
-        "0": "Processor A",
-        "1": "Processor B"
-      },
-      "workflow_model": "Fraktur_GT4HistOCR",
-      "document_metadata": {
-        "fonts": [
-          "antiqua",
-          "fraktur"
-        ],
-        "publication_century": "1800-1900",
-        "publication_decade": "1850-1860",
-        "publication_year": 1855,
-        "number_of_pages": 100,
-        "layout": "simple"
-      }
     },
-    "evaluation": {
-      "document_wide": {
-        "wall_time": 4567,
-        "cer": 0.9,
-        "cer_min_max": [
-          0.2,
-          0.99
+    {
+        "eval_workflow_id": "wf-data18_frak_simple-eval",
+        "label": "Workflow on data 18_frak_simple",
+        "metadata": {
+            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "workflow_steps": [
+                "ocrd-tesserocr-recognize",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper"
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_workflow_url": "",
+            "eval_data": "",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/18_frak_simple.ocrd.zip",
+            "data_properties": ""
+        },
+        "evaluation_results": [
+            {
+                "document_wide": {
+                    "wall_time": 9623,
+                    "cer": 0.02493765586034913,
+                    "cer_min_max": [
+                        0.02493765586034913,
+                        0.02493765586034913
+                    ]
+                }
+            },
+            {
+                "by_page": [
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.02493765586034913
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.02493765586034913
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.02493765586034913
+                    }
+                ]
+            }
         ]
-      },
-      "by_page": [
-        {
-          "page_id": "PHYS_0001",
-          "cer": 0.9,
-          "processing_time": 2.1
-        }
-      ]
-    }
-  },
-  {
-    "@id": "https://github.com/OCR-D/quiver/tree/data/evaluations/wf1-data345-eval1.json",
-    "label": "OCR workflow 1 on workspace 345",
-    "metadata": {
-      "ocr_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/1.nf",
-        "label": "OCR Workflow 1"
-      },
-      "eval_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/eval1.nf",
-        "label": "Evaluation Workflow 1"
-      },
-      "gt_workspace": {
-        "@id": "https://gt.ocr-d.de/workspace/789",
-        "label": "GT workspace 789 (19th century fraktur)"
-      },
-      "ocr_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/3000.ocrd.zip",
-        "label": "OCR result workspace 3000"
-      },
-      "eval_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/345.ocrd.zip",
-        "label": "Evaluation Workspace 345"
-      },
-      "workflow_steps": {
-        "0": "Processor A",
-        "1": "Processor B"
-      },
-      "workflow_model": "Fraktur_GT4HistOCR",
-      "document_metadata": {
-        "fonts": [
-          "antiqua",
-          "fraktur"
-        ],
-        "publication_century": "1800-1900",
-        "publication_decade": "1850-1860",
-        "publication_year": 1855,
-        "number_of_pages": 100,
-        "layout": "simple"
-      }
     },
-    "evaluation": {
-      "document_wide": {
-        "wall_time": 1234,
-        "cer": 0.57,
-        "cer_min_max": [
-          0.1,
-          0.7
+    {
+        "eval_workflow_id": "wf-data18_fontmix_complex-eval",
+        "label": "Workflow on data 18_fontmix_complex",
+        "metadata": {
+            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "workflow_steps": [
+                "ocrd-tesserocr-recognize",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper"
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_workflow_url": "",
+            "eval_data": "",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/18_fontmix_complex.ocrd.zip",
+            "data_properties": ""
+        },
+        "evaluation_results": [
+            {
+                "document_wide": {
+                    "wall_time": 28701,
+                    "cer": 0.2043347058754337,
+                    "cer_min_max": [
+                        0.04063745019920319,
+                        0.43666666666666665
+                    ]
+                }
+            },
+            {
+                "by_page": [
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.43666666666666665
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.04063745019920319
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.05536912751677853
+                    },
+                    {
+                        "page_id": "phys_0004",
+                        "cer": 0.28466557911908646
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.43666666666666665
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.04063745019920319
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.05536912751677853
+                    },
+                    {
+                        "page_id": "phys_0004",
+                        "cer": 0.28466557911908646
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.43666666666666665
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.04063745019920319
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.05536912751677853
+                    },
+                    {
+                        "page_id": "phys_0004",
+                        "cer": 0.28466557911908646
+                    }
+                ]
+            }
         ]
-      },
-      "by_page": [
-        {
-          "page_id": "PHYS_0001",
-          "cer": 0.3,
-          "processing_time": 1.1
-        }
-      ]
-    }
-  },
-  {
-    "@id": "https://github.com/OCR-D/quiver/tree/data/evaluations/wf2-data123-eval2.json",
-    "label": "OCR Workflow 2 on Data 123",
-    "metadata": {
-      "ocr_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/2.nf",
-        "label": "OCR Workflow 2"
-      },
-      "eval_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/eval2.nf",
-        "label": "Evaluation Workflow 2"
-      },
-      "gt_workspace": {
-        "@id": "https://gt.ocr-d.de/workspace/789",
-        "label": "GT workspace 123 (15th century fraktur)"
-      },
-      "ocr_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/3000.ocrd.zip",
-        "label": "OCR result workspace 3000"
-      },
-      "eval_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/345.ocrd.zip",
-        "label": "Evaluation Workspace 123"
-      },
-      "workflow_steps": {
-        "0": "Processor A",
-        "1": "Processor B"
-      },
-      "workflow_model": "Fraktur_GT4HistOCR",
-      "document_metadata": {
-        "fonts": [
-          "antiqua",
-          "fraktur"
-        ],
-        "publication_century": "1700-1800",
-        "publication_decade": "1750-1760",
-        "publication_year": 1755,
-        "number_of_pages": 100,
-        "layout": "simple"
-      }
     },
-    "evaluation": {
-      "document_wide": {
-        "wall_time": 2345,
-        "cer": 0.5,
-        "cer_min_max": [
-          0.1,
-          0.3
+    {
+        "eval_workflow_id": "wf-data17_frak_simple-eval",
+        "label": "Workflow on data 17_frak_simple",
+        "metadata": {
+            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "workflow_steps": [
+                "ocrd-tesserocr-recognize",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper"
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_workflow_url": "",
+            "eval_data": "",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple.ocrd.zip",
+            "data_properties": ""
+        },
+        "evaluation_results": [
+            {
+                "document_wide": {
+                    "wall_time": 16435,
+                    "cer": 0.08427970798416445,
+                    "cer_min_max": [
+                        0.05025996533795494,
+                        0.10926118626430802
+                    ]
+                }
+            },
+            {
+                "by_page": [
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.10926118626430802
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.09331797235023041
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.05025996533795494
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.10926118626430802
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.09331797235023041
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.05025996533795494
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.10926118626430802
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.09331797235023041
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.05025996533795494
+                    }
+                ]
+            }
         ]
-      },
-      "by_page": [
-        {
-          "page_id": "PHYS_0001",
-          "cer": 0.2,
-          "processing_time": 1.3
-        }
-      ]
-    }
-  },
-  {
-    "@id": "https://github.com/OCR-D/quiver/tree/data/evaluations/wf1-data234-eval1.json",
-    "label": "OCR workflow 1 on workspace 234",
-    "metadata": {
-      "ocr_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/1.nf",
-        "label": "OCR Workflow 1"
-      },
-      "eval_workflow": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/eval1.nf",
-        "label": "Evaluation Workflow 1"
-      },
-      "gt_workspace": {
-        "@id": "https://gt.ocr-d.de/workspace/234",
-        "label": "GT workspace 234 (16th century fraktur)"
-      },
-      "ocr_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/3000.ocrd.zip",
-        "label": "OCR result workspace 3000"
-      },
-      "eval_workspace": {
-        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/234.ocrd.zip",
-        "label": "Evaluation Workspace 234"
-      },
-      "workflow_steps": {
-        "0": "Processor A",
-        "1": "Processor B"
-      },
-      "workflow_model": "Fraktur_GT4HistOCR",
-      "document_metadata": {
-        "fonts": [
-          "antiqua",
-          "fraktur"
-        ],
-        "publication_century": "1500-1600",
-        "publication_decade": "1550-1560",
-        "publication_year": 1555,
-        "number_of_pages": 100,
-        "layout": "simple"
-      }
     },
-    "evaluation": {
-      "document_wide": {
-        "wall_time": 2345,
-        "cer": 0.7,
-        "cer_min_max": [
-          0.3,
-          0.9
+    {
+        "eval_workflow_id": "wf-data16_ant_complex-eval",
+        "label": "Workflow on data 16_ant_complex",
+        "metadata": {
+            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "workflow_steps": [
+                "ocrd-tesserocr-recognize",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper"
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_workflow_url": "",
+            "eval_data": "",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip",
+            "data_properties": ""
+        },
+        "evaluation_results": [
+            {
+                "document_wide": {
+                    "wall_time": 16501,
+                    "cer": 0.10240852523716282,
+                    "cer_min_max": [
+                        0.07124352331606218,
+                        0.1306122448979592
+                    ]
+                }
+            },
+            {
+                "by_page": [
+                    {
+                        "page_id": "phys_0007",
+                        "cer": 0.07124352331606218
+                    },
+                    {
+                        "page_id": "phys_0008",
+                        "cer": 0.10536980749746708
+                    },
+                    {
+                        "page_id": "phys_0009",
+                        "cer": 0.1306122448979592
+                    },
+                    {
+                        "page_id": "phys_0007",
+                        "cer": 0.07124352331606218
+                    },
+                    {
+                        "page_id": "phys_0008",
+                        "cer": 0.10536980749746708
+                    },
+                    {
+                        "page_id": "phys_0009",
+                        "cer": 0.1306122448979592
+                    },
+                    {
+                        "page_id": "phys_0007",
+                        "cer": 0.07124352331606218
+                    },
+                    {
+                        "page_id": "phys_0008",
+                        "cer": 0.10536980749746708
+                    },
+                    {
+                        "page_id": "phys_0009",
+                        "cer": 0.1306122448979592
+                    }
+                ]
+            }
         ]
-      },
-      "by_page": [
-        {
-          "page_id": "PHYS_0001",
-          "cer": 0.8,
-          "processing_time": 3.1
-        }
-      ]
+    },
+    {
+        "eval_workflow_id": "wf-data16_frak_simple-eval",
+        "label": "Workflow on data 16_frak_simple",
+        "metadata": {
+            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "workflow_steps": [
+                "ocrd-tesserocr-recognize",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper"
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_workflow_url": "",
+            "eval_data": "",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple.ocrd.zip",
+            "data_properties": ""
+        },
+        "evaluation_results": [
+            {
+                "document_wide": {
+                    "wall_time": 36268,
+                    "cer": 0.13618698942582164,
+                    "cer_min_max": [
+                        0.014285714285714285,
+                        0.41906474820143885
+                    ]
+                }
+            },
+            {
+                "by_page": [
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.0748502994011976
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.014285714285714285
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.41906474820143885
+                    },
+                    {
+                        "page_id": "phys_0007",
+                        "cer": 0.09547325102880659
+                    },
+                    {
+                        "page_id": "phys_0021",
+                        "cer": 0.13479623824451412
+                    },
+                    {
+                        "page_id": "phys_0029",
+                        "cer": 0.07865168539325842
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.0748502994011976
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.014285714285714285
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.41906474820143885
+                    },
+                    {
+                        "page_id": "phys_0007",
+                        "cer": 0.09547325102880659
+                    },
+                    {
+                        "page_id": "phys_0021",
+                        "cer": 0.13479623824451412
+                    },
+                    {
+                        "page_id": "phys_0029",
+                        "cer": 0.07865168539325842
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.0748502994011976
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.014285714285714285
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.41906474820143885
+                    },
+                    {
+                        "page_id": "phys_0007",
+                        "cer": 0.09547325102880659
+                    },
+                    {
+                        "page_id": "phys_0021",
+                        "cer": 0.13479623824451412
+                    },
+                    {
+                        "page_id": "phys_0029",
+                        "cer": 0.07865168539325842
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "eval_workflow_id": "wf-data19_ant_simple-eval",
+        "label": "Workflow on data 19_ant_simple",
+        "metadata": {
+            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "workflow_steps": [
+                "ocrd-tesserocr-recognize",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper"
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_workflow_url": "",
+            "eval_data": "",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple.ocrd.zip",
+            "data_properties": ""
+        },
+        "evaluation_results": [
+            {
+                "document_wide": {
+                    "wall_time": 20522,
+                    "cer": 0.08406355853675973,
+                    "cer_min_max": [
+                        0.04055496264674493,
+                        0.1242672919109027
+                    ]
+                }
+            },
+            {
+                "by_page": [
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.08736842105263158
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.04055496264674493
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.1242672919109027
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.08736842105263158
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.04055496264674493
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.1242672919109027
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.08736842105263158
+                    },
+                    {
+                        "page_id": "phys_0002",
+                        "cer": 0.04055496264674493
+                    },
+                    {
+                        "page_id": "phys_0003",
+                        "cer": 0.1242672919109027
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "eval_workflow_id": "wf-data19_frak_simple-eval",
+        "label": "Workflow on data 19_frak_simple",
+        "metadata": {
+            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "workflow_steps": [
+                "ocrd-tesserocr-recognize",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper",
+                "ocrd-dinglehopper"
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_workflow_url": "",
+            "eval_data": "",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/19_frak_simple.ocrd.zip",
+            "data_properties": ""
+        },
+        "evaluation_results": [
+            {
+                "document_wide": {
+                    "wall_time": 12768,
+                    "cer": 0.004721435316336166,
+                    "cer_min_max": [
+                        0.004721435316336166,
+                        0.004721435316336166
+                    ]
+                }
+            },
+            {
+                "by_page": [
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.004721435316336166
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.004721435316336166
+                    },
+                    {
+                        "page_id": "phys_0001",
+                        "cer": 0.004721435316336166
+                    }
+                ]
+            }
+        ]
     }
-  }
 ]

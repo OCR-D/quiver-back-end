@@ -62,7 +62,7 @@ echo "Download the necessary models if not available"
 if [[ ! -f $ROOT/models/ocrd-tesserocr-recognize/Fraktur_GT4HistOCR.traineddata ]]
 then
     mkdir -p "$ROOT"/models
-    docker run --volume "$PWD"/models:/usr/local/share/ocrd-resources -- ocrd/all:maximum ocrd resmgr download ocrd-tesserocr-recognize Fraktur_GT4HistOCR.traineddata
+    docker run --volume "$ROOT"/models:/usr/local/share/ocrd-resources -- ocrd/all:maximum ocrd resmgr download ocrd-tesserocr-recognize Fraktur_GT4HistOCR.traineddata
 fi
 
 # execute this workflow on the existing data (incl. evaluation)
@@ -83,6 +83,20 @@ do
     done
 
     DIR_NAME=$(echo $WS_DIR | rev | cut -d'/' -f 2 | rev)
+
+    # get all NextFlow files that do not belong to an eval workflow
+#    NF_FILES=("$WS_DIR"/*.nf)
+#    NF_FILES_WO_EVAL=()
+#    EVAL_NFS=()
+#
+#    for NF in "${NF_FILES[@]}"
+#    do
+#        if [[ $NF != *"dinglehopper_eval.txt.nf" ]]; then
+#            NF_FILES_WO_EVAL+=($NF)
+#        else
+#            EVAL_NFS+=($NF)
+#        fi
+#    done
 
     # … adjust workflow files to corpus and run workflows.
     for WORKFLOW in "$WS_DIR"/*.nf
@@ -128,6 +142,13 @@ done
 rm -rf "$WORKSPACE_DIR"
 rm -rf "$ROOT"/work
 rm -rf "$WORKFLOW_DIR"/nf-results
+
+# summarize JSONs
+echo "Summarize JSONs to one file …"
+VENV=$ROOT'/venv/bin/python'
+CMD="$ROOT/quiver/summarize_benchmarks.py"
+$VENV $CMD
+echo "Done."
 
 # push results to the quiver-back-end repo
 git add workflows/results/*
