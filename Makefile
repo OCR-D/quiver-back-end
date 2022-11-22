@@ -14,3 +14,6 @@ init:
 .PHONY: data/ocrd_all_releases.json
 releases: init
 	quiver-ocrd releases -o data/ocrd_all_releases.json
+
+benchmarks: init
+	quiver-ocrd benchmarks

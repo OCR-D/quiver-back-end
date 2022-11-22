@@ -8,6 +8,7 @@ from ocrd_utils import getLogger
 from ocrd_validators.json_validator import JsonValidator
 from pkg_resources import resource_filename
 from yaml import safe_load
+import subprocess
 
 from .filter import filter_release_projects
 from .release import get_releases
@@ -148,6 +149,11 @@ def generate_ocrd_all_releases(output=None):
         Path(output).write_text(json_str, encoding='utf-8')
     else:
         print(json_str)
+
+
+@cli.command("benchmarks", help="Generate/update JSON for the workflow benchmarks")
+def generate_benchmarks():
+    subprocess.run(["workflows/execute_workflows.sh"], check=True)
 
 
 cli.add_command(repo)
