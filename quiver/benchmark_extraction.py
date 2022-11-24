@@ -81,20 +81,20 @@ def get_gt_data_url(workspace_path):
 def extract_benchmarks(workspace_path, mets_path):
     json_dirs = get_eval_jsons(workspace_path)
 
-    result = [
-        make_document_wide_eval_results(workspace_path),
-        {'by_page': make_eval_results_by_page(json_dirs, mets_path)}
-    ]
+    result = {
+        'document_wide': make_document_wide_eval_results(workspace_path),
+        'by_page': make_eval_results_by_page(json_dirs, mets_path)
+    }
+        
+        
 
     return result
 
 def make_document_wide_eval_results(workspace_path):
-    return {'document_wide':
-        {
-            'wall_time': get_nf_completed_stats(workspace_path),
-            'cer': get_mean_cer(workspace_path, 'SEG-LINE'),
-            'cer_min_max': get_cer_min_max(workspace_path, 'SEG-LINE')
-        }
+    return {
+        'wall_time': get_nf_completed_stats(workspace_path),
+        'cer': get_mean_cer(workspace_path, 'SEG-LINE'),
+        'cer_min_max': get_cer_min_max(workspace_path, 'SEG-LINE')
     }
 
 def get_nf_completed_stats(workspace_path):
