@@ -31,23 +31,45 @@ def make_result_json(workspace_path, mets_path):
         'evaluation_results': extract_benchmarks(workspace_path, mets_path)
     }
 
+#    "eval_workflow": {
+#        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/eval1.nf",
+#        "label": "Evaluation Workflow 1"
+#      },
+#      "ocr_workspace": {
+#        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/3000.ocrd.zip",
+#        "label": "OCR result workspace 3000"
+#      }
+
 def make_metadata(workspace_path, mets_path):
     return {
-            'data_creation_workflow': get_data_creation_workflow(workspace_path),
+            'ocr_workflow': get_ocr_workflow(workspace_path),
+            #'eval_workflow': get_eval_workflow(workspace_path),
+            'gt_workspace': get_gt_workspace(workspace_path),
+            #'ocr_workspace': get_ocr_workspace(workspace_path),
+            'eval_workspace': get_eval_workspace(workspace_path),
             'workflow_steps': get_workflow_steps(mets_path),
             'workflow_model': get_workflow_model(mets_path),
-            'eval_workflow_url': '',
-            'eval_data': '',
-            'eval_tool': get_eval_tool(mets_path),
-            'gt_data': get_gt_data_url(workspace_path),
-            'data_properties': ''
+            'document_metadata': ''
         }
 
-def get_data_creation_workflow(workspace_path):
+def get_ocr_workflow(workspace_path):
     for file_name in listdir(workspace_path):
         if '.txt.nf' in file_name:
             workflow = file_name.split('.')[0]
-    return 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/' + workflow + '.txt'
+    url = 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/' + workflow + '.txt'
+    label = f'OCR Workflow {workflow}'
+    return {'@id': url,
+        'label': label
+    }
+
+def get_eval_workspace(workspace_path):
+    workspace = workspace_path.split('/')[-2]
+    url = 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/' + workspace + '.zip'
+    label = f'Evaluation workspace for {workspace}'
+    return {
+        '@id': url,
+        'label': label
+    }
 
 def get_element_from_mets(mets_path, xpath):
     with open(mets_path, 'r', encoding='utf-8') as f:
@@ -74,9 +96,14 @@ def get_eval_tool(mets_path):
     xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}name'
     return get_element_from_mets(mets_path, xpath)[0].text
 
-def get_gt_data_url(workspace_path):
+def get_gt_workspace(workspace_path):
     current_workspace = workspace_path.split('/')[-2]
-    return 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
+    url = 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
+    label = 'TODO'
+    return {
+        '@id': url,
+        'label': label
+    }
 
 def extract_benchmarks(workspace_path, mets_path):
     json_dirs = get_eval_jsons(workspace_path)

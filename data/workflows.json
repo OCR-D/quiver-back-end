@@ -3,7 +3,18 @@
         "eval_workflow_id": "wf-data16_ant_simple-eval",
         "label": "Workflow on data 16_ant_simple",
         "metadata": {
-            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+                "label": "OCR Workflow minimal"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple.ocrd.zip",
+                "label": "TODO"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple.zip",
+                "label": "Evaluation workspace for 16_ant_simple"
+            },
             "workflow_steps": [
                 "ocrd-tesserocr-recognize",
                 "ocrd-dinglehopper",
@@ -11,15 +22,11 @@
                 "ocrd-dinglehopper"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_workflow_url": "",
-            "eval_data": "",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple.ocrd.zip",
-            "data_properties": ""
+            "document_metadata": ""
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 17604,
+                "wall_time": 18567,
                 "cer": 0.07452119312897007,
                 "cer_min_max": [
                     0.037037037037037035,
@@ -70,7 +77,18 @@
         "eval_workflow_id": "wf-data18_frak_simple-eval",
         "label": "Workflow on data 18_frak_simple",
         "metadata": {
-            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+                "label": "OCR Workflow minimal"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_frak_simple.ocrd.zip",
+                "label": "TODO"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_frak_simple.zip",
+                "label": "Evaluation workspace for 18_frak_simple"
+            },
             "workflow_steps": [
                 "ocrd-tesserocr-recognize",
                 "ocrd-dinglehopper",
@@ -78,15 +96,11 @@
                 "ocrd-dinglehopper"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_workflow_url": "",
-            "eval_data": "",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/18_frak_simple.ocrd.zip",
-            "data_properties": ""
+            "document_metadata": ""
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10097,
+                "wall_time": 11912,
                 "cer": 0.02493765586034913,
                 "cer_min_max": [
                     0.02493765586034913,
@@ -113,7 +127,18 @@
         "eval_workflow_id": "wf-data18_fontmix_complex-eval",
         "label": "Workflow on data 18_fontmix_complex",
         "metadata": {
-            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+                "label": "OCR Workflow minimal"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_fontmix_complex.ocrd.zip",
+                "label": "TODO"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_fontmix_complex.zip",
+                "label": "Evaluation workspace for 18_fontmix_complex"
+            },
             "workflow_steps": [
                 "ocrd-tesserocr-recognize",
                 "ocrd-dinglehopper",
@@ -121,15 +146,11 @@
                 "ocrd-dinglehopper"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_workflow_url": "",
-            "eval_data": "",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/18_fontmix_complex.ocrd.zip",
-            "data_properties": ""
+            "document_metadata": ""
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 29354,
+                "wall_time": 34542,
                 "cer": 0.2043347058754337,
                 "cer_min_max": [
                     0.04063745019920319,
@@ -192,7 +213,18 @@
         "eval_workflow_id": "wf-data17_frak_simple-eval",
         "label": "Workflow on data 17_frak_simple",
         "metadata": {
-            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+                "label": "OCR Workflow minimal"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple.ocrd.zip",
+                "label": "TODO"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple.zip",
+                "label": "Evaluation workspace for 17_frak_simple"
+            },
             "workflow_steps": [
                 "ocrd-tesserocr-recognize",
                 "ocrd-dinglehopper",
@@ -200,15 +232,11 @@
                 "ocrd-dinglehopper"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_workflow_url": "",
-            "eval_data": "",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple.ocrd.zip",
-            "data_properties": ""
+            "document_metadata": ""
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 17522,
+                "wall_time": 21458,
                 "cer": 0.08427970798416445,
                 "cer_min_max": [
                     0.05025996533795494,
@@ -259,7 +287,18 @@
         "eval_workflow_id": "wf-data16_ant_complex-eval",
         "label": "Workflow on data 16_ant_complex",
         "metadata": {
-            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+                "label": "OCR Workflow minimal"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip",
+                "label": "TODO"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex.zip",
+                "label": "Evaluation workspace for 16_ant_complex"
+            },
             "workflow_steps": [
                 "ocrd-tesserocr-recognize",
                 "ocrd-dinglehopper",
@@ -267,15 +306,11 @@
                 "ocrd-dinglehopper"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_workflow_url": "",
-            "eval_data": "",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip",
-            "data_properties": ""
+            "document_metadata": ""
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 18229,
+                "wall_time": 18603,
                 "cer": 0.10240852523716282,
                 "cer_min_max": [
                     0.07124352331606218,
@@ -326,7 +361,18 @@
         "eval_workflow_id": "wf-data16_frak_simple-eval",
         "label": "Workflow on data 16_frak_simple",
         "metadata": {
-            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+                "label": "OCR Workflow minimal"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple.ocrd.zip",
+                "label": "TODO"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple.zip",
+                "label": "Evaluation workspace for 16_frak_simple"
+            },
             "workflow_steps": [
                 "ocrd-tesserocr-recognize",
                 "ocrd-dinglehopper",
@@ -334,15 +380,11 @@
                 "ocrd-dinglehopper"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_workflow_url": "",
-            "eval_data": "",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple.ocrd.zip",
-            "data_properties": ""
+            "document_metadata": ""
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 34116,
+                "wall_time": 37695,
                 "cer": 0.13618698942582164,
                 "cer_min_max": [
                     0.014285714285714285,
@@ -429,7 +471,18 @@
         "eval_workflow_id": "wf-data19_ant_simple-eval",
         "label": "Workflow on data 19_ant_simple",
         "metadata": {
-            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+                "label": "OCR Workflow minimal"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple.ocrd.zip",
+                "label": "TODO"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple.zip",
+                "label": "Evaluation workspace for 19_ant_simple"
+            },
             "workflow_steps": [
                 "ocrd-tesserocr-recognize",
                 "ocrd-dinglehopper",
@@ -437,15 +490,11 @@
                 "ocrd-dinglehopper"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_workflow_url": "",
-            "eval_data": "",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple.ocrd.zip",
-            "data_properties": ""
+            "document_metadata": ""
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 21394,
+                "wall_time": 25679,
                 "cer": 0.08406355853675973,
                 "cer_min_max": [
                     0.04055496264674493,
@@ -496,7 +545,18 @@
         "eval_workflow_id": "wf-data19_frak_simple-eval",
         "label": "Workflow on data 19_frak_simple",
         "metadata": {
-            "data_creation_workflow": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal.txt",
+                "label": "OCR Workflow minimal"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_frak_simple.ocrd.zip",
+                "label": "TODO"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple.zip",
+                "label": "Evaluation workspace for 19_frak_simple"
+            },
             "workflow_steps": [
                 "ocrd-tesserocr-recognize",
                 "ocrd-dinglehopper",
@@ -504,15 +564,11 @@
                 "ocrd-dinglehopper"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_workflow_url": "",
-            "eval_data": "",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "gt_data": "https://github.com/OCR-D/quiver-data/blob/main/19_frak_simple.ocrd.zip",
-            "data_properties": ""
+            "document_metadata": ""
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 13009,
+                "wall_time": 14532,
                 "cer": 0.004721435316336166,
                 "cer_min_max": [
                     0.004721435316336166,
