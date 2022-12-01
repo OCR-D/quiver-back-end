@@ -5,7 +5,42 @@ WORKFLOW_DIR="$ROOT"/workflows
 OCRD_WORKFLOW_DIR="$WORKFLOW_DIR"/ocrd_workflows
 WORKSPACE_DIR="$WORKFLOW_DIR"/workspaces
 
-mkdir $WORKSPACE_DIR
+adjust_workflow_settings() {
+    # $1: $WORKFLOW
+    # $2: $DIR_NAME
+    sed -i "s INPUT_DIR . g" "$1"
+    sed -i "s OUTPUT_DIR result g" "$1"
+    sed -i "s CURRENT $2 g" "$1"
+}
+
+rename_and_move_nextflow_result() {
+    # rename NextFlow results in order to properly match them to the workflows
+    # $1: $WORKFLOW
+    # $2: $DIR_NAME
+    WORKFLOW_NAME=$(echo $1 | grep -E -o "[a-z0-9_]+.txt.nf" | cut -d"." -f1)
+    rm "$WORKFLOW_DIR"/nf-results/*process_completed.json
+    mv "$WORKFLOW_DIR"/nf-results/*_completed.json "$WORKFLOW_DIR"/results/"$2"_"$WORKFLOW_NAME"_completed.json
+}
+
+run() {
+    # $1: $WORKFLOW
+    # $2: $DIR_NAME
+    adjust_workflow_settings "$1" "$2"
+    nextflow run "$1" -with-weblog http://127.0.0.1:8000/nextflow/
+    rename_and_move_nextflow_result "$1" "$2"
+}
+
+save_workspaces() {
+    # $1: $WS_DIR
+    # $2: $DIR_NAME
+    # $3: $WORKFLOW
+    echo "Zipping workspace $1"
+    ocrd zip bag -d $1 -i $1 $1
+    WORKFLOW_NAME=$(echo $3 | grep -E -o "[a-z0-9_]+.txt.nf" | cut -d"." -f1)
+    mv "$WORKSPACE_DIR"/"$2".zip "$WORKFLOW_DIR"/results/"$2"_"$WORKFLOW_NAME".zip
+}
+
+mkdir "$WORKSPACE_DIR"
 mkdir -p "$WORKFLOW_DIR/nf-results"
 
 echo "Initialize submodules …"
@@ -84,47 +119,43 @@ do
 
     DIR_NAME=$(echo $WS_DIR | rev | cut -d'/' -f 2 | rev)
 
-    # get all NextFlow files that do not belong to an eval workflow
-#    NF_FILES=("$WS_DIR"/*.nf)
-#    NF_FILES_WO_EVAL=()
-#    EVAL_NFS=()
-#
-#    for NF in "${NF_FILES[@]}"
-#    do
-#        if [[ $NF != *"dinglehopper_eval.txt.nf" ]]; then
-#            NF_FILES_WO_EVAL+=($NF)
-#        else
-#            EVAL_NFS+=($NF)
-#        fi
-#    done
+    # separate OCR workflows from evaluation workflows
+    NF_FILES=("$WS_DIR"/*.nf)
+    OCR_NFS=()
+    EVAL_NFS=()
 
-    # … adjust workflow files to corpus and run workflows.
-    for WORKFLOW in "$WS_DIR"/*.nf
+    for NF in "${NF_FILES[@]}"
     do
-        sed -i "s INPUT_DIR . g" "$WORKFLOW"
-        sed -i "s OUTPUT_DIR result g" "$WORKFLOW"
-        sed -i "s CURRENT $DIR_NAME g" "$WORKFLOW"
-        nextflow run "$WORKFLOW" -with-weblog http://127.0.0.1:8000/nextflow/
-
-        # package workspace
-        echo "Zipping workspace $WS_DIR"
-        ocrd zip bag -d $WS_DIR -i $WS_DIR $WS_DIR
-
-        # create a result JSON according to the specs          
-        echo "Get Benchmark JSON …"
-        VENV=$ROOT'/venv/bin/python'
-        CMD="$ROOT/quiver/benchmark_extraction.py $WS_DIR $WORKFLOW"
-        $VENV $CMD
-        echo "Done."
-        for DATA in "$ROOT"/workflows/nf-results/*
-        do
-            rm -rf "$DATA"
-        done
+        if [[ $NF != *"dinglehopper_eval.txt.nf" ]]; then
+            OCR_NFS+=($NF)
+        else
+            EVAL_NFS+=($NF)
+        fi
     done
 
+    # run OCR workflows
+    for WORKFLOW in "${OCR_NFS[@]}"
+    do
+        run "$WORKFLOW" "$DIR_NAME"
+        save_workspaces "$WS_DIR" "$DIR_NAME" "$WORKFLOW"
+    done
+
+    # run eval workflows
+    for WORKFLOW in "${EVAL_NFS[@]}"
+    do
+        run "$WORKFLOW" "$DIR_NAME"
+        save_workspaces "$WS_DIR" "$DIR_NAME" "$WORKFLOW"
+    done
+
+    # create a result JSON according to the specs          
+    echo "Get Benchmark JSON …"
+    VENV=$ROOT'/venv/bin/python'
+    CMD="$ROOT/quiver/benchmark_extraction.py $WS_DIR $WORKFLOW"
+    $VENV $CMD
+    echo "Done."
+
     # move data to results dir
-    mv $WS_DIR/*.json "$WORKSPACE_DIR"/../results
-    mv "$WORKSPACE_DIR"/*.zip "$WORKSPACE_DIR"/../results
+    mv $WS_DIR/*.json "$WORKFLOW_DIR"/results
 done
 
 cd "$ROOT" || exit
@@ -133,15 +164,6 @@ cd "$ROOT" || exit
 JOB_NO=$(jobs -l | grep -E -o "[0-9]{4,}")
 kill $JOB_NO
 
-# clean up
-for DATA in "$WORKSPACE_DIR"/*
-do
-    rm -rf "$DATA"
-done
-
-rm -rf "$WORKSPACE_DIR"
-rm -rf "$ROOT"/work
-rm -rf "$WORKFLOW_DIR"/nf-results
 
 # summarize JSONs
 echo "Summarize JSONs to one file …"
@@ -149,6 +171,12 @@ VENV=$ROOT'/venv/bin/python'
 CMD="$ROOT/quiver/summarize_benchmarks.py"
 $VENV $CMD
 echo "Done."
+
+# clean up
+rm -rf "$WORKSPACE_DIR"
+rm -rf "$ROOT"/work
+rm -rf "$WORKFLOW_DIR"/nf-results
+rm "$WORKFLOW_DIR"/results/*.json
 
 # push results to the quiver-back-end repo
 git add workflows/results/*
