@@ -90,16 +90,25 @@ def get_workflow_steps(mets_path: str) -> List[str]:
     name_elements = get_element_from_mets(mets_path, xpath)
     formatted_names = []
     for e in name_elements:
-        formatted_names.append(e.text.split(' ')[0])
+        name = e.text.split(' ')[0]
+        if 'ocrd-dinglehopper' not in name:
+            formatted_names.append(name)
 
     return formatted_names
 
 def get_workflow_model(mets_path: str) -> str:
     OCRD = '{https://ocr-d.de}'
-    xpath = f'.//{METS}agent[@OTHERROLE="layout/segmentation/region"]/{METS}note[@{OCRD}option="parameter"]'
-    parameters = get_element_from_mets(mets_path, xpath)[0].text
-    params_json = json.loads(parameters)
-    return params_json['model']
+    try:
+        xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}note[@{OCRD}option="parameter"]'
+        parameters = get_element_from_mets(mets_path, xpath)[0].text
+        params_json = json.loads(parameters)
+        return params_json['checkpoint_dir']
+    except:
+        xpath = f'.//{METS}agent[@OTHERROLE="layout/segmentation/region"]/{METS}note[@{OCRD}option="parameter"]'
+        parameters = get_element_from_mets(mets_path, xpath)[0].text
+        params_json = json.loads(parameters)
+        return params_json['model']
+
 
 def get_eval_tool(mets_path: str) -> str:
     xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}name'
@@ -108,7 +117,7 @@ def get_eval_tool(mets_path: str) -> str:
 def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
     current_workspace = get_workspace_name(workspace_path)
     url = 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
-    label = 'TODO'
+    label = f'GT workspace {current_workspace}'
     return {
         '@id': url,
         'label': label
