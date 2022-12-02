@@ -105,7 +105,7 @@ def get_workflow_model(mets_path: str) -> str:
         return params_json['checkpoint_dir']
     except:
         xpath = f'.//{METS}agent[@OTHERROLE="layout/segmentation/region"]/{METS}note[@{OCRD}option="parameter"]'
-        parameters = get_element_from_mets(mets_path, xpath)[0].text
+        parameters = get_element_from_mets(mets_path, xpath)[-1].text
         params_json = json.loads(parameters)
         return params_json['model']
 
