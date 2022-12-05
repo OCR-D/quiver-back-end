@@ -8,7 +8,7 @@ from os import listdir, scandir
 import re
 from typing import Any, Dict, List, Union
 
-import quiver.constants
+from .constants import *
 
 #{
  #   "metadata": {
@@ -129,7 +129,7 @@ def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[floa
     }
 
 def get_nf_completed_stats(workspace_path: str) -> float:
-    result_path = workspace_path + '/../../results/'
+    result_path = workspace_path + RESULTS
     workspace_name = get_workspace_name(workspace_path)
 
     for file_name in listdir(result_path):
@@ -210,7 +210,6 @@ def get_metrics_for_page(json_file_path: str, mets_path: str) -> Dict[str, Union
     }
 
 if __name__ == '__main__':
-    constants.initialize()
     WORKSPACE_PATH = sys.argv[1]
     workflow_name = sys.argv[2].rsplit('/', maxsplit=1)[-1].split('.')[0]
     workspace_name = WORKSPACE_PATH.split('/')[-2]
