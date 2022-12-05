@@ -124,9 +124,9 @@ def test_get_ocr_workspace():
 def test_get_document_metadata():
     workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
     result = get_document_metadata(workspace_path)
-    assert result['metadata']['eval_workflow_url'] == 'https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt'
-    assert result['metadata']['eval_data'] == 'https://github.com/OCR-D/quiver-back-end/TODO'
-    assert result['metadata']['data_properties']['fonts'] == ['antiqua']
-    assert result['metadata']['data_properties']['publication_year'] == '16th century'
-    assert result['metadata']['data_properties']['number_of_pages'] == ''
-    assert result['metadata']['data_properties']['layout'] == 'complex'
+    assert result['eval_workflow_url'] == 'https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt'
+    assert result['eval_data'] == 'https://github.com/OCR-D/quiver-back-end/TODO'
+    assert result['data_properties']['fonts'] == ['Antiqua']
+    assert result['data_properties']['publication_year'] == '16th century'
+    #assert result['data_properties']['number_of_pages'] == ''
+    assert result['data_properties']['layout'] == 'complex'

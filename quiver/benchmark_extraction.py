@@ -2,26 +2,15 @@
 benchmarking. It extracts the relevant information from the NextFlow processes. """
 
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 from os import listdir, scandir
-import re
 from typing import Any, Dict, List, Union
 
-METS = '{http://www.loc.gov/METS/}'
+import yaml
 
-#{
- #   "metadata": {
- #     "eval_workflow_url": "https://example.org/workflow/eval1",
- #     "eval_data": "https://example.org/workspace/345",
- #     "data_properties": {
- #       "fonts": ["antiqua", "fraktur"],
- #       "publication_year": "19. century",
- #       "number_of_pages": "100",
- #       "layout": "simple"
- #     }
- #   }
- # }
+METS = '{http://www.loc.gov/METS/}'
 
 def make_result_json(workspace_path: str, mets_path: str) -> Dict[str, Union[str, Dict]]:
     data_name = get_workspace_name(workspace_path)
@@ -44,7 +33,7 @@ def make_metadata(workspace_path: str, mets_path: str) -> Dict[str, Union[str, D
             'eval_workspace': get_workspace(workspace_path, 'evaluation'),
             'workflow_steps': get_workflow_steps(mets_path),
             'workflow_model': get_workflow_model(mets_path),
-            'document_metadata': get_document_metadata(workspace_path, mets_path)
+            'document_metadata': get_document_metadata(workspace_path)
         }
 
 def get_workflow(workspace_path: str, wf_type: str) -> Dict[str, str]:
@@ -124,7 +113,38 @@ def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
     }
 
 def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
-    pass
+    result = {
+        'eval_workflow_url': 'https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt',
+        'eval_data': 'https://github.com/OCR-D/quiver-back-end/TODO',
+        'data_properties': {
+            'fonts': '',
+            'publication_year': '',
+            'number_of_pages': '',
+            'layout': ''
+        }
+    }
+    with open(workspace_path + 'METADATA.yml', 'r', encoding='utf-8') as file:
+        metadata = yaml.safe_load(file)
+        scripts = metadata['script']
+        fonts = []
+        for script in scripts:
+            if script == 'Latn':
+                fonts.append('Antiqua')
+            if script == 'Goth':
+                fonts.append('Black Letter')
+            if script == 'Hebr':
+                fonts.append('Hebrew')
+            if script == 'Grek':
+                fonts.append('Ancient Greek')
+        result['data_properties']['fonts'] = fonts
+
+        earliest_publication_year = metadata['time']['notBefore']
+        publication_century = int(earliest_publication_year[:2]) + 1
+        result['data_properties']['publication_year'] = f'{publication_century}th century'
+
+        result['data_properties']['layout'] = metadata['title'].split('_')[-1]
+    return result
+
 
 def extract_benchmarks(workspace_path: str, mets_path: str) -> Dict[str, Dict[str, Any]]:
     json_dirs = get_eval_jsons(workspace_path)
