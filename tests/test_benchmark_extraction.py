@@ -95,7 +95,7 @@ def test_get_gt_workspace():
     workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
     result = get_gt_workspace(workspace_path)    
     assert result['@id'] == 'https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip'
-    assert result['label'] == 'GT workspace 16th century antiqua'
+    assert result['label'] == 'GT workspace 16th century Antiqua complex layout'
 
 def test_get_ocr_workflow():
     workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
