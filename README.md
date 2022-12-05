@@ -22,6 +22,14 @@ The scheduled pipeline of this repo updates the `data/repos.json` file every nig
 
 For local usage, execute `make repos.json`.
 
+## Adding New Workflows
+
+New workflows can be added as TXT files in the `workflows/ocrd_workflows` directory.
+
+Files either have to end with `eval.txt` (if they contain an evaluation workflow) or `ocr.txt` (if they contain an OCR workflow).
+The file names have to stick to snake case.
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
