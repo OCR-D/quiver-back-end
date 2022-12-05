@@ -1,3 +1,7 @@
+"""
+Tests for quiver/benchmark_extraction.py
+"""
+
 from quiver.benchmark_extraction import get_page_id
 from quiver.benchmark_extraction import get_eval_dirs
 from quiver.benchmark_extraction import get_eval_jsons
@@ -10,41 +14,41 @@ from quiver.benchmark_extraction import get_workflow_steps
 from quiver.benchmark_extraction import get_gt_workspace
 from quiver.benchmark_extraction import get_workflow
 from quiver.benchmark_extraction import get_workspace
+from quiver.constants import QUIVER_MAIN
+
+WORKSPACE_DIR = 'tests/assets/benchmarking/16_ant_complex/'
+METS_PATH = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
 
 def test_get_eval_dirs():
-    workspace_dir = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_eval_dirs(workspace_dir)
-    expected = [workspace_dir + 'OCR-D-EVAL-SEG-PAGE',
-        workspace_dir + 'OCR-D-EVAL-SEG-LINE',
-        workspace_dir + 'OCR-D-EVAL-SEG-BLOCK']
+    result = get_eval_dirs(WORKSPACE_DIR)
+    expected = [f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE',
+        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE',
+        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK']
 
     assert result == expected
 
 def test_get_eval_jsons():
-    workspace_dir = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_eval_jsons(workspace_dir)
+    result = get_eval_jsons(WORKSPACE_DIR)
     expected = {
-        workspace_dir + 'OCR-D-EVAL-SEG-BLOCK':
-            [workspace_dir + 'OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json',
-            workspace_dir + 'OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0008.json',
-            workspace_dir + 'OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0009.json'],
-        workspace_dir + 'OCR-D-EVAL-SEG-LINE':
-            [workspace_dir + 'OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0007.json',
-            workspace_dir + 'OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0008.json',
-            workspace_dir + 'OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0009.json'],
-        workspace_dir + 'OCR-D-EVAL-SEG-PAGE':
-            [workspace_dir + 'OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0007.json',
-            workspace_dir + 'OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0008.json',
-            workspace_dir + 'OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0009.json']
+        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK':
+            [f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json',
+            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0008.json',
+            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0009.json'],
+        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE':
+            [f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0007.json',
+            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0008.json',
+            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0009.json'],
+        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE':
+            [f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0007.json',
+            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0008.json',
+            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0009.json']
     }
 
     assert result ==expected
 
 def test_get_page_id():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    json_file_path = workspace_path + 'OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
-    mets_path = workspace_path + 'mets.xml'
-    result = get_page_id(json_file_path, mets_path)
+    json_file_path = f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
+    result = get_page_id(json_file_path, METS_PATH)
     expected = 'phys_0007'
 
     assert result == expected
@@ -56,69 +60,54 @@ def test_get_metrics_for_page():
             'processing_time': 2.0
         }
 
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    json_file = workspace_path + 'OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
-    mets_path = workspace_path + 'mets.xml'
-    result = get_metrics_for_page(json_file, mets_path)
+    json_file = f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
+    result = get_metrics_for_page(json_file, METS_PATH)
 
     assert result == expected
 
 def test_get_mean_cer():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_mean_cer(workspace_path, 'SEG-LINE')
+    result = get_mean_cer(WORKSPACE_DIR, 'SEG-LINE')
 
     assert result == 0.10240852523716282
 
 def test_cer_get_min_max():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_cer_min_max(workspace_path, 'SEG-LINE')
+    result = get_cer_min_max(WORKSPACE_DIR, 'SEG-LINE')
 
     assert result == [0.07124352331606218, 0.1306122448979592]
 
 def test_get_eval_tool():
-    mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
-    result = get_eval_tool(mets_path)
+    result = get_eval_tool(METS_PATH)
     assert result == 'ocrd-dinglehopper vNone'
 
 def test_get_workflow_model():
-    mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
-    result = get_workflow_model(mets_path)
+    result = get_workflow_model(METS_PATH)
     assert result == 'Fraktur_GT4HistOCR'
 
 def test_get_workflow_steps():
-    mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
-    result = get_workflow_steps(mets_path)    
-    assert result == ['ocrd-tesserocr-recognize',
-        'ocrd-dinglehopper',
-        'ocrd-dinglehopper',
-        'ocrd-dinglehopper']
+    result = get_workflow_steps(METS_PATH)
+    assert result == ['ocrd-tesserocr-recognize']
 
 def test_get_gt_workspace():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_gt_workspace(workspace_path)    
-    assert result['@id'] == 'https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip'
+    result = get_gt_workspace(WORKSPACE_DIR) 
+    assert result['@id'] == f'{QUIVER_MAIN}/16_ant_complex.ocrd.zip'
     assert result['label'] == 'GT workspace 16th century antiqua'
 
 def test_get_ocr_workflow():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_workflow(workspace_path, 'ocr')
-    assert result['@id'] == 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt'
-    assert result['label'] == 'OCR Workflow minimal'
+    result = get_workflow(WORKSPACE_DIR, 'ocr')
+    assert result['@id'] == f'{QUIVER_MAIN}/workflows/ocrd_workflows/minimal_ocr.txt'
+    assert result['label'] == 'OCR Workflow minimal_ocr'
 
 def test_get_eval_workflow():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_workflow(workspace_path, 'eval')
-    assert result['@id'] == 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt'
+    result = get_workflow(WORKSPACE_DIR, 'eval')
+    assert result['@id'] == f'{QUIVER_MAIN}/workflows/ocrd_workflows/dinglehopper_eval.txt'
     assert result['label'] == 'Evaluation Workflow dinglehopper_eval'
 
 def test_get_eval_workspace():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_workspace(workspace_path, 'evaluation')
-    assert result['@id'] == 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_evaluation.zip'
+    result = get_workspace(WORKSPACE_DIR, 'evaluation')
+    assert result['@id'] == f'{QUIVER_MAIN}/workflows/results/16_ant_complex_evaluation.zip'
     assert result['label'] == 'Evaluation workspace for 16_ant_complex'
 
 def test_get_ocr_workspace():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_workspace(workspace_path, 'ocr')
-    assert result['@id'] == 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_ocr.zip'
+    result = get_workspace(WORKSPACE_DIR, 'ocr')
+    assert result['@id'] == f'{QUIVER_MAIN}/workflows/results/16_ant_complex_ocr.zip'
     assert result['label'] == 'OCR workspace for 16_ant_complex'

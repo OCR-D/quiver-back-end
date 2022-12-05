@@ -8,7 +8,7 @@ from os import listdir, scandir
 import re
 from typing import Any, Dict, List, Union
 
-METS = '{http://www.loc.gov/METS/}'
+import quiver.constants
 
 #{
  #   "metadata": {
@@ -57,7 +57,7 @@ def get_workflow(workspace_path: str, wf_type: str) -> Dict[str, str]:
         result = re.search(pattern, file)
         if result:
             workflow = file.split('.')[0]
-    url = 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/' + workflow + '.txt'
+    url = f'{QUIVER_MAIN}/workflows/ocrd_workflows/{workflow}.txt'
     if wf_type == 'ocr':
         wf_name = 'OCR'
     else:
@@ -69,7 +69,7 @@ def get_workflow(workspace_path: str, wf_type: str) -> Dict[str, str]:
 
 def get_workspace(workspace_path: str, ws_type: str) -> Dict[str, str]:
     workspace = get_workspace_name(workspace_path)
-    url = 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/' + workspace + '_' + ws_type + '.zip'
+    url = f'{QUIVER_MAIN}/workflows/results/{workspace}_{ws_type}.zip'
     if ws_type == 'ocr':
         ws_name = 'OCR'
     else:
@@ -95,7 +95,6 @@ def get_workflow_steps(mets_path: str) -> List[str]:
     return formatted_names
 
 def get_workflow_model(mets_path: str) -> str:
-    OCRD = '{https://ocr-d.de}'
     xpath = f'.//{METS}agent[@OTHERROLE="layout/segmentation/region"]/{METS}note[@{OCRD}option="parameter"]'
     parameters = get_element_from_mets(mets_path, xpath)[0].text
     params_json = json.loads(parameters)
@@ -107,7 +106,7 @@ def get_eval_tool(mets_path: str) -> str:
 
 def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
     current_workspace = get_workspace_name(workspace_path)
-    url = 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
+    url = f'{QUIVER_MAIN}/{current_workspace}.ocrd.zip'
     label = 'TODO'
     return {
         '@id': url,
@@ -211,6 +210,7 @@ def get_metrics_for_page(json_file_path: str, mets_path: str) -> Dict[str, Union
     }
 
 if __name__ == '__main__':
+    constants.initialize()
     WORKSPACE_PATH = sys.argv[1]
     workflow_name = sys.argv[2].rsplit('/', maxsplit=1)[-1].split('.')[0]
     workspace_name = WORKSPACE_PATH.split('/')[-2]
