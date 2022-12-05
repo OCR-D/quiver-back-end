@@ -44,7 +44,7 @@ def make_metadata(workspace_path: str, mets_path: str) -> Dict[str, Union[str, D
             'eval_workspace': get_workspace(workspace_path, 'evaluation'),
             'workflow_steps': get_workflow_steps(mets_path),
             'workflow_model': get_workflow_model(mets_path),
-            'document_metadata': ''
+            'document_metadata': get_document_metadata(workspace_path, mets_path)
         }
 
 def get_workflow(workspace_path: str, wf_type: str) -> Dict[str, str]:
@@ -122,6 +122,9 @@ def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
         '@id': url,
         'label': label
     }
+
+def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
+    pass
 
 def extract_benchmarks(workspace_path: str, mets_path: str) -> Dict[str, Dict[str, Any]]:
     json_dirs = get_eval_jsons(workspace_path)

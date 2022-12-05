@@ -10,6 +10,7 @@ from quiver.benchmark_extraction import get_workflow_steps
 from quiver.benchmark_extraction import get_gt_workspace
 from quiver.benchmark_extraction import get_workflow
 from quiver.benchmark_extraction import get_workspace
+from quiver.benchmark_extraction import get_document_metadata
 
 def test_get_eval_dirs():
     workspace_dir = 'tests/assets/benchmarking/16_ant_complex/'
@@ -88,10 +89,7 @@ def test_get_workflow_model():
 def test_get_workflow_steps():
     mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
     result = get_workflow_steps(mets_path)    
-    assert result == ['ocrd-tesserocr-recognize',
-        'ocrd-dinglehopper',
-        'ocrd-dinglehopper',
-        'ocrd-dinglehopper']
+    assert result == ['ocrd-tesserocr-recognize']
 
 def test_get_gt_workspace():
     workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
@@ -103,7 +101,7 @@ def test_get_ocr_workflow():
     workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
     result = get_workflow(workspace_path, 'ocr')
     assert result['@id'] == 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt'
-    assert result['label'] == 'OCR Workflow minimal'
+    assert result['label'] == 'OCR Workflow minimal_ocr'
 
 def test_get_eval_workflow():
     workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
@@ -122,3 +120,13 @@ def test_get_ocr_workspace():
     result = get_workspace(workspace_path, 'ocr')
     assert result['@id'] == 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_ocr.zip'
     assert result['label'] == 'OCR workspace for 16_ant_complex'
+
+def test_get_document_metadata():
+    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
+    result = get_document_metadata(workspace_path)
+    assert result['metadata']['eval_workflow_url'] == 'https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt'
+    assert result['metadata']['eval_data'] == 'https://github.com/OCR-D/quiver-back-end/TODO'
+    assert result['metadata']['data_properties']['fonts'] == ['antiqua']
+    assert result['metadata']['data_properties']['publication_year'] == '16th century'
+    assert result['metadata']['data_properties']['number_of_pages'] == ''
+    assert result['metadata']['data_properties']['layout'] == 'complex'
