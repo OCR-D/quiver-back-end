@@ -112,7 +112,9 @@ do
     echo "Restore OCR-D workspaces from BagIts …"
     for BAGIT in "$ROOT"/submodules/quiver-data/*.zip
     do
+        BAGIT_NAME=$(echo "$BAGIT" | rev | cut -d'/' -f 1 | rev | cut -d'.' -f 1)
         ocrd zip spill "$BAGIT" -d "$WORKSPACE_DIR"/tmp > "$WORKSPACE_DIR"/log.log
+        unzip "$BAGIT" METADATA.yml -d "$WORKSPACE_DIR"/tmp/"$BAGIT_NAME"
         # this is a workaround for a werid behaviour where 16_ant_complex.ocrd.zip is sometimes not
         # correctly extracted (unknown reason)
         if [ "$BAGIT" = "$ROOT"/submodules/quiver-data/16_ant_complex.ocrd.zip ]
