@@ -8,7 +8,7 @@ from os import listdir, scandir
 import re
 from typing import Any, Dict, List, Union
 
-from .constants import *
+from quiver.constants import *
 
 #{
  #   "metadata": {
