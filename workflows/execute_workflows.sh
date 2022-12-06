@@ -5,7 +5,7 @@ WORKFLOW_DIR="$ROOT"/workflows
 OCRD_WORKFLOW_DIR="$WORKFLOW_DIR"/ocrd_workflows
 WORKSPACE_DIR="$WORKFLOW_DIR"/workspaces
 
-set -eou pipefail
+set -euo pipefail
 
 adjust_workflow_settings() {
     # $1: $WORKFLOW
@@ -42,17 +42,27 @@ save_workspaces() {
     mv "$WORKSPACE_DIR"/"$2".zip "$WORKFLOW_DIR"/results/"$2"_"$WORKFLOW_NAME".zip
 }
 
-mkdir "$WORKSPACE_DIR"
-mkdir -p "$WORKFLOW_DIR/nf-results"
+source "$ROOT"/venv/bin/activate
 
 echo "Initialize submodules …"
 git submodule update --init --recursive
 
 # update the data from quiver-data repository if necessary
 echo "Update quiver-data if necessary …"
-cd submodules/quiver-data || exit
-git fetch
-git merge origin/main
+git -C submodules/quiver-data pull origin/main
+
+echo "Installing OtoN …"
+pushd submodules/oton
+pip install .
+popd
+echo "OtoN installation done."
+
+echo "Installing quiver-ocrd"
+pip install .
+echo "quiver-ocrd installation done."
+
+quiver-ocrd || { echo "quiver-ocrd not installed"; exit 1 }
+oton || { echo "quiver-ocrd not installed"; exit 1 }
 
 echo "Restore OCR-D workspaces from BagIts …"
 for BAGIT in *.zip
@@ -65,28 +75,23 @@ cd "$ROOT" || exit
 
 # convert a ocrd process workflow to a NextFlow workflow with the OtoN converter
 echo "Update OtoN converter if necessary …"
-cd submodules/oton || exit
-git fetch
-git checkout -- oton/config.toml
-git checkout -- oton/converter.py
-git merge origin/master
+git submodule update --init submodules/oton
+git -C submodules/oton checkout -- oton/config.toml
+# XXX why would that be changed?
+git -C submodules/oton checkout -- oton/converter.py
+git -C submodules/oton merge origin/master
 
 echo "Adjust OtoN settings …"
 sed -i "s \$projectDir/ocrd-workspace/ $WORKSPACE_DIR/CURRENT/ g" oton/config.toml
 sed -i "s venv37-ocrd/bin/activate git/ocrd_all/venv/bin/activate g" oton/config.toml
 echo "Done."
 
-echo "Installing OtoN …"
-VENV=$ROOT'/venv/bin/python'
-CMD="-m pip install $ROOT/submodules/oton"
-$VENV $CMD
-echo "OtoN installation done."
-
 cd "$OCRD_WORKFLOW_DIR" || exit
 
 echo "Convert OCR-D workflows to NextFlow …"
 
-source $ROOT'/venv/bin/activate'
+mkdir "$WORKSPACE_DIR"
+mkdir -p "$WORKFLOW_DIR/nf-results"
 
 for FILE in *.txt
 do
@@ -99,7 +104,8 @@ echo "Download the necessary models if not available"
 if [[ ! -f $ROOT/models/ocrd-tesserocr-recognize/Fraktur_GT4HistOCR.traineddata ]]
 then
     mkdir -p "$ROOT"/models
-    docker run --volume "$ROOT"/models:/usr/local/share/ocrd-resources -- ocrd/all:maximum ocrd resmgr download ocrd-tesserocr-recognize Fraktur_GT4HistOCR.traineddata
+    docker run --volume "$ROOT"/models:/usr/local/share/ocrd-resources -- ocrd/all:maximum \
+        ocrd resmgr download ocrd-tesserocr-recognize Fraktur_GT4HistOCR.traineddata
 fi
 
 # execute this workflow on the existing data (incl. evaluation)
@@ -119,7 +125,7 @@ do
         cp "$WORKFLOW" "$WS_DIR"
     done
 
-    DIR_NAME=$(echo $WS_DIR | rev | cut -d'/' -f 2 | rev)
+    DIR_NAME=$(dirname $WS_DIR)
 
     # separate OCR workflows from evaluation workflows
     NF_FILES=("$WS_DIR"/*.nf)
@@ -151,9 +157,7 @@ do
 
     # create a result JSON according to the specs          
     echo "Get Benchmark JSON …"
-    VENV=$ROOT'/venv/bin/python'
-    CMD="$ROOT/quiver/benchmark_extraction.py $WS_DIR $WORKFLOW"
-    $VENV $CMD
+    quiver-ocrd benchmark-extraction "$WS_DIR" "$WORKFLOW"
     echo "Done."
 
     # move data to results dir
@@ -169,9 +173,7 @@ kill $JOB_NO
 
 # summarize JSONs
 echo "Summarize JSONs to one file …"
-VENV=$ROOT'/venv/bin/python'
-CMD="$ROOT/quiver/summarize_benchmarks.py"
-$VENV $CMD
+quiver-ocrd summarize-benchmarks
 echo "Done."
 
 # clean up
