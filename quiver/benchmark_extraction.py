@@ -97,7 +97,6 @@ def get_workflow_steps(mets_path: str) -> List[str]:
     return formatted_names
 
 def get_workflow_model(mets_path: str) -> str:
-    OCRD = '{https://ocr-d.de}'
     try:
         xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}note[@{OCRD}option="parameter"]'
         parameters = get_element_from_mets(mets_path, xpath)[0].text
