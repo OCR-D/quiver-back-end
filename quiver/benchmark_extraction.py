@@ -5,10 +5,10 @@ import json
 import sys
 import xml.etree.ElementTree as ET
 from os import listdir, scandir
-from re import search
+import re
 from typing import Any, Dict, List, Union
 
-METS = '{http://www.loc.gov/METS/}'
+from .constants import *
 
 #{
  #   "metadata": {
@@ -35,41 +35,46 @@ def make_result_json(workspace_path: str, mets_path: str) -> Dict[str, Union[str
 def get_workspace_name(workspace_path: str) -> str:
     return workspace_path.split('/')[-2]
 
-#    "eval_workflow": {
-#        "@id": "https://github.com/OCR-D/quiver/tree/data/workflows/eval1.nf",
-#        "label": "Evaluation Workflow 1"
-#      },
-#      "ocr_workspace": {
-#        "@id": "https://github.com/OCR-D/quiver/tree/data/workspaces/3000.ocrd.zip",
-#        "label": "OCR result workspace 3000"
-#      }
-
 def make_metadata(workspace_path: str, mets_path: str) -> Dict[str, Union[str, Dict]]:
     return {
-            'ocr_workflow': get_ocr_workflow(workspace_path),
-            #'eval_workflow': get_eval_workflow(workspace_path),
+            'ocr_workflow': get_workflow(workspace_path, 'ocr'),
+            'eval_workflow': get_workflow(workspace_path, 'eval'),
             'gt_workspace': get_gt_workspace(workspace_path),
-            #'ocr_workspace': get_ocr_workspace(workspace_path),
-            'eval_workspace': get_eval_workspace(workspace_path),
+            'ocr_workspace': get_workspace(workspace_path, 'ocr'),
+            'eval_workspace': get_workspace(workspace_path, 'evaluation'),
             'workflow_steps': get_workflow_steps(mets_path),
             'workflow_model': get_workflow_model(mets_path),
             'document_metadata': ''
         }
 
-def get_ocr_workflow(workspace_path: str) -> Dict[str, str]:
-    for file_name in listdir(workspace_path):
-        if '.txt.nf' in file_name:
-            workflow = file_name.split('.')[0]
-    url = 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/' + workflow + '.txt'
-    label = f'OCR Workflow {workflow}'
+def get_workflow(workspace_path: str, wf_type: str) -> Dict[str, str]:
+    if wf_type == 'eval':
+        pattern = r'eval.txt.nf'
+    else:
+        pattern = r'ocr.txt.nf'
+
+    for file in listdir(workspace_path):
+        result = re.search(pattern, file)
+        if result:
+            workflow = file.split('.')[0]
+    url = f'{QUIVER_MAIN}/workflows/ocrd_workflows/{workflow}.txt'
+    if wf_type == 'ocr':
+        wf_name = 'OCR'
+    else:
+        wf_name = 'Evaluation'
+    label = f'{wf_name} Workflow {workflow}'
     return {'@id': url,
         'label': label
     }
 
-def get_eval_workspace(workspace_path: str) -> Dict[str, str]:
+def get_workspace(workspace_path: str, ws_type: str) -> Dict[str, str]:
     workspace = get_workspace_name(workspace_path)
-    url = 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/' + workspace + '.zip'
-    label = f'Evaluation workspace for {workspace}'
+    url = f'{QUIVER_MAIN}/workflows/results/{workspace}_{ws_type}.zip'
+    if ws_type == 'ocr':
+        ws_name = 'OCR'
+    else:
+        ws_name = 'Evaluation'
+    label = f'{ws_name} workspace for {workspace}'
     return {
         '@id': url,
         'label': label
@@ -90,7 +95,6 @@ def get_workflow_steps(mets_path: str) -> List[str]:
     return formatted_names
 
 def get_workflow_model(mets_path: str) -> str:
-    OCRD = '{https://ocr-d.de}'
     xpath = f'.//{METS}agent[@OTHERROLE="layout/segmentation/region"]/{METS}note[@{OCRD}option="parameter"]'
     parameters = get_element_from_mets(mets_path, xpath)[0].text
     params_json = json.loads(parameters)
@@ -102,7 +106,7 @@ def get_eval_tool(mets_path: str) -> str:
 
 def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
     current_workspace = get_workspace_name(workspace_path)
-    url = 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
+    url = f'{QUIVER_MAIN}/{current_workspace}.ocrd.zip'
     label = 'TODO'
     return {
         '@id': url,
@@ -125,10 +129,11 @@ def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[floa
     }
 
 def get_nf_completed_stats(workspace_path: str) -> float:
-    result_path = workspace_path + '/../../nf-results/'
+    result_path = workspace_path + RESULTS
+    workspace_name = get_workspace_name(workspace_path)
 
-    for file_name in listdir(workspace_path + '/../../nf-results'):
-        if 'process' not in file_name and 'completed' in file_name:
+    for file_name in listdir(result_path):
+        if 'ocr_completed' in file_name and workspace_name in file_name:
             completed_file = file_name
 
     with open(result_path + completed_file, 'r', encoding='utf-8') as f:
@@ -168,7 +173,7 @@ def make_eval_results_by_page(json_dirs: str, mets_path: str) -> List[object]:
 
 def get_eval_dirs(workspace_dir: str) -> List[str]:
     list_subfolders_with_paths = [f.path for f in scandir(workspace_dir) if f.is_dir()]
-    eval_dirs = [name for name in list_subfolders_with_paths if search('EVAL', name)]
+    eval_dirs = [name for name in list_subfolders_with_paths if re.search('EVAL', name)]
     return eval_dirs
 
 
@@ -177,7 +182,7 @@ def get_eval_jsons(workspace_dir: str) -> Dict[str, List[str]]:
     result = {}
     for eval_dir in eval_dirs:
         files_in_dir = [f.path for f in scandir(eval_dir) if f.is_file()]
-        json_files = [name for name in files_in_dir if search('json', name)]
+        json_files = [name for name in files_in_dir if re.search('json', name)]
         result[eval_dir] = sorted(json_files)
     return result
 
@@ -213,6 +218,6 @@ if __name__ == '__main__':
     dictionary = make_result_json(WORKSPACE_PATH, METS_PATH)
 
     json_object = json.dumps(dictionary, indent=4)
-    output = WORKSPACE_PATH + '/' + workspace_name + '_eval_result_' + workflow_name + '.json'
+    output = WORKSPACE_PATH + '/' + workspace_name + '_' + workflow_name + '_result' + '.json'
     with open(output, 'w', encoding='utf-8') as outfile:
         outfile.write(json_object)
