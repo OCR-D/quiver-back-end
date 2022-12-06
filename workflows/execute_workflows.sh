@@ -77,8 +77,6 @@ cd "$ROOT" || exit
 echo "Update OtoN converter if necessary …"
 git submodule update --init submodules/oton
 git -C submodules/oton checkout -- oton/config.toml
-# XXX why would that be changed?
-git -C submodules/oton checkout -- oton/converter.py
 git -C submodules/oton merge origin/master
 
 echo "Adjust OtoN settings …"
