@@ -5,6 +5,8 @@ WORKFLOW_DIR="$ROOT"/workflows
 OCRD_WORKFLOW_DIR="$WORKFLOW_DIR"/ocrd_workflows
 WORKSPACE_DIR="$WORKFLOW_DIR"/workspaces
 
+set -eou pipefail
+
 adjust_workflow_settings() {
     # $1: $WORKFLOW
     # $2: $DIR_NAME
