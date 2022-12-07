@@ -45,11 +45,12 @@ save_workspaces() {
 source "$ROOT"/venv/bin/activate
 
 echo "Initialize submodules …"
-git submodule update --init --recursive
+git -C submodules/quiver-data submodule update --init
+git -C submodules/oton submodule update --init
 
 # update the data from quiver-data repository if necessary
 echo "Update quiver-data if necessary …"
-git -C submodules/quiver-data pull origin/main
+git -C submodules/quiver-data pull origin main
 
 echo "Installing OtoN …"
 pushd submodules/oton
@@ -65,7 +66,7 @@ quiver-ocrd || { echo "quiver-ocrd not installed"; exit 1 }
 oton || { echo "quiver-ocrd not installed"; exit 1 }
 
 echo "Restore OCR-D workspaces from BagIts …"
-for BAGIT in *.zip
+for BAGIT in submodules/quiver-data/*.zip
 do
     ocrd zip spill "$BAGIT" -d "$WORKSPACE_DIR" > log.log
 done
@@ -77,18 +78,17 @@ cd "$ROOT" || exit
 echo "Update OtoN converter if necessary …"
 git submodule update --init submodules/oton
 git -C submodules/oton checkout -- oton/config.toml
-git -C submodules/oton merge origin/master
+git -C submodules/oton merge origin master
 
 echo "Adjust OtoN settings …"
-sed -i "s \$projectDir/ocrd-workspace/ $WORKSPACE_DIR/CURRENT/ g" oton/config.toml
-sed -i "s venv37-ocrd/bin/activate git/ocrd_all/venv/bin/activate g" oton/config.toml
+sed -i "s \$projectDir/ocrd-workspace/ $WORKSPACE_DIR/CURRENT/ g" submodules/oton/oton/config.toml
+sed -i "s venv37-ocrd/bin/activate git/ocrd_all/venv/bin/activate g" submodules/oton/oton/config.toml
 echo "Done."
 
 cd "$OCRD_WORKFLOW_DIR" || exit
 
 echo "Convert OCR-D workflows to NextFlow …"
 
-mkdir "$WORKSPACE_DIR"
 mkdir -p "$WORKFLOW_DIR/nf-results"
 
 for FILE in *.txt
@@ -155,7 +155,7 @@ do
 
     # create a result JSON according to the specs          
     echo "Get Benchmark JSON …"
-    quiver-ocrd benchmark-extraction "$WS_DIR" "$WORKFLOW"
+    quiver-ocrd benchmarks-extraction "$WS_DIR" "$WORKFLOW"
     echo "Done."
 
     # move data to results dir
