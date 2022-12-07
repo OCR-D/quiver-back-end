@@ -162,7 +162,7 @@ def generate_benchmarks():
 @click.argument('WORKFLOW_PATH')
 def benchmark_extraction_cli(workspace_path, workflow_path):
     workflow_name = Path(workflow_path).stem
-    workspace_name = Path(workspace_path).parent.name
+    workspace_name = Path(workspace_path).name
     mets_path = Path(workspace_path) / 'mets.xml'
     dictionary = make_result_json(workspace_path, mets_path)
     json_object = json.dumps(dictionary, indent=4)
