@@ -123,7 +123,7 @@ do
         cp "$WORKFLOW" "$WS_DIR"
     done
 
-    DIR_NAME=$(dirname $WS_DIR)
+    DIR_NAME=$(basename $WS_DIR)
 
     # separate OCR workflows from evaluation workflows
     NF_FILES=("$WS_DIR"/*.nf)
