@@ -5,6 +5,8 @@ WORKFLOW_DIR="$ROOT"/workflows
 OCRD_WORKFLOW_DIR="$WORKFLOW_DIR"/ocrd_workflows
 WORKSPACE_DIR="$WORKFLOW_DIR"/workspaces
 
+set -eou pipefail
+
 adjust_workflow_settings() {
     # $1: $WORKFLOW
     # $2: $DIR_NAME
@@ -17,7 +19,7 @@ rename_and_move_nextflow_result() {
     # rename NextFlow results in order to properly match them to the workflows
     # $1: $WORKFLOW
     # $2: $DIR_NAME
-    WORKFLOW_NAME=$(echo $1 | grep -E -o "[a-z0-9_]+.txt.nf" | cut -d"." -f1)
+    WORKFLOW_NAME=$(basename -s .txt.nf "$1")
     rm "$WORKFLOW_DIR"/nf-results/*process_completed.json
     mv "$WORKFLOW_DIR"/nf-results/*_completed.json "$WORKFLOW_DIR"/results/"$2"_"$WORKFLOW_NAME"_completed.json
 }
@@ -38,7 +40,7 @@ save_workspaces() {
     # $3: $WORKFLOW
     echo "Zipping workspace $1"
     ocrd zip bag -d $1 -i $1 $1
-    WORKFLOW_NAME=$(echo $3 | grep -E -o "[a-z0-9_]+.txt.nf" | cut -d"." -f1)
+    WORKFLOW_NAME=$(basename -s .txt.nf "$1")
     mv "$WORKSPACE_DIR"/"$2".zip "$WORKFLOW_DIR"/results/"$2"_"$WORKFLOW_NAME".zip
 }
 
