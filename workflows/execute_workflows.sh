@@ -5,7 +5,7 @@ WORKFLOW_DIR="$ROOT"/workflows
 OCRD_WORKFLOW_DIR="$WORKFLOW_DIR"/ocrd_workflows
 WORKSPACE_DIR="$WORKFLOW_DIR"/workspaces
 
-set -eou pipefail
+set -euo pipefail
 
 adjust_workflow_settings() {
     # $1: $WORKFLOW
@@ -44,44 +44,54 @@ save_workspaces() {
     mv "$WORKSPACE_DIR"/"$2".zip "$WORKFLOW_DIR"/results/"$2"_"$WORKFLOW_NAME".zip
 }
 
-mkdir "$WORKSPACE_DIR"
-mkdir -p "$WORKFLOW_DIR/nf-results"
+source "$ROOT"/venv/bin/activate
 
 echo "Initialize submodules …"
-git submodule update --init --recursive
+git -C submodules/quiver-data submodule update --init
+git -C submodules/oton submodule update --init
 
 # update the data from quiver-data repository if necessary
 echo "Update quiver-data if necessary …"
-cd submodules/quiver-data || exit
-git fetch
-git merge origin/main
+git -C submodules/quiver-data pull origin main
+
+echo "Installing OtoN …"
+pushd submodules/oton
+pip install .
+popd
+echo "OtoN installation done."
+
+echo "Installing quiver-ocrd"
+pip install .
+echo "quiver-ocrd installation done."
+
+quiver-ocrd || { echo "quiver-ocrd not installed"; exit 1 }
+oton || { echo "quiver-ocrd not installed"; exit 1 }
+
+echo "Restore OCR-D workspaces from BagIts …"
+for BAGIT in submodules/quiver-data/*.zip
+do
+    ocrd zip spill "$BAGIT" -d "$WORKSPACE_DIR" > log.log
+done
+echo "BagIt extraction completed."
 
 cd "$ROOT" || exit
 
 # convert a ocrd process workflow to a NextFlow workflow with the OtoN converter
 echo "Update OtoN converter if necessary …"
-cd submodules/oton || exit
-git fetch
-git checkout -- oton/config.toml
-git checkout -- oton/converter.py
-git merge origin/master
+git submodule update --init submodules/oton
+git -C submodules/oton checkout -- oton/config.toml
+git -C submodules/oton merge origin master
 
 echo "Adjust OtoN settings …"
-sed -i "s \$projectDir/ocrd-workspace/ $WORKSPACE_DIR/CURRENT/ g" oton/config.toml
-sed -i "s venv37-ocrd/bin/activate git/ocrd_all/venv/bin/activate g" oton/config.toml
+sed -i "s \$projectDir/ocrd-workspace/ $WORKSPACE_DIR/CURRENT/ g" submodules/oton/oton/config.toml
+sed -i "s venv37-ocrd/bin/activate git/ocrd_all/venv/bin/activate g" submodules/oton/oton/config.toml
 echo "Done."
-
-echo "Installing OtoN …"
-VENV=$ROOT'/venv/bin/python'
-CMD="-m pip install $ROOT/submodules/oton"
-$VENV $CMD
-echo "OtoN installation done."
 
 cd "$OCRD_WORKFLOW_DIR" || exit
 
 echo "Convert OCR-D workflows to NextFlow …"
 
-source $ROOT'/venv/bin/activate'
+mkdir -p "$WORKFLOW_DIR/nf-results"
 
 for FILE in *.txt
 do
@@ -93,7 +103,8 @@ echo "Download the necessary models if not available"
 if [[ ! -f $ROOT/models/ocrd-tesserocr-recognize/Fraktur_GT4HistOCR.traineddata ]]
 then
     mkdir -p "$ROOT"/models
-    docker run --volume "$ROOT"/models:/usr/local/share/ocrd-resources -- ocrd/all:maximum ocrd resmgr download ocrd-tesserocr-recognize Fraktur_GT4HistOCR.traineddata
+    docker run --volume "$ROOT"/models:/usr/local/share/ocrd-resources -- ocrd/all:maximum \
+        ocrd resmgr download ocrd-tesserocr-recognize Fraktur_GT4HistOCR.traineddata
 fi
 if [[ ! -d $ROOT/models/ocrd-calamari-recognize/qurator-gt4histocr-1.0 ]]
 then
@@ -145,7 +156,13 @@ uvicorn api:app --app-dir "$ROOT"/quiver &
 for WS_DIR in "$WORKSPACE_DIR"/*/
 do
     echo "Switching to $WS_DIR."
-    DIR_NAME=$(echo $WS_DIR | rev | cut -d'/' -f 2 | rev)
+    # … copy all workflows in the right place …
+    for WORKFLOW in "$OCRD_WORKFLOW_DIR"/*.nf
+    do
+        cp "$WORKFLOW" "$WS_DIR"
+    done
+
+    DIR_NAME=$(basename $WS_DIR)
 
     # … execute workflow …
     run "$WS_DIR"/*ocr.txt.nf "$DIR_NAME" "$WS_DIR"
@@ -155,9 +172,7 @@ do
 
     # create a result JSON according to the specs          
     echo "Get Benchmark JSON …"
-    VENV=$ROOT'/venv/bin/python'
-    CMD="$ROOT/quiver/benchmark_extraction.py $WS_DIR $WS_DIR/*ocr.txt.nf"
-    $VENV $CMD
+    quiver-ocrd benchmarks-extraction "$WS_DIR" "$WORKFLOW"
     echo "Done."
 
     # move data to results dir
@@ -173,9 +188,7 @@ kill $JOB_NO
 
 # summarize JSONs
 echo "Summarize JSONs to one file …"
-VENV=$ROOT'/venv/bin/python'
-CMD="$ROOT/quiver/summarize_benchmarks.py"
-$VENV $CMD
+quiver-ocrd summarize-benchmarks
 echo "Done."
 
 # clean up
