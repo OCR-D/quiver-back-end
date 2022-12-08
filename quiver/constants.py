@@ -10,6 +10,6 @@ __all__ = [
 ]
 from ocrd_models import NAMESPACES
 METS = "{NAMESPACES['mets']}"
-OCRD = '{https://ocr-d.de}'
+OCRD = '{NAMESPACES["ocrd"]}'
 QUIVER_MAIN = 'https://github.com/OCR-D/quiver-back-end/blob/main'
 RESULTS = '/../../results/'
