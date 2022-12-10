@@ -15,40 +15,41 @@ from quiver.benchmark_extraction import get_gt_workspace
 from quiver.benchmark_extraction import get_workflow
 from quiver.benchmark_extraction import get_workspace
 from quiver.benchmark_extraction import get_document_metadata
+from quiver.benchmark_extraction import get_no_of_pages
 from quiver.constants import QUIVER_MAIN
 
-WORKSPACE_DIR = 'tests/assets/benchmarking/16_ant_complex/'
+WORKSPACE_DIR = 'tests/assets/benchmarking/16_ant_complex'
 METS_PATH = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
 
 def test_get_eval_dirs():
     result = get_eval_dirs(WORKSPACE_DIR)
-    expected = [f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE',
-        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE',
-        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK']
+    expected = [f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-PAGE',
+        f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-LINE',
+        f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK']
 
     assert result == expected
 
 def test_get_eval_jsons():
     result = get_eval_jsons(WORKSPACE_DIR)
     expected = {
-        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK':
-            [f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json',
-            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0008.json',
-            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0009.json'],
-        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE':
-            [f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0007.json',
-            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0008.json',
-            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0009.json'],
-        f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE':
-            [f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0007.json',
-            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0008.json',
-            f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0009.json']
+        f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK':
+            [f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json',
+            f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0008.json',
+            f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0009.json'],
+        f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-LINE':
+            [f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0007.json',
+            f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0008.json',
+            f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-LINE/OCR-D-EVAL-SEG-LINE_0009.json'],
+        f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-PAGE':
+            [f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0007.json',
+            f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0008.json',
+            f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-PAGE/OCR-D-EVAL-SEG-PAGE_0009.json']
     }
 
     assert result ==expected
 
 def test_get_page_id():
-    json_file_path = f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
+    json_file_path = f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
     result = get_page_id(json_file_path, METS_PATH)
     expected = 'phys_0007'
 
@@ -61,7 +62,7 @@ def test_get_metrics_for_page():
             'processing_time': 2.0
         }
 
-    json_file = f'{WORKSPACE_DIR}OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
+    json_file = f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
     result = get_metrics_for_page(json_file, METS_PATH)
 
     assert result == expected
@@ -91,8 +92,8 @@ def test_get_workflow_steps():
 
 def test_get_gt_workspace():
     result = get_gt_workspace(WORKSPACE_DIR) 
-    assert result['@id'] == f'{QUIVER_MAIN}/16_ant_complex.ocrd.zip'
-    assert result['label'] == 'GT workspace 16th century antiqua'
+    assert result['@id'] == 'https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip'
+    assert result['label'] == 'GT workspace 16th century Antiqua complex layout'
 
 def test_get_ocr_workflow():
     result = get_workflow(WORKSPACE_DIR, 'ocr')
@@ -115,11 +116,14 @@ def test_get_ocr_workspace():
     assert result['label'] == 'OCR workspace for 16_ant_complex'
 
 def test_get_document_metadata():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
-    result = get_document_metadata(workspace_path)
+    result = get_document_metadata(WORKSPACE_DIR)
     assert result['eval_workflow_url'] == 'https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt'
     assert result['eval_data'] == 'https://github.com/OCR-D/quiver-back-end/TODO'
     assert result['data_properties']['fonts'] == ['Antiqua']
     assert result['data_properties']['publication_year'] == '16th century'
     #assert result['data_properties']['number_of_pages'] == ''
     assert result['data_properties']['layout'] == 'complex'
+
+def test_get_no_of_pages():
+    result = get_no_of_pages(WORKSPACE_DIR)
+    assert result == 3

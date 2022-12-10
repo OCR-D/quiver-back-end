@@ -23,7 +23,7 @@ def make_result_json(workspace_path: str, mets_path: str) -> Dict[str, Union[str
     }
 
 def get_workspace_name(workspace_path: str) -> str:
-    return workspace_path.split('/')[-2]
+    return workspace_path.split('/')[-1]
 
 def make_metadata(workspace_path: str, mets_path: str) -> Dict[str, Union[str, Dict]]:
     return {
@@ -128,11 +128,11 @@ def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
         'data_properties': {
             'fonts': '',
             'publication_year': '',
-            'number_of_pages': '',
+            'number_of_pages': get_no_of_pages(workspace_path),
             'layout': ''
         }
     }
-    with open(workspace_path + 'METADATA.yml', 'r', encoding='utf-8') as file:
+    with open(workspace_path + '/METADATA.yml', 'r', encoding='utf-8') as file:
         metadata = yaml.safe_load(file)
         scripts = metadata['script']
         fonts = []
@@ -153,6 +153,10 @@ def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
 
         result['data_properties']['layout'] = metadata['title'].split('_')[-1]
     return result
+
+def get_no_of_pages(workspace_path: str) -> int:
+    img_path = workspace_path + '/OCR-D-IMG'
+    return len(listdir(img_path))
 
 
 def extract_benchmarks(workspace_path: str, mets_path: str) -> Dict[str, Dict[str, Any]]:
