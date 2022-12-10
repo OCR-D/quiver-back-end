@@ -91,7 +91,7 @@ process ocrd_tesserocr_segment_4 {
 
   script:
     """
-    ${params.docker_command} ocrd-tesserocr-segment -I ${input_dir} -O ${output_dir} -P shrink_polygons true
+    ${params.docker_command} ocrd-tesserocr-segment -I ${input_dir} -O ${output_dir}
     """
 }
 
