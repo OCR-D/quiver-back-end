@@ -40,7 +40,7 @@ save_workspaces() {
     # $3: $WORKFLOW
     echo "Zipping workspace $1"
     ocrd zip bag -d $1 -i $1 $1
-    WORKFLOW_NAME=$(basename -s .txt.nf "$1")
+    WORKFLOW_NAME=$(basename -s .txt.nf "$3")
     mv "$WORKSPACE_DIR"/"$2".zip "$WORKFLOW_DIR"/results/"$2"_"$WORKFLOW_NAME".zip
 }
 
@@ -50,7 +50,6 @@ echo "Initialize submodules …"
 git -C submodules/quiver-data submodule update --init
 git -C submodules/oton submodule update --init
 
-# update the data from quiver-data repository if necessary
 echo "Update quiver-data if necessary …"
 git -C submodules/quiver-data pull origin main
 
@@ -64,15 +63,14 @@ echo "Installing quiver-ocrd"
 pip install .
 echo "quiver-ocrd installation done."
 
-quiver-ocrd || { echo "quiver-ocrd not installed"; exit 1 }
-oton || { echo "quiver-ocrd not installed"; exit 1 }
-
-echo "Restore OCR-D workspaces from BagIts …"
-for BAGIT in submodules/quiver-data/*.zip
-do
-    ocrd zip spill "$BAGIT" -d "$WORKSPACE_DIR" > log.log
-done
-echo "BagIt extraction completed."
+quiver-ocrd || {
+    echo "quiver-ocrd not installed"
+    exit 1
+    }
+oton || {
+    echo "quiver-ocrd not installed"
+    exit 1
+    }
 
 cd "$ROOT" || exit
 
@@ -113,62 +111,54 @@ then
 fi
 
 # execute this workflow on the existing data (incl. evaluation)
-
+mkdir -p "$WORKSPACE_DIR"/tmp
 cd "$WORKSPACE_DIR" || exit
 
 # create workspace for all OCR workflows.
 # each workflow has a separate workspace to work with.
-mkdir -p "$WORKSPACE_DIR"/tmp
-for WORKFLOW in "$OCRD_WORKFLOW_DIR"/*ocr.txt.nf
+
+
+
+
+echo "Restore OCR-D workspaces from BagIts and create workflow specific workspaces …"
+for BAGIT in "$ROOT"/submodules/quiver-data/*.zip
 do
-    WF_NAME=$(echo "$WORKFLOW" | cut -d'.' -f 1 | rev | cut -d'/' -f 1 | rev)
-    echo "Restore OCR-D workspaces from BagIts …"
-    for BAGIT in "$ROOT"/submodules/quiver-data/*.zip
+    BAGIT_NAME=$(basename -s .ocrd.zip "$BAGIT")
+    ocrd zip spill "$BAGIT" -d "$WORKSPACE_DIR"/tmp > "$WORKSPACE_DIR"/log.log
+    unzip "$BAGIT" METADATA.yml -d "$WORKSPACE_DIR"/tmp/"$BAGIT_NAME"
+
+    for WORKFLOW in "$OCRD_WORKFLOW_DIR"/*ocr.txt.nf
     do
-        BAGIT_NAME=$(echo "$BAGIT" | rev | cut -d'/' -f 1 | rev | cut -d'.' -f 1)
-        ocrd zip spill "$BAGIT" -d "$WORKSPACE_DIR"/tmp > "$WORKSPACE_DIR"/log.log
-        unzip "$BAGIT" METADATA.yml -d "$WORKSPACE_DIR"/tmp/"$BAGIT_NAME"
-        # this is a workaround for a werid behaviour where 16_ant_complex.ocrd.zip is sometimes not
-        # correctly extracted (unknown reason)
-        if [ "$BAGIT" = "$ROOT"/submodules/quiver-data/16_ant_complex.ocrd.zip ]
-        then
-            mkdir "$WORKSPACE_DIR"/tmp/16_ant_complex
-            mv "$WORKSPACE_DIR"/tmp/OCR-D* "$WORKSPACE_DIR"/tmp/16_ant_complex
-            mv "$WORKSPACE_DIR"/tmp/mets.xml "$WORKSPACE_DIR"/tmp/16_ant_complex
-            mv "$WORKSPACE_DIR"/tmp/log.log "$WORKSPACE_DIR"/tmp/16_ant_complex
-        fi
+        WF_NAME=$(basename -s .txt.nf "$WORKFLOW")
+        cp -r "$WORKSPACE_DIR"/tmp/"$BAGIT_NAME" "$WORKSPACE_DIR"/tmp/"$BAGIT_NAME"_"$WF_NAME"
+        cp "$WORKFLOW" "$WORKSPACE_DIR"/tmp/"$BAGIT_NAME"_"$WF_NAME"/
     done
-    for WS_DIR in "$WORKSPACE_DIR"/tmp/*
-    do
-        cp "$WORKFLOW" "$WS_DIR"
-        cp "$OCRD_WORKFLOW_DIR"/*eval.txt.nf "$WS_DIR"
-        mv "$WS_DIR" "$WS_DIR"_"$WF_NAME"
-        cp -r "$WS_DIR"_"$WF_NAME" "$WORKSPACE_DIR"
-    done
-    echo "BagIt extraction completed."
-    rm -rf "$WORKSPACE_DIR"/tmp
+    rm -r "$WORKSPACE_DIR"/tmp/"$BAGIT_NAME"
 done
+
+echo "Clean up intermediate dirs …"
+for DIR in "$WORKSPACE_DIR"/tmp/*
+do
+    DIR_NAME=$(basename "$DIR")
+    mv "$DIR" "$WORKSPACE_DIR"/"$DIR_NAME"
+    cp "$OCRD_WORKFLOW_DIR"/*eval.txt.nf "$WORKSPACE_DIR"/"$DIR_NAME"
+done
+
+rm -rf "$WORKSPACE_DIR"/tmp
+rm "$WORKSPACE_DIR"/log.log
 
 # start webserver for evaluation
 uvicorn api:app --app-dir "$ROOT"/quiver &
 
 # for all data sets…
-for WS_DIR in "$WORKSPACE_DIR"/*/
+for WS_DIR in "$WORKSPACE_DIR"/*
 do
     echo "Switching to $WS_DIR."
-    # … copy all workflows in the right place …
-    for WORKFLOW in "$OCRD_WORKFLOW_DIR"/*.nf
-    do
-        cp "$WORKFLOW" "$WS_DIR"
-    done
 
     DIR_NAME=$(basename $WS_DIR)
 
-    # … execute workflow …
     run "$WS_DIR"/*ocr.txt.nf "$DIR_NAME" "$WS_DIR"
-    # … perform evaluation …
     run "$WS_DIR"/*eval.txt.nf "$DIR_NAME" "$WS_DIR"
-    # … and extract relevant metrics
 
     # create a result JSON according to the specs          
     echo "Get Benchmark JSON …"
@@ -176,14 +166,14 @@ do
     echo "Done."
 
     # move data to results dir
-    mv $WS_DIR/*.json "$WORKFLOW_DIR"/results
+    mv "$WS_DIR"/*.json "$WORKFLOW_DIR"/results
 done
 
 cd "$ROOT" || exit
 
 # shut down server
 JOB_NO=$(jobs -l | grep -E -o "[0-9]{4,}")
-kill $JOB_NO
+kill "$JOB_NO"
 
 
 # summarize JSONs
