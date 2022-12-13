@@ -20,10 +20,4 @@ def summarize_to_one_file(json_files):
     json_str = json.dumps(result, indent=4)
     Path(output_path).write_text(json_str, encoding='utf-8')
 
-
-if __name__ == '__main__':
-    json_files = get_json_files()
-    summarize_to_one_file(json_files)
-
-    print("Successfully summarized JSON files!")
     
