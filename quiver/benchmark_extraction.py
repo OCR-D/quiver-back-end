@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from os import listdir, scandir
 from typing import Any, Dict, List, Union
 
-from quiver.constants import *
+from quiver.constants import METS, OCRD, QUIVER_MAIN, RESULTS
 
 METS = '{http://www.loc.gov/METS/}'
 
