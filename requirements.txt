@@ -1,6 +1,5 @@
 click >=7
 ocrd >= 2.35.0
-pyaml
 requests
 pipgrip
 nextflow
