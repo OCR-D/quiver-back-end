@@ -1,9 +1,10 @@
 click >=7
 ocrd >= 2.35.0
-pyyaml
+pyaml
 requests
 pipgrip
 nextflow
 tomli
 fastapi
 uvicorn[standard]
+pytest
