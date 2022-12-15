@@ -9,7 +9,7 @@ __all__ = [
     "RESULTS"
 ]
 from ocrd_models.constants import NAMESPACES
-METS = "{" + f"{NAMESPACES['mets']}" + "}"
-OCRD = "{" + f"{NAMESPACES['ocrd']}" + "}"
+METS = "{" + NAMESPACES['mets'] + "}"
+OCRD = "{" + NAMESPACES['ocrd'] + "}"
 QUIVER_MAIN = 'https://github.com/OCR-D/quiver-back-end/blob/main'
 RESULTS = '/../../results/'

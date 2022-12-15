@@ -15,7 +15,7 @@ from quiver.benchmark_extraction import (get_cer_min_max,
 from quiver.constants import QUIVER_MAIN
 
 WORKSPACE_DIR = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex')
-METS_PATH = str(Path(__file__).parent) + '/assets/benchmarking/16_ant_complex/mets.xml'
+METS_PATH = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex/mets.xml')
 
 def test_get_eval_dirs():
     result = get_eval_dirs(WORKSPACE_DIR)
