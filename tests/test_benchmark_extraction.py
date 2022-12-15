@@ -105,6 +105,12 @@ def test_get_eval_workflow():
     assert result['@id'] == f'{QUIVER_MAIN}/workflows/ocrd_workflows/dinglehopper_eval.txt'
     assert result['label'] == 'Evaluation Workflow dinglehopper_eval'
 
+def test_get_eval_workflow():
+    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
+    result = get_workflow(workspace_path, 'eval')
+    assert result['@id'] == 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt'
+    assert result['label'] == 'Evaluation Workflow dinglehopper_eval'
+
 def test_get_eval_workspace():
     result = get_workspace(WORKSPACE_DIR, 'evaluation')
     assert result['@id'] == f'{QUIVER_MAIN}/workflows/results/16_ant_complex_evaluation.zip'
