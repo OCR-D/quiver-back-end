@@ -63,7 +63,7 @@ echo "Installing quiver-ocrd"
 pip install .
 echo "quiver-ocrd installation done."
 
-quiver-ocrd || {
+which quiver-ocrd || {
     echo "quiver-ocrd not installed"
     exit 1
     }
