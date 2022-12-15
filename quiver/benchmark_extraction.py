@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Union
 
 import yaml
 
-from quiver.constants import METS, OCRD, QUIVER_MAIN, RESULTS
+from .constants import METS, OCRD, QUIVER_MAIN, RESULTS
 
 def make_result_json(workspace_path: str, mets_path: str) -> Dict[str, Union[str, Dict]]:
     data_name = get_workspace_name(workspace_path)
