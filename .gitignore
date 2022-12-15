@@ -8,3 +8,4 @@ workflows/workspaces
 .nextflow*
 work/
 workflows/nf-results/*
+workflows/results
