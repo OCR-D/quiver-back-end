@@ -3,14 +3,13 @@ benchmarking. It extracts the relevant information from the NextFlow processes. 
 
 import json
 import re
-import sys
 import xml.etree.ElementTree as ET
 from os import listdir, scandir
 from typing import Any, Dict, List, Union
 
-from quiver.constants import METS, OCRD, QUIVER_MAIN, RESULTS
+import yaml
 
-METS = '{http://www.loc.gov/METS/}'
+from quiver.constants import METS, OCRD, QUIVER_MAIN, RESULTS
 
 def make_result_json(workspace_path: str, mets_path: str) -> Dict[str, Union[str, Dict]]:
     data_name = get_workspace_name(workspace_path)
