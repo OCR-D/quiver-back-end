@@ -63,7 +63,7 @@ echo "Installing quiver-ocrd"
 pip install .
 echo "quiver-ocrd installation done."
 
-quiver-ocrd || {
+which quiver-ocrd || {
     echo "quiver-ocrd not installed"
     exit 1
     }
@@ -103,6 +103,11 @@ then
     mkdir -p "$ROOT"/models
     docker run --volume "$ROOT"/models:/usr/local/share/ocrd-resources -- ocrd/all:maximum \
         ocrd resmgr download ocrd-tesserocr-recognize Fraktur_GT4HistOCR.traineddata
+fi
+if [[ ! -d $ROOT/models/ocrd-calamari-recognize/qurator-gt4histocr-1.0 ]]
+then
+    mkdir -p "$ROOT"/models
+    docker run --volume "$ROOT"/models:/usr/local/share/ocrd-resources -- ocrd/all:maximum ocrd resmgr download ocrd-calamari-recognize qurator-gt4histocr-1.0
 fi
 if [[ ! -d $ROOT/models/ocrd-calamari-recognize/qurator-gt4histocr-1.0 ]]
 then
