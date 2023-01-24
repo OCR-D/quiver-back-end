@@ -1,27 +1,27 @@
 [
     {
-        "eval_workflow_id": "wf-data19_ant_simple_minimal_ocr-eval",
-        "label": "Workflow on data 19_ant_simple_minimal_ocr",
+        "eval_workflow_id": "wf-data16_frak_simple_minimal_ocr-eval",
+        "label": "Workflow on data 16_frak_simple_minimal_ocr",
         "metadata": {
             "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
+                "label": "OCR Workflow minimal_ocr"
             },
             "eval_workflow": {
                 "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
                 "label": "Evaluation Workflow dinglehopper_eval"
             },
             "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Antiqua simple layout"
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple_minimal_ocr.ocrd.zip",
+                "label": "GT workspace 16th century Black letter simple layout"
             },
             "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 19_ant_simple_minimal_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_ocr.zip",
+                "label": "OCR workspace for 16_frak_simple_minimal_ocr"
             },
             "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_ant_simple_minimal_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_evaluation.zip",
+                "label": "Evaluation workspace for 16_frak_simple_minimal_ocr"
             },
             "workflow_steps": [
                 "ocrd-tesserocr-recognize"
@@ -32,100 +32,54 @@
                 "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
-                        "Antiqua"
+                        "Black Letter"
                     ],
-                    "publication_year": "19th century",
-                    "number_of_pages": 3,
+                    "publication_year": "16th century",
+                    "number_of_pages": 6,
                     "layout": "simple"
                 }
             }
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 14379,
-                "cer": 0.08328200324172262,
+                "wall_time": 26949,
+                "cer": 0.13490219630962338,
                 "cer_min_max": [
-                    0.04055496264674493,
-                    0.12192262602579132
-                ]
+                    0.014285714285714285,
+                    0.4184652278177458
+                ],
+                "wer": 0.2783759515546502
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
-                    "cer": 0.08736842105263158
+                    "cer": 0.0718562874251497,
+                    "wer": 0.19469026548672566
                 },
                 {
                     "page_id": "phys_0002",
-                    "cer": 0.04055496264674493
+                    "cer": 0.014285714285714285,
+                    "wer": 0.0196078431372549
                 },
                 {
                     "page_id": "phys_0003",
-                    "cer": 0.12192262602579132
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data18_frak_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 18_frak_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_frak_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 18th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_frak_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 18_frak_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_frak_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 18_frak_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-skimage-binarize",
-                "ocrd-skimage-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-cis-ocropy-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-calamari-recognize"
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_year": "18th century",
-                    "number_of_pages": 1,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 40020,
-                "cer": 0.02493765586034913,
-                "cer_min_max": [
-                    0.02493765586034913,
-                    0.02493765586034913
-                ]
-            },
-            "by_page": [
+                    "cer": 0.4184652278177458,
+                    "wer": 0.48333333333333334
+                },
                 {
-                    "page_id": "phys_0001",
-                    "cer": 0.02493765586034913
+                    "page_id": "phys_0007",
+                    "cer": 0.09135802469135802,
+                    "wer": 0.33495145631067963
+                },
+                {
+                    "page_id": "phys_0021",
+                    "cer": 0.13479623824451412,
+                    "wer": 0.375
+                },
+                {
+                    "page_id": "phys_0029",
+                    "cer": 0.07865168539325842,
+                    "wer": 0.2626728110599078
                 }
             ]
         }
@@ -173,726 +127,29 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10045,
+                "wall_time": 11356,
                 "cer": 0.08427970798416445,
                 "cer_min_max": [
                     0.05025996533795494,
                     0.10926118626430802
-                ]
+                ],
+                "wer": 0.1842438386542771
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
-                    "cer": 0.10926118626430802
+                    "cer": 0.10926118626430802,
+                    "wer": 0.2229299363057325
                 },
                 {
                     "page_id": "phys_0002",
-                    "cer": 0.09331797235023041
+                    "cer": 0.09331797235023041,
+                    "wer": 0.20689655172413793
                 },
                 {
                     "page_id": "phys_0003",
-                    "cer": 0.05025996533795494
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_complex_selected_pages_ocr-eval",
-        "label": "Workflow on data 16_ant_complex_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_complex_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_complex_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-skimage-binarize",
-                "ocrd-skimage-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-cis-ocropy-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-calamari-recognize"
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 87038,
-                "cer": 0.11475334042778174,
-                "cer_min_max": [
-                    0.07598784194528875,
-                    0.14378238341968913
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.14378238341968913
-                },
-                {
-                    "page_id": "phys_0008",
-                    "cer": 0.07598784194528875
-                },
-                {
-                    "page_id": "phys_0009",
-                    "cer": 0.12448979591836734
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_frak_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 19_frak_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_frak_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 19_frak_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_frak_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-skimage-binarize",
-                "ocrd-skimage-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-cis-ocropy-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-calamari-recognize"
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_year": "19th century",
-                    "number_of_pages": 1,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 60498,
-                "cer": 0.007554296506137866,
-                "cer_min_max": [
-                    0.007554296506137866,
-                    0.007554296506137866
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.007554296506137866
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_ant_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 19_ant_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Antiqua simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 19_ant_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_ant_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-cis-ocropy-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-tesserocr-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_year": "19th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 55276,
-                "cer": 0.08697690719872658,
-                "cer_min_max": [
-                    0.03735325506937033,
-                    0.17936694021101993
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.04421052631578947
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.03735325506937033
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.17936694021101993
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_complex_minimal_ocr-eval",
-        "label": "Workflow on data 16_ant_complex_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_complex_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_complex_minimal_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 11175,
-                "cer": 0.10240852523716282,
-                "cer_min_max": [
-                    0.07124352331606218,
-                    0.1306122448979592
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.07124352331606218
-                },
-                {
-                    "page_id": "phys_0008",
-                    "cer": 0.10536980749746708
-                },
-                {
-                    "page_id": "phys_0009",
-                    "cer": 0.1306122448979592
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 16_ant_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-cis-ocropy-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-tesserocr-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 41742,
-                "cer": 0.06721136853878373,
-                "cer_min_max": [
-                    0.03580246913580247,
-                    0.11059907834101383
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.11059907834101383
-                },
-                {
-                    "page_id": "phys_0013",
-                    "cer": 0.055232558139534885
-                },
-                {
-                    "page_id": "phys_0014",
-                    "cer": 0.03580246913580247
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_complex_slower_processors_ocr-eval",
-        "label": "Workflow on data 16_ant_complex_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_complex_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_complex_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-cis-ocropy-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-tesserocr-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 47861,
-                "cer": 0.10363204260868718,
-                "cer_min_max": [
-                    0.046632124352331605,
-                    0.1458966565349544
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.046632124352331605
-                },
-                {
-                    "page_id": "phys_0008",
-                    "cer": 0.1458966565349544
-                },
-                {
-                    "page_id": "phys_0009",
-                    "cer": 0.11836734693877551
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_frak_simple_minimal_ocr-eval",
-        "label": "Workflow on data 16_frak_simple_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 16_frak_simple_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_frak_simple_minimal_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_year": "16th century",
-                    "number_of_pages": 6,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 24870,
-                "cer": 0.13490219630962338,
-                "cer_min_max": [
-                    0.014285714285714285,
-                    0.4184652278177458
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.0718562874251497
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.014285714285714285
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.4184652278177458
-                },
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.09135802469135802
-                },
-                {
-                    "page_id": "phys_0021",
-                    "cer": 0.13479623824451412
-                },
-                {
-                    "page_id": "phys_0029",
-                    "cer": 0.07865168539325842
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data17_frak_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 17_frak_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 17th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 17_frak_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 17_frak_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-skimage-binarize",
-                "ocrd-skimage-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-cis-ocropy-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-calamari-recognize"
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_year": "17th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 84451,
-                "cer": 0.04805026211228589,
-                "cer_min_max": [
-                    0.04592720970537262,
-                    0.05098855359001041
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.05098855359001041
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.04723502304147465
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.04592720970537262
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_simple_minimal_ocr-eval",
-        "label": "Workflow on data 16_ant_simple_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_simple_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_simple_minimal_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 11632,
-                "cer": 0.07452119312897007,
-                "cer_min_max": [
-                    0.037037037037037035,
-                    0.12354651162790697
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.0629800307219662
-                },
-                {
-                    "page_id": "phys_0013",
-                    "cer": 0.12354651162790697
-                },
-                {
-                    "page_id": "phys_0014",
-                    "cer": 0.037037037037037035
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_frak_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 19_frak_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_frak_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 19_frak_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_frak_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-cis-ocropy-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-tesserocr-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_year": "19th century",
-                    "number_of_pages": 1,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 25267,
-                "cer": 0.0056657223796034,
-                "cer_min_max": [
-                    0.0056657223796034,
-                    0.0056657223796034
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.0056657223796034
+                    "cer": 0.05025996533795494,
+                    "wer": 0.12290502793296089
                 }
             ]
         }
@@ -940,206 +197,51 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 4514,
+                "wall_time": 4472,
                 "cer": 0.02493765586034913,
                 "cer_min_max": [
                     0.02493765586034913,
                     0.02493765586034913
-                ]
+                ],
+                "wer": 0.09836065573770492
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
-                    "cer": 0.02493765586034913
+                    "cer": 0.02493765586034913,
+                    "wer": 0.09836065573770492
                 }
             ]
         }
     },
     {
-        "eval_workflow_id": "wf-data17_frak_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 17_frak_simple_slower_processors_ocr",
+        "eval_workflow_id": "wf-data16_ant_complex_minimal_ocr-eval",
+        "label": "Workflow on data 16_ant_complex_minimal_ocr",
         "metadata": {
             "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
+                "label": "OCR Workflow minimal_ocr"
             },
             "eval_workflow": {
                 "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
                 "label": "Evaluation Workflow dinglehopper_eval"
             },
             "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 17th century Black letter simple layout"
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex_minimal_ocr.ocrd.zip",
+                "label": "GT workspace 16th century Antiqua complex layout"
             },
             "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 17_frak_simple_slower_processors_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_ocr.zip",
+                "label": "OCR workspace for 16_ant_complex_minimal_ocr"
             },
             "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 17_frak_simple_slower_processors_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_evaluation.zip",
+                "label": "Evaluation workspace for 16_ant_complex_minimal_ocr"
             },
             "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-cis-ocropy-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-tesserocr-segment",
-                "ocrd-cis-ocropy-dewarp",
                 "ocrd-tesserocr-recognize"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_year": "17th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 55247,
-                "cer": 0.15501219595245352,
-                "cer_min_max": [
-                    0.09618717504332755,
-                    0.2523041474654378
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.11654526534859522
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.2523041474654378
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.09618717504332755
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data18_fontmix_complex_selected_pages_ocr-eval",
-        "label": "Workflow on data 18_fontmix_complex_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_fontmix_complex_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 18th century Font Mix complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_fontmix_complex_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 18_fontmix_complex_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_fontmix_complex_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 18_fontmix_complex_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-skimage-binarize",
-                "ocrd-skimage-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-cis-ocropy-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-calamari-recognize"
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua",
-                        "Black Letter"
-                    ],
-                    "publication_year": "18th century",
-                    "number_of_pages": 4,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 161847,
-                "cer": 0.14085820622729434,
-                "cer_min_max": [
-                    0.026294820717131476,
-                    0.4077777777777778
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.4077777777777778
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.026294820717131476
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.07634228187919463
-                },
-                {
-                    "page_id": "phys_0004",
-                    "cer": 0.05301794453507341
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 16_ant_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-skimage-binarize",
-                "ocrd-skimage-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-cis-ocropy-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-calamari-recognize"
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
             "document_metadata": {
                 "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
                 "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
@@ -1149,116 +251,35 @@
                     ],
                     "publication_year": "16th century",
                     "number_of_pages": 3,
-                    "layout": "simple"
+                    "layout": "complex"
                 }
             }
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 95930,
-                "cer": 0.05677963803120092,
+                "wall_time": 10999,
+                "cer": 0.10240852523716282,
                 "cer_min_max": [
-                    0.02962962962962963,
-                    0.10291858678955453
-                ]
+                    0.07124352331606218,
+                    0.1306122448979592
+                ],
+                "wer": 0.23466068901129858
             },
             "by_page": [
                 {
                     "page_id": "phys_0007",
-                    "cer": 0.10291858678955453
+                    "cer": 0.07124352331606218,
+                    "wer": 0.2231404958677686
                 },
                 {
-                    "page_id": "phys_0013",
-                    "cer": 0.0377906976744186
+                    "page_id": "phys_0008",
+                    "cer": 0.10536980749746708,
+                    "wer": 0.2484472049689441
                 },
                 {
-                    "page_id": "phys_0014",
-                    "cer": 0.02962962962962963
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_frak_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 16_frak_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 16_frak_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_frak_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-skimage-binarize",
-                "ocrd-skimage-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-cis-ocropy-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-calamari-recognize"
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_year": "16th century",
-                    "number_of_pages": 6,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 255246,
-                "cer": 0.12153517073737868,
-                "cer_min_max": [
-                    0.050156739811912224,
-                    0.38848920863309355
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.10179640718562874
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.05238095238095238
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.38848920863309355
-                },
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.06255144032921811
-                },
-                {
-                    "page_id": "phys_0021",
-                    "cer": 0.050156739811912224
-                },
-                {
-                    "page_id": "phys_0029",
-                    "cer": 0.0738362760834671
+                    "page_id": "phys_0009",
+                    "cer": 0.1306122448979592,
+                    "wer": 0.2323943661971831
                 }
             ]
         }
@@ -1307,29 +328,34 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 22879,
-                "cer": 0.2043347058754337,
+                "wall_time": 22523,
+                "cer": 0.20433470587543373,
                 "cer_min_max": [
                     0.04063745019920319,
                     0.43666666666666665
-                ]
+                ],
+                "wer": 0.31449770246107817
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
-                    "cer": 0.43666666666666665
+                    "cer": 0.43666666666666665,
+                    "wer": 0.583941605839416
                 },
                 {
                     "page_id": "phys_0002",
-                    "cer": 0.04063745019920319
+                    "cer": 0.04063745019920319,
+                    "wer": 0.10344827586206896
                 },
                 {
                     "page_id": "phys_0003",
-                    "cer": 0.05536912751677853
+                    "cer": 0.05536912751677853,
+                    "wer": 0.18435754189944134
                 },
                 {
                     "page_id": "phys_0004",
-                    "cer": 0.28466557911908646
+                    "cer": 0.28466557911908646,
+                    "wer": 0.3862433862433862
                 }
             ]
         }
@@ -1377,266 +403,51 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 7004,
+                "wall_time": 7157,
                 "cer": 0.004721435316336166,
                 "cer_min_max": [
-                    0.04055496264674493,
-                    0.12192262602579132
-                ]
+                    0.004721435316336166,
+                    0.004721435316336166
+                ],
+                "wer": 0.015873015873015872
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
-                    "cer": 0.08736842105263158
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.04055496264674493
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.12192262602579132
+                    "cer": 0.004721435316336166,
+                    "wer": 0.015873015873015872
                 }
             ]
         }
     },
     {
-        "eval_workflow_id": "wf-data19_frak_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 19_frak_simple_selected_pages_ocr",
+        "eval_workflow_id": "wf-data19_ant_simple_minimal_ocr-eval",
+        "label": "Workflow on data 19_ant_simple_minimal_ocr",
         "metadata": {
             "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
+                "label": "OCR Workflow minimal_ocr"
             },
             "eval_workflow": {
                 "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
                 "label": "Evaluation Workflow dinglehopper_eval"
             },
             "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/19_frak_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 19_frak_simple_selected_pages_ocr"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 19_frak_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_frak_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-skimage-binarize",
-                "ocrd-skimage-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-cis-ocropy-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-calamari-recognize"
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "document_metadata": ""
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 65642,
-                "cer": 0.007554296506137866,
-                "cer_min_max": [
-                    0.007554296506137866,
-                    0.007554296506137866
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.007554296506137866
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data18_frak_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 18_frak_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_frak_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 18th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_frak_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 18_frak_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_frak_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 18_frak_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-cis-ocropy-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-tesserocr-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_year": "18th century",
-                    "number_of_pages": 1,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 20649,
-                "cer": 0.0199501246882793,
-                "cer_min_max": [
-                    0.0199501246882793,
-                    0.0199501246882793
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.0199501246882793
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_frak_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 16_frak_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 16_frak_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_frak_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-cis-ocropy-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-tesserocr-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_year": "16th century",
-                    "number_of_pages": 6,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 96583,
-                "cer": 0.23049280809064063,
-                "cer_min_max": [
-                    0.0658682634730539,
-                    0.9568345323741008
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.0658682634730539
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.08412698412698413
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.9568345323741008
-                },
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.09958847736625515
-                },
-                {
-                    "page_id": "phys_0021",
-                    "cer": 0.10109717868338558
-                },
-                {
-                    "page_id": "phys_0029",
-                    "cer": 0.0754414125200642
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_ant_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 19_ant_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple_selected_pages_ocr.ocrd.zip",
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple_minimal_ocr.ocrd.zip",
                 "label": "GT workspace 19th century Antiqua simple layout"
             },
             "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 19_ant_simple_selected_pages_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_minimal_ocr_ocr.zip",
+                "label": "OCR workspace for 19_ant_simple_minimal_ocr"
             },
             "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_ant_simple_selected_pages_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_minimal_ocr_evaluation.zip",
+                "label": "Evaluation workspace for 19_ant_simple_minimal_ocr"
             },
             "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-skimage-binarize",
-                "ocrd-skimage-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-cis-ocropy-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-calamari-recognize"
+                "ocrd-tesserocr-recognize"
             ],
-            "workflow_model": "qurator-gt4histocr-1.0",
+            "workflow_model": "Fraktur_GT4HistOCR",
             "document_metadata": {
                 "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
                 "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
@@ -1652,102 +463,29 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 109561,
-                "cer": 0.08856189018641059,
+                "wall_time": 15238,
+                "cer": 0.08328200324172261,
                 "cer_min_max": [
-                    0.042689434364994665,
-                    0.14210526315789473
-                ]
+                    0.04055496264674493,
+                    0.12192262602579132
+                ],
+                "wer": 0.23519468186134854
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
-                    "cer": 0.14210526315789473
+                    "cer": 0.08736842105263158,
+                    "wer": 0.22666666666666666
                 },
                 {
                     "page_id": "phys_0002",
-                    "cer": 0.042689434364994665
+                    "cer": 0.04055496264674493,
+                    "wer": 0.14814814814814814
                 },
                 {
                     "page_id": "phys_0003",
-                    "cer": 0.08089097303634232
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data18_fontmix_complex_slower_processors_ocr-eval",
-        "label": "Workflow on data 18_fontmix_complex_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_fontmix_complex_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 18th century Font Mix complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_fontmix_complex_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 18_fontmix_complex_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_fontmix_complex_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 18_fontmix_complex_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-cis-ocropy-binarize",
-                "ocrd-anybaseocr-crop",
-                "ocrd-cis-ocropy-denoise",
-                "ocrd-tesserocr-deskew",
-                "ocrd-tesserocr-segment",
-                "ocrd-cis-ocropy-dewarp",
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua",
-                        "Black Letter"
-                    ],
-                    "publication_year": "18th century",
-                    "number_of_pages": 4,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 75694,
-                "cer": 0.16726583056278752,
-                "cer_min_max": [
-                    0.03187250996015936,
-                    0.4444444444444444
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.4444444444444444
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.03187250996015936
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.1266778523489933
-                },
-                {
-                    "page_id": "phys_0004",
-                    "cer": 0.06606851549755302
+                    "cer": 0.12192262602579132,
+                    "wer": 0.33076923076923076
                 }
             ]
         }
@@ -1765,8 +503,8 @@
                 "label": "Evaluation Workflow dinglehopper_eval"
             },
             "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/16_ant_simple_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 16_ant_simple_minimal_ocr"
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple_minimal_ocr.ocrd.zip",
+                "label": "GT workspace 16th century Antiqua simple layout"
             },
             "ocr_workspace": {
                 "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_minimal_ocr_ocr.zip",
@@ -1780,131 +518,44 @@
                 "ocrd-tesserocr-recognize"
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": ""
+            "document_metadata": {
+                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
+                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
+                "data_properties": {
+                    "fonts": [
+                        "Antiqua"
+                    ],
+                    "publication_year": "16th century",
+                    "number_of_pages": 3,
+                    "layout": "simple"
+                }
+            }
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 13294,
+                "wall_time": 10335,
                 "cer": 0.07452119312897007,
                 "cer_min_max": [
                     0.037037037037037035,
                     0.12354651162790697
-                ]
+                ],
+                "wer": 0.22683890077340793
             },
             "by_page": [
                 {
                     "page_id": "phys_0007",
-                    "cer": 0.0629800307219662
+                    "cer": 0.0629800307219662,
+                    "wer": 0.21359223300970873
                 },
                 {
                     "page_id": "phys_0013",
-                    "cer": 0.12354651162790697
+                    "cer": 0.12354651162790697,
+                    "wer": 0.33980582524271846
                 },
                 {
                     "page_id": "phys_0014",
-                    "cer": 0.037037037037037035
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_complex_minimal_ocr-eval",
-        "label": "Workflow on data 16_ant_complex_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/16_ant_complex_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 16_ant_complex_minimal_ocr"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_complex_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_complex_minimal_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": ""
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 12133,
-                "cer": 0.10240852523716282,
-                "cer_min_max": [
-                    0.07124352331606218,
-                    0.1306122448979592
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.07124352331606218
-                },
-                {
-                    "page_id": "phys_0008",
-                    "cer": 0.10536980749746708
-                },
-                {
-                    "page_id": "phys_0009",
-                    "cer": 0.1306122448979592
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_frak_simple_minimal_ocr-eval",
-        "label": "Workflow on data 19_frak_simple_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/19_frak_simple_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 19_frak_simple_minimal_ocr"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 19_frak_simple_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_frak_simple_minimal_ocr"
-            },
-            "workflow_steps": [
-                "ocrd-tesserocr-recognize"
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "document_metadata": ""
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 8175,
-                "cer": 0.004721435316336166,
-                "cer_min_max": [
-                    0.004721435316336166,
-                    0.004721435316336166
-                ]
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.004721435316336166
+                    "cer": 0.037037037037037035,
+                    "wer": 0.1271186440677966
                 }
             ]
         }
