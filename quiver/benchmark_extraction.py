@@ -166,13 +166,14 @@ def extract_benchmarks(workspace_path: str, mets_path: str) -> Dict[str, Dict[st
 
 def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[float, List[float]]]:
     return {
-        'wall_time': get_nf_completed_stats(workspace_path),
+        'wall_time': get_nextflow_process_duration(workspace_path),
         'cer': get_mean_cer(workspace_path, 'SEG-LINE'),
         'cer_min_max': get_cer_min_max(workspace_path, 'SEG-LINE'),
-        'wer': get_mean_wer(workspace_path, 'SEG-LINE')
+        'wer': get_mean_wer(workspace_path, 'SEG-LINE'),
+        'pages_per_minute': get_pages_per_minute(workspace_path)
     }
 
-def get_nf_completed_stats(workspace_path: str) -> float:
+def get_nextflow_process_duration(workspace_path: str) -> float:
     result_path = workspace_path + RESULTS
     workspace_name = get_workspace_name(workspace_path)
 
@@ -184,6 +185,15 @@ def get_nf_completed_stats(workspace_path: str) -> float:
         file = json.load(f)
         duration = file['metadata']['workflow']['duration']
     return duration
+
+
+def get_pages_per_minute(workspace_path: str) -> float:
+    duration = get_nextflow_process_duration(workspace_path)
+    # duration is given in ms
+    duration_min = duration / 60000
+    no_pages = get_no_of_pages(workspace_path)
+
+    return no_pages / duration_min
 
 
 def get_mean_cer(workspace_path: str, gt_type: str) -> float:
