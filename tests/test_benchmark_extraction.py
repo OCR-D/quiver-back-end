@@ -4,7 +4,7 @@ Tests for quiver/benchmark_extraction.py
 
 from pathlib import Path
 
-from quiver.benchmark_extraction import (get_cer_min_max,
+from quiver.benchmark_extraction import (get_cer_range,
                                          get_document_metadata, get_eval_dirs,
                                          get_eval_jsons, get_eval_tool,
                                          get_gt_workspace, get_mean_cer,
@@ -12,7 +12,8 @@ from quiver.benchmark_extraction import (get_cer_min_max,
                                          get_metrics_for_page, get_no_of_pages,
                                          get_page_id, get_workflow,
                                          get_workflow_model,
-                                         get_workflow_steps, get_workspace)
+                                         get_workflow_steps, get_workspace,
+                                         get_pages_per_minute)
 from quiver.constants import QUIVER_MAIN
 
 WORKSPACE_DIR = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex')
@@ -57,7 +58,6 @@ def test_get_metrics_for_page():
             'page_id': 'phys_0007',
             'cer': 0.07124352331606218,
             'wer': 0.2231404958677686
-            #'processing_time': 2.0
         }
 
     json_file = f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'
@@ -75,8 +75,8 @@ def test_get_mean_wer():
 
     assert result == 0.23466068901129858
 
-def test_cer_get_min_max():
-    result = get_cer_min_max(WORKSPACE_DIR, 'SEG-LINE')
+def test_cer_get_range():
+    result = get_cer_range(WORKSPACE_DIR, 'SEG-LINE')
 
     assert result == [0.07124352331606218, 0.1306122448979592]
 

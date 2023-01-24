@@ -168,7 +168,7 @@ def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[floa
     return {
         'wall_time': get_nextflow_process_duration(workspace_path),
         'cer': get_mean_cer(workspace_path, 'SEG-LINE'),
-        'cer_min_max': get_cer_min_max(workspace_path, 'SEG-LINE'),
+        'cer_range': get_cer_range(workspace_path, 'SEG-LINE'),
         'wer': get_mean_wer(workspace_path, 'SEG-LINE'),
         'pages_per_minute': get_pages_per_minute(workspace_path)
     }
@@ -219,7 +219,7 @@ def get_error_rates_for_gt_type(workspace_path: str, gt_type: str, error_rate: s
             ers.append(json_file[error_rate])
     return ers
 
-def get_cer_min_max(workspace_path: str, gt_type: str) -> List[float]:
+def get_cer_range(workspace_path: str, gt_type: str) -> List[float]:
     cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
     return [min(cers), max(cers)]
 
