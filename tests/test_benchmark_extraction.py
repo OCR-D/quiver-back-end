@@ -85,7 +85,7 @@ def test_get_workflow_steps():
     mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
     result = get_workflow_steps(mets_path)
     print(result)
-    assert result == [{'ocrd-tesserocr-recognize': {'segmentation_level': 'region', 'textequiv_level': 'word', 'find_tables': 'true', 'model': 'Fraktur_GT4HistOCR'}}]
+    assert result == {'ocrd-tesserocr-recognize': '{"segmentation_level": "region", "textequiv_level": "word", "find_tables": true, "model": "Fraktur_GT4HistOCR", "dpi": 0, "padding": 0, "overwrite_segments": false, "overwrite_text": true, "shrink_polygons": false, "block_polygons": false, "find_staves": false, "sparse_text": false, "raw_lines": false, "char_whitelist": "", "char_blacklist": "", "char_unblacklist": "", "tesseract_parameters": {}, "xpath_parameters": {}, "xpath_model": {}, "auto_model": false, "oem": "DEFAULT"}'}
 
 def test_get_gt_workspace():
     result = get_gt_workspace(WORKSPACE_DIR) 
