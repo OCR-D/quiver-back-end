@@ -122,7 +122,9 @@ def test_get_document_metadata():
     result = get_document_metadata(WORKSPACE_DIR)
     assert result['data_properties']['fonts'] == ['Antiqua']
     assert result['data_properties']['publication_year'] == '16th century'
-    #assert result['data_properties']['number_of_pages'] == ''
+    assert result['data_properties']['publication_decade'] == ''
+    assert result['data_properties']['publication_century'] == '1500-1600'
+    assert result['data_properties']['number_of_pages'] == 3
     assert result['data_properties']['layout'] == 'complex'
 
 def test_get_no_of_pages():
