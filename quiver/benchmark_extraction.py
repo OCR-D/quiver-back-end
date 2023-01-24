@@ -168,7 +168,8 @@ def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[floa
     return {
         'wall_time': get_nf_completed_stats(workspace_path),
         'cer': get_mean_cer(workspace_path, 'SEG-LINE'),
-        'cer_min_max': get_cer_min_max(workspace_path, 'SEG-LINE')
+        'cer_min_max': get_cer_min_max(workspace_path, 'SEG-LINE'),
+        'wer': get_mean_wer(workspace_path, 'SEG-LINE')
     }
 
 def get_nf_completed_stats(workspace_path: str) -> float:
@@ -186,24 +187,30 @@ def get_nf_completed_stats(workspace_path: str) -> float:
 
 
 def get_mean_cer(workspace_path: str, gt_type: str) -> float:
-    cers = get_cers_for_gt_type(workspace_path, gt_type)
+    cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
     return sum(cers) / len(cers)
 
-def get_cers_for_gt_type(workspace_path: str, gt_type: str) -> List[float]:
+
+def get_mean_wer(workspace_path: str, gt_type: str) -> float:
+    wers = get_error_rates_for_gt_type(workspace_path, gt_type, 'wer')
+    return sum(wers) / len(wers)
+
+
+def get_error_rates_for_gt_type(workspace_path: str, gt_type: str, error_rate: str) -> List[float]:
     eval_jsons = []
     eval_dir_path = workspace_path + '/OCR-D-EVAL-' + gt_type + '/'
     for file_name in listdir(eval_dir_path):
         if 'json' in file_name:
             eval_jsons.append(file_name)
-    cers = []
+    ers = []
     for eval_json in eval_jsons:
         with open(eval_dir_path + eval_json, 'r', encoding='utf-8') as f:
             json_file = json.load(f)
-            cers.append(json_file['cer'])
-    return cers
+            ers.append(json_file[error_rate])
+    return ers
 
 def get_cer_min_max(workspace_path: str, gt_type: str) -> List[float]:
-    cers = get_cers_for_gt_type(workspace_path, gt_type)
+    cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
     return [min(cers), max(cers)]
 
 def make_eval_results_by_page(json_dirs: str, mets_path: str) -> List[object]:
@@ -249,5 +256,6 @@ def get_metrics_for_page(json_file_path: str, mets_path: str) -> Dict[str, Union
 
     return {
         'page_id': get_page_id(json_file_path, mets_path),
-        'cer': eval_file['cer']
+        'cer': eval_file['cer'],
+        'wer': eval_file['wer']
     }

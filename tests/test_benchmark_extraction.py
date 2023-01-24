@@ -8,6 +8,7 @@ from quiver.benchmark_extraction import (get_cer_min_max,
                                          get_document_metadata, get_eval_dirs,
                                          get_eval_jsons, get_eval_tool,
                                          get_gt_workspace, get_mean_cer,
+                                         get_mean_wer,
                                          get_metrics_for_page, get_no_of_pages,
                                          get_page_id, get_workflow,
                                          get_workflow_model,
@@ -55,6 +56,7 @@ def test_get_metrics_for_page():
     expected = {
             'page_id': 'phys_0007',
             'cer': 0.07124352331606218,
+            'wer': 0.2231404958677686
             #'processing_time': 2.0
         }
 
@@ -67,6 +69,11 @@ def test_get_mean_cer():
     result = get_mean_cer(WORKSPACE_DIR, 'SEG-LINE')
 
     assert result == 0.10240852523716282
+
+def test_get_mean_wer():
+    result = get_mean_wer(WORKSPACE_DIR, 'SEG-LINE')
+
+    assert result == 0.23466068901129858
 
 def test_cer_get_min_max():
     result = get_cer_min_max(WORKSPACE_DIR, 'SEG-LINE')
