@@ -83,8 +83,9 @@ def test_get_workflow_model():
 
 def test_get_workflow_steps():
     mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
-    result = get_workflow_steps(mets_path)    
-    assert result == ['ocrd-tesserocr-recognize']
+    result = get_workflow_steps(mets_path)
+    print(result)
+    assert result == [{'ocrd-tesserocr-recognize': {'segmentation_level': 'region', 'textequiv_level': 'word', 'find_tables': 'true', 'model': 'Fraktur_GT4HistOCR'}}]
 
 def test_get_gt_workspace():
     result = get_gt_workspace(WORKSPACE_DIR) 
@@ -119,8 +120,6 @@ def test_get_ocr_workspace():
 
 def test_get_document_metadata():
     result = get_document_metadata(WORKSPACE_DIR)
-    assert result['eval_workflow_url'] == 'https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt'
-    assert result['eval_data'] == 'https://github.com/OCR-D/quiver-back-end/TODO'
     assert result['data_properties']['fonts'] == ['Antiqua']
     assert result['data_properties']['publication_year'] == '16th century'
     #assert result['data_properties']['number_of_pages'] == ''

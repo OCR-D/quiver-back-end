@@ -135,8 +135,6 @@ def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
 
 def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
     result = {
-        'eval_workflow_url': 'https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt',
-        'eval_data': 'https://github.com/OCR-D/quiver-back-end/TODO',
         'data_properties': {
             'fonts': '',
             'publication_year': '',
