@@ -167,10 +167,10 @@ def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
                 fonts.append('Ancient Greek')
         result['data_properties']['fonts'] = fonts
 
-        earliest_publication_year = metadata['time']['notBefore']
-        latest_publication_year = metadata['time']['notAfter']
-        publication_century = int(earliest_publication_year[:2]) + 1
-        result['data_properties']['publication_century'] = f'{earliest_publication_year}-{latest_publication_year}'
+        earliest = metadata['time']['notBefore']
+        latest = metadata['time']['notAfter']
+        publication_century = int(earliest[:2]) + 1
+        result['data_properties']['publication_century'] = f'{earliest}-{latest}'
         result['data_properties']['publication_year'] = f'{publication_century}th century'
 
         result['data_properties']['layout'] = metadata['title'].split('_')[-1]
