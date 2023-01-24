@@ -168,6 +168,7 @@ def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[floa
     return {
         'wall_time': get_nextflow_process_duration(workspace_path),
         'cer': get_mean_cer(workspace_path, 'SEG-LINE'),
+        'cer_median': get_cer_median(workspace_path, 'SEG-LINE'),
         'cer_range': get_cer_range(workspace_path, 'SEG-LINE'),
         'wer': get_mean_wer(workspace_path, 'SEG-LINE'),
         'pages_per_minute': get_pages_per_minute(workspace_path)
@@ -199,6 +200,20 @@ def get_pages_per_minute(workspace_path: str) -> float:
 def get_mean_cer(workspace_path: str, gt_type: str) -> float:
     cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
     return sum(cers) / len(cers)
+
+
+def get_cer_median(workspace_path: str, gt_type: str) -> float:
+    cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
+    cers.sort(key=float)
+    no_of_cers = len(cers)
+    if no_of_cers % 2 == 0:
+        middle_low = int(no_of_cers / 2)
+        middle_high = int(no_of_cers / 2) + 1
+        return (cers[middle_low] + cers[middle_high]) / 2
+    else:
+        middle = int(no_of_cers / 2)
+        return cers[middle]
+
 
 
 def get_mean_wer(workspace_path: str, gt_type: str) -> float:
