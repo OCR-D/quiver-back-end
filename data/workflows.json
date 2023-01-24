@@ -42,7 +42,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 26535,
+                "wall_time": 26800,
                 "cer": 0.13490219630962338,
                 "cer_min_max": [
                     0.014285714285714285,
@@ -120,7 +120,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10490,
+                "wall_time": 11691,
                 "cer": 0.08427970798416445,
                 "cer_min_max": [
                     0.05025996533795494,
@@ -186,7 +186,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 4999,
+                "wall_time": 6102,
                 "cer": 0.02493765586034913,
                 "cer_min_max": [
                     0.02493765586034913,
@@ -244,7 +244,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10348,
+                "wall_time": 11199,
                 "cer": 0.10240852523716282,
                 "cer_min_max": [
                     0.07124352331606218,
@@ -311,7 +311,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 23078,
+                "wall_time": 21728,
                 "cer": 0.20433470587543373,
                 "cer_min_max": [
                     0.04063745019920319,
@@ -381,7 +381,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 7389,
+                "wall_time": 7249,
                 "cer": 0.004721435316336166,
                 "cer_min_max": [
                     0.004721435316336166,
@@ -439,7 +439,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 16637,
+                "wall_time": 14830,
                 "cer": 0.08328200324172261,
                 "cer_min_max": [
                     0.04055496264674493,
@@ -505,7 +505,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 11267,
+                "wall_time": 11374,
                 "cer": 0.07452119312897007,
                 "cer_min_max": [
                     0.037037037037037035,
