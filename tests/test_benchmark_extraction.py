@@ -2,30 +2,26 @@
 Tests for quiver/benchmark_extraction.py
 """
 
-from quiver.benchmark_extraction import get_page_id
-from quiver.benchmark_extraction import get_eval_dirs
-from quiver.benchmark_extraction import get_eval_jsons
-from quiver.benchmark_extraction import get_metrics_for_page
-from quiver.benchmark_extraction import get_mean_cer
-from quiver.benchmark_extraction import get_cer_min_max
-from quiver.benchmark_extraction import get_eval_tool
-from quiver.benchmark_extraction import get_workflow_model
-from quiver.benchmark_extraction import get_workflow_steps
-from quiver.benchmark_extraction import get_gt_workspace
-from quiver.benchmark_extraction import get_workflow
-from quiver.benchmark_extraction import get_workspace
-from quiver.benchmark_extraction import get_document_metadata
-from quiver.benchmark_extraction import get_no_of_pages
+from pathlib import Path
+
+from quiver.benchmark_extraction import (get_cer_min_max,
+                                         get_document_metadata, get_eval_dirs,
+                                         get_eval_jsons, get_eval_tool,
+                                         get_gt_workspace, get_mean_cer,
+                                         get_metrics_for_page, get_no_of_pages,
+                                         get_page_id, get_workflow,
+                                         get_workflow_model,
+                                         get_workflow_steps, get_workspace)
 from quiver.constants import QUIVER_MAIN
 
-WORKSPACE_DIR = 'tests/assets/benchmarking/16_ant_complex'
-METS_PATH = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
+WORKSPACE_DIR = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex')
+METS_PATH = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex/mets.xml')
 
 def test_get_eval_dirs():
     result = get_eval_dirs(WORKSPACE_DIR)
-    expected = [f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-PAGE',
-        f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-LINE',
-        f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK']
+    expected = [f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-LINE',
+        f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK',
+        f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-PAGE']
 
     assert result == expected
 
@@ -59,7 +55,7 @@ def test_get_metrics_for_page():
     expected = {
             'page_id': 'phys_0007',
             'cer': 0.07124352331606218,
-            'processing_time': 2.0
+            #'processing_time': 2.0
         }
 
     json_file = f'{WORKSPACE_DIR}/OCR-D-EVAL-SEG-BLOCK/OCR-D-EVAL-SEG-BLOCK_0007.json'

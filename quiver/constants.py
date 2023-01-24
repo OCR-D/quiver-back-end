@@ -8,8 +8,8 @@ __all__ = [
     "QUIVER_MAIN",
     "RESULTS"
 ]
-
-METS = '{http://www.loc.gov/METS/}'
-OCRD = '{https://ocr-d.de}'
+from ocrd_models.constants import NAMESPACES
+METS = "{" + NAMESPACES['mets'] + "}"
+OCRD = "{" + NAMESPACES['ocrd'] + "}"
 QUIVER_MAIN = 'https://github.com/OCR-D/quiver-back-end/blob/main'
 RESULTS = '/../../results/'
