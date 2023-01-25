@@ -169,6 +169,7 @@ def extract_benchmarks(workspace_path: str, mets_path: str) -> Dict[str, Dict[st
 def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[float, List[float]]]:
     return {
         'wall_time': get_nextflow_process_duration(workspace_path),
+        'cpu_time': get_cpu_time(workspace_path),
         'cer_mean': get_mean_cer(workspace_path, 'SEG-LINE'),
         'cer_median': get_cer_median(workspace_path, 'SEG-LINE'),
         'cer_range': get_cer_range(workspace_path, 'SEG-LINE'),
@@ -177,7 +178,8 @@ def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[floa
         'pages_per_minute': get_pages_per_minute(workspace_path)
     }
 
-def get_nextflow_process_duration(workspace_path: str) -> float:
+
+def get_nextflow_completed_process_file(workspace_path: str):
     result_path = workspace_path + RESULTS
     workspace_name = get_workspace_name(workspace_path)
 
@@ -187,9 +189,16 @@ def get_nextflow_process_duration(workspace_path: str) -> float:
 
     with open(result_path + completed_file, 'r', encoding='utf-8') as f:
         file = json.load(f)
-        duration = file['metadata']['workflow']['duration']
-    return duration
+    return file
 
+
+def get_nextflow_process_duration(workspace_path: str) -> float:
+    file = get_nextflow_completed_process_file(workspace_path)
+    return file['metadata']['workflow']['duration']
+
+def get_cpu_time(workspace_path: str) -> Union[str, float]:
+    file = get_nextflow_completed_process_file(workspace_path)
+    return file['metadata']['workflow']['workflowStats']['computeTimeFmt']
 
 def get_pages_per_minute(workspace_path: str) -> float:
     duration = get_nextflow_process_duration(workspace_path)
