@@ -13,7 +13,8 @@ from quiver.benchmark_extraction import (get_cer_range,
                                          get_page_id, get_workflow,
                                          get_workflow_model,
                                          get_workflow_steps, get_workspace,
-                                         get_cer_median)
+                                         get_cer_median,
+                                         get_cer_standard_deviation)
 from quiver.constants import QUIVER_MAIN
 
 WORKSPACE_DIR = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex')
@@ -140,3 +141,7 @@ def test_get_no_of_pages():
 def test_get_cer_median():
     result = get_cer_median(WORKSPACE_DIR, 'SEG-LINE')
     assert result == 0.10536980749746708
+
+def test_get_cer_standard_deviation():
+    result = get_cer_standard_deviation(WORKSPACE_DIR, 'SEG-LINE')
+    assert result == 0.02979493530847308

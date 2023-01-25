@@ -5,11 +5,13 @@ import json
 import re
 import xml.etree.ElementTree as ET
 from os import listdir, scandir
+from statistics import stdev
 from typing import Any, Dict, List, Union
 
 import yaml
 
 from .constants import METS, OCRD, QUIVER_MAIN, RESULTS
+
 
 def make_result_json(workspace_path: str, mets_path: str) -> Dict[str, Union[str, Dict]]:
     data_name = get_workspace_name(workspace_path)
@@ -170,6 +172,7 @@ def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[floa
         'cer_mean': get_mean_cer(workspace_path, 'SEG-LINE'),
         'cer_median': get_cer_median(workspace_path, 'SEG-LINE'),
         'cer_range': get_cer_range(workspace_path, 'SEG-LINE'),
+        'cer__standard_deviation': get_cer_standard_deviation(workspace_path, 'SEG-LINE'),
         'wer': get_mean_wer(workspace_path, 'SEG-LINE'),
         'pages_per_minute': get_pages_per_minute(workspace_path)
     }
@@ -214,6 +217,10 @@ def get_cer_median(workspace_path: str, gt_type: str) -> float:
         middle = int(no_of_cers / 2)
         return cers[middle]
 
+
+def get_cer_standard_deviation(workspace_path: str, gt_type: str) -> float:
+    cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
+    return stdev(cers)
 
 
 def get_mean_wer(workspace_path: str, gt_type: str) -> float:
