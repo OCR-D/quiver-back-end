@@ -34,6 +34,7 @@ def make_metadata(workspace_path: str, mets_path: str) -> Dict[str, Union[str, D
             'eval_workspace': get_workspace(workspace_path, 'evaluation'),
             'workflow_steps': get_workflow_steps(mets_path),
             'workflow_model': get_workflow_model(mets_path),
+            'eval_tool': get_eval_tool(mets_path),
             'document_metadata': get_document_metadata(workspace_path)
         }
 
