@@ -3,14 +3,16 @@ benchmarking. It extracts the relevant information from the NextFlow processes. 
 
 import json
 import re
+import sys
 import xml.etree.ElementTree as ET
 from os import listdir, scandir
 from statistics import stdev, median
 from typing import Any, Dict, List, Union
 
 import yaml
+from .constants import *
 
-from .constants import METS, OCRD, QUIVER_MAIN, RESULTS
+METS = '{http://www.loc.gov/METS/}'
 
 
 def make_result_json(workspace_path: str, mets_path: str) -> Dict[str, Union[str, Dict]]:
@@ -90,6 +92,7 @@ def get_workflow_steps(mets_path: str) -> List[str]:
     return result
 
 def get_workflow_model(mets_path: str) -> str:
+    OCRD = '{https://ocr-d.de}'
     try:
         xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}note[@{OCRD}option="parameter"]'
         parameters = get_node_from_mets(mets_path, xpath)[0].text
@@ -123,12 +126,20 @@ def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
         'label': label
     }
 
+#     "document_metadata": {
+#        "publication_century": "1800-1900",
+#        "publication_decade": "1850-1860",
+#        "publication_year": 1855,
+#        "number_of_pages": 100,
+#        "layout": "simple"
+#      }
+
 def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
     result = {
-        'eval_workflow_url': 'https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt',
-        'eval_data': 'https://github.com/OCR-D/quiver-back-end/TODO',
         'data_properties': {
             'fonts': '',
+            'publication_century': '',
+            'publication_decade': '',
             'publication_year': '',
             'number_of_pages': get_no_of_pages(workspace_path),
             'layout': ''
@@ -149,8 +160,10 @@ def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
                 fonts.append('Ancient Greek')
         result['data_properties']['fonts'] = fonts
 
-        earliest_publication_year = metadata['time']['notBefore']
-        publication_century = int(earliest_publication_year[:2]) + 1
+        earliest = metadata['time']['notBefore']
+        latest = metadata['time']['notAfter']
+        publication_century = int(earliest[:2]) + 1
+        result['data_properties']['publication_century'] = f'{earliest}-{latest}'
         result['data_properties']['publication_year'] = f'{publication_century}th century'
 
         result['data_properties']['layout'] = metadata['title'].split('_')[-1]
