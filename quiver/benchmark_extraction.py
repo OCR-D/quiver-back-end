@@ -71,14 +71,14 @@ def get_workspace(workspace_path: str, ws_type: str) -> Dict[str, str]:
         'label': label
     }
 
-def get_element_from_mets(mets_path: str, xpath: str) -> List[str]:
+def get_node_from_mets(mets_path: str, xpath: str) -> List[str]:
     with open(mets_path, 'r', encoding='utf-8') as f:
         tree = ET.parse(f)
         return tree.findall(xpath)
 
 def get_workflow_steps(mets_path: str) -> List[str]:
     xpath =f'.//{METS}agent[@ROLE="OTHER"]/{METS}name'
-    name_elements = get_element_from_mets(mets_path, xpath)
+    name_elements = get_node_from_mets(mets_path, xpath)
     formatted_names = []
     for e in name_elements:
         name = e.text.split(' ')[0]
@@ -90,19 +90,19 @@ def get_workflow_steps(mets_path: str) -> List[str]:
 def get_workflow_model(mets_path: str) -> str:
     try:
         xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}note[@{OCRD}option="parameter"]'
-        parameters = get_element_from_mets(mets_path, xpath)[0].text
+        parameters = get_node_from_mets(mets_path, xpath)[0].text
         params_json = json.loads(parameters)
         return params_json['checkpoint_dir']
     except:
         xpath = f'.//{METS}agent[@OTHERROLE="layout/segmentation/region"]/{METS}note[@{OCRD}option="parameter"]'
-        parameters = get_element_from_mets(mets_path, xpath)[-1].text
+        parameters = get_node_from_mets(mets_path, xpath)[-1].text
         params_json = json.loads(parameters)
         return params_json['model']
 
 
 def get_eval_tool(mets_path: str) -> str:
     xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}name'
-    return get_element_from_mets(mets_path, xpath)[0].text
+    return get_node_from_mets(mets_path, xpath)[0].text
 
 def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
     current_workspace = get_workspace_name(workspace_path)
@@ -286,7 +286,7 @@ def get_page_id(json_file_path: str, mets_path: str) -> str:
     json_file_name = get_file_name_from_path(json_file_path)
     gt_file_name = json_file_name.replace('EVAL', 'GT')
     xpath = f'.//{METS}fptr[@FILEID="{gt_file_name}"]/..'
-    return get_element_from_mets(mets_path, xpath)[0].attrib['ID']
+    return get_node_from_mets(mets_path, xpath)[0].attrib['ID']
 
 
 def get_file_name_from_path(json_file_path: str) -> str:
