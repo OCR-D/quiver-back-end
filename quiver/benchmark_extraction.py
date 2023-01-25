@@ -3,16 +3,13 @@ benchmarking. It extracts the relevant information from the NextFlow processes. 
 
 import json
 import re
-import sys
 import xml.etree.ElementTree as ET
 from os import listdir, scandir
 from statistics import stdev, median
 from typing import Any, Dict, List, Union
 
 import yaml
-from .constants import *
-
-METS = '{http://www.loc.gov/METS/}'
+from .constants import METS, RESULTS, QUIVER_MAIN, OCRD
 
 
 def make_result_json(workspace_path: str, mets_path: str) -> Dict[str, Union[str, Dict]]:
@@ -92,7 +89,6 @@ def get_workflow_steps(mets_path: str) -> List[str]:
     return result
 
 def get_workflow_model(mets_path: str) -> str:
-    OCRD = '{https://ocr-d.de}'
     try:
         xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}note[@{OCRD}option="parameter"]'
         parameters = get_node_from_mets(mets_path, xpath)[0].text
@@ -125,14 +121,6 @@ def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
         '@id': url,
         'label': label
     }
-
-#     "document_metadata": {
-#        "publication_century": "1800-1900",
-#        "publication_decade": "1850-1860",
-#        "publication_year": 1855,
-#        "number_of_pages": 100,
-#        "layout": "simple"
-#      }
 
 def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
     result = {
