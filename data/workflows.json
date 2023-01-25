@@ -42,7 +42,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 28139,
+                "wall_time": 26556,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.13490219630962338,
                 "cer_median": 0.11307713146793608,
@@ -50,9 +50,9 @@
                     0.014285714285714285,
                     0.4184652278177458
                 ],
-                "cer__standard_deviation": 0.14421604715728023,
+                "cer_standard_deviation": 0.14421604715728023,
                 "wer": 0.2783759515546502,
-                "pages_per_minute": 12.793631614485236
+                "pages_per_minute": 13.556258472661545
             },
             "by_page": [
                 {
@@ -131,7 +131,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10309,
+                "wall_time": 9579,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08427970798416445,
                 "cer_median": 0.09331797235023041,
@@ -139,9 +139,9 @@
                     0.05025996533795494,
                     0.10926118626430802
                 ],
-                "cer__standard_deviation": 0.03052136439878228,
+                "cer_standard_deviation": 0.03052136439878228,
                 "wer": 0.1842438386542771,
-                "pages_per_minute": 17.46047143272868
+                "pages_per_minute": 18.791105543376137
             },
             "by_page": [
                 {
@@ -205,7 +205,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 4423,
+                "wall_time": 4752,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.02493765586034913,
                 "cer_median": 0.02493765586034913,
@@ -213,9 +213,9 @@
                     0.02493765586034913,
                     0.02493765586034913
                 ],
-                "cer__standard_deviation": null,
+                "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 13.565453312231517
+                "pages_per_minute": 12.626262626262625
             },
             "by_page": [
                 {
@@ -269,7 +269,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10288,
+                "wall_time": 10579,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.10240852523716282,
                 "cer_median": 0.10536980749746708,
@@ -277,9 +277,9 @@
                     0.07124352331606218,
                     0.1306122448979592
                 ],
-                "cer__standard_deviation": 0.02979493530847308,
+                "cer_standard_deviation": 0.02979493530847308,
                 "wer": 0.23466068901129858,
-                "pages_per_minute": 17.49611197511664
+                "pages_per_minute": 17.01484072218546
             },
             "by_page": [
                 {
@@ -344,7 +344,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 22073,
+                "wall_time": 21654,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.20433470587543373,
                 "cer_median": 0.3606661228928766,
@@ -352,9 +352,9 @@
                     0.04063745019920319,
                     0.43666666666666665
                 ],
-                "cer__standard_deviation": 0.19097881579976755,
+                "cer_standard_deviation": 0.19097881579976755,
                 "wer": 0.31449770246107817,
-                "pages_per_minute": 10.87301227744303
+                "pages_per_minute": 11.083402604599613
             },
             "by_page": [
                 {
@@ -423,7 +423,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 7196,
+                "wall_time": 7181,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.004721435316336166,
                 "cer_median": 0.004721435316336166,
@@ -431,9 +431,9 @@
                     0.004721435316336166,
                     0.004721435316336166
                 ],
-                "cer__standard_deviation": null,
+                "cer_standard_deviation": null,
                 "wer": 0.015873015873015872,
-                "pages_per_minute": 8.337965536409117
+                "pages_per_minute": 8.355382258738338
             },
             "by_page": [
                 {
@@ -487,7 +487,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 15256,
+                "wall_time": 14662,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08328200324172261,
                 "cer_median": 0.08736842105263158,
@@ -495,9 +495,9 @@
                     0.04055496264674493,
                     0.12192262602579132
                 ],
-                "cer__standard_deviation": 0.04083746158658049,
+                "cer_standard_deviation": 0.04083746158658049,
                 "wer": 0.23519468186134854,
-                "pages_per_minute": 11.79863660199266
+                "pages_per_minute": 12.276633474287273
             },
             "by_page": [
                 {
@@ -561,7 +561,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10709,
+                "wall_time": 11017,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.07452119312897007,
                 "cer_median": 0.0629800307219662,
@@ -569,9 +569,9 @@
                     0.037037037037037035,
                     0.12354651162790697
                 ],
-                "cer__standard_deviation": 0.044394494261965886,
+                "cer_standard_deviation": 0.044394494261965886,
                 "wer": 0.22683890077340793,
-                "pages_per_minute": 16.808292090764777
+                "pages_per_minute": 16.33838613052555
             },
             "by_page": [
                 {
