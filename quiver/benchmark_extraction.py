@@ -220,7 +220,10 @@ def get_cer_median(workspace_path: str, gt_type: str) -> float:
 
 def get_cer_standard_deviation(workspace_path: str, gt_type: str) -> float:
     cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
-    return stdev(cers)
+    if len(cers) > 1:
+        return stdev(cers)
+    else:
+        return None
 
 
 def get_mean_wer(workspace_path: str, gt_type: str) -> float:
