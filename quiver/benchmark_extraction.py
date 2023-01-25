@@ -5,7 +5,7 @@ import json
 import re
 import xml.etree.ElementTree as ET
 from os import listdir, scandir
-from statistics import stdev
+from statistics import stdev, median
 from typing import Any, Dict, List, Union
 
 import yaml
@@ -219,15 +219,7 @@ def get_mean_cer(workspace_path: str, gt_type: str) -> float:
 
 def get_cer_median(workspace_path: str, gt_type: str) -> float:
     cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
-    cers.sort(key=float)
-    no_of_cers = len(cers)
-    if no_of_cers % 2 == 0:
-        middle_low = int(no_of_cers / 2)
-        middle_high = int(no_of_cers / 2) + 1
-        return (cers[middle_low] + cers[middle_high]) / 2
-    else:
-        middle = int(no_of_cers / 2)
-        return cers[middle]
+    return median(cers)
 
 
 def get_cer_standard_deviation(workspace_path: str, gt_type: str) -> float:
