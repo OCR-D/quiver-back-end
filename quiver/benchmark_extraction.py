@@ -167,7 +167,7 @@ def extract_benchmarks(workspace_path: str, mets_path: str) -> Dict[str, Dict[st
 def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[float, List[float]]]:
     return {
         'wall_time': get_nextflow_process_duration(workspace_path),
-        'cer': get_mean_cer(workspace_path, 'SEG-LINE'),
+        'cer_mean': get_mean_cer(workspace_path, 'SEG-LINE'),
         'cer_median': get_cer_median(workspace_path, 'SEG-LINE'),
         'cer_range': get_cer_range(workspace_path, 'SEG-LINE'),
         'wer': get_mean_wer(workspace_path, 'SEG-LINE'),
