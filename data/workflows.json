@@ -52,12 +52,12 @@
             "workflow_model": "qurator-gt4histocr-1.0",
             "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1500-1600",
+                    "publication_decade": "",
                     "publication_year": "16th century",
                     "number_of_pages": 6,
                     "layout": "simple"
@@ -66,17 +66,17 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 247058,
+                "wall_time": 259034,
                 "cpu_time": "0.1",
                 "cer_mean": 0.12233144923609811,
-                "cer_median": 0.08942147807114503,
+                "cer_median": 0.0697989946429397,
                 "cer_range": [
                     0.05172413793103448,
                     0.38848920863309355
                 ],
                 "cer_standard_deviation": 0.13173038899014955,
                 "wer": 0.26886580164226287,
-                "pages_per_minute": 1.457147714301905
+                "pages_per_minute": 1.3897789479373364
             },
             "by_page": [
                 {
@@ -162,12 +162,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1500-1600",
+                    "publication_decade": "",
                     "publication_year": "16th century",
                     "number_of_pages": 6,
                     "layout": "simple"
@@ -176,17 +176,17 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 95399,
+                "wall_time": 99245,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.23049280809064063,
-                "cer_median": 0.10034282802482036,
+                "cer_median": 0.09185773074661964,
                 "cer_range": [
                     0.0658682634730539,
                     0.9568345323741008
                 ],
                 "cer_standard_deviation": 0.3560945390007154,
                 "wer": 0.36710708997967917,
-                "pages_per_minute": 3.7736244614723424
+                "pages_per_minute": 3.6273867701143634
             },
             "by_page": [
                 {
@@ -254,12 +254,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1800-1900",
+                    "publication_decade": "",
                     "publication_year": "19th century",
                     "number_of_pages": 1,
                     "layout": "simple"
@@ -268,7 +268,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 6951,
+                "wall_time": 7408,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.004721435316336166,
                 "cer_median": 0.004721435316336166,
@@ -278,7 +278,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.015873015873015872,
-                "pages_per_minute": 8.631851532153647
+                "pages_per_minute": 8.099352051835853
             },
             "by_page": [
                 {
@@ -342,12 +342,12 @@
             "workflow_model": "qurator-gt4histocr-1.0",
             "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua"
                     ],
+                    "publication_century": "1500-1600",
+                    "publication_decade": "",
                     "publication_year": "16th century",
                     "number_of_pages": 3,
                     "layout": "simple"
@@ -356,7 +356,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 91001,
+                "wall_time": 84040,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.05488709037929677,
                 "cer_median": 0.03488372093023256,
@@ -366,7 +366,7 @@
                 ],
                 "cer_standard_deviation": 0.04039668560556835,
                 "wer": 0.13745817563490756,
-                "pages_per_minute": 1.978000241755585
+                "pages_per_minute": 2.1418372203712517
             },
             "by_page": [
                 {
@@ -437,12 +437,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua"
                     ],
+                    "publication_century": "1500-1600",
+                    "publication_decade": "",
                     "publication_year": "16th century",
                     "number_of_pages": 3,
                     "layout": "simple"
@@ -451,7 +451,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 42653,
+                "wall_time": 48523,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.06721136853878373,
                 "cer_median": 0.055232558139534885,
@@ -461,7 +461,7 @@
                 ],
                 "cer_standard_deviation": 0.038810463938030185,
                 "wer": 0.1847677033624047,
-                "pages_per_minute": 4.220101751342227
+                "pages_per_minute": 3.709581023432187
             },
             "by_page": [
                 {
@@ -514,12 +514,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1700-1800",
+                    "publication_decade": "",
                     "publication_year": "18th century",
                     "number_of_pages": 1,
                     "layout": "simple"
@@ -528,7 +528,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 4496,
+                "wall_time": 4763,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.02493765586034913,
                 "cer_median": 0.02493765586034913,
@@ -538,7 +538,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 13.345195729537366
+                "pages_per_minute": 12.59710266638673
             },
             "by_page": [
                 {
@@ -581,12 +581,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua"
                     ],
+                    "publication_century": "1800-1900",
+                    "publication_decade": "",
                     "publication_year": "19th century",
                     "number_of_pages": 3,
                     "layout": "simple"
@@ -595,7 +595,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 14263,
+                "wall_time": 15014,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08328200324172261,
                 "cer_median": 0.08736842105263158,
@@ -605,7 +605,7 @@
                 ],
                 "cer_standard_deviation": 0.04083746158658049,
                 "wer": 0.23519468186134854,
-                "pages_per_minute": 12.620065904788614
+                "pages_per_minute": 11.988810443585988
             },
             "by_page": [
                 {
@@ -676,12 +676,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1800-1900",
+                    "publication_decade": "",
                     "publication_year": "19th century",
                     "number_of_pages": 1,
                     "layout": "simple"
@@ -690,7 +690,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 25513,
+                "wall_time": 28551,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.0056657223796034,
                 "cer_median": 0.0056657223796034,
@@ -700,7 +700,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.031746031746031744,
-                "pages_per_minute": 2.351742249049504
+                "pages_per_minute": 2.1015025743406537
             },
             "by_page": [
                 {
@@ -764,12 +764,12 @@
             "workflow_model": "qurator-gt4histocr-1.0",
             "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1700-1800",
+                    "publication_decade": "",
                     "publication_year": "18th century",
                     "number_of_pages": 1,
                     "layout": "simple"
@@ -778,7 +778,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 40645,
+                "wall_time": 46280,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.02493765586034913,
                 "cer_median": 0.02493765586034913,
@@ -788,7 +788,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 1.476196334112437
+                "pages_per_minute": 1.296456352636128
             },
             "by_page": [
                 {
@@ -849,12 +849,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1700-1800",
+                    "publication_decade": "",
                     "publication_year": "18th century",
                     "number_of_pages": 1,
                     "layout": "simple"
@@ -863,7 +863,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 21073,
+                "wall_time": 23032,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.0199501246882793,
                 "cer_median": 0.0199501246882793,
@@ -873,7 +873,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 2.847245290181749
+                "pages_per_minute": 2.605071205279611
             },
             "by_page": [
                 {
@@ -937,13 +937,13 @@
             "workflow_model": "qurator-gt4histocr-1.0",
             "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua",
                         "Black Letter"
                     ],
+                    "publication_century": "1700-1800",
+                    "publication_decade": "",
                     "publication_year": "18th century",
                     "number_of_pages": 4,
                     "layout": "complex"
@@ -952,17 +952,17 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 159120,
+                "wall_time": 164780,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.140061110527823,
-                "cer_median": 0.23886278896346008,
+                "cer_median": 0.06466848046246318,
                 "cer_range": [
                     0.028685258964143426,
                     0.4022222222222222
                 ],
                 "cer_standard_deviation": 0.17581800739756628,
                 "wer": 0.23651027895776314,
-                "pages_per_minute": 1.5082956259426847
+                "pages_per_minute": 1.456487437795849
             },
             "by_page": [
                 {
@@ -1020,12 +1020,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1500-1600",
+                    "publication_decade": "",
                     "publication_year": "16th century",
                     "number_of_pages": 6,
                     "layout": "simple"
@@ -1034,17 +1034,17 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 27397,
+                "wall_time": 26109,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.13490219630962338,
-                "cer_median": 0.11307713146793608,
+                "cer_median": 0.08500485504230823,
                 "cer_range": [
                     0.014285714285714285,
                     0.4184652278177458
                 ],
                 "cer_standard_deviation": 0.14421604715728023,
                 "wer": 0.2783759515546502,
-                "pages_per_minute": 13.140124831185895
+                "pages_per_minute": 13.788348845225785
             },
             "by_page": [
                 {
@@ -1112,13 +1112,13 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua",
                         "Black Letter"
                     ],
+                    "publication_century": "1700-1800",
+                    "publication_decade": "",
                     "publication_year": "18th century",
                     "number_of_pages": 4,
                     "layout": "complex"
@@ -1127,17 +1127,17 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 20273,
+                "wall_time": 22104,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.20433470587543373,
-                "cer_median": 0.3606661228928766,
+                "cer_median": 0.1700173533179325,
                 "cer_range": [
                     0.04063745019920319,
                     0.43666666666666665
                 ],
                 "cer_standard_deviation": 0.19097881579976755,
                 "wer": 0.31449770246107817,
-                "pages_per_minute": 11.838405761357471
+                "pages_per_minute": 10.857763300760043
             },
             "by_page": [
                 {
@@ -1195,12 +1195,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua"
                     ],
+                    "publication_century": "1500-1600",
+                    "publication_decade": "",
                     "publication_year": "16th century",
                     "number_of_pages": 3,
                     "layout": "simple"
@@ -1209,7 +1209,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10863,
+                "wall_time": 12391,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.07452119312897007,
                 "cer_median": 0.0629800307219662,
@@ -1219,7 +1219,7 @@
                 ],
                 "cer_standard_deviation": 0.044394494261965886,
                 "wer": 0.22683890077340793,
-                "pages_per_minute": 16.570008285004143
+                "pages_per_minute": 14.526672584940684
             },
             "by_page": [
                 {
@@ -1293,12 +1293,12 @@
             "workflow_model": "qurator-gt4histocr-1.0",
             "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua"
                     ],
+                    "publication_century": "1800-1900",
+                    "publication_decade": "",
                     "publication_year": "19th century",
                     "number_of_pages": 3,
                     "layout": "simple"
@@ -1307,7 +1307,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 110639,
+                "wall_time": 120840,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08457767160660273,
                 "cer_median": 0.07737397420867527,
@@ -1317,7 +1317,7 @@
                 ],
                 "cer_standard_deviation": 0.046973440956685215,
                 "wer": 0.3081861348528015,
-                "pages_per_minute": 1.6269127522844566
+                "pages_per_minute": 1.4895729890764648
             },
             "by_page": [
                 {
@@ -1388,12 +1388,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua"
                     ],
+                    "publication_century": "1800-1900",
+                    "publication_decade": "",
                     "publication_year": "19th century",
                     "number_of_pages": 3,
                     "layout": "simple"
@@ -1402,7 +1402,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 54642,
+                "wall_time": 59666,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08697690719872657,
                 "cer_median": 0.04421052631578947,
@@ -1412,7 +1412,7 @@
                 ],
                 "cer_standard_deviation": 0.08008554296654442,
                 "wer": 0.2764482431149098,
-                "pages_per_minute": 3.2941693203030638
+                "pages_per_minute": 3.0167934837260755
             },
             "by_page": [
                 {
@@ -1486,12 +1486,12 @@
             "workflow_model": "qurator-gt4histocr-1.0",
             "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1800-1900",
+                    "publication_decade": "",
                     "publication_year": "19th century",
                     "number_of_pages": 1,
                     "layout": "simple"
@@ -1500,7 +1500,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 61280,
+                "wall_time": 65867,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.007554296506137866,
                 "cer_median": 0.007554296506137866,
@@ -1510,7 +1510,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.015873015873015872,
-                "pages_per_minute": 0.9791122715404699
+                "pages_per_minute": 0.9109265641368212
             },
             "by_page": [
                 {
@@ -1574,12 +1574,12 @@
             "workflow_model": "qurator-gt4histocr-1.0",
             "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1600-1700",
+                    "publication_decade": "",
                     "publication_year": "17th century",
                     "number_of_pages": 3,
                     "layout": "simple"
@@ -1588,7 +1588,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 84698,
+                "wall_time": 89753,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.047703401203510305,
                 "cer_median": 0.04723502304147465,
@@ -1598,7 +1598,7 @@
                 ],
                 "cer_standard_deviation": 0.002050893378518156,
                 "wer": 0.17277993391305632,
-                "pages_per_minute": 2.125197761458358
+                "pages_per_minute": 2.0055039942954553
             },
             "by_page": [
                 {
@@ -1651,12 +1651,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua"
                     ],
+                    "publication_century": "1500-1600",
+                    "publication_decade": "",
                     "publication_year": "16th century",
                     "number_of_pages": 3,
                     "layout": "complex"
@@ -1665,7 +1665,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10451,
+                "wall_time": 9820,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.10240852523716282,
                 "cer_median": 0.10536980749746708,
@@ -1675,7 +1675,7 @@
                 ],
                 "cer_standard_deviation": 0.02979493530847308,
                 "wer": 0.23466068901129858,
-                "pages_per_minute": 17.22323222658119
+                "pages_per_minute": 18.32993890020367
             },
             "by_page": [
                 {
@@ -1746,12 +1746,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1600-1700",
+                    "publication_decade": "",
                     "publication_year": "17th century",
                     "number_of_pages": 3,
                     "layout": "simple"
@@ -1760,7 +1760,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 55782,
+                "wall_time": 57419,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.15501219595245352,
                 "cer_median": 0.11654526534859522,
@@ -1770,7 +1770,7 @@
                 ],
                 "cer_standard_deviation": 0.08486993479509113,
                 "wer": 0.360948415946103,
-                "pages_per_minute": 3.2268473701193936
+                "pages_per_minute": 3.134850833347847
             },
             "by_page": [
                 {
@@ -1841,12 +1841,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua"
                     ],
+                    "publication_century": "1500-1600",
+                    "publication_decade": "",
                     "publication_year": "16th century",
                     "number_of_pages": 3,
                     "layout": "complex"
@@ -1855,7 +1855,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 45719,
+                "wall_time": 47490,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.10363204260868718,
                 "cer_median": 0.11836734693877551,
@@ -1865,7 +1865,7 @@
                 ],
                 "cer_standard_deviation": 0.051246548494839915,
                 "wer": 0.2145458690579216,
-                "pages_per_minute": 3.9370939871825716
+                "pages_per_minute": 3.790271636133923
             },
             "by_page": [
                 {
@@ -1918,12 +1918,12 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Black Letter"
                     ],
+                    "publication_century": "1600-1700",
+                    "publication_decade": "",
                     "publication_year": "17th century",
                     "number_of_pages": 3,
                     "layout": "simple"
@@ -1932,7 +1932,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 9525,
+                "wall_time": 9416,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08427970798416445,
                 "cer_median": 0.09331797235023041,
@@ -1942,7 +1942,7 @@
                 ],
                 "cer_standard_deviation": 0.03052136439878228,
                 "wer": 0.1842438386542771,
-                "pages_per_minute": 18.89763779527559
+                "pages_per_minute": 19.11639762107052
             },
             "by_page": [
                 {
@@ -2016,12 +2016,12 @@
             "workflow_model": "qurator-gt4histocr-1.0",
             "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua"
                     ],
+                    "publication_century": "1500-1600",
+                    "publication_decade": "",
                     "publication_year": "16th century",
                     "number_of_pages": 3,
                     "layout": "complex"
@@ -2030,7 +2030,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 95721,
+                "wall_time": 86235,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.11095656062741122,
                 "cer_median": 0.12244897959183673,
@@ -2040,7 +2040,7 @@
                 ],
                 "cer_standard_deviation": 0.02991360090611332,
                 "wer": 0.26341315349276156,
-                "pages_per_minute": 1.8804651017018208
+                "pages_per_minute": 2.087319533831971
             },
             "by_page": [
                 {
@@ -2111,13 +2111,13 @@
             "workflow_model": "Fraktur_GT4HistOCR",
             "eval_tool": "ocrd-dinglehopper vNone",
             "document_metadata": {
-                "eval_workflow_url": "https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt",
-                "eval_data": "https://github.com/OCR-D/quiver-back-end/TODO",
                 "data_properties": {
                     "fonts": [
                         "Antiqua",
                         "Black Letter"
                     ],
+                    "publication_century": "1700-1800",
+                    "publication_decade": "",
                     "publication_year": "18th century",
                     "number_of_pages": 4,
                     "layout": "complex"
@@ -2126,17 +2126,17 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 77372,
+                "wall_time": 83342,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.16726583056278752,
-                "cer_median": 0.28556114839671887,
+                "cer_median": 0.09637318392327315,
                 "cer_range": [
                     0.03187250996015936,
                     0.4444444444444444
                 ],
                 "cer_standard_deviation": 0.18889822286887584,
                 "wer": 0.28912998545359864,
-                "pages_per_minute": 3.1018973271984693
+                "pages_per_minute": 2.8797005111468406
             },
             "by_page": [
                 {
