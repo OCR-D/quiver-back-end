@@ -77,15 +77,17 @@ def get_node_from_mets(mets_path: str, xpath: str) -> List[str]:
         return tree.findall(xpath)
 
 def get_workflow_steps(mets_path: str) -> List[str]:
-    xpath =f'.//{METS}agent[@ROLE="OTHER"]/{METS}name'
-    name_elements = get_node_from_mets(mets_path, xpath)
-    formatted_names = []
-    for e in name_elements:
-        name = e.text.split(' ')[0]
+    xpath = f'.//{METS}agent[@ROLE="OTHER"]'
+    agents = get_node_from_mets(mets_path, xpath)
+    result = []
+    for agent in agents:
+        iterator = list(agent.iter())
+        name = iterator[1].text.split(' ')[0]
         if 'ocrd-dinglehopper' not in name:
-            formatted_names.append(name)
+            params = iterator[-2].text
+            result.append({name: params})
 
-    return formatted_names
+    return result
 
 def get_workflow_model(mets_path: str) -> str:
     try:
