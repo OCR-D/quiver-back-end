@@ -1,370 +1,7 @@
 [
     {
-        "eval_workflow_id": "wf-data16_frak_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 16_frak_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 16_frak_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_frak_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 301,
-                        "k": 0.34
-                    }
-                },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 6,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 253307,
-                "cpu_time": "0.1",
-                "cer_mean": 0.12233144923609811,
-                "cer_median": 0.0697989946429397,
-                "cer_range": [
-                    0.05172413793103448,
-                    0.38848920863309355
-                ],
-                "cer_standard_deviation": 0.13173038899014955,
-                "wer": 0.26886580164226287,
-                "pages_per_minute": 1.4212003616165363
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.10179640718562874,
-                    "wer": 0.3008849557522124
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.05238095238095238,
-                    "wer": 0.1568627450980392
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.38848920863309355,
-                    "wer": 0.44
-                },
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.06255144032921811,
-                    "wer": 0.2766990291262136
-                },
-                {
-                    "page_id": "phys_0021",
-                    "cer": 0.05172413793103448,
-                    "wer": 0.20833333333333334
-                },
-                {
-                    "page_id": "phys_0029",
-                    "cer": 0.07704654895666131,
-                    "wer": 0.2304147465437788
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_frak_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 16_frak_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 16_frak_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_frak_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-denoise": {
-                        "level-of-operation": "page",
-                        "noise_maxsize": 3.0,
-                        "dpi": 0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-tesserocr-segment": {
-                        "dpi": 0,
-                        "padding": 4,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "overwrite_segments": true,
-                        "segmentation_level": "region",
-                        "textequiv_level": "none",
-                        "overwrite_text": true,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "textequiv_level": "glyph",
-                        "overwrite_segments": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "segmentation_level": "word",
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 6,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 105355,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.23049280809064063,
-                "cer_median": 0.09185773074661964,
-                "cer_range": [
-                    0.0658682634730539,
-                    0.9568345323741008
-                ],
-                "cer_standard_deviation": 0.3560945390007154,
-                "wer": 0.36710708997967917,
-                "pages_per_minute": 3.4170186512268046
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.0658682634730539,
-                    "wer": 0.18584070796460178
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.08412698412698413,
-                    "wer": 0.11764705882352941
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.9568345323741008,
-                    "wer": 0.9666666666666667
-                },
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.09958847736625515,
-                    "wer": 0.36893203883495146
-                },
-                {
-                    "page_id": "phys_0021",
-                    "cer": 0.10109717868338558,
-                    "wer": 0.2916666666666667
-                },
-                {
-                    "page_id": "phys_0029",
-                    "cer": 0.0754414125200642,
-                    "wer": 0.271889400921659
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_frak_simple_minimal_ocr-eval",
-        "label": "Workflow on data 19_frak_simple_minimal_ocr",
+        "eval_workflow_id": "wf-data16_frak_simple_minimal_ocr-eval",
+        "label": "Workflow on data 16_frak_simple_minimal_ocr",
         "metadata": {
             "ocr_workflow": {
                 "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
@@ -375,16 +12,16 @@
                 "label": "Evaluation Workflow dinglehopper_eval"
             },
             "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_frak_simple_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Black letter simple layout"
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple_minimal_ocr.ocrd.zip",
+                "label": "GT workspace 16th century Black letter simple layout"
             },
             "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 19_frak_simple_minimal_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_ocr.zip",
+                "label": "OCR workspace for 16_frak_simple_minimal_ocr"
             },
             "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_frak_simple_minimal_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_evaluation.zip",
+                "label": "Evaluation workspace for 16_frak_simple_minimal_ocr"
             },
             "workflow_steps": [
                 {
@@ -420,308 +57,99 @@
                     "fonts": [
                         "Black Letter"
                     ],
-                    "publication_century": "1800-1900",
+                    "publication_century": "1500-1600",
                     "publication_decade": "",
-                    "publication_year": "19th century",
-                    "number_of_pages": 1,
+                    "publication_year": "16th century",
+                    "number_of_pages": 6,
                     "layout": "simple"
                 }
             }
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 8506,
+                "wall_time": 28577,
                 "cpu_time": "(a few seconds)",
-                "cer_mean": 0.004721435316336166,
-                "cer_median": 0.004721435316336166,
+                "cer_mean": 0.13490219630962338,
+                "cer_median": 0.08500485504230823,
                 "cer_range": [
-                    0.004721435316336166,
-                    0.004721435316336166
+                    0.014285714285714285,
+                    0.4184652278177458
                 ],
-                "cer_standard_deviation": null,
-                "wer": 0.015873015873015872,
-                "pages_per_minute": 7.053844345168116
+                "cer_standard_deviation": 0.14421604715728023,
+                "wer": 0.2783759515546502,
+                "pages_per_minute": 12.59754347902159
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
-                    "cer": 0.004721435316336166,
-                    "wer": 0.015873015873015872
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 16_ant_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
+                    "cer": 0.0718562874251497,
+                    "wer": 0.19469026548672566
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
+                    "page_id": "phys_0002",
+                    "cer": 0.014285714285714285,
+                    "wer": 0.0196078431372549
                 },
                 {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 301,
-                        "k": 0.34
-                    }
+                    "page_id": "phys_0003",
+                    "cer": 0.4184652278177458,
+                    "wer": 0.48333333333333334
                 },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 86202,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.05488709037929677,
-                "cer_median": 0.03488372093023256,
-                "cer_range": [
-                    0.028395061728395062,
-                    0.10138248847926268
-                ],
-                "cer_standard_deviation": 0.04039668560556835,
-                "wer": 0.13745817563490756,
-                "pages_per_minute": 2.0881186051367715
-            },
-            "by_page": [
                 {
                     "page_id": "phys_0007",
-                    "cer": 0.10138248847926268,
-                    "wer": 0.17475728155339806
+                    "cer": 0.09135802469135802,
+                    "wer": 0.33495145631067963
                 },
                 {
-                    "page_id": "phys_0013",
-                    "cer": 0.03488372093023256,
-                    "wer": 0.13592233009708737
+                    "page_id": "phys_0021",
+                    "cer": 0.13479623824451412,
+                    "wer": 0.375
                 },
                 {
-                    "page_id": "phys_0014",
-                    "cer": 0.028395061728395062,
-                    "wer": 0.1016949152542373
+                    "page_id": "phys_0029",
+                    "cer": 0.07865168539325842,
+                    "wer": 0.2626728110599078
                 }
             ]
         }
     },
     {
-        "eval_workflow_id": "wf-data16_ant_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 16_ant_simple_slower_processors_ocr",
+        "eval_workflow_id": "wf-data17_frak_simple_minimal_ocr-eval",
+        "label": "Workflow on data 17_frak_simple_minimal_ocr",
         "metadata": {
             "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
+                "label": "OCR Workflow minimal_ocr"
             },
             "eval_workflow": {
                 "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
                 "label": "Evaluation Workflow dinglehopper_eval"
             },
             "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua simple layout"
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple_minimal_ocr.ocrd.zip",
+                "label": "GT workspace 17th century Black letter simple layout"
             },
             "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_simple_slower_processors_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_minimal_ocr_ocr.zip",
+                "label": "OCR workspace for 17_frak_simple_minimal_ocr"
             },
             "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_simple_slower_processors_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_minimal_ocr_evaluation.zip",
+                "label": "Evaluation workspace for 17_frak_simple_minimal_ocr"
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-denoise": {
-                        "level-of-operation": "page",
-                        "noise_maxsize": 3.0,
-                        "dpi": 0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-tesserocr-segment": {
-                        "dpi": 0,
-                        "padding": 4,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "overwrite_segments": true,
-                        "segmentation_level": "region",
-                        "textequiv_level": "none",
-                        "overwrite_text": true,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
                     "ocrd-tesserocr-recognize": {
-                        "textequiv_level": "glyph",
-                        "overwrite_segments": true,
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
                         "model": "Fraktur_GT4HistOCR",
                         "dpi": 0,
                         "padding": 0,
-                        "segmentation_level": "word",
+                        "overwrite_segments": false,
                         "overwrite_text": true,
                         "shrink_polygons": false,
                         "block_polygons": false,
-                        "find_tables": true,
                         "find_staves": false,
                         "sparse_text": false,
                         "raw_lines": false,
@@ -741,11 +169,11 @@
             "document_metadata": {
                 "data_properties": {
                     "fonts": [
-                        "Antiqua"
+                        "Black Letter"
                     ],
-                    "publication_century": "1500-1600",
+                    "publication_century": "1600-1700",
                     "publication_decade": "",
-                    "publication_year": "16th century",
+                    "publication_year": "17th century",
                     "number_of_pages": 3,
                     "layout": "simple"
                 }
@@ -753,33 +181,33 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 40655,
+                "wall_time": 11280,
                 "cpu_time": "(a few seconds)",
-                "cer_mean": 0.06721136853878373,
-                "cer_median": 0.055232558139534885,
+                "cer_mean": 0.08427970798416445,
+                "cer_median": 0.09331797235023041,
                 "cer_range": [
-                    0.03580246913580247,
-                    0.11059907834101383
+                    0.05025996533795494,
+                    0.10926118626430802
                 ],
-                "cer_standard_deviation": 0.038810463938030185,
-                "wer": 0.1847677033624047,
-                "pages_per_minute": 4.427499692534743
+                "cer_standard_deviation": 0.03052136439878228,
+                "wer": 0.1842438386542771,
+                "pages_per_minute": 15.957446808510639
             },
             "by_page": [
                 {
-                    "page_id": "phys_0007",
-                    "cer": 0.11059907834101383,
-                    "wer": 0.23300970873786409
+                    "page_id": "phys_0001",
+                    "cer": 0.10926118626430802,
+                    "wer": 0.2229299363057325
                 },
                 {
-                    "page_id": "phys_0013",
-                    "cer": 0.055232558139534885,
-                    "wer": 0.1941747572815534
+                    "page_id": "phys_0002",
+                    "cer": 0.09331797235023041,
+                    "wer": 0.20689655172413793
                 },
                 {
-                    "page_id": "phys_0014",
-                    "cer": 0.03580246913580247,
-                    "wer": 0.1271186440677966
+                    "page_id": "phys_0003",
+                    "cer": 0.05025996533795494,
+                    "wer": 0.12290502793296089
                 }
             ]
         }
@@ -852,7 +280,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 4943,
+                "wall_time": 4909,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.02493765586034913,
                 "cer_median": 0.02493765586034913,
@@ -862,7 +290,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 12.13837750354036
+                "pages_per_minute": 12.222448563862294
             },
             "by_page": [
                 {
@@ -874,8 +302,8 @@
         }
     },
     {
-        "eval_workflow_id": "wf-data19_ant_simple_minimal_ocr-eval",
-        "label": "Workflow on data 19_ant_simple_minimal_ocr",
+        "eval_workflow_id": "wf-data16_ant_complex_minimal_ocr-eval",
+        "label": "Workflow on data 16_ant_complex_minimal_ocr",
         "metadata": {
             "ocr_workflow": {
                 "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
@@ -886,16 +314,16 @@
                 "label": "Evaluation Workflow dinglehopper_eval"
             },
             "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Antiqua simple layout"
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex_minimal_ocr.ocrd.zip",
+                "label": "GT workspace 16th century Antiqua complex layout"
             },
             "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 19_ant_simple_minimal_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_ocr.zip",
+                "label": "OCR workspace for 16_ant_complex_minimal_ocr"
             },
             "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_ant_simple_minimal_ocr"
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_evaluation.zip",
+                "label": "Evaluation workspace for 16_ant_complex_minimal_ocr"
             },
             "workflow_steps": [
                 {
@@ -931,799 +359,43 @@
                     "fonts": [
                         "Antiqua"
                     ],
-                    "publication_century": "1800-1900",
+                    "publication_century": "1500-1600",
                     "publication_decade": "",
-                    "publication_year": "19th century",
+                    "publication_year": "16th century",
                     "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 15786,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.08328200324172261,
-                "cer_median": 0.08736842105263158,
-                "cer_range": [
-                    0.04055496264674493,
-                    0.12192262602579132
-                ],
-                "cer_standard_deviation": 0.04083746158658049,
-                "wer": 0.23519468186134854,
-                "pages_per_minute": 11.402508551881414
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.08736842105263158,
-                    "wer": 0.22666666666666666
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.04055496264674493,
-                    "wer": 0.14814814814814814
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.12192262602579132,
-                    "wer": 0.33076923076923076
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_frak_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 19_frak_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_frak_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 19_frak_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_frak_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-denoise": {
-                        "level-of-operation": "page",
-                        "noise_maxsize": 3.0,
-                        "dpi": 0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-tesserocr-segment": {
-                        "dpi": 0,
-                        "padding": 4,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "overwrite_segments": true,
-                        "segmentation_level": "region",
-                        "textequiv_level": "none",
-                        "overwrite_text": true,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "textequiv_level": "glyph",
-                        "overwrite_segments": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "segmentation_level": "word",
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1800-1900",
-                    "publication_decade": "",
-                    "publication_year": "19th century",
-                    "number_of_pages": 1,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 30014,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.0056657223796034,
-                "cer_median": 0.0056657223796034,
-                "cer_range": [
-                    0.0056657223796034,
-                    0.0056657223796034
-                ],
-                "cer_standard_deviation": null,
-                "wer": 0.031746031746031744,
-                "pages_per_minute": 1.9990671020190578
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.0056657223796034,
-                    "wer": 0.031746031746031744
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data18_frak_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 18_frak_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_frak_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 18th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_frak_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 18_frak_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_frak_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 18_frak_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 301,
-                        "k": 0.34
-                    }
-                },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1700-1800",
-                    "publication_decade": "",
-                    "publication_year": "18th century",
-                    "number_of_pages": 1,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 43160,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.02493765586034913,
-                "cer_median": 0.02493765586034913,
-                "cer_range": [
-                    0.02493765586034913,
-                    0.02493765586034913
-                ],
-                "cer_standard_deviation": null,
-                "wer": 0.09836065573770492,
-                "pages_per_minute": 1.3901760889712695
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.02493765586034913,
-                    "wer": 0.09836065573770492
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data18_frak_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 18_frak_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_frak_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 18th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_frak_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 18_frak_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_frak_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 18_frak_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-denoise": {
-                        "level-of-operation": "page",
-                        "noise_maxsize": 3.0,
-                        "dpi": 0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-tesserocr-segment": {
-                        "dpi": 0,
-                        "padding": 4,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "overwrite_segments": true,
-                        "segmentation_level": "region",
-                        "textequiv_level": "none",
-                        "overwrite_text": true,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "textequiv_level": "glyph",
-                        "overwrite_segments": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "segmentation_level": "word",
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1700-1800",
-                    "publication_decade": "",
-                    "publication_year": "18th century",
-                    "number_of_pages": 1,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 21623,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.0199501246882793,
-                "cer_median": 0.0199501246882793,
-                "cer_range": [
-                    0.0199501246882793,
-                    0.0199501246882793
-                ],
-                "cer_standard_deviation": null,
-                "wer": 0.09836065573770492,
-                "pages_per_minute": 2.7748231050270546
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.0199501246882793,
-                    "wer": 0.09836065573770492
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data18_fontmix_complex_selected_pages_ocr-eval",
-        "label": "Workflow on data 18_fontmix_complex_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_fontmix_complex_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 18th century Font Mix complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_fontmix_complex_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 18_fontmix_complex_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_fontmix_complex_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 18_fontmix_complex_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 301,
-                        "k": 0.34
-                    }
-                },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua",
-                        "Black Letter"
-                    ],
-                    "publication_century": "1700-1800",
-                    "publication_decade": "",
-                    "publication_year": "18th century",
-                    "number_of_pages": 4,
                     "layout": "complex"
                 }
             }
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 170576,
+                "wall_time": 10056,
                 "cpu_time": "(a few seconds)",
-                "cer_mean": 0.140061110527823,
-                "cer_median": 0.06466848046246318,
+                "cer_mean": 0.10240852523716282,
+                "cer_median": 0.10536980749746708,
                 "cer_range": [
-                    0.028685258964143426,
-                    0.4022222222222222
+                    0.07124352331606218,
+                    0.1306122448979592
                 ],
-                "cer_standard_deviation": 0.17581800739756628,
-                "wer": 0.23651027895776314,
-                "pages_per_minute": 1.4069974674045587
+                "cer_standard_deviation": 0.02979493530847308,
+                "wer": 0.23466068901129858,
+                "pages_per_minute": 17.899761336515514
             },
             "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.4022222222222222,
-                    "wer": 0.5474452554744526
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.028685258964143426,
-                    "wer": 0.09195402298850575
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.07550335570469799,
-                    "wer": 0.19553072625698323
-                },
-                {
-                    "page_id": "phys_0004",
-                    "cer": 0.053833605220228384,
-                    "wer": 0.1111111111111111
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_frak_simple_minimal_ocr-eval",
-        "label": "Workflow on data 16_frak_simple_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 16_frak_simple_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_frak_simple_minimal_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "segmentation_level": "region",
-                        "textequiv_level": "word",
-                        "find_tables": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "overwrite_segments": false,
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 6,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 26370,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.13490219630962338,
-                "cer_median": 0.08500485504230823,
-                "cer_range": [
-                    0.014285714285714285,
-                    0.4184652278177458
-                ],
-                "cer_standard_deviation": 0.14421604715728023,
-                "wer": 0.2783759515546502,
-                "pages_per_minute": 13.651877133105803
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.0718562874251497,
-                    "wer": 0.19469026548672566
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.014285714285714285,
-                    "wer": 0.0196078431372549
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.4184652278177458,
-                    "wer": 0.48333333333333334
-                },
                 {
                     "page_id": "phys_0007",
-                    "cer": 0.09135802469135802,
-                    "wer": 0.33495145631067963
+                    "cer": 0.07124352331606218,
+                    "wer": 0.2231404958677686
                 },
                 {
-                    "page_id": "phys_0021",
-                    "cer": 0.13479623824451412,
-                    "wer": 0.375
+                    "page_id": "phys_0008",
+                    "cer": 0.10536980749746708,
+                    "wer": 0.2484472049689441
                 },
                 {
-                    "page_id": "phys_0029",
-                    "cer": 0.07865168539325842,
-                    "wer": 0.2626728110599078
+                    "page_id": "phys_0009",
+                    "cer": 0.1306122448979592,
+                    "wer": 0.2323943661971831
                 }
             ]
         }
@@ -1797,7 +469,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 22489,
+                "wall_time": 23000,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.20433470587543373,
                 "cer_median": 0.1700173533179325,
@@ -1807,7 +479,7 @@
                 ],
                 "cer_standard_deviation": 0.19097881579976755,
                 "wer": 0.31449770246107817,
-                "pages_per_minute": 10.671884032193516
+                "pages_per_minute": 10.434782608695652
             },
             "by_page": [
                 {
@@ -1829,6 +501,194 @@
                     "page_id": "phys_0004",
                     "cer": 0.28466557911908646,
                     "wer": 0.3862433862433862
+                }
+            ]
+        }
+    },
+    {
+        "eval_workflow_id": "wf-data19_frak_simple_minimal_ocr-eval",
+        "label": "Workflow on data 19_frak_simple_minimal_ocr",
+        "metadata": {
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
+                "label": "OCR Workflow minimal_ocr"
+            },
+            "eval_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
+                "label": "Evaluation Workflow dinglehopper_eval"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_frak_simple_minimal_ocr.ocrd.zip",
+                "label": "GT workspace 19th century Black letter simple layout"
+            },
+            "ocr_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_minimal_ocr_ocr.zip",
+                "label": "OCR workspace for 19_frak_simple_minimal_ocr"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_minimal_ocr_evaluation.zip",
+                "label": "Evaluation workspace for 19_frak_simple_minimal_ocr"
+            },
+            "workflow_steps": [
+                {
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
+                }
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "document_metadata": {
+                "data_properties": {
+                    "fonts": [
+                        "Black Letter"
+                    ],
+                    "publication_century": "1800-1900",
+                    "publication_decade": "",
+                    "publication_year": "19th century",
+                    "number_of_pages": 1,
+                    "layout": "simple"
+                }
+            }
+        },
+        "evaluation_results": {
+            "document_wide": {
+                "wall_time": 7453,
+                "cpu_time": "(a few seconds)",
+                "cer_mean": 0.004721435316336166,
+                "cer_median": 0.004721435316336166,
+                "cer_range": [
+                    0.004721435316336166,
+                    0.004721435316336166
+                ],
+                "cer_standard_deviation": null,
+                "wer": 0.015873015873015872,
+                "pages_per_minute": 8.05044948342949
+            },
+            "by_page": [
+                {
+                    "page_id": "phys_0001",
+                    "cer": 0.004721435316336166,
+                    "wer": 0.015873015873015872
+                }
+            ]
+        }
+    },
+    {
+        "eval_workflow_id": "wf-data19_ant_simple_minimal_ocr-eval",
+        "label": "Workflow on data 19_ant_simple_minimal_ocr",
+        "metadata": {
+            "ocr_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
+                "label": "OCR Workflow minimal_ocr"
+            },
+            "eval_workflow": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
+                "label": "Evaluation Workflow dinglehopper_eval"
+            },
+            "gt_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple_minimal_ocr.ocrd.zip",
+                "label": "GT workspace 19th century Antiqua simple layout"
+            },
+            "ocr_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_minimal_ocr_ocr.zip",
+                "label": "OCR workspace for 19_ant_simple_minimal_ocr"
+            },
+            "eval_workspace": {
+                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_minimal_ocr_evaluation.zip",
+                "label": "Evaluation workspace for 19_ant_simple_minimal_ocr"
+            },
+            "workflow_steps": [
+                {
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
+                }
+            ],
+            "workflow_model": "Fraktur_GT4HistOCR",
+            "eval_tool": "ocrd-dinglehopper vNone",
+            "document_metadata": {
+                "data_properties": {
+                    "fonts": [
+                        "Antiqua"
+                    ],
+                    "publication_century": "1800-1900",
+                    "publication_decade": "",
+                    "publication_year": "19th century",
+                    "number_of_pages": 3,
+                    "layout": "simple"
+                }
+            }
+        },
+        "evaluation_results": {
+            "document_wide": {
+                "wall_time": 14723,
+                "cpu_time": "(a few seconds)",
+                "cer_mean": 0.08328200324172261,
+                "cer_median": 0.08736842105263158,
+                "cer_range": [
+                    0.04055496264674493,
+                    0.12192262602579132
+                ],
+                "cer_standard_deviation": 0.04083746158658049,
+                "wer": 0.23519468186134854,
+                "pages_per_minute": 12.225769204645792
+            },
+            "by_page": [
+                {
+                    "page_id": "phys_0001",
+                    "cer": 0.08736842105263158,
+                    "wer": 0.22666666666666666
+                },
+                {
+                    "page_id": "phys_0002",
+                    "cer": 0.04055496264674493,
+                    "wer": 0.14814814814814814
+                },
+                {
+                    "page_id": "phys_0003",
+                    "cer": 0.12192262602579132,
+                    "wer": 0.33076923076923076
                 }
             ]
         }
@@ -1901,7 +761,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10392,
+                "wall_time": 10974,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.07452119312897007,
                 "cer_median": 0.0629800307219662,
@@ -1911,7 +771,7 @@
                 ],
                 "cer_standard_deviation": 0.044394494261965886,
                 "wer": 0.22683890077340793,
-                "pages_per_minute": 17.321016166281755
+                "pages_per_minute": 16.402405686167302
             },
             "by_page": [
                 {
@@ -1928,1532 +788,6 @@
                     "page_id": "phys_0014",
                     "cer": 0.037037037037037035,
                     "wer": 0.1271186440677966
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_ant_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 19_ant_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Antiqua simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 19_ant_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_ant_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 301,
-                        "k": 0.34
-                    }
-                },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1800-1900",
-                    "publication_decade": "",
-                    "publication_year": "19th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 117836,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.08457767160660273,
-                "cer_median": 0.07737397420867527,
-                "cer_range": [
-                    0.0416221985058698,
-                    0.13473684210526315
-                ],
-                "cer_standard_deviation": 0.046973440956685215,
-                "wer": 0.3081861348528015,
-                "pages_per_minute": 1.5275467599035948
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.13473684210526315,
-                    "wer": 0.38666666666666666
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.0416221985058698,
-                    "wer": 0.21481481481481482
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.07737397420867527,
-                    "wer": 0.3230769230769231
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_ant_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 19_ant_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_ant_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Antiqua simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 19_ant_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_ant_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_ant_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-denoise": {
-                        "level-of-operation": "page",
-                        "noise_maxsize": 3.0,
-                        "dpi": 0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-tesserocr-segment": {
-                        "dpi": 0,
-                        "padding": 4,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "overwrite_segments": true,
-                        "segmentation_level": "region",
-                        "textequiv_level": "none",
-                        "overwrite_text": true,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "textequiv_level": "glyph",
-                        "overwrite_segments": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "segmentation_level": "word",
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1800-1900",
-                    "publication_decade": "",
-                    "publication_year": "19th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 62688,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.08697690719872657,
-                "cer_median": 0.04421052631578947,
-                "cer_range": [
-                    0.03735325506937033,
-                    0.17936694021101993
-                ],
-                "cer_standard_deviation": 0.08008554296654442,
-                "wer": 0.2764482431149098,
-                "pages_per_minute": 2.871362940275651
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.04421052631578947,
-                    "wer": 0.16666666666666666
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.03735325506937033,
-                    "wer": 0.17037037037037037
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.17936694021101993,
-                    "wer": 0.49230769230769234
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data19_frak_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 19_frak_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/19_frak_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 19th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 19_frak_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/19_frak_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 19_frak_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 301,
-                        "k": 0.34
-                    }
-                },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1800-1900",
-                    "publication_decade": "",
-                    "publication_year": "19th century",
-                    "number_of_pages": 1,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 68560,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.007554296506137866,
-                "cer_median": 0.007554296506137866,
-                "cer_range": [
-                    0.007554296506137866,
-                    0.007554296506137866
-                ],
-                "cer_standard_deviation": null,
-                "wer": 0.015873015873015872,
-                "pages_per_minute": 0.8751458576429404
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.007554296506137866,
-                    "wer": 0.015873015873015872
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data17_frak_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 17_frak_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 17th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 17_frak_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 17_frak_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 133,
-                        "k": 0.34
-                    }
-                },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1600-1700",
-                    "publication_decade": "",
-                    "publication_year": "17th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 91185,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.047703401203510305,
-                "cer_median": 0.04723502304147465,
-                "cer_range": [
-                    0.04592720970537262,
-                    0.04994797086368366
-                ],
-                "cer_standard_deviation": 0.002050893378518156,
-                "wer": 0.17277993391305632,
-                "pages_per_minute": 1.9740088830399738
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.04994797086368366,
-                    "wer": 0.21019108280254778
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.04723502304147465,
-                    "wer": 0.15172413793103448
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.04592720970537262,
-                    "wer": 0.1564245810055866
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_complex_minimal_ocr-eval",
-        "label": "Workflow on data 16_ant_complex_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_complex_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_complex_minimal_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "segmentation_level": "region",
-                        "textequiv_level": "word",
-                        "find_tables": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "overwrite_segments": false,
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 11173,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.10240852523716282,
-                "cer_median": 0.10536980749746708,
-                "cer_range": [
-                    0.07124352331606218,
-                    0.1306122448979592
-                ],
-                "cer_standard_deviation": 0.02979493530847308,
-                "wer": 0.23466068901129858,
-                "pages_per_minute": 16.11026581938602
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.07124352331606218,
-                    "wer": 0.2231404958677686
-                },
-                {
-                    "page_id": "phys_0008",
-                    "cer": 0.10536980749746708,
-                    "wer": 0.2484472049689441
-                },
-                {
-                    "page_id": "phys_0009",
-                    "cer": 0.1306122448979592,
-                    "wer": 0.2323943661971831
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data17_frak_simple_slower_processors_ocr-eval",
-        "label": "Workflow on data 17_frak_simple_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 17th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 17_frak_simple_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 17_frak_simple_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-denoise": {
-                        "level-of-operation": "page",
-                        "noise_maxsize": 3.0,
-                        "dpi": 0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-tesserocr-segment": {
-                        "dpi": 0,
-                        "padding": 4,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "overwrite_segments": true,
-                        "segmentation_level": "region",
-                        "textequiv_level": "none",
-                        "overwrite_text": true,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "textequiv_level": "glyph",
-                        "overwrite_segments": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "segmentation_level": "word",
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1600-1700",
-                    "publication_decade": "",
-                    "publication_year": "17th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 59849,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.15501219595245352,
-                "cer_median": 0.11654526534859522,
-                "cer_range": [
-                    0.09618717504332755,
-                    0.2523041474654378
-                ],
-                "cer_standard_deviation": 0.08486993479509113,
-                "wer": 0.360948415946103,
-                "pages_per_minute": 3.0075690487727447
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.11654526534859522,
-                    "wer": 0.46496815286624205
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.2523041474654378,
-                    "wer": 0.4
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.09618717504332755,
-                    "wer": 0.21787709497206703
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_complex_slower_processors_ocr-eval",
-        "label": "Workflow on data 16_ant_complex_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_complex_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_complex_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-denoise": {
-                        "level-of-operation": "page",
-                        "noise_maxsize": 3.0,
-                        "dpi": 0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-tesserocr-segment": {
-                        "dpi": 0,
-                        "padding": 4,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "overwrite_segments": true,
-                        "segmentation_level": "region",
-                        "textequiv_level": "none",
-                        "overwrite_text": true,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "textequiv_level": "glyph",
-                        "overwrite_segments": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "segmentation_level": "word",
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 44063,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.10363204260868718,
-                "cer_median": 0.11836734693877551,
-                "cer_range": [
-                    0.046632124352331605,
-                    0.1458966565349544
-                ],
-                "cer_standard_deviation": 0.051246548494839915,
-                "wer": 0.2145458690579216,
-                "pages_per_minute": 4.0850600276876285
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.046632124352331605,
-                    "wer": 0.1652892561983471
-                },
-                {
-                    "page_id": "phys_0008",
-                    "cer": 0.1458966565349544,
-                    "wer": 0.2670807453416149
-                },
-                {
-                    "page_id": "phys_0009",
-                    "cer": 0.11836734693877551,
-                    "wer": 0.2112676056338028
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data17_frak_simple_minimal_ocr-eval",
-        "label": "Workflow on data 17_frak_simple_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple_minimal_ocr.ocrd.zip",
-                "label": "GT workspace 17th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 17_frak_simple_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 17_frak_simple_minimal_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "segmentation_level": "region",
-                        "textequiv_level": "word",
-                        "find_tables": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "overwrite_segments": false,
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1600-1700",
-                    "publication_decade": "",
-                    "publication_year": "17th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 9776,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.08427970798416445,
-                "cer_median": 0.09331797235023041,
-                "cer_range": [
-                    0.05025996533795494,
-                    0.10926118626430802
-                ],
-                "cer_standard_deviation": 0.03052136439878228,
-                "wer": 0.1842438386542771,
-                "pages_per_minute": 18.41243862520458
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.10926118626430802,
-                    "wer": 0.2229299363057325
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.09331797235023041,
-                    "wer": 0.20689655172413793
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.05025996533795494,
-                    "wer": 0.12290502793296089
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_complex_selected_pages_ocr-eval",
-        "label": "Workflow on data 16_ant_complex_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex_selected_pages_ocr.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_complex_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_complex_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 301,
-                        "k": 0.34
-                    }
-                },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 92336,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.11095656062741122,
-                "cer_median": 0.12244897959183673,
-                "cer_range": [
-                    0.07700101317122594,
-                    0.133419689119171
-                ],
-                "cer_standard_deviation": 0.02991360090611332,
-                "wer": 0.26341315349276156,
-                "pages_per_minute": 1.9494021833304453
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.133419689119171,
-                    "wer": 0.36363636363636365
-                },
-                {
-                    "page_id": "phys_0008",
-                    "cer": 0.07700101317122594,
-                    "wer": 0.18012422360248448
-                },
-                {
-                    "page_id": "phys_0009",
-                    "cer": 0.12244897959183673,
-                    "wer": 0.24647887323943662
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data18_fontmix_complex_slower_processors_ocr-eval",
-        "label": "Workflow on data 18_fontmix_complex_slower_processors_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/slower_processors_ocr.txt",
-                "label": "OCR Workflow slower_processors_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/18_fontmix_complex_slower_processors_ocr.ocrd.zip",
-                "label": "GT workspace 18th century Font Mix complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_fontmix_complex_slower_processors_ocr_ocr.zip",
-                "label": "OCR workspace for 18_fontmix_complex_slower_processors_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/18_fontmix_complex_slower_processors_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 18_fontmix_complex_slower_processors_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-denoise": {
-                        "level-of-operation": "page",
-                        "noise_maxsize": 3.0,
-                        "dpi": 0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-tesserocr-segment": {
-                        "dpi": 0,
-                        "padding": 4,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "overwrite_segments": true,
-                        "segmentation_level": "region",
-                        "textequiv_level": "none",
-                        "overwrite_text": true,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "textequiv_level": "glyph",
-                        "overwrite_segments": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "segmentation_level": "word",
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_tables": true,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua",
-                        "Black Letter"
-                    ],
-                    "publication_century": "1700-1800",
-                    "publication_decade": "",
-                    "publication_year": "18th century",
-                    "number_of_pages": 4,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 80211,
-                "cpu_time": "(a few seconds)",
-                "cer_mean": 0.16726583056278752,
-                "cer_median": 0.09637318392327315,
-                "cer_range": [
-                    0.03187250996015936,
-                    0.4444444444444444
-                ],
-                "cer_standard_deviation": 0.18889822286887584,
-                "wer": 0.28912998545359864,
-                "pages_per_minute": 2.992108314320978
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.4444444444444444,
-                    "wer": 0.6204379562043796
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.03187250996015936,
-                    "wer": 0.10919540229885058
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.1266778523489933,
-                    "wer": 0.2681564245810056
-                },
-                {
-                    "page_id": "phys_0004",
-                    "cer": 0.06606851549755302,
-                    "wer": 0.15873015873015872
                 }
             ]
         }
