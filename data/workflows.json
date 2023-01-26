@@ -67,7 +67,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 25751,
+                "wall_time": 26643,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.13490219630962338,
                 "cer_median": 0.08500485504230823,
@@ -77,7 +77,7 @@
                 ],
                 "cer_standard_deviation": 0.14421604715728023,
                 "wer": 0.2783759515546502,
-                "pages_per_minute": 13.980039610112229
+                "pages_per_minute": 13.511991892804865
             },
             "by_page": [
                 {
@@ -181,7 +181,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 10154,
+                "wall_time": 10806,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08427970798416445,
                 "cer_median": 0.09331797235023041,
@@ -191,7 +191,7 @@
                 ],
                 "cer_standard_deviation": 0.03052136439878228,
                 "wer": 0.1842438386542771,
-                "pages_per_minute": 17.727004136300963
+                "pages_per_minute": 16.65741254858412
             },
             "by_page": [
                 {
@@ -280,7 +280,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 4790,
+                "wall_time": 4713,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.02493765586034913,
                 "cer_median": 0.02493765586034913,
@@ -290,7 +290,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 12.526096033402922
+                "pages_per_minute": 12.730744748567792
             },
             "by_page": [
                 {
@@ -369,7 +369,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 9450,
+                "wall_time": 11061,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.10240852523716282,
                 "cer_median": 0.10536980749746708,
@@ -379,7 +379,7 @@
                 ],
                 "cer_standard_deviation": 0.02979493530847308,
                 "wer": 0.23466068901129858,
-                "pages_per_minute": 19.047619047619047
+                "pages_per_minute": 16.273393002441008
             },
             "by_page": [
                 {
@@ -469,7 +469,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 24311,
+                "wall_time": 21934,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.20433470587543373,
                 "cer_median": 0.1700173533179325,
@@ -479,7 +479,7 @@
                 ],
                 "cer_standard_deviation": 0.19097881579976755,
                 "wer": 0.31449770246107817,
-                "pages_per_minute": 9.872074369626917
+                "pages_per_minute": 10.941916659068115
             },
             "by_page": [
                 {
@@ -573,7 +573,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 7170,
+                "wall_time": 7140,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.004721435316336166,
                 "cer_median": 0.004721435316336166,
@@ -583,7 +583,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.015873015873015872,
-                "pages_per_minute": 8.368200836820083
+                "pages_per_minute": 8.403361344537815
             },
             "by_page": [
                 {
@@ -662,7 +662,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 17322,
+                "wall_time": 14615,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08328200324172261,
                 "cer_median": 0.08736842105263158,
@@ -672,7 +672,7 @@
                 ],
                 "cer_standard_deviation": 0.04083746158658049,
                 "wer": 0.23519468186134854,
-                "pages_per_minute": 10.39140976792518
+                "pages_per_minute": 12.316113581936365
             },
             "by_page": [
                 {
@@ -761,7 +761,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 9837,
+                "wall_time": 12295,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.07452119312897007,
                 "cer_median": 0.0629800307219662,
@@ -771,7 +771,7 @@
                 ],
                 "cer_standard_deviation": 0.044394494261965886,
                 "wer": 0.22683890077340793,
-                "pages_per_minute": 18.29826166514181
+                "pages_per_minute": 14.640097600650671
             },
             "by_page": [
                 {
