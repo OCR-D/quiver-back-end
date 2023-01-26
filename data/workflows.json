@@ -25,28 +25,90 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-skimage-binarize": "{\"method\": \"li\", \"level-of-operation\": \"page\", \"dpi\": 0, \"window_size\": 301, \"k\": 0.34}"
+                    "ocrd-skimage-binarize": {
+                        "method": "li",
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "window_size": 301,
+                        "k": 0.34
+                    }
                 },
                 {
-                    "ocrd-skimage-denoise": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"protect\": 0.0, \"maxsize\": 1.0}"
+                    "ocrd-skimage-denoise": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "protect": 0.0,
+                        "maxsize": 1.0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"maxcolseps\": 20, \"maxseps\": 20, \"maximages\": 10, \"csminheight\": 4, \"hlminwidth\": 10, \"gap_height\": 0.01, \"gap_width\": 1.5, \"overwrite_order\": true, \"overwrite_separators\": true, \"overwrite_regions\": true, \"overwrite_lines\": true, \"spread\": 2.4}"
+                    "ocrd-cis-ocropy-segment": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "maxcolseps": 20,
+                        "maxseps": 20,
+                        "maximages": 10,
+                        "csminheight": 4,
+                        "hlminwidth": 10,
+                        "gap_height": 0.01,
+                        "gap_width": 1.5,
+                        "overwrite_order": true,
+                        "overwrite_separators": true,
+                        "overwrite_regions": true,
+                        "overwrite_lines": true,
+                        "spread": 2.4
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-calamari-recognize": "{\"checkpoint_dir\": \"qurator-gt4histocr-1.0\", \"voter\": \"confidence_voter_default_ctc\", \"textequiv_level\": \"line\", \"glyph_conf_cutoff\": 0.001}"
+                    "ocrd-calamari-recognize": {
+                        "checkpoint_dir": "qurator-gt4histocr-1.0",
+                        "voter": "confidence_voter_default_ctc",
+                        "textequiv_level": "line",
+                        "glyph_conf_cutoff": 0.001
+                    }
                 }
             ],
             "workflow_model": "qurator-gt4histocr-1.0",
@@ -66,7 +128,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 259034,
+                "wall_time": 253307,
                 "cpu_time": "0.1",
                 "cer_mean": 0.12233144923609811,
                 "cer_median": 0.0697989946429397,
@@ -76,7 +138,7 @@
                 ],
                 "cer_standard_deviation": 0.13173038899014955,
                 "wer": 0.26886580164226287,
-                "pages_per_minute": 1.3897789479373364
+                "pages_per_minute": 1.4212003616165363
             },
             "by_page": [
                 {
@@ -138,25 +200,103 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": "{\"level-of-operation\": \"page\", \"noise_maxsize\": 3.0, \"dpi\": 0}"
+                    "ocrd-cis-ocropy-denoise": {
+                        "level-of-operation": "page",
+                        "noise_maxsize": 3.0,
+                        "dpi": 0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-tesserocr-segment": "{\"dpi\": 0, \"padding\": 4, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"overwrite_segments\": true, \"segmentation_level\": \"region\", \"textequiv_level\": \"none\", \"overwrite_text\": true, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-segment": {
+                        "dpi": 0,
+                        "padding": 4,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "overwrite_segments": true,
+                        "segmentation_level": "region",
+                        "textequiv_level": "none",
+                        "overwrite_text": true,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-tesserocr-recognize": "{\"textequiv_level\": \"glyph\", \"overwrite_segments\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"segmentation_level\": \"word\", \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "textequiv_level": "glyph",
+                        "overwrite_segments": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "segmentation_level": "word",
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -176,7 +316,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 99245,
+                "wall_time": 105355,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.23049280809064063,
                 "cer_median": 0.09185773074661964,
@@ -186,7 +326,7 @@
                 ],
                 "cer_standard_deviation": 0.3560945390007154,
                 "wer": 0.36710708997967917,
-                "pages_per_minute": 3.6273867701143634
+                "pages_per_minute": 3.4170186512268046
             },
             "by_page": [
                 {
@@ -248,7 +388,29 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": "{\"segmentation_level\": \"region\", \"textequiv_level\": \"word\", \"find_tables\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"overwrite_segments\": false, \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -268,7 +430,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 7408,
+                "wall_time": 8506,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.004721435316336166,
                 "cer_median": 0.004721435316336166,
@@ -278,7 +440,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.015873015873015872,
-                "pages_per_minute": 8.099352051835853
+                "pages_per_minute": 7.053844345168116
             },
             "by_page": [
                 {
@@ -315,28 +477,90 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-skimage-binarize": "{\"method\": \"li\", \"level-of-operation\": \"page\", \"dpi\": 0, \"window_size\": 301, \"k\": 0.34}"
+                    "ocrd-skimage-binarize": {
+                        "method": "li",
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "window_size": 301,
+                        "k": 0.34
+                    }
                 },
                 {
-                    "ocrd-skimage-denoise": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"protect\": 0.0, \"maxsize\": 1.0}"
+                    "ocrd-skimage-denoise": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "protect": 0.0,
+                        "maxsize": 1.0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"maxcolseps\": 20, \"maxseps\": 20, \"maximages\": 10, \"csminheight\": 4, \"hlminwidth\": 10, \"gap_height\": 0.01, \"gap_width\": 1.5, \"overwrite_order\": true, \"overwrite_separators\": true, \"overwrite_regions\": true, \"overwrite_lines\": true, \"spread\": 2.4}"
+                    "ocrd-cis-ocropy-segment": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "maxcolseps": 20,
+                        "maxseps": 20,
+                        "maximages": 10,
+                        "csminheight": 4,
+                        "hlminwidth": 10,
+                        "gap_height": 0.01,
+                        "gap_width": 1.5,
+                        "overwrite_order": true,
+                        "overwrite_separators": true,
+                        "overwrite_regions": true,
+                        "overwrite_lines": true,
+                        "spread": 2.4
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-calamari-recognize": "{\"checkpoint_dir\": \"qurator-gt4histocr-1.0\", \"voter\": \"confidence_voter_default_ctc\", \"textequiv_level\": \"line\", \"glyph_conf_cutoff\": 0.001}"
+                    "ocrd-calamari-recognize": {
+                        "checkpoint_dir": "qurator-gt4histocr-1.0",
+                        "voter": "confidence_voter_default_ctc",
+                        "textequiv_level": "line",
+                        "glyph_conf_cutoff": 0.001
+                    }
                 }
             ],
             "workflow_model": "qurator-gt4histocr-1.0",
@@ -356,7 +580,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 84040,
+                "wall_time": 86202,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.05488709037929677,
                 "cer_median": 0.03488372093023256,
@@ -366,7 +590,7 @@
                 ],
                 "cer_standard_deviation": 0.04039668560556835,
                 "wer": 0.13745817563490756,
-                "pages_per_minute": 2.1418372203712517
+                "pages_per_minute": 2.0881186051367715
             },
             "by_page": [
                 {
@@ -413,25 +637,103 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": "{\"level-of-operation\": \"page\", \"noise_maxsize\": 3.0, \"dpi\": 0}"
+                    "ocrd-cis-ocropy-denoise": {
+                        "level-of-operation": "page",
+                        "noise_maxsize": 3.0,
+                        "dpi": 0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-tesserocr-segment": "{\"dpi\": 0, \"padding\": 4, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"overwrite_segments\": true, \"segmentation_level\": \"region\", \"textequiv_level\": \"none\", \"overwrite_text\": true, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-segment": {
+                        "dpi": 0,
+                        "padding": 4,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "overwrite_segments": true,
+                        "segmentation_level": "region",
+                        "textequiv_level": "none",
+                        "overwrite_text": true,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-tesserocr-recognize": "{\"textequiv_level\": \"glyph\", \"overwrite_segments\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"segmentation_level\": \"word\", \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "textequiv_level": "glyph",
+                        "overwrite_segments": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "segmentation_level": "word",
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -451,7 +753,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 48523,
+                "wall_time": 40655,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.06721136853878373,
                 "cer_median": 0.055232558139534885,
@@ -461,7 +763,7 @@
                 ],
                 "cer_standard_deviation": 0.038810463938030185,
                 "wer": 0.1847677033624047,
-                "pages_per_minute": 3.709581023432187
+                "pages_per_minute": 4.427499692534743
             },
             "by_page": [
                 {
@@ -508,7 +810,29 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": "{\"segmentation_level\": \"region\", \"textequiv_level\": \"word\", \"find_tables\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"overwrite_segments\": false, \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -528,7 +852,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 4763,
+                "wall_time": 4943,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.02493765586034913,
                 "cer_median": 0.02493765586034913,
@@ -538,7 +862,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 12.59710266638673
+                "pages_per_minute": 12.13837750354036
             },
             "by_page": [
                 {
@@ -575,7 +899,29 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": "{\"segmentation_level\": \"region\", \"textequiv_level\": \"word\", \"find_tables\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"overwrite_segments\": false, \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -595,7 +941,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 15014,
+                "wall_time": 15786,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08328200324172261,
                 "cer_median": 0.08736842105263158,
@@ -605,7 +951,7 @@
                 ],
                 "cer_standard_deviation": 0.04083746158658049,
                 "wer": 0.23519468186134854,
-                "pages_per_minute": 11.988810443585988
+                "pages_per_minute": 11.402508551881414
             },
             "by_page": [
                 {
@@ -652,25 +998,103 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": "{\"level-of-operation\": \"page\", \"noise_maxsize\": 3.0, \"dpi\": 0}"
+                    "ocrd-cis-ocropy-denoise": {
+                        "level-of-operation": "page",
+                        "noise_maxsize": 3.0,
+                        "dpi": 0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-tesserocr-segment": "{\"dpi\": 0, \"padding\": 4, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"overwrite_segments\": true, \"segmentation_level\": \"region\", \"textequiv_level\": \"none\", \"overwrite_text\": true, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-segment": {
+                        "dpi": 0,
+                        "padding": 4,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "overwrite_segments": true,
+                        "segmentation_level": "region",
+                        "textequiv_level": "none",
+                        "overwrite_text": true,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-tesserocr-recognize": "{\"textequiv_level\": \"glyph\", \"overwrite_segments\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"segmentation_level\": \"word\", \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "textequiv_level": "glyph",
+                        "overwrite_segments": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "segmentation_level": "word",
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -690,7 +1114,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 28551,
+                "wall_time": 30014,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.0056657223796034,
                 "cer_median": 0.0056657223796034,
@@ -700,7 +1124,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.031746031746031744,
-                "pages_per_minute": 2.1015025743406537
+                "pages_per_minute": 1.9990671020190578
             },
             "by_page": [
                 {
@@ -737,28 +1161,90 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-skimage-binarize": "{\"method\": \"li\", \"level-of-operation\": \"page\", \"dpi\": 0, \"window_size\": 301, \"k\": 0.34}"
+                    "ocrd-skimage-binarize": {
+                        "method": "li",
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "window_size": 301,
+                        "k": 0.34
+                    }
                 },
                 {
-                    "ocrd-skimage-denoise": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"protect\": 0.0, \"maxsize\": 1.0}"
+                    "ocrd-skimage-denoise": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "protect": 0.0,
+                        "maxsize": 1.0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"maxcolseps\": 20, \"maxseps\": 20, \"maximages\": 10, \"csminheight\": 4, \"hlminwidth\": 10, \"gap_height\": 0.01, \"gap_width\": 1.5, \"overwrite_order\": true, \"overwrite_separators\": true, \"overwrite_regions\": true, \"overwrite_lines\": true, \"spread\": 2.4}"
+                    "ocrd-cis-ocropy-segment": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "maxcolseps": 20,
+                        "maxseps": 20,
+                        "maximages": 10,
+                        "csminheight": 4,
+                        "hlminwidth": 10,
+                        "gap_height": 0.01,
+                        "gap_width": 1.5,
+                        "overwrite_order": true,
+                        "overwrite_separators": true,
+                        "overwrite_regions": true,
+                        "overwrite_lines": true,
+                        "spread": 2.4
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-calamari-recognize": "{\"checkpoint_dir\": \"qurator-gt4histocr-1.0\", \"voter\": \"confidence_voter_default_ctc\", \"textequiv_level\": \"line\", \"glyph_conf_cutoff\": 0.001}"
+                    "ocrd-calamari-recognize": {
+                        "checkpoint_dir": "qurator-gt4histocr-1.0",
+                        "voter": "confidence_voter_default_ctc",
+                        "textequiv_level": "line",
+                        "glyph_conf_cutoff": 0.001
+                    }
                 }
             ],
             "workflow_model": "qurator-gt4histocr-1.0",
@@ -778,7 +1264,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 46280,
+                "wall_time": 43160,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.02493765586034913,
                 "cer_median": 0.02493765586034913,
@@ -788,7 +1274,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 1.296456352636128
+                "pages_per_minute": 1.3901760889712695
             },
             "by_page": [
                 {
@@ -825,25 +1311,103 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": "{\"level-of-operation\": \"page\", \"noise_maxsize\": 3.0, \"dpi\": 0}"
+                    "ocrd-cis-ocropy-denoise": {
+                        "level-of-operation": "page",
+                        "noise_maxsize": 3.0,
+                        "dpi": 0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-tesserocr-segment": "{\"dpi\": 0, \"padding\": 4, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"overwrite_segments\": true, \"segmentation_level\": \"region\", \"textequiv_level\": \"none\", \"overwrite_text\": true, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-segment": {
+                        "dpi": 0,
+                        "padding": 4,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "overwrite_segments": true,
+                        "segmentation_level": "region",
+                        "textequiv_level": "none",
+                        "overwrite_text": true,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-tesserocr-recognize": "{\"textequiv_level\": \"glyph\", \"overwrite_segments\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"segmentation_level\": \"word\", \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "textequiv_level": "glyph",
+                        "overwrite_segments": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "segmentation_level": "word",
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -863,7 +1427,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 23032,
+                "wall_time": 21623,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.0199501246882793,
                 "cer_median": 0.0199501246882793,
@@ -873,7 +1437,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 2.605071205279611
+                "pages_per_minute": 2.7748231050270546
             },
             "by_page": [
                 {
@@ -910,28 +1474,90 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-skimage-binarize": "{\"method\": \"li\", \"level-of-operation\": \"page\", \"dpi\": 0, \"window_size\": 301, \"k\": 0.34}"
+                    "ocrd-skimage-binarize": {
+                        "method": "li",
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "window_size": 301,
+                        "k": 0.34
+                    }
                 },
                 {
-                    "ocrd-skimage-denoise": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"protect\": 0.0, \"maxsize\": 1.0}"
+                    "ocrd-skimage-denoise": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "protect": 0.0,
+                        "maxsize": 1.0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"maxcolseps\": 20, \"maxseps\": 20, \"maximages\": 10, \"csminheight\": 4, \"hlminwidth\": 10, \"gap_height\": 0.01, \"gap_width\": 1.5, \"overwrite_order\": true, \"overwrite_separators\": true, \"overwrite_regions\": true, \"overwrite_lines\": true, \"spread\": 2.4}"
+                    "ocrd-cis-ocropy-segment": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "maxcolseps": 20,
+                        "maxseps": 20,
+                        "maximages": 10,
+                        "csminheight": 4,
+                        "hlminwidth": 10,
+                        "gap_height": 0.01,
+                        "gap_width": 1.5,
+                        "overwrite_order": true,
+                        "overwrite_separators": true,
+                        "overwrite_regions": true,
+                        "overwrite_lines": true,
+                        "spread": 2.4
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-calamari-recognize": "{\"checkpoint_dir\": \"qurator-gt4histocr-1.0\", \"voter\": \"confidence_voter_default_ctc\", \"textequiv_level\": \"line\", \"glyph_conf_cutoff\": 0.001}"
+                    "ocrd-calamari-recognize": {
+                        "checkpoint_dir": "qurator-gt4histocr-1.0",
+                        "voter": "confidence_voter_default_ctc",
+                        "textequiv_level": "line",
+                        "glyph_conf_cutoff": 0.001
+                    }
                 }
             ],
             "workflow_model": "qurator-gt4histocr-1.0",
@@ -952,7 +1578,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 164780,
+                "wall_time": 170576,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.140061110527823,
                 "cer_median": 0.06466848046246318,
@@ -962,7 +1588,7 @@
                 ],
                 "cer_standard_deviation": 0.17581800739756628,
                 "wer": 0.23651027895776314,
-                "pages_per_minute": 1.456487437795849
+                "pages_per_minute": 1.4069974674045587
             },
             "by_page": [
                 {
@@ -1014,7 +1640,29 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": "{\"segmentation_level\": \"region\", \"textequiv_level\": \"word\", \"find_tables\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"overwrite_segments\": false, \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -1034,7 +1682,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 26109,
+                "wall_time": 26370,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.13490219630962338,
                 "cer_median": 0.08500485504230823,
@@ -1044,7 +1692,7 @@
                 ],
                 "cer_standard_deviation": 0.14421604715728023,
                 "wer": 0.2783759515546502,
-                "pages_per_minute": 13.788348845225785
+                "pages_per_minute": 13.651877133105803
             },
             "by_page": [
                 {
@@ -1106,7 +1754,29 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": "{\"segmentation_level\": \"region\", \"textequiv_level\": \"word\", \"find_tables\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"overwrite_segments\": false, \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -1127,7 +1797,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 22104,
+                "wall_time": 22489,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.20433470587543373,
                 "cer_median": 0.1700173533179325,
@@ -1137,7 +1807,7 @@
                 ],
                 "cer_standard_deviation": 0.19097881579976755,
                 "wer": 0.31449770246107817,
-                "pages_per_minute": 10.857763300760043
+                "pages_per_minute": 10.671884032193516
             },
             "by_page": [
                 {
@@ -1189,7 +1859,29 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": "{\"segmentation_level\": \"region\", \"textequiv_level\": \"word\", \"find_tables\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"overwrite_segments\": false, \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -1209,7 +1901,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 12391,
+                "wall_time": 10392,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.07452119312897007,
                 "cer_median": 0.0629800307219662,
@@ -1219,7 +1911,7 @@
                 ],
                 "cer_standard_deviation": 0.044394494261965886,
                 "wer": 0.22683890077340793,
-                "pages_per_minute": 14.526672584940684
+                "pages_per_minute": 17.321016166281755
             },
             "by_page": [
                 {
@@ -1266,28 +1958,90 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-skimage-binarize": "{\"method\": \"li\", \"level-of-operation\": \"page\", \"dpi\": 0, \"window_size\": 301, \"k\": 0.34}"
+                    "ocrd-skimage-binarize": {
+                        "method": "li",
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "window_size": 301,
+                        "k": 0.34
+                    }
                 },
                 {
-                    "ocrd-skimage-denoise": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"protect\": 0.0, \"maxsize\": 1.0}"
+                    "ocrd-skimage-denoise": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "protect": 0.0,
+                        "maxsize": 1.0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"maxcolseps\": 20, \"maxseps\": 20, \"maximages\": 10, \"csminheight\": 4, \"hlminwidth\": 10, \"gap_height\": 0.01, \"gap_width\": 1.5, \"overwrite_order\": true, \"overwrite_separators\": true, \"overwrite_regions\": true, \"overwrite_lines\": true, \"spread\": 2.4}"
+                    "ocrd-cis-ocropy-segment": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "maxcolseps": 20,
+                        "maxseps": 20,
+                        "maximages": 10,
+                        "csminheight": 4,
+                        "hlminwidth": 10,
+                        "gap_height": 0.01,
+                        "gap_width": 1.5,
+                        "overwrite_order": true,
+                        "overwrite_separators": true,
+                        "overwrite_regions": true,
+                        "overwrite_lines": true,
+                        "spread": 2.4
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-calamari-recognize": "{\"checkpoint_dir\": \"qurator-gt4histocr-1.0\", \"voter\": \"confidence_voter_default_ctc\", \"textequiv_level\": \"line\", \"glyph_conf_cutoff\": 0.001}"
+                    "ocrd-calamari-recognize": {
+                        "checkpoint_dir": "qurator-gt4histocr-1.0",
+                        "voter": "confidence_voter_default_ctc",
+                        "textequiv_level": "line",
+                        "glyph_conf_cutoff": 0.001
+                    }
                 }
             ],
             "workflow_model": "qurator-gt4histocr-1.0",
@@ -1307,7 +2061,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 120840,
+                "wall_time": 117836,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08457767160660273,
                 "cer_median": 0.07737397420867527,
@@ -1317,7 +2071,7 @@
                 ],
                 "cer_standard_deviation": 0.046973440956685215,
                 "wer": 0.3081861348528015,
-                "pages_per_minute": 1.4895729890764648
+                "pages_per_minute": 1.5275467599035948
             },
             "by_page": [
                 {
@@ -1364,25 +2118,103 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": "{\"level-of-operation\": \"page\", \"noise_maxsize\": 3.0, \"dpi\": 0}"
+                    "ocrd-cis-ocropy-denoise": {
+                        "level-of-operation": "page",
+                        "noise_maxsize": 3.0,
+                        "dpi": 0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-tesserocr-segment": "{\"dpi\": 0, \"padding\": 4, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"overwrite_segments\": true, \"segmentation_level\": \"region\", \"textequiv_level\": \"none\", \"overwrite_text\": true, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-segment": {
+                        "dpi": 0,
+                        "padding": 4,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "overwrite_segments": true,
+                        "segmentation_level": "region",
+                        "textequiv_level": "none",
+                        "overwrite_text": true,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-tesserocr-recognize": "{\"textequiv_level\": \"glyph\", \"overwrite_segments\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"segmentation_level\": \"word\", \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "textequiv_level": "glyph",
+                        "overwrite_segments": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "segmentation_level": "word",
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -1402,7 +2234,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 59666,
+                "wall_time": 62688,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08697690719872657,
                 "cer_median": 0.04421052631578947,
@@ -1412,7 +2244,7 @@
                 ],
                 "cer_standard_deviation": 0.08008554296654442,
                 "wer": 0.2764482431149098,
-                "pages_per_minute": 3.0167934837260755
+                "pages_per_minute": 2.871362940275651
             },
             "by_page": [
                 {
@@ -1459,28 +2291,90 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-skimage-binarize": "{\"method\": \"li\", \"level-of-operation\": \"page\", \"dpi\": 0, \"window_size\": 301, \"k\": 0.34}"
+                    "ocrd-skimage-binarize": {
+                        "method": "li",
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "window_size": 301,
+                        "k": 0.34
+                    }
                 },
                 {
-                    "ocrd-skimage-denoise": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"protect\": 0.0, \"maxsize\": 1.0}"
+                    "ocrd-skimage-denoise": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "protect": 0.0,
+                        "maxsize": 1.0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"maxcolseps\": 20, \"maxseps\": 20, \"maximages\": 10, \"csminheight\": 4, \"hlminwidth\": 10, \"gap_height\": 0.01, \"gap_width\": 1.5, \"overwrite_order\": true, \"overwrite_separators\": true, \"overwrite_regions\": true, \"overwrite_lines\": true, \"spread\": 2.4}"
+                    "ocrd-cis-ocropy-segment": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "maxcolseps": 20,
+                        "maxseps": 20,
+                        "maximages": 10,
+                        "csminheight": 4,
+                        "hlminwidth": 10,
+                        "gap_height": 0.01,
+                        "gap_width": 1.5,
+                        "overwrite_order": true,
+                        "overwrite_separators": true,
+                        "overwrite_regions": true,
+                        "overwrite_lines": true,
+                        "spread": 2.4
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-calamari-recognize": "{\"checkpoint_dir\": \"qurator-gt4histocr-1.0\", \"voter\": \"confidence_voter_default_ctc\", \"textequiv_level\": \"line\", \"glyph_conf_cutoff\": 0.001}"
+                    "ocrd-calamari-recognize": {
+                        "checkpoint_dir": "qurator-gt4histocr-1.0",
+                        "voter": "confidence_voter_default_ctc",
+                        "textequiv_level": "line",
+                        "glyph_conf_cutoff": 0.001
+                    }
                 }
             ],
             "workflow_model": "qurator-gt4histocr-1.0",
@@ -1500,7 +2394,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 65867,
+                "wall_time": 68560,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.007554296506137866,
                 "cer_median": 0.007554296506137866,
@@ -1510,7 +2404,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.015873015873015872,
-                "pages_per_minute": 0.9109265641368212
+                "pages_per_minute": 0.8751458576429404
             },
             "by_page": [
                 {
@@ -1547,28 +2441,90 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-skimage-binarize": "{\"method\": \"li\", \"level-of-operation\": \"page\", \"dpi\": 0, \"window_size\": 133, \"k\": 0.34}"
+                    "ocrd-skimage-binarize": {
+                        "method": "li",
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "window_size": 133,
+                        "k": 0.34
+                    }
                 },
                 {
-                    "ocrd-skimage-denoise": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"protect\": 0.0, \"maxsize\": 1.0}"
+                    "ocrd-skimage-denoise": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "protect": 0.0,
+                        "maxsize": 1.0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"maxcolseps\": 20, \"maxseps\": 20, \"maximages\": 10, \"csminheight\": 4, \"hlminwidth\": 10, \"gap_height\": 0.01, \"gap_width\": 1.5, \"overwrite_order\": true, \"overwrite_separators\": true, \"overwrite_regions\": true, \"overwrite_lines\": true, \"spread\": 2.4}"
+                    "ocrd-cis-ocropy-segment": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "maxcolseps": 20,
+                        "maxseps": 20,
+                        "maximages": 10,
+                        "csminheight": 4,
+                        "hlminwidth": 10,
+                        "gap_height": 0.01,
+                        "gap_width": 1.5,
+                        "overwrite_order": true,
+                        "overwrite_separators": true,
+                        "overwrite_regions": true,
+                        "overwrite_lines": true,
+                        "spread": 2.4
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-calamari-recognize": "{\"checkpoint_dir\": \"qurator-gt4histocr-1.0\", \"voter\": \"confidence_voter_default_ctc\", \"textequiv_level\": \"line\", \"glyph_conf_cutoff\": 0.001}"
+                    "ocrd-calamari-recognize": {
+                        "checkpoint_dir": "qurator-gt4histocr-1.0",
+                        "voter": "confidence_voter_default_ctc",
+                        "textequiv_level": "line",
+                        "glyph_conf_cutoff": 0.001
+                    }
                 }
             ],
             "workflow_model": "qurator-gt4histocr-1.0",
@@ -1588,7 +2544,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 89753,
+                "wall_time": 91185,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.047703401203510305,
                 "cer_median": 0.04723502304147465,
@@ -1598,7 +2554,7 @@
                 ],
                 "cer_standard_deviation": 0.002050893378518156,
                 "wer": 0.17277993391305632,
-                "pages_per_minute": 2.0055039942954553
+                "pages_per_minute": 1.9740088830399738
             },
             "by_page": [
                 {
@@ -1645,7 +2601,29 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": "{\"segmentation_level\": \"region\", \"textequiv_level\": \"word\", \"find_tables\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"overwrite_segments\": false, \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -1665,7 +2643,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 9820,
+                "wall_time": 11173,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.10240852523716282,
                 "cer_median": 0.10536980749746708,
@@ -1675,7 +2653,7 @@
                 ],
                 "cer_standard_deviation": 0.02979493530847308,
                 "wer": 0.23466068901129858,
-                "pages_per_minute": 18.32993890020367
+                "pages_per_minute": 16.11026581938602
             },
             "by_page": [
                 {
@@ -1722,25 +2700,103 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": "{\"level-of-operation\": \"page\", \"noise_maxsize\": 3.0, \"dpi\": 0}"
+                    "ocrd-cis-ocropy-denoise": {
+                        "level-of-operation": "page",
+                        "noise_maxsize": 3.0,
+                        "dpi": 0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-tesserocr-segment": "{\"dpi\": 0, \"padding\": 4, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"overwrite_segments\": true, \"segmentation_level\": \"region\", \"textequiv_level\": \"none\", \"overwrite_text\": true, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-segment": {
+                        "dpi": 0,
+                        "padding": 4,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "overwrite_segments": true,
+                        "segmentation_level": "region",
+                        "textequiv_level": "none",
+                        "overwrite_text": true,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-tesserocr-recognize": "{\"textequiv_level\": \"glyph\", \"overwrite_segments\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"segmentation_level\": \"word\", \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "textequiv_level": "glyph",
+                        "overwrite_segments": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "segmentation_level": "word",
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -1760,7 +2816,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 57419,
+                "wall_time": 59849,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.15501219595245352,
                 "cer_median": 0.11654526534859522,
@@ -1770,7 +2826,7 @@
                 ],
                 "cer_standard_deviation": 0.08486993479509113,
                 "wer": 0.360948415946103,
-                "pages_per_minute": 3.134850833347847
+                "pages_per_minute": 3.0075690487727447
             },
             "by_page": [
                 {
@@ -1817,25 +2873,103 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": "{\"level-of-operation\": \"page\", \"noise_maxsize\": 3.0, \"dpi\": 0}"
+                    "ocrd-cis-ocropy-denoise": {
+                        "level-of-operation": "page",
+                        "noise_maxsize": 3.0,
+                        "dpi": 0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-tesserocr-segment": "{\"dpi\": 0, \"padding\": 4, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"overwrite_segments\": true, \"segmentation_level\": \"region\", \"textequiv_level\": \"none\", \"overwrite_text\": true, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-segment": {
+                        "dpi": 0,
+                        "padding": 4,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "overwrite_segments": true,
+                        "segmentation_level": "region",
+                        "textequiv_level": "none",
+                        "overwrite_text": true,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-tesserocr-recognize": "{\"textequiv_level\": \"glyph\", \"overwrite_segments\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"segmentation_level\": \"word\", \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "textequiv_level": "glyph",
+                        "overwrite_segments": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "segmentation_level": "word",
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -1855,7 +2989,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 47490,
+                "wall_time": 44063,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.10363204260868718,
                 "cer_median": 0.11836734693877551,
@@ -1865,7 +2999,7 @@
                 ],
                 "cer_standard_deviation": 0.051246548494839915,
                 "wer": 0.2145458690579216,
-                "pages_per_minute": 3.790271636133923
+                "pages_per_minute": 4.0850600276876285
             },
             "by_page": [
                 {
@@ -1912,7 +3046,29 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": "{\"segmentation_level\": \"region\", \"textequiv_level\": \"word\", \"find_tables\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"overwrite_segments\": false, \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "segmentation_level": "region",
+                        "textequiv_level": "word",
+                        "find_tables": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "overwrite_segments": false,
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -1932,7 +3088,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 9416,
+                "wall_time": 9776,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.08427970798416445,
                 "cer_median": 0.09331797235023041,
@@ -1942,7 +3098,7 @@
                 ],
                 "cer_standard_deviation": 0.03052136439878228,
                 "wer": 0.1842438386542771,
-                "pages_per_minute": 19.11639762107052
+                "pages_per_minute": 18.41243862520458
             },
             "by_page": [
                 {
@@ -1989,28 +3145,90 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-skimage-binarize": "{\"method\": \"li\", \"level-of-operation\": \"page\", \"dpi\": 0, \"window_size\": 301, \"k\": 0.34}"
+                    "ocrd-skimage-binarize": {
+                        "method": "li",
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "window_size": 301,
+                        "k": 0.34
+                    }
                 },
                 {
-                    "ocrd-skimage-denoise": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"protect\": 0.0, \"maxsize\": 1.0}"
+                    "ocrd-skimage-denoise": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "protect": 0.0,
+                        "maxsize": 1.0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": "{\"level-of-operation\": \"page\", \"dpi\": 0, \"maxcolseps\": 20, \"maxseps\": 20, \"maximages\": 10, \"csminheight\": 4, \"hlminwidth\": 10, \"gap_height\": 0.01, \"gap_width\": 1.5, \"overwrite_order\": true, \"overwrite_separators\": true, \"overwrite_regions\": true, \"overwrite_lines\": true, \"spread\": 2.4}"
+                    "ocrd-cis-ocropy-segment": {
+                        "level-of-operation": "page",
+                        "dpi": 0,
+                        "maxcolseps": 20,
+                        "maxseps": 20,
+                        "maximages": 10,
+                        "csminheight": 4,
+                        "hlminwidth": 10,
+                        "gap_height": 0.01,
+                        "gap_width": 1.5,
+                        "overwrite_order": true,
+                        "overwrite_separators": true,
+                        "overwrite_regions": true,
+                        "overwrite_lines": true,
+                        "spread": 2.4
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-calamari-recognize": "{\"checkpoint_dir\": \"qurator-gt4histocr-1.0\", \"voter\": \"confidence_voter_default_ctc\", \"textequiv_level\": \"line\", \"glyph_conf_cutoff\": 0.001}"
+                    "ocrd-calamari-recognize": {
+                        "checkpoint_dir": "qurator-gt4histocr-1.0",
+                        "voter": "confidence_voter_default_ctc",
+                        "textequiv_level": "line",
+                        "glyph_conf_cutoff": 0.001
+                    }
                 }
             ],
             "workflow_model": "qurator-gt4histocr-1.0",
@@ -2030,7 +3248,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 86235,
+                "wall_time": 92336,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.11095656062741122,
                 "cer_median": 0.12244897959183673,
@@ -2040,7 +3258,7 @@
                 ],
                 "cer_standard_deviation": 0.02991360090611332,
                 "wer": 0.26341315349276156,
-                "pages_per_minute": 2.087319533831971
+                "pages_per_minute": 1.9494021833304453
             },
             "by_page": [
                 {
@@ -2087,25 +3305,103 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": "{\"method\": \"ocropy\", \"threshold\": 0.5, \"grayscale\": false, \"maxskew\": 0.0, \"noise_maxsize\": 0, \"dpi\": 0, \"level-of-operation\": \"page\"}"
+                    "ocrd-cis-ocropy-binarize": {
+                        "method": "ocropy",
+                        "threshold": 0.5,
+                        "grayscale": false,
+                        "maxskew": 0.0,
+                        "noise_maxsize": 0,
+                        "dpi": 0,
+                        "level-of-operation": "page"
+                    }
                 },
                 {
-                    "ocrd-anybaseocr-crop": "{\"dpi\": 0, \"rulerRatioMax\": 50.0, \"rulerRatioMin\": 3.0, \"rulerAreaMax\": 0.3, \"rulerAreaMin\": 0.01, \"rulerWidthMax\": 0.95, \"columnAreaMin\": 0.05, \"columnSepWidthMax\": 0.04, \"marginTop\": 0.25, \"marginBottom\": 0.75, \"marginLeft\": 0.3, \"marginRight\": 0.7, \"padding\": 10}"
+                    "ocrd-anybaseocr-crop": {
+                        "dpi": 0,
+                        "rulerRatioMax": 50.0,
+                        "rulerRatioMin": 3.0,
+                        "rulerAreaMax": 0.3,
+                        "rulerAreaMin": 0.01,
+                        "rulerWidthMax": 0.95,
+                        "columnAreaMin": 0.05,
+                        "columnSepWidthMax": 0.04,
+                        "marginTop": 0.25,
+                        "marginBottom": 0.75,
+                        "marginLeft": 0.3,
+                        "marginRight": 0.7,
+                        "padding": 10
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": "{\"level-of-operation\": \"page\", \"noise_maxsize\": 3.0, \"dpi\": 0}"
+                    "ocrd-cis-ocropy-denoise": {
+                        "level-of-operation": "page",
+                        "noise_maxsize": 3.0,
+                        "dpi": 0
+                    }
                 },
                 {
-                    "ocrd-tesserocr-deskew": "{\"operation_level\": \"page\", \"dpi\": 0, \"min_orientation_confidence\": 1.5}"
+                    "ocrd-tesserocr-deskew": {
+                        "operation_level": "page",
+                        "dpi": 0,
+                        "min_orientation_confidence": 1.5
+                    }
                 },
                 {
-                    "ocrd-tesserocr-segment": "{\"dpi\": 0, \"padding\": 4, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"overwrite_segments\": true, \"segmentation_level\": \"region\", \"textequiv_level\": \"none\", \"overwrite_text\": true, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-segment": {
+                        "dpi": 0,
+                        "padding": 4,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "overwrite_segments": true,
+                        "segmentation_level": "region",
+                        "textequiv_level": "none",
+                        "overwrite_text": true,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": "{\"dpi\": 0, \"range\": 4.0, \"smoothness\": 1.0, \"max_neighbour\": 0.05}"
+                    "ocrd-cis-ocropy-dewarp": {
+                        "dpi": 0,
+                        "range": 4.0,
+                        "smoothness": 1.0,
+                        "max_neighbour": 0.05
+                    }
                 },
                 {
-                    "ocrd-tesserocr-recognize": "{\"textequiv_level\": \"glyph\", \"overwrite_segments\": true, \"model\": \"Fraktur_GT4HistOCR\", \"dpi\": 0, \"padding\": 0, \"segmentation_level\": \"word\", \"overwrite_text\": true, \"shrink_polygons\": false, \"block_polygons\": false, \"find_tables\": true, \"find_staves\": false, \"sparse_text\": false, \"raw_lines\": false, \"char_whitelist\": \"\", \"char_blacklist\": \"\", \"char_unblacklist\": \"\", \"tesseract_parameters\": {}, \"xpath_parameters\": {}, \"xpath_model\": {}, \"auto_model\": false, \"oem\": \"DEFAULT\"}"
+                    "ocrd-tesserocr-recognize": {
+                        "textequiv_level": "glyph",
+                        "overwrite_segments": true,
+                        "model": "Fraktur_GT4HistOCR",
+                        "dpi": 0,
+                        "padding": 0,
+                        "segmentation_level": "word",
+                        "overwrite_text": true,
+                        "shrink_polygons": false,
+                        "block_polygons": false,
+                        "find_tables": true,
+                        "find_staves": false,
+                        "sparse_text": false,
+                        "raw_lines": false,
+                        "char_whitelist": "",
+                        "char_blacklist": "",
+                        "char_unblacklist": "",
+                        "tesseract_parameters": {},
+                        "xpath_parameters": {},
+                        "xpath_model": {},
+                        "auto_model": false,
+                        "oem": "DEFAULT"
+                    }
                 }
             ],
             "workflow_model": "Fraktur_GT4HistOCR",
@@ -2126,7 +3422,7 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 83342,
+                "wall_time": 80211,
                 "cpu_time": "(a few seconds)",
                 "cer_mean": 0.16726583056278752,
                 "cer_median": 0.09637318392327315,
@@ -2136,7 +3432,7 @@
                 ],
                 "cer_standard_deviation": 0.18889822286887584,
                 "wer": 0.28912998545359864,
-                "pages_per_minute": 2.8797005111468406
+                "pages_per_minute": 2.992108314320978
             },
             "by_page": [
                 {
