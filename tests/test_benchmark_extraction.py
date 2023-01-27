@@ -14,11 +14,12 @@ from quiver.benchmark_extraction import (get_cer_range,
                                          get_workflow_model,
                                          get_workflow_steps, get_workspace,
                                          get_cer_median,
-                                         get_cer_standard_deviation)
+                                         get_cer_standard_deviation,
+                                         get_nextflow_time)
 from quiver.constants import QUIVER_MAIN
 
-WORKSPACE_DIR = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex')
-METS_PATH = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex/mets.xml')
+WORKSPACE_DIR = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex_minimal_ocr')
+METS_PATH = str(Path(__file__).parent / 'assets/benchmarking/16_ant_complex_minimal_ocr/mets.xml')
 
 def test_get_eval_dirs():
     result = get_eval_dirs(WORKSPACE_DIR)
@@ -90,7 +91,7 @@ def test_get_workflow_model():
     assert result == 'Fraktur_GT4HistOCR'
 
 def test_get_workflow_steps():
-    mets_path = 'tests/assets/benchmarking/16_ant_complex/mets.xml'
+    mets_path = 'tests/assets/benchmarking/16_ant_complex_minimal_ocr/mets.xml'
     result = get_workflow_steps(mets_path)
     print(result)
     assert result == [{'ocrd-tesserocr-recognize': {
@@ -133,7 +134,7 @@ def test_get_eval_workflow():
     assert result['label'] == 'Evaluation Workflow dinglehopper_eval'
 
 def test_get_eval_workflow():
-    workspace_path = 'tests/assets/benchmarking/16_ant_complex/'
+    workspace_path = 'tests/assets/benchmarking/16_ant_complex_minimal_ocr/'
     result = get_workflow(workspace_path, 'eval')
     assert result['@id'] == 'https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt'
     assert result['label'] == 'Evaluation Workflow dinglehopper_eval'
@@ -168,3 +169,11 @@ def test_get_cer_median():
 def test_get_cer_standard_deviation():
     result = get_cer_standard_deviation(WORKSPACE_DIR, 'SEG-LINE')
     assert result == 0.02979493530847308
+
+def test_get_nextflow_time():
+    result = get_nextflow_time(WORKSPACE_DIR, 'CPU')
+    assert result == 10.418373
+
+def test_get_wall_time():
+    result = get_nextflow_time(WORKSPACE_DIR, 'wall')
+    assert result == 7.995512

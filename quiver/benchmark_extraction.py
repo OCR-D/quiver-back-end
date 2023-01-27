@@ -172,8 +172,8 @@ def extract_benchmarks(workspace_path: str, mets_path: str) -> Dict[str, Dict[st
 
 def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[float, List[float]]]:
     return {
-        'wall_time': get_nextflow_process_duration(workspace_path),
-        'cpu_time': get_cpu_time(workspace_path),
+        'wall_time': get_nextflow_time(workspace_path, 'wall'),
+        'cpu_time': get_nextflow_time(workspace_path, 'CPU'),
         'cer_mean': get_mean_cer(workspace_path, 'SEG-LINE'),
         'cer_median': get_cer_median(workspace_path, 'SEG-LINE'),
         'cer_range': get_cer_range(workspace_path, 'SEG-LINE'),
@@ -195,22 +195,18 @@ def get_nextflow_completed_process_file(workspace_path: str):
         file = json.load(f)
     return file
 
+def get_nextflow_time(workspace_path: str, time_type: str) -> float:
+    with open(workspace_path + '/ocr.log', 'r', encoding='utf-8') as log:
+        log_file = log.read()
+        no_sec_s = re.search(rf'([0-9]+?\.[0-9]+?)s \({time_type}\)', log_file).group(1)
+        return float(no_sec_s)
 
-def get_nextflow_process_duration(workspace_path: str) -> float:
-    file = get_nextflow_completed_process_file(workspace_path)
-    return file['metadata']['workflow']['duration']
-
-def get_cpu_time(workspace_path: str) -> Union[str, float]:
-    file = get_nextflow_completed_process_file(workspace_path)
-    return file['metadata']['workflow']['workflowStats']['computeTimeFmt']
 
 def get_pages_per_minute(workspace_path: str) -> float:
-    duration = get_nextflow_process_duration(workspace_path)
-    # duration is given in ms
-    duration_min = duration / 60000
+    duration = get_nextflow_time(workspace_path, 'wall')
     no_pages = get_no_of_pages(workspace_path)
 
-    return no_pages / duration_min
+    return no_pages / (duration / 60)
 
 
 def get_mean_cer(workspace_path: str, gt_type: str) -> float:
