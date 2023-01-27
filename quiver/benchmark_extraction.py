@@ -108,6 +108,7 @@ def get_eval_tool(mets_path: str) -> str:
 def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
     current_workspace = get_workspace_name(workspace_path)
     split_workspace_name = current_workspace.split('_')
+    workspace_name_wo_workflow = split_workspace_name[0] + '_' + split_workspace_name[1] + '_' + split_workspace_name[2]
     font = ''
     if split_workspace_name[1] == 'ant':
         font = 'Antiqua'
@@ -115,7 +116,7 @@ def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
         font = 'Black letter'
     else:
         font = 'Font Mix'
-    url = 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
+    url = 'https://github.com/OCR-D/quiver-data/blob/main/' + workspace_name_wo_workflow + '.ocrd.zip'
     label = f'GT workspace {split_workspace_name[0]}th century {font} {split_workspace_name[2]} layout'
     return {
         '@id': url,

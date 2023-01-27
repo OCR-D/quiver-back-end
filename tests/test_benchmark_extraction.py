@@ -141,13 +141,13 @@ def test_get_eval_workflow():
 
 def test_get_eval_workspace():
     result = get_workspace(WORKSPACE_DIR, 'evaluation')
-    assert result['@id'] == f'{QUIVER_MAIN}/workflows/results/16_ant_complex_evaluation.zip'
-    assert result['label'] == 'Evaluation workspace for 16_ant_complex'
+    assert result['@id'] == f'{QUIVER_MAIN}/workflows/results/16_ant_complex_minimal_ocr_evaluation.zip'
+    assert result['label'] == 'Evaluation workspace for 16_ant_complex_minimal_ocr'
 
 def test_get_ocr_workspace():
     result = get_workspace(WORKSPACE_DIR, 'ocr')
-    assert result['@id'] == f'{QUIVER_MAIN}/workflows/results/16_ant_complex_ocr.zip'
-    assert result['label'] == 'OCR workspace for 16_ant_complex'
+    assert result['@id'] == f'{QUIVER_MAIN}/workflows/results/16_ant_complex_minimal_ocr_ocr.zip'
+    assert result['label'] == 'OCR workspace for 16_ant_complex_minimal_ocr'
 
 def test_get_document_metadata():
     result = get_document_metadata(WORKSPACE_DIR)
