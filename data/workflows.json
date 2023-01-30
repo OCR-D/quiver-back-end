@@ -25,7 +25,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -36,7 +37,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -53,7 +55,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-binarize": {
+                    "id": "ocrd-skimage-binarize",
+                    "params": {
                         "method": "li",
                         "level-of-operation": "page",
                         "dpi": 0,
@@ -62,7 +65,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-denoise": {
+                    "id": "ocrd-skimage-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "protect": 0.0,
@@ -70,14 +74,16 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": {
+                    "id": "ocrd-cis-ocropy-segment",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "maxcolseps": 20,
@@ -95,7 +101,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -103,7 +110,8 @@
                     }
                 },
                 {
-                    "ocrd-calamari-recognize": {
+                    "id": "ocrd-calamari-recognize",
+                    "params": {
                         "checkpoint_dir": "qurator-gt4histocr-1.0",
                         "voter": "confidence_voter_default_ctc",
                         "textequiv_level": "line",
@@ -128,8 +136,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 241.44497,
-                "cpu_time": 337.16100900000004,
+                "wall_time": 234.497735,
+                "cpu_time": 327.404873,
                 "cer_mean": 0.12233144923609811,
                 "cer_median": 0.0697989946429397,
                 "cer_range": [
@@ -138,7 +146,7 @@
                 ],
                 "cer_standard_deviation": 0.13173038899014955,
                 "wer": 0.26886580164226287,
-                "pages_per_minute": 1.4910229854860921
+                "pages_per_minute": 1.5351960649001577
             },
             "by_page": [
                 {
@@ -200,7 +208,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -211,7 +220,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -228,21 +238,24 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": {
+                    "id": "ocrd-cis-ocropy-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "noise_maxsize": 3.0,
                         "dpi": 0
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-tesserocr-segment": {
+                    "id": "ocrd-tesserocr-segment",
+                    "params": {
                         "dpi": 0,
                         "padding": 4,
                         "shrink_polygons": false,
@@ -266,7 +279,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -274,7 +288,8 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "textequiv_level": "glyph",
                         "overwrite_segments": true,
                         "model": "Fraktur_GT4HistOCR",
@@ -316,8 +331,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 85.11787199999999,
-                "cpu_time": 125.50980899999999,
+                "wall_time": 89.167795,
+                "cpu_time": 132.584004,
                 "cer_mean": 0.23049280809064063,
                 "cer_median": 0.09185773074661964,
                 "cer_range": [
@@ -326,7 +341,7 @@
                 ],
                 "cer_standard_deviation": 0.3560945390007154,
                 "wer": 0.36710708997967917,
-                "pages_per_minute": 4.229429043996777
+                "pages_per_minute": 4.037332088339742
             },
             "by_page": [
                 {
@@ -388,7 +403,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "segmentation_level": "region",
                         "textequiv_level": "word",
                         "find_tables": true,
@@ -430,8 +446,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 4.14999,
-                "cpu_time": 5.033036,
+                "wall_time": 4.209258,
+                "cpu_time": 5.000558,
                 "cer_mean": 0.004721435316336166,
                 "cer_median": 0.004721435316336166,
                 "cer_range": [
@@ -440,127 +456,13 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.015873015873015872,
-                "pages_per_minute": 14.457866163532925
+                "pages_per_minute": 14.254293749634734
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
                     "cer": 0.004721435316336166,
                     "wer": 0.015873015873015872
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_frak_simple_minimal_ocr-eval",
-        "label": "Workflow on data 16_frak_simple_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_frak_simple.ocrd.zip",
-                "label": "GT workspace 16th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 16_frak_simple_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_frak_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_frak_simple_minimal_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "segmentation_level": "region",
-                        "textequiv_level": "word",
-                        "find_tables": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "overwrite_segments": false,
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 6,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 25.445068,
-                "cpu_time": 31.331749,
-                "cer_mean": 0.13490219630962338,
-                "cer_median": 0.08500485504230823,
-                "cer_range": [
-                    0.014285714285714285,
-                    0.4184652278177458
-                ],
-                "cer_standard_deviation": 0.14421604715728023,
-                "wer": 0.2783759515546502,
-                "pages_per_minute": 14.148124893987314
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.0718562874251497,
-                    "wer": 0.19469026548672566
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.014285714285714285,
-                    "wer": 0.0196078431372549
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.4184652278177458,
-                    "wer": 0.48333333333333334
-                },
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.09135802469135802,
-                    "wer": 0.33495145631067963
-                },
-                {
-                    "page_id": "phys_0021",
-                    "cer": 0.13479623824451412,
-                    "wer": 0.375
-                },
-                {
-                    "page_id": "phys_0029",
-                    "cer": 0.07865168539325842,
-                    "wer": 0.2626728110599078
                 }
             ]
         }
@@ -591,7 +493,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -602,7 +505,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -619,7 +523,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-binarize": {
+                    "id": "ocrd-skimage-binarize",
+                    "params": {
                         "method": "li",
                         "level-of-operation": "page",
                         "dpi": 0,
@@ -628,7 +533,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-denoise": {
+                    "id": "ocrd-skimage-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "protect": 0.0,
@@ -636,14 +542,16 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": {
+                    "id": "ocrd-cis-ocropy-segment",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "maxcolseps": 20,
@@ -661,7 +569,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -669,7 +578,8 @@
                     }
                 },
                 {
-                    "ocrd-calamari-recognize": {
+                    "id": "ocrd-calamari-recognize",
+                    "params": {
                         "checkpoint_dir": "qurator-gt4histocr-1.0",
                         "voter": "confidence_voter_default_ctc",
                         "textequiv_level": "line",
@@ -694,8 +604,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 69.66861899999999,
-                "cpu_time": 105.65573899999998,
+                "wall_time": 67.489087,
+                "cpu_time": 103.83563600000001,
                 "cer_mean": 0.05488709037929677,
                 "cer_median": 0.03488372093023256,
                 "cer_range": [
@@ -704,7 +614,7 @@
                 ],
                 "cer_standard_deviation": 0.04039668560556835,
                 "wer": 0.13745817563490756,
-                "pages_per_minute": 2.583659653135941
+                "pages_per_minute": 2.6670978672448187
             },
             "by_page": [
                 {
@@ -751,7 +661,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -762,7 +673,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -779,21 +691,24 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": {
+                    "id": "ocrd-cis-ocropy-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "noise_maxsize": 3.0,
                         "dpi": 0
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-tesserocr-segment": {
+                    "id": "ocrd-tesserocr-segment",
+                    "params": {
                         "dpi": 0,
                         "padding": 4,
                         "shrink_polygons": false,
@@ -817,7 +732,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -825,7 +741,8 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "textequiv_level": "glyph",
                         "overwrite_segments": true,
                         "model": "Fraktur_GT4HistOCR",
@@ -867,8 +784,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 27.862975,
-                "cpu_time": 44.736222,
+                "wall_time": 28.075730999999998,
+                "cpu_time": 45.098518,
                 "cer_mean": 0.06721136853878373,
                 "cer_median": 0.055232558139534885,
                 "cer_range": [
@@ -877,7 +794,7 @@
                 ],
                 "cer_standard_deviation": 0.038810463938030185,
                 "wer": 0.1847677033624047,
-                "pages_per_minute": 6.4601859636309475
+                "pages_per_minute": 6.41123110917397
             },
             "by_page": [
                 {
@@ -924,7 +841,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "segmentation_level": "region",
                         "textequiv_level": "word",
                         "find_tables": true,
@@ -966,8 +884,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 1.766302,
-                "cpu_time": 2.334562,
+                "wall_time": 1.69215,
+                "cpu_time": 2.252807,
                 "cer_mean": 0.02493765586034913,
                 "cer_median": 0.02493765586034913,
                 "cer_range": [
@@ -976,173 +894,13 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 33.969275922237536
+                "pages_per_minute": 35.45784948142895
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
                     "cer": 0.02493765586034913,
                     "wer": 0.09836065573770492
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_simple_selected_pages_ocr-eval",
-        "label": "Workflow on data 16_ant_simple_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_simple_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_simple_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 301,
-                        "k": 0.34
-                    }
-                },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 21.525609,
-                "cpu_time": 50.795615,
-                "cer_mean": 0.05488709037929677,
-                "cer_median": 0.03488372093023256,
-                "cer_range": [
-                    0.028395061728395062,
-                    0.10138248847926268
-                ],
-                "cer_standard_deviation": 0.04039668560556835,
-                "wer": 0.13745817563490756,
-                "pages_per_minute": 8.362132750808584
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.10138248847926268,
-                    "wer": 0.17475728155339806
-                },
-                {
-                    "page_id": "phys_0013",
-                    "cer": 0.03488372093023256,
-                    "wer": 0.13592233009708737
-                },
-                {
-                    "page_id": "phys_0014",
-                    "cer": 0.028395061728395062,
-                    "wer": 0.1016949152542373
                 }
             ]
         }
@@ -1173,7 +931,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "segmentation_level": "region",
                         "textequiv_level": "word",
                         "find_tables": true,
@@ -1215,8 +974,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 11.809499,
-                "cpu_time": 14.345999,
+                "wall_time": 11.511664,
+                "cpu_time": 13.989014,
                 "cer_mean": 0.08328200324172261,
                 "cer_median": 0.08736842105263158,
                 "cer_range": [
@@ -1225,7 +984,7 @@
                 ],
                 "cer_standard_deviation": 0.04083746158658049,
                 "wer": 0.23519468186134854,
-                "pages_per_minute": 15.241967504294635
+                "pages_per_minute": 15.636314610989341
             },
             "by_page": [
                 {
@@ -1272,7 +1031,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -1283,7 +1043,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -1300,21 +1061,24 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": {
+                    "id": "ocrd-cis-ocropy-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "noise_maxsize": 3.0,
                         "dpi": 0
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-tesserocr-segment": {
+                    "id": "ocrd-tesserocr-segment",
+                    "params": {
                         "dpi": 0,
                         "padding": 4,
                         "shrink_polygons": false,
@@ -1338,7 +1102,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -1346,7 +1111,8 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "textequiv_level": "glyph",
                         "overwrite_segments": true,
                         "model": "Fraktur_GT4HistOCR",
@@ -1388,8 +1154,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 11.889162999999998,
-                "cpu_time": 19.337769,
+                "wall_time": 11.800943,
+                "cpu_time": 19.211613999999997,
                 "cer_mean": 0.0056657223796034,
                 "cer_median": 0.0056657223796034,
                 "cer_range": [
@@ -1398,112 +1164,13 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.031746031746031744,
-                "pages_per_minute": 5.046612616884806
+                "pages_per_minute": 5.084339446432374
             },
             "by_page": [
                 {
                     "page_id": "phys_0001",
                     "cer": 0.0056657223796034,
                     "wer": 0.031746031746031744
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data17_frak_simple_minimal_ocr-eval",
-        "label": "Workflow on data 17_frak_simple_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/17_frak_simple.ocrd.zip",
-                "label": "GT workspace 17th century Black letter simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 17_frak_simple_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/17_frak_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 17_frak_simple_minimal_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "segmentation_level": "region",
-                        "textequiv_level": "word",
-                        "find_tables": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "overwrite_segments": false,
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Black Letter"
-                    ],
-                    "publication_century": "1600-1700",
-                    "publication_decade": "",
-                    "publication_year": "17th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 7.738282,
-                "cpu_time": 10.5876,
-                "cer_mean": 0.08427970798416445,
-                "cer_median": 0.09331797235023041,
-                "cer_range": [
-                    0.05025996533795494,
-                    0.10926118626430802
-                ],
-                "cer_standard_deviation": 0.03052136439878228,
-                "wer": 0.1842438386542771,
-                "pages_per_minute": 23.260977048910856
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0001",
-                    "cer": 0.10926118626430802,
-                    "wer": 0.2229299363057325
-                },
-                {
-                    "page_id": "phys_0002",
-                    "cer": 0.09331797235023041,
-                    "wer": 0.20689655172413793
-                },
-                {
-                    "page_id": "phys_0003",
-                    "cer": 0.05025996533795494,
-                    "wer": 0.12290502793296089
                 }
             ]
         }
@@ -1534,7 +1201,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -1545,7 +1213,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -1562,7 +1231,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-binarize": {
+                    "id": "ocrd-skimage-binarize",
+                    "params": {
                         "method": "li",
                         "level-of-operation": "page",
                         "dpi": 0,
@@ -1571,7 +1241,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-denoise": {
+                    "id": "ocrd-skimage-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "protect": 0.0,
@@ -1579,14 +1250,16 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": {
+                    "id": "ocrd-cis-ocropy-segment",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "maxcolseps": 20,
@@ -1604,7 +1277,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -1612,7 +1286,8 @@
                     }
                 },
                 {
-                    "ocrd-calamari-recognize": {
+                    "id": "ocrd-calamari-recognize",
+                    "params": {
                         "checkpoint_dir": "qurator-gt4histocr-1.0",
                         "voter": "confidence_voter_default_ctc",
                         "textequiv_level": "line",
@@ -1637,8 +1312,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 21.088427,
-                "cpu_time": 31.89799,
+                "wall_time": 20.880297000000002,
+                "cpu_time": 31.88486,
                 "cer_mean": 0.02493765586034913,
                 "cer_median": 0.02493765586034913,
                 "cer_range": [
@@ -1647,7 +1322,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 2.8451624201273997
+                "pages_per_minute": 2.873522345012621
             },
             "by_page": [
                 {
@@ -1684,7 +1359,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -1695,7 +1371,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -1712,21 +1389,24 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": {
+                    "id": "ocrd-cis-ocropy-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "noise_maxsize": 3.0,
                         "dpi": 0
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-tesserocr-segment": {
+                    "id": "ocrd-tesserocr-segment",
+                    "params": {
                         "dpi": 0,
                         "padding": 4,
                         "shrink_polygons": false,
@@ -1750,7 +1430,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -1758,7 +1439,8 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "textequiv_level": "glyph",
                         "overwrite_segments": true,
                         "model": "Fraktur_GT4HistOCR",
@@ -1800,8 +1482,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 7.3303650000000005,
-                "cpu_time": 11.092002,
+                "wall_time": 7.195335000000001,
+                "cpu_time": 10.936284999999998,
                 "cer_mean": 0.0199501246882793,
                 "cer_median": 0.0199501246882793,
                 "cer_range": [
@@ -1810,7 +1492,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.09836065573770492,
-                "pages_per_minute": 8.185131299737462
+                "pages_per_minute": 8.338736139457021
             },
             "by_page": [
                 {
@@ -1847,7 +1529,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -1858,7 +1541,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -1875,7 +1559,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-binarize": {
+                    "id": "ocrd-skimage-binarize",
+                    "params": {
                         "method": "li",
                         "level-of-operation": "page",
                         "dpi": 0,
@@ -1884,7 +1569,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-denoise": {
+                    "id": "ocrd-skimage-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "protect": 0.0,
@@ -1892,14 +1578,16 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": {
+                    "id": "ocrd-cis-ocropy-segment",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "maxcolseps": 20,
@@ -1917,7 +1605,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -1925,7 +1614,8 @@
                     }
                 },
                 {
-                    "ocrd-calamari-recognize": {
+                    "id": "ocrd-calamari-recognize",
+                    "params": {
                         "checkpoint_dir": "qurator-gt4histocr-1.0",
                         "voter": "confidence_voter_default_ctc",
                         "textequiv_level": "line",
@@ -1951,8 +1641,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 155.26866600000002,
-                "cpu_time": 265.527686,
+                "wall_time": 145.004584,
+                "cpu_time": 258.031481,
                 "cer_mean": 0.140061110527823,
                 "cer_median": 0.06466848046246318,
                 "cer_range": [
@@ -1961,7 +1651,7 @@
                 ],
                 "cer_standard_deviation": 0.17581800739756628,
                 "wer": 0.23651027895776314,
-                "pages_per_minute": 1.5457078764365757
+                "pages_per_minute": 1.655120089169043
             },
             "by_page": [
                 {
@@ -2013,7 +1703,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "segmentation_level": "region",
                         "textequiv_level": "word",
                         "find_tables": true,
@@ -2055,8 +1746,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 23.549819,
-                "cpu_time": 29.10249,
+                "wall_time": 22.874904,
+                "cpu_time": 28.326555,
                 "cer_mean": 0.13490219630962338,
                 "cer_median": 0.08500485504230823,
                 "cer_range": [
@@ -2065,7 +1756,7 @@
                 ],
                 "cer_standard_deviation": 0.14421604715728023,
                 "wer": 0.2783759515546502,
-                "pages_per_minute": 15.28674169427799
+                "pages_per_minute": 15.737770965071592
             },
             "by_page": [
                 {
@@ -2127,7 +1818,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "segmentation_level": "region",
                         "textequiv_level": "word",
                         "find_tables": true,
@@ -2170,8 +1862,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 21.574511,
-                "cpu_time": 25.151576,
+                "wall_time": 19.583006,
+                "cpu_time": 23.310776,
                 "cer_mean": 0.20433470587543373,
                 "cer_median": 0.1700173533179325,
                 "cer_range": [
@@ -2180,7 +1872,7 @@
                 ],
                 "cer_standard_deviation": 0.19097881579976755,
                 "wer": 0.31449770246107817,
-                "pages_per_minute": 11.124238227230272
+                "pages_per_minute": 12.25552399871603
             },
             "by_page": [
                 {
@@ -2232,7 +1924,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "segmentation_level": "region",
                         "textequiv_level": "word",
                         "find_tables": true,
@@ -2274,8 +1967,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 8.037157,
-                "cpu_time": 10.392367,
+                "wall_time": 8.110104,
+                "cpu_time": 10.540095,
                 "cer_mean": 0.07452119312897007,
                 "cer_median": 0.0629800307219662,
                 "cer_range": [
@@ -2284,7 +1977,7 @@
                 ],
                 "cer_standard_deviation": 0.044394494261965886,
                 "wer": 0.22683890077340793,
-                "pages_per_minute": 22.395979075685595
+                "pages_per_minute": 22.1945365928723
             },
             "by_page": [
                 {
@@ -2331,7 +2024,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -2342,7 +2036,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -2359,7 +2054,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-binarize": {
+                    "id": "ocrd-skimage-binarize",
+                    "params": {
                         "method": "li",
                         "level-of-operation": "page",
                         "dpi": 0,
@@ -2368,7 +2064,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-denoise": {
+                    "id": "ocrd-skimage-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "protect": 0.0,
@@ -2376,14 +2073,16 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": {
+                    "id": "ocrd-cis-ocropy-segment",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "maxcolseps": 20,
@@ -2401,7 +2100,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -2409,7 +2109,8 @@
                     }
                 },
                 {
-                    "ocrd-calamari-recognize": {
+                    "id": "ocrd-calamari-recognize",
+                    "params": {
                         "checkpoint_dir": "qurator-gt4histocr-1.0",
                         "voter": "confidence_voter_default_ctc",
                         "textequiv_level": "line",
@@ -2434,8 +2135,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 92.46626400000001,
-                "cpu_time": 135.263283,
+                "wall_time": 91.87705799999999,
+                "cpu_time": 135.307117,
                 "cer_mean": 0.08457767160660273,
                 "cer_median": 0.07737397420867527,
                 "cer_range": [
@@ -2444,7 +2145,7 @@
                 ],
                 "cer_standard_deviation": 0.046973440956685215,
                 "wer": 0.3081861348528015,
-                "pages_per_minute": 1.9466559176652791
+                "pages_per_minute": 1.9591397887381203
             },
             "by_page": [
                 {
@@ -2461,105 +2162,6 @@
                     "page_id": "phys_0003",
                     "cer": 0.07737397420867527,
                     "wer": 0.3230769230769231
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_complex_minimal_ocr-eval",
-        "label": "Workflow on data 16_ant_complex_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_complex_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_complex_minimal_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "segmentation_level": "region",
-                        "textequiv_level": "word",
-                        "find_tables": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "overwrite_segments": false,
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 7.347774,
-                "cpu_time": 9.862458,
-                "cer_mean": 0.10240852523716282,
-                "cer_median": 0.10536980749746708,
-                "cer_range": [
-                    0.07124352331606218,
-                    0.1306122448979592
-                ],
-                "cer_standard_deviation": 0.02979493530847308,
-                "wer": 0.23466068901129858,
-                "pages_per_minute": 24.4972150749329
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.07124352331606218,
-                    "wer": 0.2231404958677686
-                },
-                {
-                    "page_id": "phys_0008",
-                    "cer": 0.10536980749746708,
-                    "wer": 0.2484472049689441
-                },
-                {
-                    "page_id": "phys_0009",
-                    "cer": 0.1306122448979592,
-                    "wer": 0.2323943661971831
                 }
             ]
         }
@@ -2590,7 +2192,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -2601,7 +2204,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -2618,21 +2222,24 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": {
+                    "id": "ocrd-cis-ocropy-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "noise_maxsize": 3.0,
                         "dpi": 0
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-tesserocr-segment": {
+                    "id": "ocrd-tesserocr-segment",
+                    "params": {
                         "dpi": 0,
                         "padding": 4,
                         "shrink_polygons": false,
@@ -2656,7 +2263,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -2664,7 +2272,8 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "textequiv_level": "glyph",
                         "overwrite_segments": true,
                         "model": "Fraktur_GT4HistOCR",
@@ -2706,8 +2315,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 41.070159000000004,
-                "cpu_time": 64.124,
+                "wall_time": 40.074662999999994,
+                "cpu_time": 63.17489899999999,
                 "cer_mean": 0.08697690719872657,
                 "cer_median": 0.04421052631578947,
                 "cer_range": [
@@ -2716,7 +2325,7 @@
                 ],
                 "cer_standard_deviation": 0.08008554296654442,
                 "wer": 0.2764482431149098,
-                "pages_per_minute": 4.382744171991153
+                "pages_per_minute": 4.49161606174954
             },
             "by_page": [
                 {
@@ -2763,7 +2372,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -2774,7 +2384,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -2791,7 +2402,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-binarize": {
+                    "id": "ocrd-skimage-binarize",
+                    "params": {
                         "method": "li",
                         "level-of-operation": "page",
                         "dpi": 0,
@@ -2800,7 +2412,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-denoise": {
+                    "id": "ocrd-skimage-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "protect": 0.0,
@@ -2808,14 +2421,16 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": {
+                    "id": "ocrd-cis-ocropy-segment",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "maxcolseps": 20,
@@ -2833,7 +2448,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -2841,7 +2457,8 @@
                     }
                 },
                 {
-                    "ocrd-calamari-recognize": {
+                    "id": "ocrd-calamari-recognize",
+                    "params": {
                         "checkpoint_dir": "qurator-gt4histocr-1.0",
                         "voter": "confidence_voter_default_ctc",
                         "textequiv_level": "line",
@@ -2866,8 +2483,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 41.74044,
-                "cpu_time": 62.871445,
+                "wall_time": 41.475026,
+                "cpu_time": 62.55623800000001,
                 "cer_mean": 0.007554296506137866,
                 "cer_median": 0.007554296506137866,
                 "cer_range": [
@@ -2876,7 +2493,7 @@
                 ],
                 "cer_standard_deviation": null,
                 "wer": 0.015873015873015872,
-                "pages_per_minute": 1.4374548998525172
+                "pages_per_minute": 1.4466537043279972
             },
             "by_page": [
                 {
@@ -2913,7 +2530,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -2924,7 +2542,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -2941,7 +2560,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-binarize": {
+                    "id": "ocrd-skimage-binarize",
+                    "params": {
                         "method": "li",
                         "level-of-operation": "page",
                         "dpi": 0,
@@ -2950,7 +2570,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-denoise": {
+                    "id": "ocrd-skimage-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "protect": 0.0,
@@ -2958,14 +2579,16 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": {
+                    "id": "ocrd-cis-ocropy-segment",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "maxcolseps": 20,
@@ -2983,7 +2606,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -2991,7 +2615,8 @@
                     }
                 },
                 {
-                    "ocrd-calamari-recognize": {
+                    "id": "ocrd-calamari-recognize",
+                    "params": {
                         "checkpoint_dir": "qurator-gt4histocr-1.0",
                         "voter": "confidence_voter_default_ctc",
                         "textequiv_level": "line",
@@ -3016,8 +2641,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 69.502426,
-                "cpu_time": 106.73271499999998,
+                "wall_time": 65.561371,
+                "cpu_time": 102.38757300000003,
                 "cer_mean": 0.047703401203510305,
                 "cer_median": 0.04723502304147465,
                 "cer_range": [
@@ -3026,7 +2651,7 @@
                 ],
                 "cer_standard_deviation": 0.002050893378518156,
                 "wer": 0.17277993391305632,
-                "pages_per_minute": 2.5898376554510487
+                "pages_per_minute": 2.745519156394701
             },
             "by_page": [
                 {
@@ -3073,7 +2698,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "segmentation_level": "region",
                         "textequiv_level": "word",
                         "find_tables": true,
@@ -3115,8 +2741,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 7.073589,
-                "cpu_time": 9.554221,
+                "wall_time": 6.334128,
+                "cpu_time": 8.822149,
                 "cer_mean": 0.10240852523716282,
                 "cer_median": 0.10536980749746708,
                 "cer_range": [
@@ -3125,7 +2751,7 @@
                 ],
                 "cer_standard_deviation": 0.02979493530847308,
                 "wer": 0.23466068901129858,
-                "pages_per_minute": 25.446771080423247
+                "pages_per_minute": 28.417486984790962
             },
             "by_page": [
                 {
@@ -3142,265 +2768,6 @@
                     "page_id": "phys_0009",
                     "cer": 0.1306122448979592,
                     "wer": 0.2323943661971831
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_simple_minimal_ocr-eval",
-        "label": "Workflow on data 16_ant_simple_minimal_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/minimal_ocr.txt",
-                "label": "OCR Workflow minimal_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_simple.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua simple layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_minimal_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_simple_minimal_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_simple_minimal_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_simple_minimal_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-tesserocr-recognize": {
-                        "segmentation_level": "region",
-                        "textequiv_level": "word",
-                        "find_tables": true,
-                        "model": "Fraktur_GT4HistOCR",
-                        "dpi": 0,
-                        "padding": 0,
-                        "overwrite_segments": false,
-                        "overwrite_text": true,
-                        "shrink_polygons": false,
-                        "block_polygons": false,
-                        "find_staves": false,
-                        "sparse_text": false,
-                        "raw_lines": false,
-                        "char_whitelist": "",
-                        "char_blacklist": "",
-                        "char_unblacklist": "",
-                        "tesseract_parameters": {},
-                        "xpath_parameters": {},
-                        "xpath_model": {},
-                        "auto_model": false,
-                        "oem": "DEFAULT"
-                    }
-                }
-            ],
-            "workflow_model": "Fraktur_GT4HistOCR",
-            "eval_tool": "ocrd-dinglehopper vNone",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "simple"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 8.330303,
-                "cpu_time": 10.631706,
-                "cer_mean": 0.07452119312897007,
-                "cer_median": 0.0629800307219662,
-                "cer_range": [
-                    0.037037037037037035,
-                    0.12354651162790697
-                ],
-                "cer_standard_deviation": 0.044394494261965886,
-                "wer": 0.22683890077340793,
-                "pages_per_minute": 21.607857481294495
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.0629800307219662,
-                    "wer": 0.21359223300970873
-                },
-                {
-                    "page_id": "phys_0013",
-                    "cer": 0.12354651162790697,
-                    "wer": 0.33980582524271846
-                },
-                {
-                    "page_id": "phys_0014",
-                    "cer": 0.037037037037037035,
-                    "wer": 0.1271186440677966
-                }
-            ]
-        }
-    },
-    {
-        "eval_workflow_id": "wf-data16_ant_complex_selected_pages_ocr-eval",
-        "label": "Workflow on data 16_ant_complex_selected_pages_ocr",
-        "metadata": {
-            "ocr_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/selected_pages_ocr.txt",
-                "label": "OCR Workflow selected_pages_ocr"
-            },
-            "eval_workflow": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/ocrd_workflows/dinglehopper_eval.txt",
-                "label": "Evaluation Workflow dinglehopper_eval"
-            },
-            "gt_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-data/blob/main/16_ant_complex.ocrd.zip",
-                "label": "GT workspace 16th century Antiqua complex layout"
-            },
-            "ocr_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_selected_pages_ocr_ocr.zip",
-                "label": "OCR workspace for 16_ant_complex_selected_pages_ocr"
-            },
-            "eval_workspace": {
-                "@id": "https://github.com/OCR-D/quiver-back-end/blob/main/workflows/results/16_ant_complex_selected_pages_ocr_evaluation.zip",
-                "label": "Evaluation workspace for 16_ant_complex_selected_pages_ocr"
-            },
-            "workflow_steps": [
-                {
-                    "ocrd-cis-ocropy-binarize": {
-                        "method": "ocropy",
-                        "threshold": 0.5,
-                        "grayscale": false,
-                        "maxskew": 0.0,
-                        "noise_maxsize": 0,
-                        "dpi": 0,
-                        "level-of-operation": "page"
-                    }
-                },
-                {
-                    "ocrd-anybaseocr-crop": {
-                        "dpi": 0,
-                        "rulerRatioMax": 50.0,
-                        "rulerRatioMin": 3.0,
-                        "rulerAreaMax": 0.3,
-                        "rulerAreaMin": 0.01,
-                        "rulerWidthMax": 0.95,
-                        "columnAreaMin": 0.05,
-                        "columnSepWidthMax": 0.04,
-                        "marginTop": 0.25,
-                        "marginBottom": 0.75,
-                        "marginLeft": 0.3,
-                        "marginRight": 0.7,
-                        "padding": 10
-                    }
-                },
-                {
-                    "ocrd-skimage-binarize": {
-                        "method": "li",
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "window_size": 301,
-                        "k": 0.34
-                    }
-                },
-                {
-                    "ocrd-skimage-denoise": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "protect": 0.0,
-                        "maxsize": 1.0
-                    }
-                },
-                {
-                    "ocrd-tesserocr-deskew": {
-                        "operation_level": "page",
-                        "dpi": 0,
-                        "min_orientation_confidence": 1.5
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-segment": {
-                        "level-of-operation": "page",
-                        "dpi": 0,
-                        "maxcolseps": 20,
-                        "maxseps": 20,
-                        "maximages": 10,
-                        "csminheight": 4,
-                        "hlminwidth": 10,
-                        "gap_height": 0.01,
-                        "gap_width": 1.5,
-                        "overwrite_order": true,
-                        "overwrite_separators": true,
-                        "overwrite_regions": true,
-                        "overwrite_lines": true,
-                        "spread": 2.4
-                    }
-                },
-                {
-                    "ocrd-cis-ocropy-dewarp": {
-                        "dpi": 0,
-                        "range": 4.0,
-                        "smoothness": 1.0,
-                        "max_neighbour": 0.05
-                    }
-                },
-                {
-                    "ocrd-calamari-recognize": {
-                        "checkpoint_dir": "qurator-gt4histocr-1.0",
-                        "voter": "confidence_voter_default_ctc",
-                        "textequiv_level": "line",
-                        "glyph_conf_cutoff": 0.001
-                    }
-                }
-            ],
-            "workflow_model": "qurator-gt4histocr-1.0",
-            "eval_tool": "ocrd-calamari-recognize v1.0.5 (calamari 1.0.5, tensorflow 2.6.2)",
-            "document_metadata": {
-                "data_properties": {
-                    "fonts": [
-                        "Antiqua"
-                    ],
-                    "publication_century": "1500-1600",
-                    "publication_decade": "",
-                    "publication_year": "16th century",
-                    "number_of_pages": 3,
-                    "layout": "complex"
-                }
-            }
-        },
-        "evaluation_results": {
-            "document_wide": {
-                "wall_time": 27.777205,
-                "cpu_time": 76.378445,
-                "cer_mean": 0.11095656062741122,
-                "cer_median": 0.12244897959183673,
-                "cer_range": [
-                    0.07700101317122594,
-                    0.133419689119171
-                ],
-                "cer_standard_deviation": 0.02991360090611332,
-                "wer": 0.26341315349276156,
-                "pages_per_minute": 6.480133620355252
-            },
-            "by_page": [
-                {
-                    "page_id": "phys_0007",
-                    "cer": 0.133419689119171,
-                    "wer": 0.36363636363636365
-                },
-                {
-                    "page_id": "phys_0008",
-                    "cer": 0.07700101317122594,
-                    "wer": 0.18012422360248448
-                },
-                {
-                    "page_id": "phys_0009",
-                    "cer": 0.12244897959183673,
-                    "wer": 0.24647887323943662
                 }
             ]
         }
@@ -3431,7 +2798,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -3442,7 +2810,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -3459,21 +2828,24 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": {
+                    "id": "ocrd-cis-ocropy-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "noise_maxsize": 3.0,
                         "dpi": 0
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-tesserocr-segment": {
+                    "id": "ocrd-tesserocr-segment",
+                    "params": {
                         "dpi": 0,
                         "padding": 4,
                         "shrink_polygons": false,
@@ -3497,7 +2869,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -3505,7 +2878,8 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "textequiv_level": "glyph",
                         "overwrite_segments": true,
                         "model": "Fraktur_GT4HistOCR",
@@ -3547,8 +2921,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 44.637066,
-                "cpu_time": 65.15408599999999,
+                "wall_time": 42.40476099999999,
+                "cpu_time": 63.169213,
                 "cer_mean": 0.15501219595245352,
                 "cer_median": 0.11654526534859522,
                 "cer_range": [
@@ -3557,7 +2931,7 @@
                 ],
                 "cer_standard_deviation": 0.08486993479509113,
                 "wer": 0.360948415946103,
-                "pages_per_minute": 4.032523105349263
+                "pages_per_minute": 4.24480637917049
             },
             "by_page": [
                 {
@@ -3604,7 +2978,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -3615,7 +2990,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -3632,21 +3008,24 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": {
+                    "id": "ocrd-cis-ocropy-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "noise_maxsize": 3.0,
                         "dpi": 0
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-tesserocr-segment": {
+                    "id": "ocrd-tesserocr-segment",
+                    "params": {
                         "dpi": 0,
                         "padding": 4,
                         "shrink_polygons": false,
@@ -3670,7 +3049,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -3678,7 +3058,8 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "textequiv_level": "glyph",
                         "overwrite_segments": true,
                         "model": "Fraktur_GT4HistOCR",
@@ -3720,8 +3101,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 30.958254000000004,
-                "cpu_time": 52.544826000000015,
+                "wall_time": 30.433092000000002,
+                "cpu_time": 52.010408,
                 "cer_mean": 0.10363204260868718,
                 "cer_median": 0.11836734693877551,
                 "cer_range": [
@@ -3730,7 +3111,7 @@
                 ],
                 "cer_standard_deviation": 0.051246548494839915,
                 "wer": 0.2145458690579216,
-                "pages_per_minute": 5.814281386799139
+                "pages_per_minute": 5.914614262658556
             },
             "by_page": [
                 {
@@ -3777,7 +3158,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "segmentation_level": "region",
                         "textequiv_level": "word",
                         "find_tables": true,
@@ -3819,8 +3201,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 7.034849,
-                "cpu_time": 9.656848,
+                "wall_time": 7.193133,
+                "cpu_time": 9.996023,
                 "cer_mean": 0.08427970798416445,
                 "cer_median": 0.09331797235023041,
                 "cer_range": [
@@ -3829,7 +3211,7 @@
                 ],
                 "cer_standard_deviation": 0.03052136439878228,
                 "wer": 0.1842438386542771,
-                "pages_per_minute": 25.586903144616183
+                "pages_per_minute": 25.023866512686475
             },
             "by_page": [
                 {
@@ -3876,7 +3258,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -3887,7 +3270,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -3904,7 +3288,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-binarize": {
+                    "id": "ocrd-skimage-binarize",
+                    "params": {
                         "method": "li",
                         "level-of-operation": "page",
                         "dpi": 0,
@@ -3913,7 +3298,8 @@
                     }
                 },
                 {
-                    "ocrd-skimage-denoise": {
+                    "id": "ocrd-skimage-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "protect": 0.0,
@@ -3921,14 +3307,16 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-segment": {
+                    "id": "ocrd-cis-ocropy-segment",
+                    "params": {
                         "level-of-operation": "page",
                         "dpi": 0,
                         "maxcolseps": 20,
@@ -3946,7 +3334,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -3954,7 +3343,8 @@
                     }
                 },
                 {
-                    "ocrd-calamari-recognize": {
+                    "id": "ocrd-calamari-recognize",
+                    "params": {
                         "checkpoint_dir": "qurator-gt4histocr-1.0",
                         "voter": "confidence_voter_default_ctc",
                         "textequiv_level": "line",
@@ -3979,8 +3369,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 73.81539500000001,
-                "cpu_time": 126.893154,
+                "wall_time": 62.764722,
+                "cpu_time": 116.43633700000001,
                 "cer_mean": 0.11095656062741122,
                 "cer_median": 0.12244897959183673,
                 "cer_range": [
@@ -3989,7 +3379,7 @@
                 ],
                 "cer_standard_deviation": 0.02991360090611332,
                 "wer": 0.26341315349276156,
-                "pages_per_minute": 2.438515705294268
+                "pages_per_minute": 2.8678530592392333
             },
             "by_page": [
                 {
@@ -4036,7 +3426,8 @@
             },
             "workflow_steps": [
                 {
-                    "ocrd-cis-ocropy-binarize": {
+                    "id": "ocrd-cis-ocropy-binarize",
+                    "params": {
                         "method": "ocropy",
                         "threshold": 0.5,
                         "grayscale": false,
@@ -4047,7 +3438,8 @@
                     }
                 },
                 {
-                    "ocrd-anybaseocr-crop": {
+                    "id": "ocrd-anybaseocr-crop",
+                    "params": {
                         "dpi": 0,
                         "rulerRatioMax": 50.0,
                         "rulerRatioMin": 3.0,
@@ -4064,21 +3456,24 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-denoise": {
+                    "id": "ocrd-cis-ocropy-denoise",
+                    "params": {
                         "level-of-operation": "page",
                         "noise_maxsize": 3.0,
                         "dpi": 0
                     }
                 },
                 {
-                    "ocrd-tesserocr-deskew": {
+                    "id": "ocrd-tesserocr-deskew",
+                    "params": {
                         "operation_level": "page",
                         "dpi": 0,
                         "min_orientation_confidence": 1.5
                     }
                 },
                 {
-                    "ocrd-tesserocr-segment": {
+                    "id": "ocrd-tesserocr-segment",
+                    "params": {
                         "dpi": 0,
                         "padding": 4,
                         "shrink_polygons": false,
@@ -4102,7 +3497,8 @@
                     }
                 },
                 {
-                    "ocrd-cis-ocropy-dewarp": {
+                    "id": "ocrd-cis-ocropy-dewarp",
+                    "params": {
                         "dpi": 0,
                         "range": 4.0,
                         "smoothness": 1.0,
@@ -4110,7 +3506,8 @@
                     }
                 },
                 {
-                    "ocrd-tesserocr-recognize": {
+                    "id": "ocrd-tesserocr-recognize",
+                    "params": {
                         "textequiv_level": "glyph",
                         "overwrite_segments": true,
                         "model": "Fraktur_GT4HistOCR",
@@ -4153,8 +3550,8 @@
         },
         "evaluation_results": {
             "document_wide": {
-                "wall_time": 69.280307,
-                "cpu_time": 103.53113700000002,
+                "wall_time": 63.492941,
+                "cpu_time": 97.131589,
                 "cer_mean": 0.16726583056278752,
                 "cer_median": 0.09637318392327315,
                 "cer_range": [
@@ -4163,7 +3560,7 @@
                 ],
                 "cer_standard_deviation": 0.18889822286887584,
                 "wer": 0.28912998545359864,
-                "pages_per_minute": 3.464187882423789
+                "pages_per_minute": 3.7799477582870193
             },
             "by_page": [
                 {
