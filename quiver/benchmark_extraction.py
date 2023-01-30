@@ -84,7 +84,7 @@ def get_workflow_steps(mets_path: str) -> List[str]:
         name = iterator[1].text.split(' ')[0]
         if 'ocrd-dinglehopper' not in name:
             params = iterator[-2].text
-            result.append({name: json.loads(params)})
+            result.append({"id": name, "params": json.loads(params)})
 
     return result
 
