@@ -11,6 +11,24 @@
             "short_descr": "Minimum and maximum of CER calculated over the text of a whole page (in by_page) or combined text of all pages (in document_wide)",
             "url": ""
         },
+    "cer_mean":
+        {
+            "label": "CER (mean)",
+            "short_descr": "Arithmetic mean of the page-wise CER",
+            "url": ""
+        },
+    "cer_median":
+        {
+            "label": "CER (median)",
+            "short_descr": "Median of the page-wise CER",
+            "url": ""
+        },
+    "cer_standard_deviation":
+        {
+            "label": "CER (standard deviation)",
+            "short_descr": "Standard deviation the page-wise CER",
+            "url": ""
+        },
     "wer":
         {
             "label": "WER",
@@ -28,5 +46,11 @@
             "label": "CPU Time",
             "short_descr": "Cumulative CPU time used for processing workflow",
             "url": "https://kba.github.io/en/spec/ocrd_eval#cpu-time"
+        },
+    "pages_per_minute":
+        {
+            "label": "CER (median)",
+            "short_descr": "Number of pages processed per minute",
+            "url": ""
         }
 }

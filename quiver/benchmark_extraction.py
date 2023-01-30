@@ -5,11 +5,12 @@ import json
 import re
 import xml.etree.ElementTree as ET
 from os import listdir, scandir
+from statistics import stdev, median
 from typing import Any, Dict, List, Union
 
 import yaml
+from .constants import METS, RESULTS, QUIVER_MAIN, OCRD
 
-from .constants import METS, OCRD, QUIVER_MAIN, RESULTS
 
 def make_result_json(workspace_path: str, mets_path: str) -> Dict[str, Union[str, Dict]]:
     data_name = get_workspace_name(workspace_path)
@@ -32,6 +33,7 @@ def make_metadata(workspace_path: str, mets_path: str) -> Dict[str, Union[str, D
             'eval_workspace': get_workspace(workspace_path, 'evaluation'),
             'workflow_steps': get_workflow_steps(mets_path),
             'workflow_model': get_workflow_model(mets_path),
+            'eval_tool': get_eval_tool(mets_path),
             'document_metadata': get_document_metadata(workspace_path)
         }
 
@@ -68,42 +70,45 @@ def get_workspace(workspace_path: str, ws_type: str) -> Dict[str, str]:
         'label': label
     }
 
-def get_element_from_mets(mets_path: str, xpath: str) -> List[str]:
+def get_node_from_mets(mets_path: str, xpath: str) -> List[str]:
     with open(mets_path, 'r', encoding='utf-8') as f:
         tree = ET.parse(f)
         return tree.findall(xpath)
 
 def get_workflow_steps(mets_path: str) -> List[str]:
-    xpath =f'.//{METS}agent[@ROLE="OTHER"]/{METS}name'
-    name_elements = get_element_from_mets(mets_path, xpath)
-    formatted_names = []
-    for e in name_elements:
-        name = e.text.split(' ')[0]
+    xpath = f'.//{METS}agent[@ROLE="OTHER"]'
+    agents = get_node_from_mets(mets_path, xpath)
+    result = []
+    for agent in agents:
+        iterator = list(agent.iter())
+        name = iterator[1].text.split(' ')[0]
         if 'ocrd-dinglehopper' not in name:
-            formatted_names.append(name)
+            params = iterator[-2].text
+            result.append({"id": name, "params": json.loads(params)})
 
-    return formatted_names
+    return result
 
 def get_workflow_model(mets_path: str) -> str:
     try:
         xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}note[@{OCRD}option="parameter"]'
-        parameters = get_element_from_mets(mets_path, xpath)[0].text
+        parameters = get_node_from_mets(mets_path, xpath)[0].text
         params_json = json.loads(parameters)
         return params_json['checkpoint_dir']
     except:
         xpath = f'.//{METS}agent[@OTHERROLE="layout/segmentation/region"]/{METS}note[@{OCRD}option="parameter"]'
-        parameters = get_element_from_mets(mets_path, xpath)[-1].text
+        parameters = get_node_from_mets(mets_path, xpath)[-1].text
         params_json = json.loads(parameters)
         return params_json['model']
 
 
 def get_eval_tool(mets_path: str) -> str:
     xpath = f'.//{METS}agent[@OTHERROLE="recognition/text-recognition"]/{METS}name'
-    return get_element_from_mets(mets_path, xpath)[0].text
+    return get_node_from_mets(mets_path, xpath)[0].text
 
 def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
     current_workspace = get_workspace_name(workspace_path)
     split_workspace_name = current_workspace.split('_')
+    workspace_name_wo_workflow = split_workspace_name[0] + '_' + split_workspace_name[1] + '_' + split_workspace_name[2]
     font = ''
     if split_workspace_name[1] == 'ant':
         font = 'Antiqua'
@@ -111,7 +116,7 @@ def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
         font = 'Black letter'
     else:
         font = 'Font Mix'
-    url = 'https://github.com/OCR-D/quiver-data/blob/main/' + current_workspace + '.ocrd.zip'
+    url = 'https://github.com/OCR-D/quiver-data/blob/main/' + workspace_name_wo_workflow + '.ocrd.zip'
     label = f'GT workspace {split_workspace_name[0]}th century {font} {split_workspace_name[2]} layout'
     return {
         '@id': url,
@@ -120,10 +125,10 @@ def get_gt_workspace(workspace_path: str) -> Dict[str, str]:
 
 def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
     result = {
-        'eval_workflow_url': 'https://github.com/OCR-D/quiver-back-end/tree/main/workflows/ocrd_workflows/dinglehopper.txt',
-        'eval_data': 'https://github.com/OCR-D/quiver-back-end/TODO',
         'data_properties': {
             'fonts': '',
+            'publication_century': '',
+            'publication_decade': '',
             'publication_year': '',
             'number_of_pages': get_no_of_pages(workspace_path),
             'layout': ''
@@ -144,8 +149,10 @@ def get_document_metadata(workspace_path: str) -> Dict[str, Dict[str, str]]:
                 fonts.append('Ancient Greek')
         result['data_properties']['fonts'] = fonts
 
-        earliest_publication_year = metadata['time']['notBefore']
-        publication_century = int(earliest_publication_year[:2]) + 1
+        earliest = metadata['time']['notBefore']
+        latest = metadata['time']['notAfter']
+        publication_century = int(earliest[:2]) + 1
+        result['data_properties']['publication_century'] = f'{earliest}-{latest}'
         result['data_properties']['publication_year'] = f'{publication_century}th century'
 
         result['data_properties']['layout'] = metadata['title'].split('_')[-1]
@@ -166,12 +173,18 @@ def extract_benchmarks(workspace_path: str, mets_path: str) -> Dict[str, Dict[st
 
 def make_document_wide_eval_results(workspace_path: str) -> Dict[str, Union[float, List[float]]]:
     return {
-        'wall_time': get_nf_completed_stats(workspace_path),
-        'cer': get_mean_cer(workspace_path, 'SEG-LINE'),
-        'cer_min_max': get_cer_min_max(workspace_path, 'SEG-LINE')
+        'wall_time': get_nextflow_time(workspace_path, 'wall'),
+        'cpu_time': get_nextflow_time(workspace_path, 'CPU'),
+        'cer_mean': get_mean_cer(workspace_path, 'SEG-LINE'),
+        'cer_median': get_cer_median(workspace_path, 'SEG-LINE'),
+        'cer_range': get_cer_range(workspace_path, 'SEG-LINE'),
+        'cer_standard_deviation': get_cer_standard_deviation(workspace_path, 'SEG-LINE'),
+        'wer': get_mean_wer(workspace_path, 'SEG-LINE'),
+        'pages_per_minute': get_pages_per_minute(workspace_path)
     }
 
-def get_nf_completed_stats(workspace_path: str) -> float:
+
+def get_nextflow_completed_process_file(workspace_path: str):
     result_path = workspace_path + RESULTS
     workspace_name = get_workspace_name(workspace_path)
 
@@ -181,29 +194,69 @@ def get_nf_completed_stats(workspace_path: str) -> float:
 
     with open(result_path + completed_file, 'r', encoding='utf-8') as f:
         file = json.load(f)
-        duration = file['metadata']['workflow']['duration']
-    return duration
+    return file
+
+def get_nextflow_time(workspace_path: str, time_type: str) -> float:
+    files = listdir(workspace_path)
+    logs = []
+    for file in files:
+        if '.command.log' in file:
+            logs.append(file)
+
+    time_per_workflow_step = []
+    for log in logs:
+        with open(workspace_path + '/' + log, 'r', encoding='utf-8') as l:
+            log_file = l.read()
+            no_sec_s = re.search(rf'([0-9]+?\.[0-9]+?)s \({time_type}\)', log_file).group(1)
+            time_per_workflow_step.append(float(no_sec_s))
+    return sum(time_per_workflow_step)
+
+
+def get_pages_per_minute(workspace_path: str) -> float:
+    duration = get_nextflow_time(workspace_path, 'wall')
+    no_pages = get_no_of_pages(workspace_path)
+
+    return no_pages / (duration / 60)
 
 
 def get_mean_cer(workspace_path: str, gt_type: str) -> float:
-    cers = get_cers_for_gt_type(workspace_path, gt_type)
+    cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
     return sum(cers) / len(cers)
 
-def get_cers_for_gt_type(workspace_path: str, gt_type: str) -> List[float]:
+
+def get_cer_median(workspace_path: str, gt_type: str) -> float:
+    cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
+    return median(cers)
+
+
+def get_cer_standard_deviation(workspace_path: str, gt_type: str) -> float:
+    cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
+    if len(cers) > 1:
+        return stdev(cers)
+    else:
+        return None
+
+
+def get_mean_wer(workspace_path: str, gt_type: str) -> float:
+    wers = get_error_rates_for_gt_type(workspace_path, gt_type, 'wer')
+    return sum(wers) / len(wers)
+
+
+def get_error_rates_for_gt_type(workspace_path: str, gt_type: str, error_rate: str) -> List[float]:
     eval_jsons = []
     eval_dir_path = workspace_path + '/OCR-D-EVAL-' + gt_type + '/'
     for file_name in listdir(eval_dir_path):
         if 'json' in file_name:
             eval_jsons.append(file_name)
-    cers = []
+    ers = []
     for eval_json in eval_jsons:
         with open(eval_dir_path + eval_json, 'r', encoding='utf-8') as f:
             json_file = json.load(f)
-            cers.append(json_file['cer'])
-    return cers
+            ers.append(json_file[error_rate])
+    return ers
 
-def get_cer_min_max(workspace_path: str, gt_type: str) -> List[float]:
-    cers = get_cers_for_gt_type(workspace_path, gt_type)
+def get_cer_range(workspace_path: str, gt_type: str) -> List[float]:
+    cers = get_error_rates_for_gt_type(workspace_path, gt_type, 'cer')
     return [min(cers), max(cers)]
 
 def make_eval_results_by_page(json_dirs: str, mets_path: str) -> List[object]:
@@ -234,7 +287,7 @@ def get_page_id(json_file_path: str, mets_path: str) -> str:
     json_file_name = get_file_name_from_path(json_file_path)
     gt_file_name = json_file_name.replace('EVAL', 'GT')
     xpath = f'.//{METS}fptr[@FILEID="{gt_file_name}"]/..'
-    return get_element_from_mets(mets_path, xpath)[0].attrib['ID']
+    return get_node_from_mets(mets_path, xpath)[0].attrib['ID']
 
 
 def get_file_name_from_path(json_file_path: str) -> str:
@@ -249,5 +302,6 @@ def get_metrics_for_page(json_file_path: str, mets_path: str) -> Dict[str, Union
 
     return {
         'page_id': get_page_id(json_file_path, mets_path),
-        'cer': eval_file['cer']
+        'cer': eval_file['cer'],
+        'wer': eval_file['wer']
     }
