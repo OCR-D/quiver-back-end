@@ -94,7 +94,8 @@ def test_get_workflow_steps():
     mets_path = 'tests/assets/benchmarking/16_ant_complex_minimal_ocr/mets.xml'
     result = get_workflow_steps(mets_path)
     print(result)
-    assert result == [{'ocrd-tesserocr-recognize': {
+    assert result == [{'id': 'ocrd-tesserocr-recognize',
+        'params': {
         'segmentation_level': 'region',
         'textequiv_level': 'word',
         'find_tables': True,
