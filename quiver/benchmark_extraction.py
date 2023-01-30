@@ -197,10 +197,19 @@ def get_nextflow_completed_process_file(workspace_path: str):
     return file
 
 def get_nextflow_time(workspace_path: str, time_type: str) -> float:
-    with open(workspace_path + '/ocr.log', 'r', encoding='utf-8') as log:
-        log_file = log.read()
-        no_sec_s = re.search(rf'([0-9]+?\.[0-9]+?)s \({time_type}\)', log_file).group(1)
-        return float(no_sec_s)
+    files = listdir(workspace_path)
+    logs = []
+    for file in files:
+        if '.command.log' in file:
+            logs.append(file)
+
+    time_per_workflow_step = []
+    for log in logs:
+        with open(workspace_path + '/' + log, 'r', encoding='utf-8') as l:
+            log_file = l.read()
+            no_sec_s = re.search(rf'([0-9]+?\.[0-9]+?)s \({time_type}\)', log_file).group(1)
+            time_per_workflow_step.append(float(no_sec_s))
+    return sum(time_per_workflow_step)
 
 
 def get_pages_per_minute(workspace_path: str) -> float:

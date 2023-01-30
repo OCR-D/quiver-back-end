@@ -23,9 +23,19 @@ rename_and_move_nextflow_result() {
     rm "$WORKFLOW_DIR"/nf-results/*process_completed.json
     mv "$WORKFLOW_DIR"/nf-results/*_completed.json "$WORKFLOW_DIR"/results/"$2"_"$WORKFLOW_NAME"_completed.json
     if [ $WORKFLOW_NAME != "dinglehopper_eval" ]; then
-        mv "$WORKSPACE_DIR"/work/*/*/.command.log "$WORKSPACE_DIR"/"$2"/ocr.log
+        for DIR in "$WORKSPACE_DIR"/work/*
+        do
+            WORK_DIR_NAME=$(basename $DIR)
+            for SUB_WORK_DIR in $DIR/*
+            do
+                SUB_WORK_DIR_NAME=$(basename $SUB_WORK_DIR)
+                mv "$WORKSPACE_DIR"/work/"$WORK_DIR_NAME"/"$SUB_WORK_DIR_NAME"/.command.log "$WORKSPACE_DIR"/"$2"/"$WORK_DIR_NAME"_"$SUB_WORK_DIR_NAME".command.log
+            done
+            
+        done
     fi
     rm -rf "$WORKSPACE_DIR"/work/*
+    rm "$WORKSPACE_DIR"/.nextflow.log
 }
 
 run() {
