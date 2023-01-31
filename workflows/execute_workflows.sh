@@ -83,6 +83,7 @@ git -C submodules/oton merge origin master
 echo "Adjust OtoN settings …"
 sed -i "s \$projectDir/ocrd-workspace/ $WORKSPACE_DIR/CURRENT/ g" submodules/oton/oton/config.toml
 sed -i "s venv37-ocrd/bin/activate git/ocrd_all/venv/bin/activate g" submodules/oton/oton/config.toml
+sed -i 's \\\\$HOME/ocrd_models $ROOT/models g' submodules/oton/oton/config.toml
 echo "Done."
 
 cd "$OCRD_WORKFLOW_DIR" || exit
