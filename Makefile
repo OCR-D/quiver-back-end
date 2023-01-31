@@ -21,3 +21,4 @@ benchmarks: init clean-workspaces
 clean-workspaces:
 	rm -rf workflows/workspaces
 	rm -rf workflows/nf-results
+	rm -rf workflows/ocrd_workflows/*.nf
