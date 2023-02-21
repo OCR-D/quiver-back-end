@@ -9,97 +9,10 @@
             }
         },
         "compliant_cli": true,
-        "dependencies": {
-            "Keras": "2.3.1",
-            "Keras-Applications": "1.0.8",
-            "Keras-Preprocessing": "1.1.2",
-            "Markdown": "3.4.1",
-            "absl-py": "1.2.0",
-            "astor": "0.8.1",
-            "cycler": "0.11.0",
-            "editdistance": "0.6.0",
-            "fonttools": "4.37.2",
-            "gast": "0.2.2",
-            "google-pasta": "0.2.0",
-            "grpcio": "1.49.0",
-            "h5py": "2.10.0",
-            "kiwisolver": "1.4.4",
-            "matplotlib": "3.5.3",
-            "numpy": "1.18.5",
-            "ocrd-cor-asv-ann": "ocrd-cor-asv-ann",
-            "opt-einsum": "3.3.0",
-            "packaging": "21.3",
-            "protobuf": "4.21.6",
-            "pyparsing": "3.0.9",
-            "python-dateutil": "2.8.2",
-            "scipy": "1.7.3",
-            "six": "1.16.0",
-            "tensorboard": "1.15.0",
-            "tensorflow-estimator": "1.15.1",
-            "tensorflow-gpu": "1.15.5",
-            "termcolor": "2.0.1"
-        },
-        "dependency_conflicts": {
-            "absl-py": {
-                "cor-asv-ann": "1.2.0",
-                "eynollah": "1.2.0",
-                "ocrd_anybaseocr": "1.2.0",
-                "ocrd_calamari": "1.2.0",
-                "ocrd_keraslm": "1.2.0",
-                "ocrd_kraken": "1.2.0",
-                "ocrd_pc_segmentation": "0.15.0",
-                "sbb_binarization": "1.2.0"
-            },
-            "h5py": {
-                "cor-asv-ann": "2.10.0",
-                "eynollah": "3.7.0",
-                "ocrd_anybaseocr": "3.7.0",
-                "ocrd_calamari": "3.7.0",
-                "ocrd_keraslm": "2.10.0",
-                "ocrd_pc_segmentation": "3.1.0",
-                "sbb_binarization": "3.7.0"
-            },
-            "protobuf": {
-                "cor-asv-ann": "4.21.6",
-                "eynollah": "3.19.5",
-                "ocrd_anybaseocr": "3.19.5",
-                "ocrd_calamari": "3.19.5",
-                "ocrd_keraslm": "4.21.6",
-                "ocrd_kraken": "3.19.5",
-                "ocrd_pc_segmentation": "3.19.5",
-                "sbb_binarization": "3.19.5"
-            },
-            "tensorboard": {
-                "cor-asv-ann": "1.15.0",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.0",
-                "ocrd_kraken": "2.10.0",
-                "ocrd_pc_segmentation": "2.10.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "tensorflow-estimator": {
-                "cor-asv-ann": "1.15.1",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.1",
-                "ocrd_pc_segmentation": "2.5.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "termcolor": {
-                "cor-asv-ann": "2.0.1",
-                "eynollah": "2.0.1",
-                "ocrd_anybaseocr": "2.0.1",
-                "ocrd_calamari": "2.0.1",
-                "ocrd_keraslm": "2.0.1",
-                "ocrd_pc_segmentation": "1.1.0",
-                "sbb_binarization": "2.0.1"
-            }
-        },
+        "dependencies": {},
+        "dependency_conflicts": null,
         "id": "cor-asv-ann",
-        "latest_version": "v0.1.12",
+        "latest_version": "v0.1.14",
         "ocrd_tool": {
             "git_url": "https://github.com/ASVLeipzig/cor-asv-ann",
             "tools": {
@@ -195,6 +108,62 @@
                         "recognition/evaluation"
                     ]
                 },
+                "ocrd-cor-asv-ann-join": {
+                    "categories": [
+                        "Text recognition and optimization"
+                    ],
+                    "description": "Join different textline annotations by concatenation",
+                    "executable": "ocrd-cor-asv-ann-join",
+                    "input_file_grp": [
+                        "OCR-D-GT-SEG-LINE",
+                        "OCR-D-OCR-TESS",
+                        "OCR-D-OCR-KRAK",
+                        "OCR-D-OCR-OCRO",
+                        "OCR-D-OCR-CALA",
+                        "OCR-D-OCR-ANY",
+                        "OCR-D-COR-ASV"
+                    ],
+                    "output_file_grp": [
+                        "OCR-D-OCR-MULTI"
+                    ],
+                    "parameters": {
+                        "add-filegrp-comments": {
+                            "default": false,
+                            "description": "set @comments of each TextEquiv to the fileGrp it came from",
+                            "type": "boolean"
+                        }
+                    },
+                    "steps": [
+                        "recognition/post-correction"
+                    ]
+                },
+                "ocrd-cor-asv-ann-mark": {
+                    "categories": [
+                        "Text recognition and optimization"
+                    ],
+                    "description": "mark words not found by a spellchecker",
+                    "executable": "ocrd-cor-asv-ann-mark",
+                    "parameters": {
+                        "command": {
+                            "description": "external tool to query word forms, e.g. 'hunspell -i utf-8 -d de_DE,en_US -w'",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "format": {
+                            "default": "conf",
+                            "description": "how unknown words should be marked; if 'conf', then writes @conf=0.123, otherwise writes that value into @comments",
+                            "type": "string"
+                        },
+                        "normalization": {
+                            "default": {},
+                            "description": "mapping of characters prior to spellcheck, e.g. {'\u017f': 's', 'a\u0364': '\u00e4'}",
+                            "type": "object"
+                        }
+                    },
+                    "steps": [
+                        "recognition/post-correction"
+                    ]
+                },
                 "ocrd-cor-asv-ann-process": {
                     "categories": [
                         "Text recognition and optimization"
@@ -264,13 +233,13 @@
                     ]
                 }
             },
-            "version": "0.1.13"
+            "version": "0.1.14"
         },
         "ocrd_tool_json_valid": false,
         "official": true,
         "org_plus_name": "ASVLeipzig/cor-asv-ann",
         "project_type": "python",
-        "unreleased_changes": 30,
+        "unreleased_changes": 38,
         "url": "https://github.com/ASVLeipzig/cor-asv-ann"
     },
     {
@@ -389,119 +358,53 @@
         },
         "compliant_cli": true,
         "dependencies": {
-            "Keras-Preprocessing": "1.1.2",
             "Markdown": "3.4.1",
-            "PyWavelets": "1.4.0",
-            "XlsxWriter": "3.0.3",
-            "absl-py": "1.2.0",
+            "PyWavelets": "1.4.1",
+            "XlsxWriter": "3.0.8",
+            "absl-py": "1.4.0",
             "astunparse": "1.6.3",
-            "cachetools": "5.2.0",
+            "cachetools": "5.3.0",
             "calamari-ocr": "1.0.5",
-            "edit-distance": "1.0.4",
-            "flatbuffers": "2.0.7",
+            "edit-distance": "1.0.6",
+            "flatbuffers": "23.1.21",
             "gast": "0.4.0",
-            "google-auth": "2.11.0",
+            "google-auth": "2.16.1",
             "google-auth-oauthlib": "0.4.6",
             "google-pasta": "0.2.0",
-            "grpcio": "1.49.0",
-            "h5py": "3.7.0",
-            "imageio": "2.21.3",
-            "keras": "2.10.0",
-            "libclang": "14.0.6",
-            "networkx": "2.6.3",
-            "oauthlib": "3.2.1",
+            "grpcio": "1.51.1",
+            "h5py": "3.8.0",
+            "imageio": "2.25.1",
+            "keras": "2.11.0",
+            "libclang": "15.0.6.1",
+            "networkx": "3.0",
+            "oauthlib": "3.2.2",
             "opt-einsum": "3.3.0",
-            "packaging": "21.3",
-            "prettytable": "3.4.1",
-            "protobuf": "3.19.5",
+            "packaging": "23.0",
+            "prettytable": "3.6.0",
+            "protobuf": "3.19.6",
             "pyasn1": "0.4.8",
             "pyasn1-modules": "0.2.8",
-            "pyparsing": "3.0.9",
             "python-bidi": "0.4.2",
             "requests-oauthlib": "1.3.1",
             "rsa": "4.9",
             "scikit-image": "0.19.3",
-            "scipy": "1.7.3",
+            "scipy": "1.10.1",
             "six": "1.16.0",
-            "tensorboard": "2.10.0",
+            "tensorboard": "2.11.2",
             "tensorboard-data-server": "0.6.1",
             "tensorboard-plugin-wit": "1.8.1",
-            "tensorflow": "2.10.0",
-            "tensorflow-estimator": "2.10.0",
-            "tensorflow-io-gcs-filesystem": "0.27.0",
-            "termcolor": "2.0.1",
-            "tifffile": "2021.11.2",
+            "tensorflow": "2.11.0",
+            "tensorflow-estimator": "2.11.0",
+            "tensorflow-io-gcs-filesystem": "0.30.0",
+            "termcolor": "2.2.0",
+            "tifffile": "2023.2.3",
             "tqdm": "4.64.1",
-            "wcwidth": "0.2.5"
+            "typing_extensions": "4.5.0",
+            "wcwidth": "0.2.6"
         },
-        "dependency_conflicts": {
-            "absl-py": {
-                "cor-asv-ann": "1.2.0",
-                "eynollah": "1.2.0",
-                "ocrd_anybaseocr": "1.2.0",
-                "ocrd_calamari": "1.2.0",
-                "ocrd_keraslm": "1.2.0",
-                "ocrd_kraken": "1.2.0",
-                "ocrd_pc_segmentation": "0.15.0",
-                "sbb_binarization": "1.2.0"
-            },
-            "flatbuffers": {
-                "eynollah": "2.0.7",
-                "ocrd_anybaseocr": "2.0.7",
-                "ocrd_calamari": "2.0.7",
-                "ocrd_pc_segmentation": "1.12",
-                "sbb_binarization": "2.0.7"
-            },
-            "h5py": {
-                "cor-asv-ann": "2.10.0",
-                "eynollah": "3.7.0",
-                "ocrd_anybaseocr": "3.7.0",
-                "ocrd_calamari": "3.7.0",
-                "ocrd_keraslm": "2.10.0",
-                "ocrd_pc_segmentation": "3.1.0",
-                "sbb_binarization": "3.7.0"
-            },
-            "protobuf": {
-                "cor-asv-ann": "4.21.6",
-                "eynollah": "3.19.5",
-                "ocrd_anybaseocr": "3.19.5",
-                "ocrd_calamari": "3.19.5",
-                "ocrd_keraslm": "4.21.6",
-                "ocrd_kraken": "3.19.5",
-                "ocrd_pc_segmentation": "3.19.5",
-                "sbb_binarization": "3.19.5"
-            },
-            "tensorboard": {
-                "cor-asv-ann": "1.15.0",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.0",
-                "ocrd_kraken": "2.10.0",
-                "ocrd_pc_segmentation": "2.10.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "tensorflow-estimator": {
-                "cor-asv-ann": "1.15.1",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.1",
-                "ocrd_pc_segmentation": "2.5.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "termcolor": {
-                "cor-asv-ann": "2.0.1",
-                "eynollah": "2.0.1",
-                "ocrd_anybaseocr": "2.0.1",
-                "ocrd_calamari": "2.0.1",
-                "ocrd_keraslm": "2.0.1",
-                "ocrd_pc_segmentation": "1.1.0",
-                "sbb_binarization": "2.0.1"
-            }
-        },
+        "dependency_conflicts": null,
         "id": "ocrd_calamari",
-        "latest_version": "v1.0.3",
+        "latest_version": "v1.0.5",
         "ocrd_tool": {
             "git_url": "https://github.com/OCR-D/ocrd_calamari",
             "tools": {
@@ -553,7 +456,7 @@
                     ]
                 }
             },
-            "version": "1.0.3"
+            "version": "1.0.5"
         },
         "ocrd_tool_json_valid": true,
         "official": false,
@@ -637,87 +540,8 @@
             }
         },
         "compliant_cli": true,
-        "dependencies": {
-            "Keras": "2.3.1",
-            "Keras-Applications": "1.0.8",
-            "Keras-Preprocessing": "1.1.2",
-            "Markdown": "3.4.1",
-            "absl-py": "1.2.0",
-            "astor": "0.8.1",
-            "gast": "0.2.2",
-            "google-pasta": "0.2.0",
-            "grpcio": "1.49.0",
-            "h5py": "2.10.0",
-            "networkx": "2.6.3",
-            "numpy": "1.18.5",
-            "opt-einsum": "3.3.0",
-            "protobuf": "4.21.6",
-            "scipy": "1.7.3",
-            "six": "1.16.0",
-            "tensorboard": "1.15.0",
-            "tensorflow-estimator": "1.15.1",
-            "tensorflow-gpu": "1.15.5",
-            "termcolor": "2.0.1"
-        },
-        "dependency_conflicts": {
-            "absl-py": {
-                "cor-asv-ann": "1.2.0",
-                "eynollah": "1.2.0",
-                "ocrd_anybaseocr": "1.2.0",
-                "ocrd_calamari": "1.2.0",
-                "ocrd_keraslm": "1.2.0",
-                "ocrd_kraken": "1.2.0",
-                "ocrd_pc_segmentation": "0.15.0",
-                "sbb_binarization": "1.2.0"
-            },
-            "h5py": {
-                "cor-asv-ann": "2.10.0",
-                "eynollah": "3.7.0",
-                "ocrd_anybaseocr": "3.7.0",
-                "ocrd_calamari": "3.7.0",
-                "ocrd_keraslm": "2.10.0",
-                "ocrd_pc_segmentation": "3.1.0",
-                "sbb_binarization": "3.7.0"
-            },
-            "protobuf": {
-                "cor-asv-ann": "4.21.6",
-                "eynollah": "3.19.5",
-                "ocrd_anybaseocr": "3.19.5",
-                "ocrd_calamari": "3.19.5",
-                "ocrd_keraslm": "4.21.6",
-                "ocrd_kraken": "3.19.5",
-                "ocrd_pc_segmentation": "3.19.5",
-                "sbb_binarization": "3.19.5"
-            },
-            "tensorboard": {
-                "cor-asv-ann": "1.15.0",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.0",
-                "ocrd_kraken": "2.10.0",
-                "ocrd_pc_segmentation": "2.10.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "tensorflow-estimator": {
-                "cor-asv-ann": "1.15.1",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.1",
-                "ocrd_pc_segmentation": "2.5.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "termcolor": {
-                "cor-asv-ann": "2.0.1",
-                "eynollah": "2.0.1",
-                "ocrd_anybaseocr": "2.0.1",
-                "ocrd_calamari": "2.0.1",
-                "ocrd_keraslm": "2.0.1",
-                "ocrd_pc_segmentation": "1.1.0",
-                "sbb_binarization": "2.0.1"
-            }
-        },
+        "dependencies": {},
+        "dependency_conflicts": null,
         "id": "ocrd_keraslm",
         "latest_version": "v0.4.1",
         "ocrd_tool": {
@@ -804,89 +628,50 @@
         },
         "compliant_cli": false,
         "dependencies": {
-            "Markdown": "3.4.1",
-            "PyWavelets": "1.4.0",
-            "Pygments": "2.13.0",
-            "absl-py": "1.2.0",
-            "aiohttp": "3.8.1",
-            "aiosignal": "1.2.0",
+            "PyWavelets": "1.4.1",
+            "Pygments": "2.14.0",
+            "Shapely": "1.8.5",
+            "aiohttp": "3.8.4",
+            "aiosignal": "1.3.1",
             "async-timeout": "4.0.2",
-            "asynctest": "0.13.0",
-            "cachetools": "5.2.0",
-            "commonmark": "0.9.1",
-            "coremltools": "5.2.0",
-            "frozenlist": "1.3.1",
-            "fsspec": "2022.8.2",
-            "google-auth": "2.11.0",
-            "google-auth-oauthlib": "0.4.6",
-            "grpcio": "1.49.0",
-            "imageio": "2.21.3",
-            "kraken": "4.2.0",
+            "coremltools": "6.2",
+            "frozenlist": "1.3.3",
+            "fsspec": "2023.1.0",
+            "imageio": "2.25.1",
+            "kraken": "4.3.4",
+            "lightning-utilities": "0.7.0",
+            "markdown-it-py": "2.1.0",
+            "mdurl": "0.1.2",
             "mpmath": "1.2.1",
-            "multidict": "6.0.2",
-            "networkx": "2.6.3",
-            "oauthlib": "3.2.1",
-            "packaging": "21.3",
-            "protobuf": "3.19.5",
-            "pyDeprecate": "0.3.2",
-            "pyarrow": "9.0.0",
-            "pyasn1": "0.4.8",
-            "pyasn1-modules": "0.2.8",
-            "pyparsing": "3.0.9",
+            "multidict": "6.0.4",
+            "networkx": "3.0",
+            "numpy": "1.23.5",
+            "nvidia-cublas-cu11": "11.10.3.66",
+            "nvidia-cuda-nvrtc-cu11": "11.7.99",
+            "nvidia-cuda-runtime-cu11": "11.7.99",
+            "nvidia-cudnn-cu11": "8.5.0.96",
+            "packaging": "23.0",
+            "protobuf": "3.20.3",
+            "pyarrow": "11.0.0",
             "python-bidi": "0.4.2",
-            "pytorch-lightning": "1.7.6",
-            "regex": "2022.9.13",
-            "requests-oauthlib": "1.3.1",
-            "rich": "12.5.1",
-            "rsa": "4.9",
-            "scikit-image": "0.19.2",
-            "scipy": "1.7.3",
+            "pytorch-lightning": "1.9.2",
+            "regex": "2022.10.31",
+            "rich": "13.3.1",
+            "scikit-image": "0.19.3",
+            "scipy": "1.10.1",
             "six": "1.16.0",
-            "sympy": "1.10.1",
-            "tensorboard": "2.10.0",
-            "tensorboard-data-server": "0.6.1",
-            "tensorboard-plugin-wit": "1.8.1",
-            "tifffile": "2021.11.2",
-            "torch": "1.11.0",
-            "torchmetrics": "0.9.3",
-            "torchvision": "0.12.0",
+            "sympy": "1.11.1",
+            "tifffile": "2023.2.3",
+            "torch": "1.13.1",
+            "torchmetrics": "0.11.1",
+            "torchvision": "0.14.1",
             "tqdm": "4.64.1",
-            "yarl": "1.8.1"
+            "typing_extensions": "4.5.0",
+            "yarl": "1.8.2"
         },
-        "dependency_conflicts": {
-            "absl-py": {
-                "cor-asv-ann": "1.2.0",
-                "eynollah": "1.2.0",
-                "ocrd_anybaseocr": "1.2.0",
-                "ocrd_calamari": "1.2.0",
-                "ocrd_keraslm": "1.2.0",
-                "ocrd_kraken": "1.2.0",
-                "ocrd_pc_segmentation": "0.15.0",
-                "sbb_binarization": "1.2.0"
-            },
-            "protobuf": {
-                "cor-asv-ann": "4.21.6",
-                "eynollah": "3.19.5",
-                "ocrd_anybaseocr": "3.19.5",
-                "ocrd_calamari": "3.19.5",
-                "ocrd_keraslm": "4.21.6",
-                "ocrd_kraken": "3.19.5",
-                "ocrd_pc_segmentation": "3.19.5",
-                "sbb_binarization": "3.19.5"
-            },
-            "tensorboard": {
-                "cor-asv-ann": "1.15.0",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.0",
-                "ocrd_kraken": "2.10.0",
-                "ocrd_pc_segmentation": "2.10.0",
-                "sbb_binarization": "2.10.0"
-            }
-        },
+        "dependency_conflicts": null,
         "id": "ocrd_kraken",
-        "latest_version": "v0.1.2",
+        "latest_version": "v0.3.0",
         "ocrd_tool": {
             "git_url": "https://github.com/OCR-D/ocrd_kraken",
             "tools": {
@@ -896,8 +681,15 @@
                     ],
                     "description": "Binarize images with kraken",
                     "executable": "ocrd-kraken-binarize",
-                    "input_file_grp": "OCR-D-IMG",
-                    "output_file_grp": "OCR-D-IMG-BIN",
+                    "input_file_grp": [
+                        "OCR-D-IMG",
+                        "OCR-D-PRE-CROP",
+                        "OCR-D-SEG-REGION",
+                        "OCR-D-SEG-LINE"
+                    ],
+                    "output_file_grp": [
+                        "OCR-D-PRE-BIN"
+                    ],
                     "parameters": {
                         "level-of-operation": {
                             "default": "page",
@@ -920,6 +712,12 @@
                     ],
                     "description": "OCR with kraken",
                     "executable": "ocrd-kraken-recognize",
+                    "input_file_grp": [
+                        "OCR-D-SEG-LINE"
+                    ],
+                    "output_file_grp": [
+                        "OCR-D-OCR-KRAK"
+                    ],
                     "parameters": {
                         "bidi_reordering": {
                             "default": true,
@@ -946,6 +744,50 @@
                             "type": "number"
                         }
                     },
+                    "resources": [
+                        {
+                            "description": "19th and 20th century German Fraktur; https://github.com/UB-Mannheim/AustrianNewspapers/wiki/Training-with-Kraken",
+                            "name": "austriannewspapers.mlmodel",
+                            "parameter_usage": "without-extension",
+                            "size": 16243476,
+                            "url": "https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/kraken/austriannewspapers/20220520/austriannewspapers_best.mlmodel"
+                        },
+                        {
+                            "description": "19th and 20th century German Fraktur ('Deutscher Reichsanzeiger'); https://github.com/UB-Mannheim/reichsanzeiger-gt/wiki/Training-with-Kraken",
+                            "name": "reichsanzeiger.mlmodel",
+                            "parameter_usage": "without-extension",
+                            "size": 16358636,
+                            "url": "https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/kraken/reichsanzeiger-gt/reichsanzeiger_best.mlmodel"
+                        },
+                        {
+                            "description": "mostly 19th century German Fraktur; https://github.com/UB-Mannheim/digitue-gt/wiki/Training-with-Kraken",
+                            "name": "digitue.mlmodel",
+                            "parameter_usage": "without-extension",
+                            "size": 16364343,
+                            "url": "https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/kraken/digitue-gt/digitue_best.mlmodel"
+                        },
+                        {
+                            "description": "16th century German Gothic; https://github.com/UB-Mannheim/digi-gt/wiki/Training",
+                            "name": "luther.mlmodel",
+                            "parameter_usage": "without-extension",
+                            "size": 16305851,
+                            "url": "https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/kraken/digi-gt/luther_best.mlmodel"
+                        },
+                        {
+                            "description": "20th century typewriter http://idb.ub.uni-tuebingen.de/opendigi/walz_1976, pretrained on austriannewspapers.mlmodel",
+                            "name": "typewriter.mlmodel",
+                            "parameter_usage": "without-extension",
+                            "size": 16364780,
+                            "url": "https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/kraken/typewriter/typewriter.mlmodel"
+                        },
+                        {
+                            "description": "This model has been trained on a large corpus of modern printed English text augmented with ~10000 lines of historical pages",
+                            "name": "en_best.mlmodel",
+                            "parameter_usage": "without-extension",
+                            "size": 2930723,
+                            "url": "https://zenodo.org/record/2577813/files/en_best.mlmodel?download=1"
+                        }
+                    ],
                     "steps": [
                         "recognition/text-recognition"
                     ]
@@ -956,17 +798,68 @@
                     ],
                     "description": "Block segmentation with kraken",
                     "executable": "ocrd-kraken-segment",
+                    "input_file_grp": [
+                        "OCR-D-IMG",
+                        "OCR-D-PRE-CROP",
+                        "OCR-D-PRE-BIN"
+                    ],
+                    "output_file_grp": [
+                        "OCR-D-SEG-REGION",
+                        "OCR-D-SEG-LINE"
+                    ],
                     "parameters": {
                         "black_colseps": {
                             "default": false,
                             "description": "Whether column separators are assumed to be vertical black lines or not",
                             "type": "boolean"
                         },
+                        "blla_classes": {
+                            "additionalProperties": {
+                                "enum": [
+                                    "TextRegion",
+                                    "ImageRegion",
+                                    "LineDrawingRegion",
+                                    "GraphicRegion",
+                                    "TableRegion",
+                                    "ChartRegion",
+                                    "MapRegion",
+                                    "SeparatorRegion",
+                                    "MathsRegion",
+                                    "ChemRegion",
+                                    "MusicRegion",
+                                    "AdvertRegion",
+                                    "NoiseRegion",
+                                    "UnknownRegion",
+                                    "CustomRegion"
+                                ],
+                                "type": "string"
+                            },
+                            "default": {
+                                "advert": "AdvertRegion",
+                                "chart": "ChartRegion",
+                                "chem": "ChemRegion",
+                                "custom": "CustomRegion",
+                                "graphic": "GraphicRegion",
+                                "image": "ImageRegion",
+                                "line drawing": "LineDrawingRegion",
+                                "map": "MapRegion",
+                                "maths": "MathsRegion",
+                                "music": "MusicRegion",
+                                "noise": "NoiseRegion",
+                                "separator": "SeparatorRegion",
+                                "table": "TableRegion",
+                                "text": "TextRegion",
+                                "unknown": "UnknownRegion"
+                            },
+                            "description": "Class mapping for the region types trained into blla_model.",
+                            "minProperties": 2,
+                            "type": "object"
+                        },
                         "blla_model": {
                             "cacheable": true,
                             "content-type": "application/python-cpickle",
                             "default": "blla.mlmodel",
-                            "description": "Model used for baseline detection. Use kraken-provided model if not give. Ignored if use_legacy.",
+                            "description": "Model used for baseline detection and page segmentation. Ignored if use_legacy.",
                             "format": "uri",
                             "type": "string"
                         },
@@ -1009,12 +902,21 @@
                             "type": "boolean"
                         }
                     },
+                    "resources": [
+                        {
+                            "description": "Pretrained baseline segmentation model",
+                            "name": "blla.mlmodel",
+                            "parameter_usage": "without-extension",
+                            "size": 5047020,
+                            "url": "https://github.com/mittagessen/kraken/raw/master/kraken/blla.mlmodel"
+                        }
+                    ],
                     "steps": [
                         "layout/segmentation/region"
                     ]
                 }
             },
-            "version": "0.1.2"
+            "version": "0.3.0"
         },
         "ocrd_tool_json_valid": false,
         "official": false,
@@ -1118,25 +1020,24 @@
         },
         "compliant_cli": true,
         "dependencies": {
-            "Cython": "0.29.32",
-            "PyWavelets": "1.4.0",
-            "XlsxWriter": "3.0.3",
+            "PyWavelets": "1.4.1",
+            "XlsxWriter": "3.0.8",
+            "contourpy": "1.0.7",
             "cycler": "0.11.0",
-            "fonttools": "4.37.2",
-            "imageio": "2.21.3",
-            "jarowinkler": "1.2.1",
+            "fonttools": "4.38.0",
+            "imageio": "2.25.1",
             "kiwisolver": "1.4.4",
-            "matplotlib": "3.5.3",
-            "networkx": "2.6.3",
-            "ocrd-fork-pycocotools": "2.0.3.post1",
-            "packaging": "21.3",
+            "matplotlib": "3.7.0",
+            "networkx": "3.0",
+            "ocrd-fork-pycocotools": "2.0.6.post1",
+            "packaging": "23.0",
             "pyparsing": "3.0.9",
             "python-dateutil": "2.8.2",
-            "rapidfuzz": "2.9.0",
+            "rapidfuzz": "2.13.7",
             "scikit-image": "0.19.3",
-            "scipy": "1.7.3",
+            "scipy": "1.10.1",
             "six": "1.16.0",
-            "tifffile": "2021.11.2"
+            "tifffile": "2023.2.3"
         },
         "dependency_conflicts": null,
         "id": "ocrd_segment",
@@ -1309,6 +1210,25 @@
                                 "type": "string"
                             },
                             "type": "array"
+                        },
+                        "textequiv-index": {
+                            "default": "first",
+                            "description": "Only extract lines with the specified TextEquiv/@index entries; 'first' and 'last' denote the first and last TextEquiv elements, regardless of their @index, respectively.",
+                            "enum": [
+                                "first",
+                                "last",
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8",
+                                "9"
+                            ],
+                            "type": "string"
                         },
                         "transparency": {
                             "default": true,
@@ -1850,7 +1770,7 @@
         "official": false,
         "org_plus_name": "OCR-D/ocrd_segment",
         "project_type": "python",
-        "unreleased_changes": 89,
+        "unreleased_changes": 94,
         "url": "https://github.com/OCR-D/ocrd_segment"
     },
     {
@@ -1863,12 +1783,10 @@
             }
         },
         "compliant_cli": true,
-        "dependencies": {
-            "tesserocr": "2.5.2"
-        },
+        "dependencies": {},
         "dependency_conflicts": null,
         "id": "ocrd_tesserocr",
-        "latest_version": "v0.13.6",
+        "latest_version": "v0.16.0",
         "ocrd_tool": {
             "dockerhub": "ocrd/tesserocr",
             "git_url": "https://github.com/OCR-D/ocrd_tesserocr",
@@ -1889,6 +1807,12 @@
                         "OCR-D-BIN-LINE"
                     ],
                     "parameters": {
+                        "dpi": {
+                            "default": 0,
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
+                            "format": "float",
+                            "type": "number"
+                        },
                         "operation_level": {
                             "default": "page",
                             "description": "PAGE XML hierarchy level to operate on",
@@ -1898,6 +1822,11 @@
                                 "line"
                             ],
                             "type": "string"
+                        },
+                        "tiseg": {
+                            "default": false,
+                            "description": "also separate text vs image by detecting and suppressing photo+sepline mask",
+                            "type": "boolean"
                         }
                     },
                     "steps": [
@@ -1919,7 +1848,7 @@
                     "parameters": {
                         "dpi": {
                             "default": 0,
-                            "description": "pixel density in dots per inch (overrides any meta-data in the images); disabled when negative",
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
                             "format": "float",
                             "type": "number"
                         },
@@ -1950,7 +1879,7 @@
                     "parameters": {
                         "dpi": {
                             "default": 0,
-                            "description": "pixel density in dots per inch (overrides any meta-data in the images); disabled when negative",
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
                             "format": "float",
                             "type": "number"
                         },
@@ -1991,13 +1920,15 @@
                     "parameters": {
                         "dpi": {
                             "default": 0,
-                            "description": "pixel density in dots per inch (overrides any meta-data in the images); disabled when negative",
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
                             "format": "float",
                             "type": "number"
                         },
                         "model": {
+                            "content-type": "application/octet-stream",
                             "default": "osd",
                             "description": "tessdata model to apply (an ISO 639-3 language specification or some other basename, e.g. deu-frak or osd); must be an old (pre-LSTM) model",
+                            "format": "uri",
                             "type": "string"
                         },
                         "padding": {
@@ -2060,7 +1991,7 @@
                         },
                         "dpi": {
                             "default": 0,
-                            "description": "pixel density in dots per inch (overrides any meta-data in the images); disabled when negative",
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
                             "format": "float",
                             "type": "number"
                         },
@@ -2075,7 +2006,9 @@
                             "type": "boolean"
                         },
                         "model": {
+                            "content-type": "application/octet-stream",
                             "description": "The tessdata text recognition model to apply (an ISO 639-3 language specification or some other basename, e.g. deu-frak or Fraktur).",
+                            "format": "uri",
                             "type": "string"
                         },
                         "oem": {
@@ -2162,6 +2095,89 @@
                             "type": "object"
                         }
                     },
+                    "resource_locations": [
+                        "module"
+                    ],
+                    "resources": [
+                        {
+                            "description": "Tesseract LSTM model trained on GT4HistOCR",
+                            "name": "Fraktur_GT4HistOCR.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 1058487,
+                            "url": "https://ub-backup.bib.uni-mannheim.de/~stweil/ocrd-train/data/Fraktur_5000000/tessdata_fast/Fraktur_50000000.334_450937.traineddata"
+                        },
+                        {
+                            "description": "Tesseract LSTM model based on Austrian National Library newspaper data",
+                            "name": "ONB.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 4358948,
+                            "url": "https://ub-backup.bib.uni-mannheim.de/~stweil/ocrd-train/data/ONB/tessdata_best/ONB_1.195_300718_989100.traineddata"
+                        },
+                        {
+                            "description": "Tesseract LSTM model based on Austrian National Library newspaper data",
+                            "name": "frak2021.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 3421140,
+                            "url": "https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/frak2021/tessdata_best/frak2021-0.905.traineddata"
+                        },
+                        {
+                            "description": "Tesseract legacy model for mathematical equations",
+                            "name": "equ.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 2251950,
+                            "url": "https://github.com/tesseract-ocr/tessdata_fast/raw/main/equ.traineddata"
+                        },
+                        {
+                            "description": "Tesseract legacy model for orientation and script detection",
+                            "name": "osd.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 10562727,
+                            "url": "https://github.com/tesseract-ocr/tessdata_fast/raw/main/osd.traineddata"
+                        },
+                        {
+                            "description": "Tesseract LSTM model for contemporary (computer typesetting and offset printing) English",
+                            "name": "eng.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 4113088,
+                            "url": "https://github.com/tesseract-ocr/tessdata_fast/raw/main/eng.traineddata"
+                        },
+                        {
+                            "description": "Tesseract LSTM model for contemporary (computer typesetting and offset printing) German",
+                            "name": "deu.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 1525436,
+                            "url": "https://github.com/tesseract-ocr/tessdata_fast/raw/main/deu.traineddata"
+                        },
+                        {
+                            "description": "Tesseract LSTM model for historical (Fraktur typesetting and letterpress printing) German",
+                            "name": "frk.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 6423052,
+                            "url": "https://github.com/tesseract-ocr/tessdata_fast/raw/main/frk.traineddata"
+                        },
+                        {
+                            "description": "Tesseract LSTM model for historical Latin script with Fraktur typesetting",
+                            "name": "Fraktur.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 10915632,
+                            "url": "https://github.com/tesseract-ocr/tessdata_fast/raw/main/script/Fraktur.traineddata"
+                        },
+                        {
+                            "description": "Tesseract LSTM model for contemporary and historical Latin script",
+                            "name": "Latin.traineddata",
+                            "parameter_usage": "without-extension",
+                            "size": 89384811,
+                            "url": "https://github.com/tesseract-ocr/tessdata_fast/raw/main/script/Latin.traineddata"
+                        },
+                        {
+                            "description": "Tesseract configs (parameter sets) for use with the standalone tesseract CLI",
+                            "name": "configs",
+                            "path_in_archive": "tesseract-main/tessdata/configs",
+                            "size": 1915529,
+                            "type": "archive",
+                            "url": "https://github.com/tesseract-ocr/tesseract/archive/main.tar.gz"
+                        }
+                    ],
                     "steps": [
                         "layout/segmentation/region",
                         "layout/segmentation/line",
@@ -2190,7 +2206,7 @@
                         },
                         "dpi": {
                             "default": 0,
-                            "description": "pixel density in dots per inch (overrides any meta-data in the images); disabled when negative",
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
                             "format": "float",
                             "type": "number"
                         },
@@ -2242,7 +2258,7 @@
                     "parameters": {
                         "dpi": {
                             "default": 0,
-                            "description": "pixel density in dots per inch (overrides any meta-data in the images); disabled when negative",
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
                             "format": "float",
                             "type": "number"
                         },
@@ -2289,7 +2305,7 @@
                         },
                         "dpi": {
                             "default": 0,
-                            "description": "pixel density in dots per inch (overrides any meta-data in the images); disabled when negative",
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
                             "format": "float",
                             "type": "number"
                         },
@@ -2345,7 +2361,7 @@
                     "parameters": {
                         "dpi": {
                             "default": 0,
-                            "description": "pixel density in dots per inch (overrides any meta-data in the images); disabled when negative",
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
                             "format": "float",
                             "type": "number"
                         },
@@ -2386,7 +2402,7 @@
                     "parameters": {
                         "dpi": {
                             "default": 0,
-                            "description": "pixel density in dots per inch (overrides any meta-data in the images); disabled when negative",
+                            "description": "pixel density in dots per inch (overrides any meta-data in the images)",
                             "format": "float",
                             "type": "number"
                         },
@@ -2412,13 +2428,13 @@
                     ]
                 }
             },
-            "version": "0.13.6"
+            "version": "0.16.0"
         },
         "ocrd_tool_json_valid": true,
         "official": true,
         "org_plus_name": "OCR-D/ocrd_tesserocr",
         "project_type": "python",
-        "unreleased_changes": 109,
+        "unreleased_changes": 158,
         "url": "https://github.com/OCR-D/ocrd_tesserocr"
     },
     {
@@ -2432,19 +2448,20 @@
         },
         "compliant_cli": false,
         "dependencies": {
-            "PyWavelets": "1.4.0",
-            "Rtree": "1.0.0",
+            "Levenshtein": "0.20.9",
+            "PyWavelets": "1.4.1",
+            "Rtree": "1.0.1",
             "alphashape": "1.3.1",
             "click-log": "0.4.0",
-            "imageio": "2.21.3",
-            "networkx": "2.6.3",
-            "packaging": "21.3",
-            "pyparsing": "3.0.9",
-            "python-Levenshtein": "0.12.2",
+            "imageio": "2.25.1",
+            "networkx": "3.0",
+            "packaging": "23.0",
+            "python-Levenshtein": "0.20.9",
+            "rapidfuzz": "2.13.7",
             "scikit-image": "0.19.3",
-            "scipy": "1.7.3",
-            "tifffile": "2021.11.2",
-            "trimesh": "3.14.1"
+            "scipy": "1.10.1",
+            "tifffile": "2023.2.3",
+            "trimesh": "3.20.0"
         },
         "dependency_conflicts": null,
         "id": "ocrd_cis",
@@ -3035,124 +3052,65 @@
         "dependencies": {
             "Keras-Preprocessing": "1.1.2",
             "Markdown": "3.4.1",
-            "PyWavelets": "1.4.0",
-            "absl-py": "1.2.0",
+            "PyWavelets": "1.4.1",
+            "absl-py": "1.4.0",
             "astunparse": "1.6.3",
-            "cachetools": "5.2.0",
+            "cachetools": "5.3.0",
+            "contourpy": "1.0.7",
             "cycler": "0.11.0",
             "dominate": "2.7.0",
-            "flatbuffers": "2.0.7",
-            "fonttools": "4.37.2",
+            "flatbuffers": "23.1.21",
+            "fonttools": "4.38.0",
             "gast": "0.4.0",
-            "google-auth": "2.11.0",
+            "google-auth": "2.16.1",
             "google-auth-oauthlib": "0.4.6",
             "google-pasta": "0.2.0",
-            "grpcio": "1.49.0",
-            "h5py": "3.7.0",
-            "imageio": "2.21.3",
-            "joblib": "1.1.0",
-            "keras": "2.10.0",
+            "grpcio": "1.51.1",
+            "h5py": "3.8.0",
+            "imageio": "2.25.1",
+            "joblib": "1.2.0",
+            "keras": "2.11.0",
             "kiwisolver": "1.4.4",
-            "libclang": "14.0.6",
-            "matplotlib": "3.5.3",
-            "networkx": "2.6.3",
-            "oauthlib": "3.2.1",
+            "libclang": "15.0.6.1",
+            "matplotlib": "3.7.0",
+            "networkx": "3.0",
+            "nvidia-cublas-cu11": "11.10.3.66",
+            "nvidia-cuda-nvrtc-cu11": "11.7.99",
+            "nvidia-cuda-runtime-cu11": "11.7.99",
+            "nvidia-cudnn-cu11": "8.5.0.96",
+            "oauthlib": "3.2.2",
             "ocrd-fork-ocropy": "1.4.0a4",
             "ocrd-fork-pylsd": "0.0.4",
             "opt-einsum": "3.3.0",
-            "packaging": "21.3",
-            "pandas": "1.3.5",
+            "packaging": "23.0",
+            "pandas": "1.5.3",
             "pix2pixhd": "1.0",
-            "protobuf": "3.19.5",
+            "protobuf": "3.19.6",
             "pyasn1": "0.4.8",
             "pyasn1-modules": "0.2.8",
             "pyparsing": "3.0.9",
             "python-dateutil": "2.8.2",
-            "pytz": "2022.2.1",
+            "pytz": "2022.7.1",
             "requests-oauthlib": "1.3.1",
             "rsa": "4.9",
             "scikit-image": "0.19.3",
-            "scikit-learn": "1.0.2",
-            "scipy": "1.7.3",
+            "scikit-learn": "1.2.1",
+            "scipy": "1.10.1",
             "six": "1.16.0",
-            "tensorboard": "2.10.0",
+            "tensorboard": "2.11.2",
             "tensorboard-data-server": "0.6.1",
             "tensorboard-plugin-wit": "1.8.1",
-            "tensorflow": "2.10.0",
-            "tensorflow-estimator": "2.10.0",
-            "tensorflow-io-gcs-filesystem": "0.27.0",
-            "termcolor": "2.0.1",
+            "tensorflow": "2.11.0",
+            "tensorflow-estimator": "2.11.0",
+            "tensorflow-io-gcs-filesystem": "0.30.0",
+            "termcolor": "2.2.0",
             "threadpoolctl": "3.1.0",
-            "tifffile": "2021.11.2",
-            "torch": "1.12.1",
-            "torchvision": "0.13.1"
+            "tifffile": "2023.2.3",
+            "torch": "1.13.1",
+            "torchvision": "0.14.1",
+            "typing_extensions": "4.5.0"
         },
-        "dependency_conflicts": {
-            "absl-py": {
-                "cor-asv-ann": "1.2.0",
-                "eynollah": "1.2.0",
-                "ocrd_anybaseocr": "1.2.0",
-                "ocrd_calamari": "1.2.0",
-                "ocrd_keraslm": "1.2.0",
-                "ocrd_kraken": "1.2.0",
-                "ocrd_pc_segmentation": "0.15.0",
-                "sbb_binarization": "1.2.0"
-            },
-            "flatbuffers": {
-                "eynollah": "2.0.7",
-                "ocrd_anybaseocr": "2.0.7",
-                "ocrd_calamari": "2.0.7",
-                "ocrd_pc_segmentation": "1.12",
-                "sbb_binarization": "2.0.7"
-            },
-            "h5py": {
-                "cor-asv-ann": "2.10.0",
-                "eynollah": "3.7.0",
-                "ocrd_anybaseocr": "3.7.0",
-                "ocrd_calamari": "3.7.0",
-                "ocrd_keraslm": "2.10.0",
-                "ocrd_pc_segmentation": "3.1.0",
-                "sbb_binarization": "3.7.0"
-            },
-            "protobuf": {
-                "cor-asv-ann": "4.21.6",
-                "eynollah": "3.19.5",
-                "ocrd_anybaseocr": "3.19.5",
-                "ocrd_calamari": "3.19.5",
-                "ocrd_keraslm": "4.21.6",
-                "ocrd_kraken": "3.19.5",
-                "ocrd_pc_segmentation": "3.19.5",
-                "sbb_binarization": "3.19.5"
-            },
-            "tensorboard": {
-                "cor-asv-ann": "1.15.0",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.0",
-                "ocrd_kraken": "2.10.0",
-                "ocrd_pc_segmentation": "2.10.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "tensorflow-estimator": {
-                "cor-asv-ann": "1.15.1",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.1",
-                "ocrd_pc_segmentation": "2.5.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "termcolor": {
-                "cor-asv-ann": "2.0.1",
-                "eynollah": "2.0.1",
-                "ocrd_anybaseocr": "2.0.1",
-                "ocrd_calamari": "2.0.1",
-                "ocrd_keraslm": "2.0.1",
-                "ocrd_pc_segmentation": "1.1.0",
-                "sbb_binarization": "2.0.1"
-            }
-        },
+        "dependency_conflicts": null,
         "id": "ocrd_anybaseocr",
         "latest_version": "v1.8.2",
         "ocrd_tool": {
@@ -3844,13 +3802,12 @@
         },
         "compliant_cli": false,
         "dependencies": {
-            "colorama": "0.4.5",
-            "jarowinkler": "1.2.1",
+            "colorama": "0.4.6",
             "multimethod": "1.3",
-            "rapidfuzz": "2.9.0",
+            "rapidfuzz": "2.13.7",
             "six": "1.16.0",
             "tqdm": "4.64.1",
-            "uniseg": "0.7.1.post2"
+            "uniseg": "0.7.2"
         },
         "dependency_conflicts": null,
         "id": "dinglehopper",
@@ -3897,7 +3854,7 @@
         "official": false,
         "org_plus_name": "qurator-spk/dinglehopper",
         "project_type": "python",
-        "unreleased_changes": 269,
+        "unreleased_changes": 278,
         "url": "https://github.com/qurator-spk/dinglehopper"
     },
     {
@@ -3911,24 +3868,28 @@
         },
         "compliant_cli": true,
         "dependencies": {
-            "PyWavelets": "1.4.0",
-            "imageio": "2.21.3",
-            "networkx": "2.6.3",
-            "packaging": "21.3",
-            "pandas": "1.3.5",
-            "pyparsing": "3.0.9",
+            "PyWavelets": "1.4.1",
+            "imageio": "2.25.1",
+            "networkx": "3.0",
+            "nvidia-cublas-cu11": "11.10.3.66",
+            "nvidia-cuda-nvrtc-cu11": "11.7.99",
+            "nvidia-cuda-runtime-cu11": "11.7.99",
+            "nvidia-cudnn-cu11": "8.5.0.96",
+            "packaging": "23.0",
+            "pandas": "1.5.3",
             "python-dateutil": "2.8.2",
-            "pytz": "2022.2.1",
+            "pytz": "2022.7.1",
             "scikit-image": "0.19.3",
-            "scipy": "1.7.3",
+            "scipy": "1.10.1",
             "six": "1.16.0",
-            "tifffile": "2021.11.2",
-            "torch": "1.12.1",
-            "torchvision": "0.13.1"
+            "tifffile": "2023.2.3",
+            "torch": "1.13.1",
+            "torchvision": "0.14.1",
+            "typing_extensions": "4.5.0"
         },
         "dependency_conflicts": null,
         "id": "ocrd_typegroups_classifier",
-        "latest_version": "v0.3.0",
+        "latest_version": "v0.4.0",
         "ocrd_tool": {
             "git_url": "https://github.com/seuretm/ocrd_typegroups_classifier",
             "tools": {
@@ -3945,6 +3906,23 @@
                         "OCR-D-IMG-FONTS"
                     ],
                     "parameters": {
+                        "active_classes": {
+                            "default": [],
+                            "description": "Restrict the set of decoded font type groups to the given list; if empty, then allow all classes (i.e. antiqua/bastarda/fraktur/gotico_antiqua/greek/hebrew/italic/rotunda/schwabacher/textura/other_font/not_a_font)",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "level": {
+                            "default": "page",
+                            "description": "The PAGE-XML hierarchy level to operate on",
+                            "enum": [
+                                "page",
+                                "region"
+                            ],
+                            "type": "string"
+                        },
                         "network": {
                             "description": "The file name of the neural network to use, including sufficient path information",
                             "required": false,
@@ -3962,7 +3940,7 @@
                     ]
                 }
             },
-            "version": "0.3.0"
+            "version": "0.4.0"
         },
         "ocrd_tool_json_valid": true,
         "official": true,
@@ -3984,13 +3962,13 @@
         "dependencies": {},
         "dependency_conflicts": null,
         "id": "core",
-        "latest_version": "v2.35.0",
+        "latest_version": "v2.43.0",
         "ocrd_tool": null,
         "ocrd_tool_json_valid": false,
         "official": true,
         "org_plus_name": "OCR-D/core",
         "project_type": "python",
-        "unreleased_changes": 2447,
+        "unreleased_changes": 2753,
         "url": "https://github.com/OCR-D/core"
     },
     {
@@ -4006,7 +3984,7 @@
         "dependencies": {},
         "dependency_conflicts": null,
         "id": "ocrd_fileformat",
-        "latest_version": "v0.5.0",
+        "latest_version": "v0.6.1",
         "ocrd_tool": {
             "git_url": "https://github.com/OCR-D/ocrd_fileformat",
             "tools": {
@@ -4071,7 +4049,7 @@
                     ]
                 }
             },
-            "version": "0.5.0"
+            "version": "0.6.1"
         },
         "ocrd_tool_json_valid": true,
         "official": false,
@@ -4244,14 +4222,13 @@
         },
         "compliant_cli": false,
         "dependencies": {
-            "PyWavelets": "1.4.0",
-            "imageio": "2.21.3",
-            "networkx": "2.6.3",
-            "packaging": "21.3",
-            "pyparsing": "3.0.9",
+            "PyWavelets": "1.4.1",
+            "imageio": "2.25.1",
+            "networkx": "3.0",
+            "packaging": "23.0",
             "scikit-image": "0.19.3",
-            "scipy": "1.7.3",
-            "tifffile": "2021.11.2"
+            "scipy": "1.10.1",
+            "tifffile": "2023.2.3"
         },
         "dependency_conflicts": null,
         "id": "ocrd_wrap",
@@ -4637,7 +4614,7 @@
         "official": false,
         "org_plus_name": "bertsky/workflow-configuration",
         "project_type": "bashlib",
-        "unreleased_changes": 149,
+        "unreleased_changes": 166,
         "url": "https://github.com/bertsky/workflow-configuration"
     },
     {
@@ -4673,7 +4650,7 @@
         },
         "compliant_cli": false,
         "dependencies": {
-            "requests-toolbelt": "0.9.1"
+            "requests-toolbelt": "0.10.1"
         },
         "dependency_conflicts": null,
         "id": "ocrd_olahd_client",
@@ -4696,7 +4673,7 @@
                             "type": "string"
                         },
                         "password": {
-                            "description": "Pasword",
+                            "description": "Password",
                             "required": true,
                             "type": "string"
                         },
@@ -4722,7 +4699,7 @@
         "official": false,
         "org_plus_name": "OCR-D/ocrd_olahd_client",
         "project_type": "python",
-        "unreleased_changes": 11,
+        "unreleased_changes": 13,
         "url": "https://github.com/OCR-D/ocrd_olahd_client"
     },
     {
@@ -4736,16 +4713,17 @@
         },
         "compliant_cli": false,
         "dependencies": {
+            "contourpy": "1.0.7",
             "cycler": "0.11.0",
-            "fonttools": "4.37.2",
-            "imageio": "2.21.3",
+            "fonttools": "4.38.0",
+            "imageio": "2.25.1",
             "kiwisolver": "1.4.4",
-            "matplotlib": "3.5.3",
+            "matplotlib": "3.7.0",
             "ocrd-fork-ocropy": "1.4.0a4",
-            "packaging": "21.3",
+            "packaging": "23.0",
             "pyparsing": "3.0.9",
             "python-dateutil": "2.8.2",
-            "scipy": "1.7.3",
+            "scipy": "1.10.1",
             "six": "1.16.0"
         },
         "dependency_conflicts": null,
@@ -4859,122 +4837,49 @@
         "compliant_cli": false,
         "dependencies": {
             "Keras-Applications": "1.0.8",
-            "Keras-Preprocessing": "1.1.2",
             "Markdown": "3.4.1",
-            "PyWavelets": "1.4.0",
-            "absl-py": "0.15.0",
+            "PyWavelets": "1.4.1",
+            "absl-py": "1.4.0",
             "astunparse": "1.6.3",
-            "cached-property": "1.5.2",
-            "cachetools": "5.2.0",
-            "cycler": "0.11.0",
+            "cachetools": "5.3.0",
             "dataclasses": "0.6",
             "efficientnet": "1.1.1",
-            "flatbuffers": "1.12",
-            "fonttools": "4.37.2",
+            "flatbuffers": "23.1.21",
             "gast": "0.4.0",
-            "google-auth": "2.11.0",
+            "google-auth": "2.16.1",
             "google-auth-oauthlib": "0.4.6",
             "google-pasta": "0.2.0",
-            "grpcio": "1.34.1",
-            "h5py": "3.1.0",
-            "imageio": "2.4.1",
-            "keras-nightly": "2.5.0.dev2021032900",
-            "kiwisolver": "1.4.4",
-            "matplotlib": "3.5.3",
-            "networkx": "2.6.3",
-            "numpy": "1.19.5",
-            "oauthlib": "3.2.1",
-            "ocr4all-pixel-classifier": "0.6.6",
+            "grpcio": "1.51.1",
+            "h5py": "3.8.0",
+            "imageio": "2.25.1",
+            "keras": "2.11.0",
+            "libclang": "15.0.6.1",
+            "networkx": "3.0",
+            "oauthlib": "3.2.2",
+            "ocr4all-pixel-classifier": "0.6.5",
             "ocr4all-pylib": "0.2.6",
             "opt-einsum": "3.3.0",
-            "packaging": "21.3",
-            "protobuf": "3.19.5",
+            "packaging": "23.0",
+            "protobuf": "3.19.6",
             "pyasn1": "0.4.8",
             "pyasn1-modules": "0.2.8",
-            "pyparsing": "3.0.9",
-            "python-dateutil": "2.8.2",
             "requests-oauthlib": "1.3.1",
             "rsa": "4.9",
-            "scikit-image": "0.17.2",
-            "scipy": "1.7.3",
-            "six": "1.15.0",
-            "tensorboard": "2.10.0",
+            "scikit-image": "0.19.3",
+            "scipy": "1.10.1",
+            "six": "1.16.0",
+            "tensorboard": "2.11.2",
             "tensorboard-data-server": "0.6.1",
             "tensorboard-plugin-wit": "1.8.1",
-            "tensorflow": "2.5.0",
-            "tensorflow-estimator": "2.5.0",
-            "termcolor": "1.1.0",
-            "tifffile": "2021.11.2",
+            "tensorflow": "2.11.0",
+            "tensorflow-estimator": "2.11.0",
+            "tensorflow-io-gcs-filesystem": "0.30.0",
+            "termcolor": "2.2.0",
+            "tifffile": "2023.2.3",
             "tqdm": "4.64.1",
-            "typing-extensions": "3.7.4.3",
-            "wrapt": "1.12.1"
+            "typing_extensions": "4.5.0"
         },
-        "dependency_conflicts": {
-            "absl-py": {
-                "cor-asv-ann": "1.2.0",
-                "eynollah": "1.2.0",
-                "ocrd_anybaseocr": "1.2.0",
-                "ocrd_calamari": "1.2.0",
-                "ocrd_keraslm": "1.2.0",
-                "ocrd_kraken": "1.2.0",
-                "ocrd_pc_segmentation": "0.15.0",
-                "sbb_binarization": "1.2.0"
-            },
-            "flatbuffers": {
-                "eynollah": "2.0.7",
-                "ocrd_anybaseocr": "2.0.7",
-                "ocrd_calamari": "2.0.7",
-                "ocrd_pc_segmentation": "1.12",
-                "sbb_binarization": "2.0.7"
-            },
-            "h5py": {
-                "cor-asv-ann": "2.10.0",
-                "eynollah": "3.7.0",
-                "ocrd_anybaseocr": "3.7.0",
-                "ocrd_calamari": "3.7.0",
-                "ocrd_keraslm": "2.10.0",
-                "ocrd_pc_segmentation": "3.1.0",
-                "sbb_binarization": "3.7.0"
-            },
-            "protobuf": {
-                "cor-asv-ann": "4.21.6",
-                "eynollah": "3.19.5",
-                "ocrd_anybaseocr": "3.19.5",
-                "ocrd_calamari": "3.19.5",
-                "ocrd_keraslm": "4.21.6",
-                "ocrd_kraken": "3.19.5",
-                "ocrd_pc_segmentation": "3.19.5",
-                "sbb_binarization": "3.19.5"
-            },
-            "tensorboard": {
-                "cor-asv-ann": "1.15.0",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.0",
-                "ocrd_kraken": "2.10.0",
-                "ocrd_pc_segmentation": "2.10.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "tensorflow-estimator": {
-                "cor-asv-ann": "1.15.1",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.1",
-                "ocrd_pc_segmentation": "2.5.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "termcolor": {
-                "cor-asv-ann": "2.0.1",
-                "eynollah": "2.0.1",
-                "ocrd_anybaseocr": "2.0.1",
-                "ocrd_calamari": "2.0.1",
-                "ocrd_keraslm": "2.0.1",
-                "ocrd_pc_segmentation": "1.1.0",
-                "sbb_binarization": "2.0.1"
-            }
-        },
+        "dependency_conflicts": null,
         "id": "ocrd_pc_segmentation",
         "latest_version": "v0.1.3",
         "ocrd_tool": {
@@ -5044,106 +4949,40 @@
         },
         "compliant_cli": false,
         "dependencies": {
-            "Keras-Preprocessing": "1.1.2",
             "Markdown": "3.4.1",
-            "absl-py": "1.2.0",
+            "absl-py": "1.4.0",
             "astunparse": "1.6.3",
-            "cachetools": "5.2.0",
-            "flatbuffers": "2.0.7",
+            "cachetools": "5.3.0",
+            "flatbuffers": "23.1.21",
             "gast": "0.4.0",
-            "google-auth": "2.11.0",
+            "google-auth": "2.16.1",
             "google-auth-oauthlib": "0.4.6",
             "google-pasta": "0.2.0",
-            "grpcio": "1.49.0",
-            "h5py": "3.7.0",
-            "keras": "2.10.0",
-            "libclang": "14.0.6",
-            "oauthlib": "3.2.1",
+            "grpcio": "1.51.1",
+            "h5py": "3.8.0",
+            "keras": "2.11.0",
+            "libclang": "15.0.6.1",
+            "oauthlib": "3.2.2",
             "opt-einsum": "3.3.0",
-            "packaging": "21.3",
-            "protobuf": "3.19.5",
+            "packaging": "23.0",
+            "protobuf": "3.19.6",
             "pyasn1": "0.4.8",
             "pyasn1-modules": "0.2.8",
-            "pyparsing": "3.0.9",
             "requests-oauthlib": "1.3.1",
             "rsa": "4.9",
             "six": "1.16.0",
-            "tensorboard": "2.10.0",
+            "tensorboard": "2.11.2",
             "tensorboard-data-server": "0.6.1",
             "tensorboard-plugin-wit": "1.8.1",
-            "tensorflow": "2.10.0",
-            "tensorflow-estimator": "2.10.0",
-            "tensorflow-io-gcs-filesystem": "0.27.0",
-            "termcolor": "2.0.1"
+            "tensorflow": "2.11.0",
+            "tensorflow-estimator": "2.11.0",
+            "tensorflow-io-gcs-filesystem": "0.30.0",
+            "termcolor": "2.2.0",
+            "typing_extensions": "4.5.0"
         },
-        "dependency_conflicts": {
-            "absl-py": {
-                "cor-asv-ann": "1.2.0",
-                "eynollah": "1.2.0",
-                "ocrd_anybaseocr": "1.2.0",
-                "ocrd_calamari": "1.2.0",
-                "ocrd_keraslm": "1.2.0",
-                "ocrd_kraken": "1.2.0",
-                "ocrd_pc_segmentation": "0.15.0",
-                "sbb_binarization": "1.2.0"
-            },
-            "flatbuffers": {
-                "eynollah": "2.0.7",
-                "ocrd_anybaseocr": "2.0.7",
-                "ocrd_calamari": "2.0.7",
-                "ocrd_pc_segmentation": "1.12",
-                "sbb_binarization": "2.0.7"
-            },
-            "h5py": {
-                "cor-asv-ann": "2.10.0",
-                "eynollah": "3.7.0",
-                "ocrd_anybaseocr": "3.7.0",
-                "ocrd_calamari": "3.7.0",
-                "ocrd_keraslm": "2.10.0",
-                "ocrd_pc_segmentation": "3.1.0",
-                "sbb_binarization": "3.7.0"
-            },
-            "protobuf": {
-                "cor-asv-ann": "4.21.6",
-                "eynollah": "3.19.5",
-                "ocrd_anybaseocr": "3.19.5",
-                "ocrd_calamari": "3.19.5",
-                "ocrd_keraslm": "4.21.6",
-                "ocrd_kraken": "3.19.5",
-                "ocrd_pc_segmentation": "3.19.5",
-                "sbb_binarization": "3.19.5"
-            },
-            "tensorboard": {
-                "cor-asv-ann": "1.15.0",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.0",
-                "ocrd_kraken": "2.10.0",
-                "ocrd_pc_segmentation": "2.10.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "tensorflow-estimator": {
-                "cor-asv-ann": "1.15.1",
-                "eynollah": "2.10.0",
-                "ocrd_anybaseocr": "2.10.0",
-                "ocrd_calamari": "2.10.0",
-                "ocrd_keraslm": "1.15.1",
-                "ocrd_pc_segmentation": "2.5.0",
-                "sbb_binarization": "2.10.0"
-            },
-            "termcolor": {
-                "cor-asv-ann": "2.0.1",
-                "eynollah": "2.0.1",
-                "ocrd_anybaseocr": "2.0.1",
-                "ocrd_calamari": "2.0.1",
-                "ocrd_keraslm": "2.0.1",
-                "ocrd_pc_segmentation": "1.1.0",
-                "sbb_binarization": "2.0.1"
-            }
-        },
+        "dependency_conflicts": null,
         "id": "sbb_binarization",
-        "latest_version": "v0.0.9",
+        "latest_version": "v0.0.11",
         "ocrd_tool": {
             "git_url": "https://github.com/qurator-spk/sbb_binarization",
             "tools": {
@@ -5158,7 +4997,7 @@
                     "parameters": {
                         "model": {
                             "content-type": "text/directory",
-                            "description": "Directory containing HDF5 models. Can be an absolute path or a path relative to the current working directory or $SBB_BINARIZE_DATA environment variable (if set)",
+                            "description": "Directory containing HDF5 or SavedModel/ProtoBuf models. Can be an absolute path or a path relative to the OCR-D resource location, the current working directory or the $SBB_BINARIZE_DATA environment variable (if set)",
                             "format": "uri",
                             "required": true,
                             "type": "string"
@@ -5173,18 +5012,36 @@
                             "type": "string"
                         }
                     },
+                    "resources": [
+                        {
+                            "description": "default models provided by github.com/qurator-spk",
+                            "name": "default",
+                            "path_in_archive": "model_2020_01_16",
+                            "size": 562917559,
+                            "type": "archive",
+                            "url": "https://github.com/apacha/sbb_binarization/releases/download/pre-trained-models/model_2020_01_16.zip"
+                        },
+                        {
+                            "description": "updated default models provided by github.com/qurator-spk",
+                            "name": "default-2021-03-09",
+                            "path_in_archive": ".",
+                            "size": 133693693,
+                            "type": "archive",
+                            "url": "https://github.com/apacha/sbb_binarization/releases/download/pre-trained-models/model_2021_03_09.zip"
+                        }
+                    ],
                     "steps": [
                         "preprocessing/optimization/binarization"
                     ]
                 }
             },
-            "version": "0.0.9"
+            "version": "0.0.11"
         },
         "ocrd_tool_json_valid": true,
         "official": false,
         "org_plus_name": "qurator-spk/sbb_binarization",
         "project_type": "python",
-        "unreleased_changes": 8,
+        "unreleased_changes": 26,
         "url": "https://github.com/qurator-spk/sbb_binarization"
     }
 ]
