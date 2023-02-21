@@ -2,43 +2,67 @@
     {
         "projects": [
             "core",
-            "eynollah",
+            "ocrd_detectron2",
+            "ocrd_olahd_client",
+            "opencv-python",
+            "tesseract"
+        ],
+        "tag": "v2023-02-06"
+    },
+    {
+        "projects": [
+            "docstruct"
+        ],
+        "tag": "v2022-12-01"
+    },
+    {
+        "projects": [
+            "ocrd_segment",
+            "workflow-configuration"
+        ],
+        "tag": "v2022-11-24"
+    },
+    {
+        "projects": [
+            "ocrd_fileformat"
+        ],
+        "tag": "v2022-11-10"
+    },
+    {
+        "projects": [
+            "cor-asv-ann",
+            "dinglehopper",
+            "ocrd_calamari",
             "ocrd_kraken",
             "ocrd_tesserocr",
-            "opencv-python",
+            "ocrd_typegroups_classifier",
             "sbb_binarization",
-            "tesseract"
+            "tesserocr"
+        ],
+        "tag": "v2022-10-25"
+    },
+    {
+        "projects": [
+            "eynollah"
         ],
         "tag": "v2022-08-15"
     },
     {
         "projects": [
-            "ocrd_calamari",
-            "ocrd_segment",
-            "tesserocr"
-        ],
-        "tag": "v2022-07-18"
-    },
-    {
-        "projects": [
-            "ocrd_detectron2",
             "ocrd_keraslm",
-            "ocrd_olena",
-            "workflow-configuration"
+            "ocrd_olena"
         ],
         "tag": "v2022-06-03"
     },
     {
         "projects": [
             "ocrd_cis",
-            "ocrd_doxa",
-            "ocrd_fileformat"
+            "ocrd_doxa"
         ],
         "tag": "v2022-05-04"
     },
     {
         "projects": [
-            "dinglehopper",
             "ocrd_anybaseocr",
             "ocrd_pagetopdf"
         ],
@@ -46,8 +70,6 @@
     },
     {
         "projects": [
-            "cor-asv-ann",
-            "ocrd_olahd_client",
             "sbb_textline_detector"
         ],
         "tag": "v2022-03-25"
@@ -66,8 +88,7 @@
     },
     {
         "projects": [
-            "ocrd_im6convert",
-            "ocrd_typegroups_classifier"
+            "ocrd_im6convert"
         ],
         "tag": "v2021-01-30"
     }
