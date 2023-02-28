@@ -49,7 +49,7 @@
         },
     "pages_per_minute":
         {
-            "label": "CER (median)",
+            "label": "Pages per minute",
             "short_descr": "Number of pages processed per minute",
             "url": ""
         }
