@@ -1,5 +1,4 @@
 import json
-import re
 
 def test_core_deps():
     with open('data/core_deps.txt', 'r', encoding='utf-8') as file:
