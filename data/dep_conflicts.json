@@ -1,10 +1,30 @@
 {
     "protobuf": {
-        "eynollah": "3.19.6",
-        "ocrd_anybaseocr": "3.19.6",
-        "ocrd_calamari": "3.19.6",
+        "eynollah": "4.23.0",
+        "ocrd_anybaseocr": "4.23.0",
+        "ocrd_calamari": "4.23.0",
         "ocrd_kraken": "3.20.3",
-        "ocrd_pc_segmentation": "3.19.6",
-        "sbb_binarization": "3.19.6"
+        "ocrd_pc_segmentation": "4.23.0",
+        "sbb_binarization": "4.23.0"
+    },
+    "scikit-image": {
+        "ocrd_anybaseocr": "0.20.0",
+        "ocrd_calamari": "0.20.0",
+        "ocrd_cis": "0.20.0",
+        "ocrd_kraken": "0.19.3",
+        "ocrd_pc_segmentation": "0.20.0",
+        "ocrd_segment": "0.20.0",
+        "ocrd_typegroups_classifier": "0.20.0",
+        "ocrd_wrap": "0.20.0"
+    },
+    "torch": {
+        "ocrd_anybaseocr": "2.0.1",
+        "ocrd_kraken": "1.13.1",
+        "ocrd_typegroups_classifier": "2.0.1"
+    },
+    "torchvision": {
+        "ocrd_anybaseocr": "0.15.2",
+        "ocrd_kraken": "0.14.1",
+        "ocrd_typegroups_classifier": "0.15.2"
     }
 }
