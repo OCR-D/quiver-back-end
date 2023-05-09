@@ -2,10 +2,26 @@
     {
         "projects": [
             "core",
+            "dinglehopper",
+            "eynollah",
+            "ocrd_anybaseocr",
+            "ocrd_calamari",
             "ocrd_detectron2",
-            "ocrd_olahd_client",
+            "ocrd_fileformat",
+            "ocrd_keraslm",
+            "ocrd_tesserocr",
+            "ocrd_typegroups_classifier",
             "opencv-python",
-            "tesseract"
+            "sbb_binarization",
+            "tesseract",
+            "tesserocr",
+            "workflow-configuration"
+        ],
+        "tag": "v2023-03-26"
+    },
+    {
+        "projects": [
+            "ocrd_olahd_client"
         ],
         "tag": "v2023-02-06"
     },
@@ -17,39 +33,19 @@
     },
     {
         "projects": [
-            "ocrd_segment",
-            "workflow-configuration"
+            "ocrd_segment"
         ],
         "tag": "v2022-11-24"
     },
     {
         "projects": [
-            "ocrd_fileformat"
-        ],
-        "tag": "v2022-11-10"
-    },
-    {
-        "projects": [
             "cor-asv-ann",
-            "dinglehopper",
-            "ocrd_calamari",
-            "ocrd_kraken",
-            "ocrd_tesserocr",
-            "ocrd_typegroups_classifier",
-            "sbb_binarization",
-            "tesserocr"
+            "ocrd_kraken"
         ],
         "tag": "v2022-10-25"
     },
     {
         "projects": [
-            "eynollah"
-        ],
-        "tag": "v2022-08-15"
-    },
-    {
-        "projects": [
-            "ocrd_keraslm",
             "ocrd_olena"
         ],
         "tag": "v2022-06-03"
@@ -63,7 +59,6 @@
     },
     {
         "projects": [
-            "ocrd_anybaseocr",
             "ocrd_pagetopdf"
         ],
         "tag": "v2022-03-30"
