@@ -1,2 +1,0 @@
-ocrd process \
-    "dinglehopper -I OCR-D-GT-SEG-LINE,OCR-D-OCR -O OCR-D-EVAL-SEG-LINE"
