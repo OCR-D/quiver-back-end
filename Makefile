@@ -14,10 +14,3 @@ init:
 .PHONY: data/ocrd_all_releases.json
 releases: init
 	quiver-ocrd releases -o data/ocrd_all_releases.json
-
-benchmarks: init clean-workspaces
-	quiver-ocrd benchmarks
-
-clean-workspaces:
-	rm -rf workflows/workspaces
-	rm -rf workflows/nf-results
