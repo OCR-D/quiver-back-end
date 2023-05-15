@@ -1,0 +1,10 @@
+.circleci
+.pytest_cache
+build
+tests
+venv
+requirements-test.txt
+*.egg-info
+CHANGELOG.md
+sbom.json
+LICENSE

@@ -14,3 +14,7 @@ init:
 .PHONY: data/ocrd_all_releases.json
 releases: init
 	quiver-ocrd releases -o data/ocrd_all_releases.json
+
+all:
+	quiver-ocrd releases -o data/ocrd_all_releases.json
+	quiver-ocrd repo json -o data/repos.json
